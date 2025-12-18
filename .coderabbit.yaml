@@ -1,0 +1,176 @@
+# CodeRabbit Configuration
+# https://docs.coderabbit.ai/guides/configure-coderabbit
+
+# Language and response settings
+language: de
+early_access: false
+tone_instructions: "Professional, concise, and constructive. Focus on actionable feedback."
+
+# Enable/disable features (optimized for Lite plan)
+reviews:
+  # Core review settings
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    ignore_title_keywords:
+      - "wip"
+      - "draft"
+      - "do not review"
+      - "skip review"
+    drafts: false
+    base_branches:
+      - main
+      - develop
+
+  # Path-based filters
+  path_filters:
+    - "!**/node_modules/**"
+    - "!**/dist/**"
+    - "!**/.astro/**"
+    - "!**/coverage/**"
+    - "!**/*.lock"
+    - "!**/*.min.js"
+    - "!**/*.min.css"
+
+  path_instructions:
+    - path: "src/components/**/*.vue"
+      instructions: |
+        - Verify Vue 3 Composition API usage (no Options API)
+        - Check for proper TypeScript types in defineProps
+        - Ensure client directives (client:visible, client:load) are used appropriately
+        - Verify Motion animations don't combine whileInView with whileHover on same element
+        - Check that spring animations only use 2 keyframes
+        - Validate path aliases (@components, @layouts, @utils) are used instead of relative imports
+
+    - path: "src/**/*.astro"
+      instructions: |
+        - Verify client directives are used appropriately (prefer client:visible)
+        - Check Islands Architecture best practices
+        - Ensure proper integration with Vue components
+        - Validate SSG-friendly patterns
+
+    - path: "**/*.{css,scss}"
+      instructions: |
+        - Verify Tailwind CSS v4 @theme usage for custom tokens
+        - Check for proper CSS variable usage
+        - Validate Lightning CSS compatibility
+        - Ensure no @apply for one-off utilities
+
+    - path: "**/*.{ts,tsx,js,jsx}"
+      instructions: |
+        - Verify TypeScript strict mode compliance
+        - Check for proper error handling
+        - Validate path aliases usage
+        - Ensure no ESLint/TSLint, only OXC linter rules
+
+    - path: "tests/**/*.spec.{ts,js}"
+      instructions: |
+        - Verify test coverage for critical paths
+        - Check for proper test isolation
+        - Validate Vitest/Playwright best practices
+        - Ensure semantic selectors in E2E tests (aria-label, role, data-testid)
+
+    - path: "**/*.config.{ts,js,mjs}"
+      instructions: |
+        - Verify configuration follows project conventions
+        - Check for proper TypeScript types
+        - Validate Vite+ inspired toolchain integration (Rolldown, OXC, Lightning CSS)
+
+# Chat settings
+chat:
+  auto_reply: true
+
+# Knowledge base - Project specific context
+knowledge_base:
+  # Tech Stack Documentation
+  learnings:
+    - "Project uses Astro 5 with Vue 3 Composition API (NOT Options API)"
+    - "Styling with Tailwind CSS v4 - CSS-first configuration using @theme"
+    - "Vite+ inspired toolchain: Rolldown (bundler), OXC (linter), Lightning CSS (parser)"
+    - "Project manually implements Vite+ philosophy (https://viteplus.dev/)"
+    - "Testing: Vitest (unit), Playwright (E2E), @vue/test-utils"
+    - "Code quality: Husky, lint-staged, commitlint, Prettier, oxlint, stylelint"
+    - "UI Libraries: Motion (motion-v), Reka UI, Astro Icon"
+    - "Path aliases MUST be used: @/, @components/, @layouts/, @utils/"
+    - "Vue components MUST use Composition API with <script setup lang='ts'>"
+    - "Client directives: Prefer client:visible over client:load for performance"
+    - "Motion: NEVER combine whileInView and whileHover on same element"
+    - "Motion: Spring animations only support 2 keyframes, use ease for multiple keyframes"
+    - "Tailwind v4: Use @theme in CSS for design tokens, not JavaScript config"
+    - "Reka UI components are auto-imported via unplugin-vue-components"
+    - "Conventional Commits enforced by commitlint"
+    - "Maximum line length: code=100, commit header=100, commit body=120"
+    - "Tabs for indentation (NOT spaces), single quotes, semicolons required"
+
+# Issue validation and PR title checking
+issues:
+  enabled: false
+
+pull_requests:
+  title_check:
+    enabled: true
+    validation:
+      pattern: '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+?\))?: .{1,80}$'
+      message: "PR title must follow Conventional Commits format: type(scope): subject"
+
+# Code linting (use existing project linters)
+linting:
+  enabled: false # Disable as we use oxlint, prettier, stylelint
+
+# Security scanning
+security:
+  secret_scanning:
+    enabled: true
+
+# Performance optimization for Lite plan
+performance:
+  # Focus reviews on most important files
+  max_files_to_review: 50
+  max_lines_per_file: 1000
+
+  # Prioritize certain file types
+  file_priority:
+    high:
+      - "**/*.vue"
+      - "**/*.astro"
+      - "**/*.ts"
+      - "**/*.tsx"
+    medium:
+      - "**/*.js"
+      - "**/*.jsx"
+      - "**/*.css"
+    low:
+      - "**/*.json"
+      - "**/*.md"
+
+# Exclude patterns
+exclude:
+  - "**/node_modules/**"
+  - "**/dist/**"
+  - "**/.astro/**"
+  - "**/build/**"
+  - "**/coverage/**"
+  - "**/*.lock"
+  - "**/*.log"
+  - "**/*.min.js"
+  - "**/*.min.css"
+  - "**/*.map"
+  - "**/public/assets/**"
+  - "**/.husky/**"
+
+# Bot behavior
+bot:
+  behavior:
+    # Be helpful but concise (Lite plan optimization)
+    - "Focus on critical issues and best practices"
+    - "Prioritize security, performance, and maintainability concerns"
+    - "Provide actionable suggestions with code examples"
+    - "Respect existing code style and project conventions"
+    - "Consider the Astro Islands Architecture and Vue 3 patterns"
+    - "Be mindful of bundle size and performance implications"

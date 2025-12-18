@@ -1,0 +1,94 @@
+/* Card Component Styles */
+
+.card {
+	display: block;
+	border-radius: 0.75rem;
+	background-color: rgb(255 255 255);
+	text-decoration: none;
+	color: inherit;
+	transition: all 0.2s ease;
+}
+
+/* Padding Variants */
+.card--padding-none {
+	padding: 0;
+}
+
+.card--padding-sm {
+	padding: 1rem;
+}
+
+.card--padding-md {
+	padding: 1.5rem;
+}
+
+.card--padding-lg {
+	padding: 2rem;
+}
+
+/* Style Variants */
+.card--default {
+	border: 1px solid rgb(229 231 235);
+	box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+
+.card--bordered {
+	border: 2px solid rgb(229 231 235);
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 5%);
+}
+
+.card--elevated {
+	border: 1px solid rgb(229 231 235);
+	box-shadow:
+		0 4px 6px -1px rgb(0 0 0 / 10%),
+		0 2px 4px -2px rgb(0 0 0 / 10%);
+}
+
+.card--flat {
+	background-color: rgb(249 250 251);
+	border: none;
+}
+
+.card--gradient {
+	background: linear-gradient(135deg, oklch(75% 0.19 5deg / 5%), oklch(75% 0.16 285deg / 5%));
+	border: 1px solid oklch(75% 0.19 5deg / 20%);
+	box-shadow: 0 1px 3px 0 oklch(75% 0.19 5deg / 10%);
+}
+
+.card--featured {
+	border: 2px solid var(--color-primary);
+	box-shadow:
+		0 10px 15px -3px oklch(75% 0.19 5deg / 10%),
+		0 4px 6px -4px oklch(75% 0.19 5deg / 10%);
+}
+
+/* Interactive State */
+.card--interactive {
+	cursor: pointer;
+}
+
+.card--interactive:hover {
+	border-color: var(--color-primary);
+	/* transform: translateY(-4px); - Now handled by Motion */
+	box-shadow:
+		0 10px 15px -3px rgb(0 0 0 / 10%),
+		0 4px 6px -4px rgb(0 0 0 / 10%);
+}
+
+.card--interactive.card--elevated:hover {
+	box-shadow:
+		0 20px 25px -5px rgb(0 0 0 / 10%),
+		0 8px 10px -6px rgb(0 0 0 / 10%);
+}
+
+.card--interactive.card--gradient:hover {
+	border-color: var(--color-primary);
+	box-shadow:
+		0 10px 20px -5px oklch(75% 0.19 5deg / 20%),
+		0 4px 8px -4px oklch(75% 0.19 5deg / 10%);
+}
+
+.card--interactive:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}

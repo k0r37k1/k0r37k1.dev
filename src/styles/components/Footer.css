@@ -1,0 +1,121 @@
+/* Footer Component Styles */
+
+.footer {
+	border-top: 1px solid rgb(229 231 235);
+	background-color: rgb(249 250 251);
+}
+
+.footer__container {
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 3rem 1.5rem 2rem;
+}
+
+/* Footer Sections */
+.footer__sections {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 2rem;
+	margin-bottom: 3rem;
+}
+
+@media (width >= 640px) {
+	.footer__sections {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (width >= 768px) {
+	.footer__sections {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.footer__section {
+	/* Section wrapper */
+}
+
+.footer__section-title {
+	margin-bottom: 1rem;
+	color: var(--color-text);
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.footer__section-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.footer__section-item {
+	/* Item wrapper */
+}
+
+.footer__section-link {
+	color: rgb(107 114 128);
+	font-size: 0.875rem;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.footer__section-link:hover,
+.footer__section-link:focus {
+	color: var(--color-primary);
+}
+
+/* Footer Bottom */
+.footer__bottom {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-top: 2rem;
+	border-top: 1px solid rgb(229 231 235);
+}
+
+@media (width >= 640px) {
+	.footer__bottom {
+		flex-direction: row;
+	}
+}
+
+.footer__copyright {
+	margin: 0;
+	color: rgb(107 114 128);
+	font-size: 0.875rem;
+}
+
+/* Social Links */
+.footer__social {
+	display: flex;
+	gap: 1rem;
+}
+
+.footer__social-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	color: rgb(107 114 128);
+	border-radius: 0.5rem;
+	transition: all 0.2s ease;
+}
+
+.footer__social-link:hover,
+.footer__social-link:focus {
+	color: var(--color-primary);
+	background-color: oklch(96% 0.005 264deg);
+}
+
+.footer__social-icon {
+	width: 1.25rem;
+	height: 1.25rem;
+}

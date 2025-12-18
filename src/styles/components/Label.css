@@ -1,0 +1,15 @@
+/* Label Component Styles */
+
+.label {
+	display: inline-block;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--color-text);
+	cursor: pointer;
+	user-select: none;
+}
+
+.label__required {
+	color: var(--color-error-400);
+	margin-left: 0.25rem;
+}

@@ -1,0 +1,943 @@
+/**
+ * Terminal Portfolio - Retro-Futuristic Theme
+ * Distinctive color system with CRT effects and holographic accents
+ */
+
+@import 'tailwindcss';
+
+@theme {
+	/* Terminal Color Palette - Retro-Futuristic */
+	--color-terminal-bg: oklch(15% 0.02 240deg); /* Deep blue-black */
+	--color-terminal-bg-lighter: oklch(20% 0.02 240deg);
+	--color-terminal-surface: oklch(18% 0.02 240deg);
+	--color-terminal-border: oklch(30% 0.04 240deg);
+
+	/* Text Colors */
+	--color-terminal-text: #fff; /* Pure white for readability */
+	--color-terminal-text-dim: #a8a8a8;
+	--color-terminal-text-muted: #8c8c8c; /* Lightened for WCAG AA compliance (was #6c6c6c) */
+
+	/* Accent Colors - Ubuntu-inspired with retro-futuristic twist */
+	--color-terminal-primary: #00d9ff; /* Bright cyan */
+	--color-terminal-secondary: #f0f; /* Vivid magenta */
+	--color-terminal-success: #44d544; /* Ubuntu green */
+	--color-terminal-warning: #fc0; /* Amber */
+	--color-terminal-error: #f55; /* Bright red */
+
+	/* Syntax Highlighting Colors */
+	--color-prompt: #44d544; /* Ubuntu green for prompts */
+	--color-command: #55f; /* Ubuntu blue for directories/commands */
+	--color-output: #fff; /* White for output */
+	--color-highlight: #f0f; /* Magenta for highlights */
+	--color-link: #00d9ff; /* Cyan for links */
+
+	/* Y2K Accent Colors (NEW) */
+	--color-accent-orange: #f60; /* Neon orange for highlights */
+	--color-accent-purple: #bf80ff; /* Electric purple for glitch effects (brightened for WCAG AA) */
+
+	/* Neo-Brutalist Shadows (NEW) */
+	--shadow-cyan: 4px 4px 0 rgb(0 217 255 / 30%);
+	--shadow-magenta: 4px 4px 0 rgb(255 0 255 / 30%);
+	--shadow-orange: 4px 4px 0 rgb(255 102 0 / 30%);
+	--shadow-dark: 6px 6px 0 rgb(0 0 0 / 40%);
+
+	/* Typography */
+	--font-mono: 'IBM Plex Mono', 'Berkeley Mono', 'SF Mono', 'Cascadia Code', monospace;
+	--font-display: 'VT323', monospace; /* Retro terminal font for titles */
+
+	/* Spacing Scale */
+	--space-section: 4rem;
+	--space-content: 2rem;
+
+	/* Effects */
+	--scanline-opacity: 0.03; /* Enhanced scanlines for retro CRT */
+	--terminal-shadow: 0 8px 32px oklch(0% 0 0deg / 60%);
+	--crt-flicker-intensity: 0.02; /* Subtle screen flicker */
+}
+
+/* Global Terminal Styles */
+body {
+	background: var(--color-terminal-bg);
+	color: var(--color-terminal-text);
+	font-family: var(--font-mono);
+	font-size: 16px;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Terminal Window Container */
+.terminal-window {
+	background: var(--color-terminal-surface);
+	border: 2px solid var(--color-terminal-border);
+	border-radius: 0.5rem;
+	box-shadow:
+		8px 8px 0 rgb(0 0 0 / 40%),
+		0 0 60px rgb(0 217 255 / 8%);
+	max-width: 1200px;
+	margin: 1rem auto;
+	min-height: calc(100vh - 2rem);
+	position: relative;
+	overflow: hidden;
+	will-change: transform;
+	transform: translateZ(0);
+	contain: layout style paint;
+}
+
+/* CRT Scanline Effect - Disabled (too subtle) */
+/* .terminal-window::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: repeating-linear-gradient(
+		0deg,
+		oklch(0% 0 0deg / var(--scanline-opacity)) 0,
+		transparent 1px,
+		transparent 2px,
+		oklch(0% 0 0deg / var(--scanline-opacity)) 3px
+	);
+	pointer-events: none;
+	z-index: 10;
+} */
+
+/* CRT Curvature Glow */
+.terminal-window::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(ellipse at center, transparent 60%, rgb(0 217 255 / 5%) 100%);
+	pointer-events: none;
+	z-index: 11;
+	mix-blend-mode: screen;
+	animation: crt-flicker 3s infinite alternate;
+}
+
+/* CRT Screen Flicker Animation */
+@keyframes crt-flicker {
+	0%,
+	100% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.98;
+	}
+
+	75% {
+		opacity: 0.99;
+	}
+}
+
+/* RGB Chromatic Aberration Effect (subtle) */
+@keyframes chromatic-aberration {
+	0%,
+	100% {
+		text-shadow:
+			0.5px 0 0 rgb(255 0 0 / 10%),
+			-0.5px 0 0 rgb(0 255 255 / 10%);
+	}
+
+	50% {
+		text-shadow:
+			1px 0 0 rgb(255 0 0 / 15%),
+			-1px 0 0 rgb(0 255 255 / 15%);
+	}
+}
+
+/* Terminal Header */
+.terminal-header {
+	background: var(--color-terminal-bg-lighter);
+	border-bottom: 1px solid var(--color-terminal-border);
+	padding: 0.75rem 1.5rem;
+	font-size: 0.875rem;
+	display: flex;
+	align-items: center;
+	font-family: var(--font-mono);
+}
+
+.terminal-title {
+	color: var(--color-prompt);
+	font-weight: 400;
+	font-family: var(--font-mono); /* IBM Plex Mono for better readability */
+	font-size: 1rem;
+	letter-spacing: 0.02em;
+}
+
+.terminal-cursor {
+	display: inline-block;
+	width: 0.5em;
+	margin-left: 0;
+	color: var(--color-terminal-success);
+	animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+	0%,
+	50% {
+		opacity: 1;
+	}
+	50.01%,
+	100% {
+		opacity: 0;
+	}
+}
+
+/* Terminal Content Area */
+.terminal-content {
+	padding: 2rem;
+	overflow-y: auto;
+	max-height: calc(100vh - 6rem);
+}
+
+/* Custom Scrollbar */
+.terminal-content::-webkit-scrollbar {
+	width: 8px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+	background: var(--color-terminal-bg);
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+	background: var(--color-terminal-border);
+	border-radius: 4px;
+}
+
+.terminal-content::-webkit-scrollbar-thumb:hover {
+	background: var(--color-terminal-primary);
+}
+
+/* Prompt Line */
+.prompt-line {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 0.5rem;
+	font-size: 0.9rem;
+}
+
+.prompt {
+	color: var(--color-prompt);
+	font-weight: 600;
+}
+
+.command {
+	color: var(--color-command);
+}
+
+/* ASCII Art */
+.ascii-art {
+	font-family: var(--font-mono); /* IBM Plex Mono for better ASCII rendering */
+	line-height: 1.2;
+	white-space: pre;
+	color: var(--color-terminal-primary);
+	margin: 1rem 0;
+}
+
+.ascii-icon {
+	font-family: var(--font-mono);
+	line-height: 1.1;
+	white-space: pre;
+	color: var(--color-highlight);
+	font-size: 0.875rem;
+	margin: 1rem 0;
+}
+
+/* Section Styling */
+.terminal-section {
+	margin-bottom: var(--space-section);
+}
+
+.section-content {
+	max-width: 800px;
+	margin-top: 1rem;
+}
+
+.section-content h2 {
+	color: var(--color-terminal-text);
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin-bottom: 1rem;
+}
+
+.section-content p {
+	color: var(--color-terminal-text-dim);
+	margin-bottom: 0.75rem;
+}
+
+/* Links */
+.terminal-link {
+	color: var(--color-link);
+	text-decoration: none;
+	border-bottom: 2px solid transparent;
+	transition: all 0.2s;
+}
+
+.terminal-link:hover {
+	color: var(--color-accent-orange);
+	border-bottom-color: var(--color-accent-orange);
+	text-shadow: 0 0 8px rgb(255 102 0 / 40%);
+}
+
+.terminal-link:hover::before {
+	content: '[ ';
+	color: var(--color-terminal-primary);
+}
+
+.terminal-link:hover::after {
+	content: ' ]';
+	color: var(--color-terminal-primary);
+}
+
+/* Blinking Cursor */
+.cursor {
+	display: inline-block;
+	width: 0.6em;
+	height: 1em;
+	background: var(--color-terminal-primary);
+	margin-left: 0.1em;
+	animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+	0%,
+	50% {
+		opacity: 1;
+	}
+
+	51%,
+	100% {
+		opacity: 0;
+	}
+}
+
+/* Glitch Effect (for special elements) */
+@keyframes glitch {
+	0%,
+	100% {
+		transform: translate(0);
+	}
+
+	20% {
+		transform: translate(-2px, 2px);
+	}
+
+	40% {
+		transform: translate(-2px, -2px);
+	}
+
+	60% {
+		transform: translate(2px, 2px);
+	}
+
+	80% {
+		transform: translate(2px, -2px);
+	}
+}
+
+.glitch-hover:hover {
+	animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Enhanced Glitch Effect - Digital Grit */
+@keyframes glitch-brutal {
+	0%,
+	100% {
+		transform: translate(0);
+		filter: none;
+	}
+
+	20% {
+		transform: translate(-3px, 2px);
+		filter: hue-rotate(90deg);
+	}
+
+	40% {
+		transform: translate(3px, -2px);
+		filter: hue-rotate(-90deg);
+	}
+
+	60% {
+		transform: translate(-2px, -3px);
+		text-shadow: 2px 0 var(--color-accent-orange);
+	}
+
+	80% {
+		transform: translate(2px, 3px);
+		text-shadow: -2px 0 var(--color-accent-purple);
+	}
+}
+
+.glitch-on-hover:hover {
+	animation: glitch-brutal 0.4s steps(4) infinite;
+}
+
+/* Project Cards - Neo-Brutalist */
+.project-card {
+	background: var(--color-terminal-bg-lighter);
+	border: 2px solid var(--color-terminal-border);
+	border-radius: 0;
+	padding: 1.5rem;
+	box-shadow: 4px 4px 0 rgb(0 0 0 / 30%);
+	transition: all 0.2s ease;
+	will-change: transform;
+	transform: translateZ(0);
+}
+
+.project-card:hover {
+	transform: translate(-2px, -2px);
+	border-color: var(--color-accent-orange);
+	box-shadow: 6px 6px 0 rgb(255 102 0 / 30%);
+	animation: crt-flicker 3s steps(1) infinite;
+}
+
+/* Project card header brackets */
+.project-name::before {
+	content: '[ ';
+	color: var(--color-terminal-primary);
+}
+
+.project-name::after {
+	content: ' ]';
+	color: var(--color-terminal-primary);
+}
+
+/* Skills List */
+.skills-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin-top: 1rem;
+}
+
+.skill-tag {
+	background: transparent;
+	border: 2px solid var(--color-terminal-border);
+	border-radius: 0;
+	color: var(--color-terminal-text-dim);
+	padding: 0.375rem 0.75rem;
+	font-size: 0.875rem;
+	font-weight: 500;
+	box-shadow: 2px 2px 0 rgb(0 0 0 / 20%);
+	transition: all 0.15s;
+	will-change: transform;
+	transform: translateZ(0);
+}
+
+.skill-tag:hover {
+	transform: translate(-1px, -1px);
+	border-color: var(--color-terminal-primary);
+	box-shadow: 3px 3px 0 rgb(0 217 255 / 30%);
+	background: var(--color-terminal-primary);
+	color: var(--color-terminal-bg);
+}
+
+/* Keyboard Navigation - Enhanced for Accessibility */
+.terminal-link:focus-visible,
+.skill-tag:focus-visible,
+.project-card:focus-visible,
+button:focus-visible,
+a:focus-visible,
+.button:focus-visible,
+.card:focus-visible,
+[role="button"]:focus-visible {
+	outline: 3px solid var(--color-accent-orange);
+	outline-offset: 2px;
+	transform: translate(-2px, -2px);
+	transition: outline 0.2s ease, transform 0.2s ease;
+}
+
+/* Remove default focus outline (we use :focus-visible instead) */
+*:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* Responsive Typography */
+@media (width <= 640px) {
+	body {
+		font-size: 14px;
+	}
+
+	.terminal-window {
+		margin: 0;
+		border-radius: 0;
+		min-height: 100vh;
+	}
+
+	.terminal-content {
+		padding: 1rem;
+	}
+
+	.section-content h2 {
+		font-size: 1.25rem;
+	}
+
+	/* Scaled-down Neo-Brutalism for mobile */
+	.terminal-box,
+	.project-card,
+	.nfo-brutalist-container {
+		border-width: 2px;
+	}
+
+	.terminal-box {
+		box-shadow: 4px 4px 0 rgb(0 0 0 / 40%);
+	}
+
+	.project-card {
+		box-shadow: 3px 3px 0 rgb(0 0 0 / 30%);
+	}
+
+	/* Tap feedback */
+	.project-card:active {
+		transform: translate(-1px, -1px);
+		box-shadow: 4px 4px 0 rgb(255 102 0 / 30%);
+	}
+
+	/* Scene borders - compact */
+	.nfo-border-top,
+	.nfo-border-bottom {
+		font-size: 0.75rem;
+		padding: 0.5rem;
+		line-height: 1.3;
+	}
+
+	/* Dividers */
+	.divider-scene {
+		font-size: 0.875rem;
+		margin: 2rem 0;
+	}
+}
+
+@media (width >= 641px) and (width <= 1024px) {
+	body {
+		font-size: 15px;
+	}
+}
+
+/* Touch Optimizations */
+@media (hover: none) and (pointer: coarse) {
+	/* Larger tap targets */
+	.terminal-link,
+	.skill-tag {
+		padding: 0.5rem 1rem;
+		min-height: 44px;
+	}
+
+	/* No hover effects */
+	.glitch-hover:hover {
+		animation: none;
+	}
+
+	/* Tap feedback */
+	.interactive-element:active {
+		transform: scale(0.98);
+	}
+}
+
+/* Utility Classes */
+
+/* CRT Effects - Apply to text elements */
+.crt-text {
+	animation: chromatic-aberration 4s ease-in-out infinite;
+}
+
+.crt-phosphor-glow {
+	text-shadow:
+		0 0 5px currentColor,
+		0 0 10px currentColor,
+		0 0 15px rgb(0 217 255 / 50%);
+	animation: phosphor-pulse 2s ease-in-out infinite;
+}
+
+@keyframes phosphor-pulse {
+	0%,
+	100% {
+		filter: brightness(1);
+	}
+
+	50% {
+		filter: brightness(1.1);
+	}
+}
+
+/* CRT Flicker - Irregular with varying intensities */
+@keyframes crt-flicker {
+	0% { opacity: 1; filter: brightness(1); }
+	2% { opacity: 0.97; filter: brightness(0.98); }
+	5% { opacity: 1; filter: brightness(1); }
+	9% { opacity: 0.93; filter: brightness(0.95); }
+	11% { opacity: 1; filter: brightness(1.01); }
+	17% { opacity: 0.98; filter: brightness(0.99); }
+	23% { opacity: 1; filter: brightness(1); }
+	28% { opacity: 0.91; filter: brightness(0.93); }
+	31% { opacity: 1; filter: brightness(1); }
+	39% { opacity: 0.96; filter: brightness(0.97); }
+	44% { opacity: 1; filter: brightness(1.02); }
+	51% { opacity: 0.94; filter: brightness(0.96); }
+	56% { opacity: 1; filter: brightness(1); }
+	63% { opacity: 0.89; filter: brightness(0.92); }
+	68% { opacity: 1; filter: brightness(1.03); }
+	74% { opacity: 0.95; filter: brightness(0.97); }
+	79% { opacity: 1; filter: brightness(1); }
+	85% { opacity: 0.92; filter: brightness(0.94); }
+	89% { opacity: 1; filter: brightness(1.01); }
+	94% { opacity: 0.98; filter: brightness(0.99); }
+	100% { opacity: 1; filter: brightness(1); }
+}
+
+/* Screen Burn-In Effect (very subtle) */
+.crt-burn-in {
+	position: relative;
+}
+
+.crt-burn-in::after {
+	content: attr(data-text);
+	position: absolute;
+	inset: 0;
+	color: var(--color-terminal-primary);
+	opacity: 0.03;
+	z-index: -1;
+	pointer-events: none;
+}
+
+/* Neo-Brutalist Components */
+.brutalist-box {
+	background: var(--color-terminal-surface);
+	border: 2px solid var(--color-terminal-primary);
+	border-radius: 0;
+	box-shadow: var(--shadow-dark);
+	transition:
+		transform 0.2s,
+		box-shadow 0.2s;
+	will-change: transform;
+	transform: translateZ(0);
+}
+
+.brutalist-box:hover {
+	transform: translate(-2px, -2px);
+	box-shadow: 8px 8px 0 rgb(0 217 255 / 40%);
+}
+
+/* Terminal Boxes */
+.terminal-box {
+	border: 2px solid var(--color-terminal-primary);
+	border-radius: 0;
+	background: var(--color-terminal-surface);
+	box-shadow: 6px 6px 0 rgb(0 0 0 / 40%);
+	transition:
+		transform 0.2s,
+		box-shadow 0.2s;
+}
+
+.terminal-box:hover {
+	transform: translate(-2px, -2px);
+	box-shadow: 8px 8px 0 rgb(0 217 255 / 40%);
+}
+
+.terminal-box-header {
+	border-bottom: 2px solid var(--color-terminal-primary);
+	background: var(--color-terminal-bg-lighter);
+}
+
+.terminal-box-title::before {
+	content: '[ ';
+	color: var(--color-accent-orange);
+}
+
+.terminal-box-title::after {
+	content: ' ]';
+	color: var(--color-accent-orange);
+}
+
+/* NFO Border Components */
+.nfo-brutalist-container {
+	border: 3px solid var(--color-terminal-primary);
+	box-shadow: 8px 8px 0 rgb(0 217 255 / 30%);
+	background: var(--color-terminal-surface);
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.nfo-border-top,
+.nfo-border-bottom {
+	font-family: var(--font-mono);
+	color: var(--color-terminal-primary);
+	padding: 0.75rem 1rem;
+	background: var(--color-terminal-bg-lighter);
+	text-align: center;
+	line-height: 1.4;
+	font-weight: 600;
+	border-bottom: 2px solid var(--color-terminal-primary);
+}
+
+.nfo-border-bottom {
+	border-bottom: none;
+	border-top: 2px solid var(--color-terminal-primary);
+}
+
+/* Scene Dividers */
+.divider-scene {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin: 3rem 0;
+	color: var(--color-terminal-border);
+	font-family: var(--font-mono);
+}
+
+.divider-line {
+	flex: 1;
+	text-align: center;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+}
+
+.divider-icon {
+	color: var(--color-accent-orange);
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+/* Section with Corner Ornaments */
+.section-with-corners {
+	position: relative;
+	margin: 4rem 0;
+	padding: 4rem 1.5rem;
+	min-height: 300px;
+}
+
+/* Remove margins from inner sections for equal spacing */
+.section-with-corners .terminal-section {
+	margin-bottom: 0;
+}
+
+.section-with-corners .section-content {
+	margin-top: 0;
+}
+
+/* Remove margin-top from first child to ensure equal spacing */
+.section-with-corners .terminal-section > *:first-child {
+	margin-top: 0 !important;
+}
+
+.section-title-center {
+	position: absolute;
+	top: -0.75rem;
+	left: 50%;
+	transform: translateX(-50%);
+	color: var(--color-accent-orange);
+	font-size: 1.5rem;
+	font-weight: 400;
+	letter-spacing: 0.05em;
+	text-align: center;
+	text-transform: uppercase;
+	transition: all 0.3s ease;
+	font-family: var(--font-display);
+	padding: 0 1rem;
+	z-index: 5;
+	animation: crt-flicker 3s steps(1) infinite;
+}
+
+/* ASCII Decorations (global for all sections) */
+.ascii-decorations {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	font-family: var(--font-mono);
+	inset: 0;
+}
+
+.corner {
+	position: absolute;
+	font-size: 0.875rem;
+	opacity: 0.6;
+	color: var(--color-accent-orange);
+	text-shadow: 0 0 10px rgb(255 102 0 / 40%);
+	transition: all 0.3s ease;
+	animation: crt-flicker 3s steps(1) infinite;
+}
+
+.section-with-corners:hover .corner {
+	opacity: 1;
+	text-shadow: 0 0 15px rgb(255 102 0 / 60%);
+}
+
+.top-left {
+	top: 0.5rem;
+	left: 0.5rem;
+}
+
+.top-right {
+	top: 0.5rem;
+	right: 0.5rem;
+}
+
+.bottom-left {
+	bottom: 0.5rem;
+	left: 0.5rem;
+}
+
+.bottom-right {
+	bottom: 0.5rem;
+	right: 0.5rem;
+}
+
+/* Different colors per section - Titles and Corners */
+.terminal-content .section-with-corners:nth-child(2) .section-title-center {
+	color: var(--color-accent-purple);
+}
+
+.terminal-content .section-with-corners:nth-child(2) .corner {
+	color: var(--color-accent-purple); /* Purple for About */
+	text-shadow: 0 0 10px rgb(157 0 255 / 40%);
+}
+
+.terminal-content .section-with-corners:nth-child(2):hover .corner {
+	text-shadow: 0 0 15px rgb(157 0 255 / 60%);
+}
+
+.terminal-content .section-with-corners:nth-child(3) .section-title-center {
+	color: var(--color-accent-orange);
+}
+
+.terminal-content .section-with-corners:nth-child(3) .corner {
+	color: var(--color-accent-orange); /* Orange for Projects */
+	text-shadow: 0 0 10px rgb(255 102 0 / 40%);
+}
+
+.terminal-content .section-with-corners:nth-child(3):hover .corner {
+	text-shadow: 0 0 15px rgb(255 102 0 / 60%);
+}
+
+.terminal-content .section-with-corners:nth-child(4) .section-title-center {
+	color: var(--color-terminal-error);
+}
+
+.terminal-content .section-with-corners:nth-child(4) .corner {
+	color: var(--color-terminal-error); /* Red for Skills */
+	text-shadow: 0 0 10px rgb(255 85 85 / 40%);
+}
+
+.terminal-content .section-with-corners:nth-child(4):hover .corner {
+	text-shadow: 0 0 15px rgb(255 85 85 / 60%);
+}
+
+.terminal-content .section-with-corners:nth-child(5) .section-title-center {
+	color: var(--color-terminal-primary);
+}
+
+.terminal-content .section-with-corners:nth-child(5) .corner {
+	color: var(--color-terminal-primary); /* Cyan for Contact */
+	text-shadow: 0 0 10px rgb(0 217 255 / 40%);
+}
+
+.terminal-content .section-with-corners:nth-child(5):hover .corner {
+	text-shadow: 0 0 15px rgb(0 217 255 / 60%);
+}
+
+.section-divider {
+	margin: 3rem 0 1.5rem;
+}
+
+.section-title {
+	font-family: var(--font-display);
+	color: var(--color-terminal-primary);
+	font-size: 1.5rem;
+	font-weight: 400;
+	margin-bottom: 0.25rem;
+	text-transform: capitalize;
+	letter-spacing: 0.02em;
+}
+
+.section-underline {
+	font-family: var(--font-mono);
+	color: var(--color-terminal-text-muted);
+	font-size: 0.875rem;
+	letter-spacing: 0.1em;
+}
+
+@media (width <= 640px) {
+	.nfo-divider {
+		margin: 2rem 0 1rem;
+	}
+
+	.nfo-border-top,
+	.nfo-border-bottom {
+		font-size: 0.6rem;
+	}
+
+	.nfo-title {
+		font-size: 1rem;
+	}
+
+	.section-divider {
+		margin: 2rem 0 1rem;
+	}
+
+	.section-title {
+		font-size: 1rem;
+	}
+
+	.section-underline {
+		font-size: 0.75rem;
+	}
+}
+
+.holographic-text {
+	background: linear-gradient(
+		90deg,
+		var(--color-terminal-primary) 0%,
+		var(--color-accent-purple) 25%,
+		var(--color-terminal-secondary) 50%,
+		var(--color-accent-orange) 75%,
+		var(--color-terminal-primary) 100%
+	);
+	background-size: 300% auto;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	animation: shimmer-enhanced 4s linear infinite;
+	filter: drop-shadow(0 0 10px rgb(0 217 255 / 30%));
+}
+
+@keyframes shimmer {
+	to {
+		background-position: 200% center;
+	}
+}
+
+@keyframes shimmer-enhanced {
+	to {
+		background-position: 300% center;
+	}
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	.glitch-on-hover:hover,
+	.glitch-hover:hover {
+		animation: none;
+	}
+
+	.terminal-window::before,
+	.terminal-window::after {
+		display: none;
+	}
+
+	.holographic-text {
+		animation: none;
+		background: var(--color-terminal-primary);
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+}

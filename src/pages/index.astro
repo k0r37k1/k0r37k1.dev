@@ -1,0 +1,30 @@
+---
+import TerminalWindow from '@components/terminal/TerminalWindow.vue';
+import '../styles/terminal.css';
+
+const pageTitle = 'Portfolio k0r37k1.dev';
+const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={pageDescription} />
+		<title>{pageTitle}</title>
+
+		<!-- Preload fonts for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<!-- Terminal Fonts: VT323 for titles, IBM Plex Mono for content -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<TerminalWindow client:load />
+	</body>
+</html>

@@ -1,0 +1,162 @@
+version: 2
+
+updates:
+  # ==========================================
+  # NPM Dependencies
+  # ==========================================
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Europe/Berlin'
+
+    # Group related updates together
+    groups:
+      # Astro Core & Integrations
+      astro:
+        patterns:
+          - '@astrojs/*'
+          - 'astro'
+          - 'astro-icon'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      # Vue Ecosystem
+      vue:
+        patterns:
+          - 'vue'
+          - '@vue/*'
+          - 'unplugin-vue-components'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      # Tailwind CSS
+      tailwind:
+        patterns:
+          - 'tailwindcss'
+          - '@tailwindcss/*'
+          - 'prettier-plugin-tailwindcss'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      # Testing Tools
+      testing:
+        patterns:
+          - 'vitest'
+          - '@vitest/*'
+          - '@playwright/test'
+          - '@axe-core/playwright'
+          - 'vitest-axe'
+          - '@vue/test-utils'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      # Code Quality Tools
+      linting:
+        patterns:
+          - 'eslint'
+          - 'eslint-*'
+          - 'prettier'
+          - 'prettier-*'
+          - 'stylelint'
+          - 'stylelint-*'
+          - 'oxlint'
+          - 'cspell'
+          - '@cspell/*'
+          - 'markdownlint-cli2'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      # UI Libraries
+      ui-libraries:
+        patterns:
+          - 'reka-ui'
+          - 'motion-v'
+          - '@iconify/*'
+          - 'alpinejs'
+          - '@alpinejs/*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      # Build Tools
+      build-tools:
+        patterns:
+          - 'vite'
+          - 'rolldown-vite'
+          - 'lightningcss'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      # Git Hooks & Commitlint
+      git-tools:
+        patterns:
+          - 'husky'
+          - 'lint-staged'
+          - '@commitlint/*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+    # Open pull requests for version updates
+    open-pull-requests-limit: 10
+
+    # Auto-merge configuration (optional - requires GitHub auto-merge)
+    # Uncomment when ready:
+    # pull-request-branch-name:
+    #   separator: '-'
+
+    # Labels for PRs
+    labels:
+      - 'dependencies'
+      - 'automated'
+
+    # Commit message configuration
+    commit-message:
+      prefix: 'chore(deps)'
+      include: 'scope'
+
+    # Review configuration
+    reviewers:
+      - 'k0r37k1'  # Ihr GitHub Username
+
+    # Ignore major version updates for stable dependencies
+    ignore:
+      # Wait for manual upgrade to major versions
+      - dependency-name: 'vue'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'astro'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'tailwindcss'
+        update-types: ['version-update:semver-major']
+
+    # Allow both direct and indirect updates
+    allow:
+      - dependency-type: 'direct'
+      - dependency-type: 'indirect'
+
+  # ==========================================
+  # GitHub Actions
+  # ==========================================
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Europe/Berlin'
+
+    labels:
+      - 'dependencies'
+      - 'github-actions'
+
+    commit-message:
+      prefix: 'ci(actions)'

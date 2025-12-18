@@ -1,0 +1,170 @@
+/* Hero Component Styles */
+
+.hero {
+	position: relative;
+	width: 100%;
+	padding: 4rem 1.5rem;
+	overflow: hidden;
+}
+
+@media (width >= 768px) {
+	.hero {
+		padding: 6rem 1.5rem;
+	}
+}
+
+.hero__container {
+	max-width: 80rem;
+	margin: 0 auto;
+}
+
+/* Centered Variant */
+.hero--centered .hero__container {
+	text-align: center;
+}
+
+.hero--centered .hero__content {
+	max-width: 48rem;
+	margin: 0 auto;
+}
+
+.hero--centered .hero__ctas {
+	justify-content: center;
+}
+
+/* Split Variant */
+.hero--split .hero__container {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 3rem;
+	align-items: center;
+}
+
+@media (width >= 768px) {
+	.hero--split .hero__container {
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+	}
+}
+
+/* Minimal Variant */
+.hero--minimal {
+	padding: 3rem 1.5rem;
+}
+
+@media (width >= 768px) {
+	.hero--minimal {
+		padding: 4rem 1.5rem;
+	}
+}
+
+.hero--minimal .hero__content {
+	max-width: 48rem;
+}
+
+/* Content */
+.hero__content {
+	/* Content wrapper */
+}
+
+.hero__subtitle {
+	margin-bottom: 1rem;
+	color: var(--color-primary);
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.hero__title {
+	margin-bottom: 1.5rem;
+	color: var(--color-text);
+	font-size: 2.5rem;
+	font-weight: 700;
+	line-height: 1.1;
+	letter-spacing: -0.025em;
+}
+
+@media (width >= 768px) {
+	.hero__title {
+		font-size: 3.5rem;
+	}
+}
+
+@media (width >= 1024px) {
+	.hero__title {
+		font-size: 4rem;
+	}
+}
+
+.hero__description {
+	margin-bottom: 2rem;
+	color: rgb(107 114 128);
+	font-size: 1.125rem;
+	line-height: 1.75;
+}
+
+@media (width >= 768px) {
+	.hero__description {
+		font-size: 1.25rem;
+	}
+}
+
+/* CTAs */
+.hero__ctas {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.hero__cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.5rem;
+	font-size: 1rem;
+	font-weight: 500;
+	text-decoration: none;
+	border-radius: 0.5rem;
+	transition: all 0.2s ease;
+}
+
+.hero__cta--primary {
+	background-color: var(--color-primary);
+	color: white;
+}
+
+.hero__cta--primary:hover {
+	background-color: var(--color-primary-text);
+	transform: translateY(-2px);
+}
+
+.hero__cta--secondary {
+	background-color: transparent;
+	color: rgb(55 65 81);
+	border: 1px solid rgb(209 213 219);
+}
+
+.hero__cta--secondary:hover {
+	background-color: rgb(243 244 246);
+	border-color: var(--color-primary);
+}
+
+.hero__cta-icon {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+/* Image */
+.hero__image {
+	position: relative;
+	width: 100%;
+	border-radius: 1rem;
+	overflow: hidden;
+}
+
+.hero__image img {
+	width: 100%;
+	height: auto;
+	display: block;
+}

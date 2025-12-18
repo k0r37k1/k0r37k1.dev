@@ -1,0 +1,215 @@
+---
+import '../styles/terminal.css';
+import TerminalFooter from '@components/terminal/TerminalFooter.vue';
+
+const pageTitle = 'Privacy | k0r37k1.dev';
+const pageDescription = 'Privacy policy and data protection information';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={pageDescription} />
+		<title>{pageTitle}</title>
+
+		<!-- Preload fonts for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<!-- Terminal Fonts: VT323 for titles, IBM Plex Mono for content -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="legal-page">
+			<div class="terminal-window">
+				<!-- Terminal Header -->
+				<div class="terminal-header">
+					<span class="terminal-title">visitor@k0r37k1.dev:~$ cat privacy.txt<span class="terminal-cursor">|</span></span>
+				</div>
+
+				<!-- Terminal Content -->
+				<div class="terminal-content">
+					<!-- Main Section with Corners -->
+					<section class="terminal-section section-with-corners">
+						<div class="section-title-center">▀▄▀▄ PRIVACY ▄▀▄▀</div>
+						<div class="ascii-decorations">
+							<span class="corner top-left">╔═══════════</span>
+							<span class="corner top-right">═══════════╗</span>
+							<span class="corner bottom-left">╚═══════════</span>
+							<span class="corner bottom-right">═══════════╝</span>
+						</div>
+
+						<div class="legal-content">
+							<!-- Overview -->
+							<div class="nfo-block">
+								<div class="nfo-label">[ OVERVIEW ]</div>
+								<div class="nfo-text">
+									The following information provides a simple overview of what happens to your personal
+									data when you visit this website.
+								</div>
+							</div>
+
+							<!-- Data Collection -->
+							<div class="nfo-block">
+								<div class="nfo-label">[ DATA COLLECTION ]</div>
+								<div class="nfo-text">
+									<div class="sub-label">// Who is responsible?</div>
+									The data processing on this website is carried out by the website operator. You can find
+									their contact details in the imprint of this website.
+								</div>
+								<div class="nfo-text">
+									<div class="sub-label">// How do we collect your data?</div>
+									Your data is collected on the one hand by you providing it to us. This can be data that
+									you enter into a contact form, for example.
+									<br /><br />
+									Other data is collected automatically by our IT systems when you visit the website.
+									This is mainly technical data (e.g. internet browser, operating system or time of page
+									access).
+								</div>
+							</div>
+
+							<!-- Hosting -->
+							<div class="nfo-block">
+								<div class="nfo-label">[ HOSTING ]</div>
+								<div class="nfo-text">
+									This website is hosted by an external service provider (hoster). The personal data
+									collected on this website is stored on the hoster's servers.
+								</div>
+							</div>
+
+							<!-- Cookies -->
+							<div class="nfo-block">
+								<div class="nfo-label">[ COOKIES ]</div>
+								<div class="nfo-text">
+									Our website uses so-called "cookies". Cookies are small text files and do not cause any
+									damage to your device. They are stored either temporarily for the duration of a session
+									(session cookies) or permanently (permanent cookies) on your device.
+								</div>
+							</div>
+
+							<!-- Your Rights -->
+							<div class="nfo-block">
+								<div class="nfo-label">[ YOUR RIGHTS ]</div>
+								<div class="nfo-text">
+									<div class="sub-label">// You have the right to:</div>
+									→ Information about your stored data and its processing<br />
+									→ Correction of incorrect personal data<br />
+									→ Deletion of your data stored with us<br />
+									→ Restriction of data processing<br />
+									→ Data portability<br />
+									→ Object to the processing
+								</div>
+							</div>
+
+							<!-- Contact -->
+							<div class="nfo-block">
+								<div class="nfo-label">[ CONTACT ]</div>
+								<div class="nfo-text">
+									If you have any questions about data protection, you can contact us at any time.<br />
+									E-Mail: <a href="mailto:hello@k0r37k1.dev" class="terminal-link">hello@k0r37k1.dev</a>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Navigation -->
+					<div class="legal-nav">
+						<a href="/portfolio" class="terminal-link nav-link">← back to portfolio</a>
+						<span class="nav-separator">•</span>
+						<a href="/imprint" class="terminal-link nav-link">imprint →</a>
+					</div>
+				</div>
+
+				<!-- Footer -->
+				<TerminalFooter client:load />
+			</div>
+		</div>
+	</body>
+</html>
+
+<style>
+	.legal-page {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+	}
+
+	.legal-content {
+		margin-top: 1rem;
+	}
+
+	.nfo-block {
+		margin-bottom: 1.5rem;
+	}
+
+	.nfo-label {
+		color: var(--color-accent-orange);
+		font-family: 'VT323', monospace;
+		font-weight: 400;
+		font-size: 1.25rem;
+		letter-spacing: 0.05em;
+		margin-bottom: 0.5rem;
+		text-shadow: 0 0 8px rgb(255 102 0 / 40%);
+	}
+
+	.sub-label {
+		color: var(--color-terminal-secondary);
+		font-size: 0.875rem;
+		margin-bottom: 0.25rem;
+		font-weight: 600;
+	}
+
+	.nfo-text {
+		color: var(--color-terminal-text-dim);
+		line-height: 1.6;
+		margin-bottom: 0.75rem;
+		font-size: 0.875rem;
+	}
+
+	/* Links use .terminal-link class for consistent styling */
+
+	.legal-nav {
+		margin-top: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.nav-link {
+		font-size: 0.875rem;
+	}
+
+	.nav-separator {
+		color: var(--color-terminal-text-muted);
+		opacity: 0.5;
+		font-size: 0.875rem;
+	}
+
+	@media (max-width: 640px) {
+		.legal-nav {
+			flex-direction: column;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.nav-separator {
+			display: none;
+		}
+		.nfo-label {
+			font-size: 1.1rem;
+		}
+
+		.nfo-text {
+			font-size: 0.8rem;
+		}
+	}
+</style>

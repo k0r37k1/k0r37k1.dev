@@ -1,0 +1,19 @@
+{
+  "config": {
+    // Line length - allow longer lines for URLs and tables
+    "MD013": {
+      "line_length": 120,
+      "code_blocks": false,
+      "tables": false
+    },
+    // Table column style - disable alignment requirement
+    "MD060": false
+  },
+  "ignores": [
+    "node_modules/**",
+    "dist/**",
+    ".astro/**",
+    "coverage/**",
+    "**/CHANGELOG.md"
+  ]
+}

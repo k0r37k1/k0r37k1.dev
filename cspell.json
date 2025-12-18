@@ -1,0 +1,187 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+
+  // Sprachen aktivieren
+  "language": "en,de",
+
+  "languageSettings": [
+    {
+      "languageId": "typescript,javascript,vue",
+      "locale": "en",
+      "dictionaries": ["typescript", "node", "npm", "fullstack"]
+    },
+    {
+      "languageId": "json,jsonc",
+      "locale": "en,de",
+      "dictionaries": ["en_US", "de-de", "node"]
+    },
+    {
+      "languageId": "markdown",
+      "locale": "en,de",
+      "dictionaries": ["en_US", "de-de", "fullstack"]
+    },
+    {
+      "languageId": "html,css",
+      "locale": "en",
+      "dictionaries": ["html", "css", "fonts"]
+    }
+  ],
+
+  // Standard-Wörterbücher (für alle Dateien)
+  "dictionaries": [
+    "typescript",
+    "node",
+    "npm",
+    "html",
+    "css",
+    "fonts",
+    "companies",
+    "softwareTerms",
+    "de-de",
+    "fullstack",
+    "custom-words",
+    "custom-english",
+    "custom-deutsch"
+  ],
+
+  // Custom Dictionary Definitionen
+  "dictionaryDefinitions": [
+    {
+      "name": "custom-words",
+      "path": "./dictionaries/custom-words.txt",
+      "description": "Project-specific and technical terms",
+      "addWords": true
+    },
+    {
+      "name": "custom-english",
+      "path": "./dictionaries/custom-english.txt",
+      "description": "Common English words",
+      "addWords": true
+    },
+    {
+      "name": "custom-deutsch",
+      "path": "./dictionaries/custom-deutsch.txt",
+      "description": "German project-specific terms",
+      "addWords": true
+    }
+  ],
+
+  // Dateien/Pfade ignorieren
+  "ignorePaths": [
+    // Dependencies
+    "node_modules/**",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "yarn.lock",
+
+    // Build outputs
+    "dist/**",
+    ".astro/**",
+    "build/**",
+    "out/**",
+    ".next/**",
+
+    // Coverage & Testing
+    "coverage/**",
+    ".nyc_output/**",
+
+    // Cache & Temp
+    ".cache/**",
+    "*.log",
+    ".temp/**",
+    ".tmp/**",
+
+    // Git
+    ".git/**",
+    "**/.git/**",
+
+    // Assets
+    "**/*.min.js",
+    "**/*.min.css",
+    "**/*.map",
+    "**/*.svg",
+    "**/*.png",
+    "**/*.jpg",
+    "**/*.jpeg",
+    "**/*.gif",
+    "**/*.ico",
+    "**/*.woff",
+    "**/*.woff2",
+    "**/*.ttf",
+    "**/*.eot",
+
+    // Config files with hashes
+    "**/*.lock",
+    "**/CHANGELOG.md"
+  ],
+
+  // RegEx Patterns ignorieren
+  "ignoreRegExpList": [
+    // Hash-Strings (Build artifacts)
+    "\\b[a-f0-9]{32,}\\b",
+    "\\b[A-Z0-9]{8,}\\b",
+
+    // Hex colors
+    "#[0-9a-fA-F]{3,8}",
+    "0x[0-9a-fA-F]+",
+
+    // URLs & Emails
+    "https?://[^\\s]+",
+    "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}",
+
+    // CSS Custom Properties
+    "--[\\w-]+",
+    "@property\\s+--[\\w-]+",
+
+    // Version numbers
+    "v?\\d+\\.\\d+\\.\\d+(-[a-z0-9.]+)?",
+
+    // Import paths
+    "from\\s+['\"][@./][^'\"]+['\"]",
+
+    // File extensions in imports
+    "\\.(js|ts|jsx|tsx|vue|css|scss|json|md)$",
+
+    // Base64 encoded strings
+    "data:[^;]+;base64,[A-Za-z0-9+/=]+",
+
+    // UUIDs
+    "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+  ],
+
+  // Weitere Optionen
+  "allowCompoundWords": true,
+  "caseSensitive": false,
+  "minWordLength": 3,
+
+  // File Types aktivieren
+  "enabledLanguageIds": [
+    "astro",
+    "typescript",
+    "javascript",
+    "typescriptreact",
+    "javascriptreact",
+    "vue",
+    "html",
+    "css",
+    "scss",
+    "less",
+    "json",
+    "jsonc",
+    "markdown",
+    "yaml",
+    "yml",
+    "toml",
+    "xml",
+    "dockerfile",
+    "shellscript"
+  ],
+
+  // Import Empfehlungen
+  "import": [],
+
+  // Flags
+  "useGitignore": true,
+  "gitignoreRoot": "."
+}

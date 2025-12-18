@@ -1,0 +1,35 @@
+/* Container Component Styles */
+
+.container {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+
+.container--no-padding {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* Size Variants */
+.container--sm {
+	max-width: 40rem; /* 640px */
+}
+
+.container--md {
+	max-width: 48rem; /* 768px */
+}
+
+.container--lg {
+	max-width: 64rem; /* 1024px */
+}
+
+.container--xl {
+	max-width: 80rem; /* 1280px */
+}
+
+.container--full {
+	max-width: none;
+}

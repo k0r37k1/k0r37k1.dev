@@ -1,0 +1,64 @@
+/* NewsletterForm - Minimal/Unstyled Primitive */
+
+.newsletter-form {
+	/* Container - customize with Tailwind */
+}
+
+.newsletter-form__message {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.newsletter-form__message--success,
+.newsletter-form__message--error {
+	/* Message variants - style with Tailwind */
+}
+
+.newsletter-form__message-icon {
+	flex-shrink: 0;
+}
+
+.newsletter-form__form {
+	/* Form wrapper */
+}
+
+.newsletter-form__form--inline {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.newsletter-form__form--stacked {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.newsletter-form__input-wrapper {
+	flex: 1;
+}
+
+.newsletter-form__label {
+	/* Label - can be visually hidden or styled */
+}
+
+.newsletter-form__input {
+	display: block;
+	width: 100%;
+
+	/* Add styling with Tailwind */
+}
+
+.newsletter-form__submit {
+	/* Submit button - style with Tailwind */
+}
+
+.newsletter-form__submit-loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.newsletter-form__submit-spinner {
+	/* Add animation with Tailwind */
+}

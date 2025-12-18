@@ -1,0 +1,187 @@
+---
+import '../styles/terminal.css';
+import TerminalFooter from '@components/terminal/TerminalFooter.vue';
+
+const pageTitle = 'Imprint | k0r37k1.dev';
+const pageDescription = 'Legal information and contact details';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={pageDescription} />
+		<title>{pageTitle}</title>
+
+		<!-- Preload fonts for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<!-- Terminal Fonts: VT323 for titles, IBM Plex Mono for content -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="legal-page">
+			<div class="terminal-window">
+				<!-- Terminal Header -->
+				<div class="terminal-header">
+					<span class="terminal-title">visitor@k0r37k1.dev:~$ cat imprint.txt<span class="terminal-cursor">|</span></span>
+				</div>
+
+				<!-- Terminal Content -->
+				<div class="terminal-content">
+					<!-- Main Section with Corners -->
+					<section class="terminal-section section-with-corners">
+						<div class="section-title-center">▀▄▀▄ IMPRINT ▄▀▄▀</div>
+						<div class="ascii-decorations">
+							<span class="corner top-left">╔═══════════</span>
+							<span class="corner top-right">═══════════╗</span>
+							<span class="corner bottom-left">╚═══════════</span>
+							<span class="corner bottom-right">═══════════╝</span>
+						</div>
+
+						<div class="legal-content">
+							<!-- Angaben gemäß § 5 TMG -->
+							<div class="nfo-block">
+								<div class="nfo-label">[ § 5 TMG ]</div>
+								<div class="nfo-text">
+									[Your Name]<br />
+									[Your Street]<br />
+									[ZIP City]
+								</div>
+							</div>
+
+							<!-- Kontakt -->
+							<div class="nfo-block">
+								<div class="nfo-label">[ CONTACT ]</div>
+								<div class="nfo-text">
+									E-Mail: <a href="mailto:hello@k0r37k1.dev" class="terminal-link">hello@k0r37k1.dev</a>
+								</div>
+							</div>
+
+							<!-- Verantwortlich für den Inhalt -->
+							<div class="nfo-block">
+								<div class="nfo-label">[ § 55 ABS. 2 RSTV ]</div>
+								<div class="nfo-text">
+									[Your Name]<br />
+									[Your Address]
+								</div>
+							</div>
+
+							<!-- Haftungsausschluss -->
+							<div class="nfo-block">
+								<div class="nfo-label">[ LIABILITY ]</div>
+								<div class="nfo-text">
+									<div class="sub-label">// Liability for Content</div>
+									The contents of our pages have been created with the greatest care. However, we cannot
+									guarantee the accuracy, completeness and timeliness of the content.
+								</div>
+								<div class="nfo-text">
+									<div class="sub-label">// Liability for Links</div>
+									Our offer contains links to external third-party websites over whose content we have no
+									influence. Therefore, we cannot assume any liability for this external content.
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Navigation -->
+					<div class="legal-nav">
+						<a href="/portfolio" class="terminal-link nav-link">← back to portfolio</a>
+						<span class="nav-separator">•</span>
+						<a href="/privacy" class="terminal-link nav-link">privacy →</a>
+					</div>
+				</div>
+
+				<!-- Footer -->
+				<TerminalFooter client:load />
+			</div>
+		</div>
+	</body>
+</html>
+
+<style>
+	.legal-page {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+	}
+
+	.legal-content {
+		margin-top: 1rem;
+	}
+
+	.nfo-block {
+		margin-bottom: 1.5rem;
+	}
+
+	.nfo-label {
+		color: var(--color-accent-orange);
+		font-family: 'VT323', monospace;
+		font-weight: 400;
+		font-size: 1.25rem;
+		letter-spacing: 0.05em;
+		margin-bottom: 0.5rem;
+		text-shadow: 0 0 8px rgb(255 102 0 / 40%);
+	}
+
+	.sub-label {
+		color: var(--color-terminal-secondary);
+		font-size: 0.875rem;
+		margin-bottom: 0.25rem;
+		font-weight: 600;
+	}
+
+	.nfo-text {
+		color: var(--color-terminal-text-dim);
+		line-height: 1.6;
+		margin-bottom: 0.75rem;
+		font-size: 0.875rem;
+	}
+
+	/* Links use .terminal-link class for consistent styling */
+
+	.legal-nav {
+		margin-top: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.nav-link {
+		font-size: 0.875rem;
+	}
+
+	.nav-separator {
+		color: var(--color-terminal-text-muted);
+		opacity: 0.5;
+		font-size: 0.875rem;
+	}
+
+	@media (max-width: 640px) {
+		.legal-nav {
+			flex-direction: column;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.nav-separator {
+			display: none;
+		}
+		.nfo-label {
+			font-size: 1.1rem;
+		}
+
+		.nfo-text {
+			font-size: 0.8rem;
+		}
+	}
+</style>

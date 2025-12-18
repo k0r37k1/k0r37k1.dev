@@ -1,0 +1,152 @@
+/* Header Component Styles */
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 50;
+	background-color: rgb(255 255 255 / 95%);
+	backdrop-filter: blur(8px);
+	border-bottom: 1px solid rgb(229 231 235);
+	transition: background-color 0.3s ease;
+}
+
+.header__nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 1rem 1.5rem;
+}
+
+/* Logo */
+.header__logo {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
+	color: var(--color-text);
+	font-weight: 700;
+	font-size: 1.125rem;
+	transition: color 0.2s ease;
+}
+
+.header__logo:hover {
+	color: var(--color-primary);
+}
+
+.header__logo-text {
+	display: inline-block;
+}
+
+/* Desktop Navigation */
+.header__menu {
+	display: none;
+}
+
+@media (width >= 768px) {
+	.header__menu {
+		display: block;
+	}
+}
+
+.header__menu-list {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.header__menu-item {
+	position: relative;
+}
+
+.header__menu-link {
+	display: inline-block;
+	padding: 0.5rem 0;
+	color: rgb(55 65 81);
+	font-size: 0.875rem;
+	font-weight: 500;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.header__menu-link:hover,
+.header__menu-link:focus {
+	color: var(--color-primary);
+}
+
+/* Mobile Toggle */
+.header__mobile-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	background: transparent;
+	border: none;
+	border-radius: 0.5rem;
+	color: rgb(55 65 81);
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.header__mobile-toggle:hover {
+	background-color: rgb(243 244 246);
+}
+
+@media (width >= 768px) {
+	.header__mobile-toggle {
+		display: none;
+	}
+}
+
+.header__mobile-icon {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+/* Mobile Menu */
+.header__mobile-menu {
+	padding: 1rem 1.5rem;
+	border-top: 1px solid rgb(229 231 235);
+	background-color: rgb(255 255 255);
+}
+
+@media (width >= 768px) {
+	.header__mobile-menu {
+		display: none;
+	}
+}
+
+.header__mobile-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.header__mobile-item {
+	/* Item wrapper */
+}
+
+.header__mobile-link {
+	display: block;
+	padding: 0.75rem 1rem;
+	color: rgb(55 65 81);
+	font-size: 0.875rem;
+	font-weight: 500;
+	text-decoration: none;
+	border-radius: 0.5rem;
+	transition: background-color 0.2s ease;
+}
+
+.header__mobile-link:hover,
+.header__mobile-link:focus {
+	background-color: rgb(243 244 246);
+}

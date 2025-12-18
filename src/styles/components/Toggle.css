@@ -1,0 +1,86 @@
+/* Toggle Component Styles */
+
+.toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.375rem;
+	font-size: 0.875rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease,
+		box-shadow 0.2s ease,
+		transform 0.2s ease;
+	border: 1px solid;
+}
+
+.toggle__icon {
+	width: 1rem;
+	height: 1rem;
+}
+
+/* Default Variant */
+.toggle--default {
+	background-color: transparent;
+	color: rgb(107 114 128);
+	border-color: transparent;
+}
+
+.toggle--default:hover {
+	background-color: oklch(96% 0.005 264deg);
+	color: var(--color-text);
+	box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+
+.toggle--default[data-state='on'] {
+	background-color: var(--color-primary);
+	color: white;
+	border-color: var(--color-primary);
+	box-shadow: 0 2px 4px 0 oklch(75% 0.19 5deg / 20%);
+}
+
+.toggle--default[data-state='on']:hover {
+	background-color: var(--color-primary-text);
+	border-color: var(--color-primary-text);
+	transform: translateY(-1px);
+	box-shadow: 0 4px 8px -2px oklch(75% 0.19 5deg / 30%);
+}
+
+/* Outline Variant */
+.toggle--outline {
+	background-color: white;
+	color: rgb(107 114 128);
+	border-color: rgb(229 231 235);
+	box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+
+.toggle--outline:hover {
+	background-color: oklch(98% 0.005 264deg);
+	color: var(--color-text);
+	border-color: oklch(85% 0.01 264deg);
+	box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+}
+
+.toggle--outline[data-state='on'] {
+	background-color: oklch(98% 0.04 5deg);
+	color: var(--color-primary);
+	border-color: var(--color-primary);
+	box-shadow: 0 2px 4px 0 oklch(75% 0.19 5deg / 15%);
+}
+
+.toggle--outline[data-state='on']:hover {
+	background-color: oklch(97% 0.05 5deg);
+	border-color: var(--color-primary-text);
+	transform: translateY(-1px);
+	box-shadow: 0 4px 8px -2px oklch(75% 0.19 5deg / 20%);
+}
+
+/* Disabled */
+.toggle--disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}

@@ -1,0 +1,72 @@
+/* Section Component Styles */
+
+.section {
+	width: 100%;
+}
+
+/* Spacing Variants */
+.section--spacing-none {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.section--spacing-sm {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+@media (width >= 768px) {
+	.section--spacing-sm {
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+}
+
+.section--spacing-md {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+@media (width >= 768px) {
+	.section--spacing-md {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+}
+
+.section--spacing-lg {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
+@media (width >= 768px) {
+	.section--spacing-lg {
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+	}
+}
+
+.section--spacing-xl {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+
+@media (width >= 768px) {
+	.section--spacing-xl {
+		padding-top: 8rem;
+		padding-bottom: 8rem;
+	}
+}
+
+/* Background Variants */
+.section--bg-white {
+	background-color: white;
+}
+
+.section--bg-gray {
+	background-color: oklch(98% 0.005 264deg); /* Very light gray with subtle cool tone */
+}
+
+.section--bg-gradient {
+	background: var(--gradient-accent); /* Lavender to Pink gradient */
+}

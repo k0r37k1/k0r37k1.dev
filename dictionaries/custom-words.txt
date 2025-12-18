@@ -1,0 +1,189 @@
+# Custom Dictionary für astro
+# Projekt-spezifische und technische Begriffe
+
+# Projekt
+astro
+
+# Tech Stack - Vite+ Stack
+rolldown
+vite
+vitest
+oxlint
+oxc
+OXC
+lightningcss
+tailwindcss
+astro
+cspell
+ATX
+
+# Frameworks
+Astro
+Vue
+Nuxt
+
+# Build Tools
+esbuild
+tsup
+unbuild
+
+# TypeScript/JavaScript Keywords
+typeof
+readonly
+keyof
+instanceof
+asyncio
+
+# Development Terms
+composables
+utils
+middlewares
+repos
+browserslist
+sourcemap
+transpile
+polyfill
+shim
+frontmatter
+
+# Formatters & Linters
+prettier
+stylelint
+
+# Config Files
+astroconfig
+gitignore
+dockerignore
+prettierrc
+eslintrc
+tsconfig
+viteconfig
+stylelintrc
+
+# UI Libraries & Components
+reka
+Reka
+iconify
+Iconify
+Iconify's
+tabler
+shiki
+
+# Fonts
+Satoshi
+
+# Accessibility
+WAI
+ARIA
+wcag
+WCAG
+axe
+testid
+Deque
+
+# Architecture Patterns
+SSG
+ssg
+
+# Component Analysis
+gzipped
+LOC
+componentSets
+componentset
+
+# Color Systems
+oklch
+OKLCH
+
+# MCP (Model Context Protocol)
+mcp
+MCP
+
+# Abbreviations
+CTRL
+CLI
+API
+UI
+UX
+URL
+JSON
+HTML
+CSS
+JS
+TS
+mcr
+
+# AI Tools
+claude
+Claude
+
+# Deutsche Wörter (COMMANDS.md)
+Befehle
+Vollständige
+verfügbaren
+Abhängigkeiten
+lokale
+lokalen
+zur
+Ausführung
+Zeigt
+letzten
+basiert
+behebt
+Behebt
+Prüfung
+Vorschlägen
+führen
+Qualitätsprüfung
+Tipps
+vollständige
+meisten
+haben
+siehe
+Befehl
+HMR
+
+# Deutsche Wörter (COMPONENT-ANALYSIS.md)
+zwecks
+Kundensegmente
+Kernbedarf
+Nutzung
+Kundentyp
+Kernerkenntnisse
+Dienstleister
+Handwerker
+Mittelständische
+Beratungsunternehmen
+Kanzleien
+Lokale
+Freiberufler
+Arztpraxen
+Komponente
+Komponenten
+Komponentenoptimierung
+Kategorisierung
+Optimierungsempfehlungen
+Inventar
+Marktanalyse
+Recherche
+Segmentierung
+Webdesign
+Agentur
+Inkludiert
+Einsparung
+Empfehlungen
+Zeitersparnis
+Kalkulation
+Szenario
+Reduzierung
+Handlungsempfehlungen
+umsetzen
+aufsetzen
+Checklisten
+excludieren
+unprofessionell
+projektbasiert
+servicebasiert
+Hinweis
+Anmerkung
+Resultat

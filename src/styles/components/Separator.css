@@ -1,0 +1,16 @@
+/* Separator Component Styles */
+
+.separator {
+	flex-shrink: 0;
+	background-color: rgb(229 231 235);
+}
+
+.separator--horizontal {
+	height: 1px;
+	width: 100%;
+}
+
+.separator--vertical {
+	width: 1px;
+	height: 100%;
+}

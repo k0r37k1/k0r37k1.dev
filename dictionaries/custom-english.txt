@@ -1,0 +1,17 @@
+# Custom English Dictionary
+# Common English words and general terms (not technical)
+
+# Common words
+setup
+config
+configs
+util
+utils
+middleware
+middlewares
+plugin
+plugins
+
+# Directories
+src
+dist

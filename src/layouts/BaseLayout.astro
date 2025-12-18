@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+import Header from '@components/layout/Header.vue';
+import Footer from '@components/layout/Footer.vue';
+
+interface Props {
+	title?: string;
+	description?: string;
+	ogImage?: string;
+	noindex?: boolean;
+}
+
+const {
+	title = 'Vite+ Stack - Next-Gen Web Development',
+	description = 'Modern web stack with Astro 5, Vue 3, Tailwind CSS v4, and Vite+ inspired toolchain',
+	ogImage = '/og-image.png',
+	noindex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(ogImage, Astro.site);
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImageURL} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={socialImageURL} />
+
+		<!-- Robots -->
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+		<!-- Preconnect -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	</head>
+	<body class="min-h-screen bg-white text-gray-900 antialiased">
+		<!-- Skip to Main Content - WCAG 2.4.1 Bypass Blocks -->
+		<a href="#main-content" class="skip-link"> Skip to main content </a>
+
+		<!-- Header with Navigation -->
+		<Header client:idle />
+
+		<!-- Main Content -->
+		<main id="main-content" class="pt-20" tabindex="-1">
+			<slot />
+		</main>
+
+		<!-- Footer -->
+		<Footer client:idle />
+	</body>
+</html>
+
+<style>
+	/* Skip Link - WCAG 2.4.1 Bypass Blocks */
+	.skip-link {
+		position: absolute;
+		left: -9999px;
+		top: 0;
+		z-index: 9999;
+		padding: 0.75rem 1.5rem;
+		background: var(--color-primary);
+		color: white;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 0 0 0.5rem 0.5rem;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
+		transition: all 0.2s ease;
+	}
+
+	.skip-link:focus {
+		left: 1rem;
+		outline: 3px solid var(--color-accent);
+		outline-offset: 2px;
+	}
+
+	.skip-link:hover {
+		background: var(--color-primary-text);
+		transform: translateY(2px);
+	}
+
+	/* Ensure main can receive focus for skip link */
+	main:focus {
+		outline: none;
+	}
+</style>

@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "Astro docs": {
+      "type": "http",
+      "url": "https://mcp.docs.astro.build/mcp"
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server@latest"]
+    },
+    "motion": {
+      "command": "npx",
+      "args": ["-y", "motion-ai"]
+    },
+    "console-ninja": {
+      "command": "npx",
+      "args": ["-y", "-c", "node ~/.console-ninja/mcp/"]
+    }
+  }
+}
