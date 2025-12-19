@@ -1,38 +1,20 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
 import { Icon } from '@iconify/vue';
+import { getTranslations, type Language } from '@/i18n';
 
-// TODO: Replace with your actual projects
-const projects = [
-	{
-		title: 'Project Alpha',
-		description: 'A revolutionary web application built with modern technologies.',
-		stack: ['Vue 3', 'TypeScript', 'Tailwind CSS'],
-		github: 'https://github.com/yourusername/project-alpha',
-		demo: 'https://project-alpha.demo',
-	},
-	{
-		title: 'Project Beta',
-		description: 'An innovative solution for real-world problems.',
-		stack: ['Astro', 'React', 'Node.js'],
-		github: 'https://github.com/yourusername/project-beta',
-		demo: null,
-	},
-	{
-		title: 'Project Gamma',
-		description: 'A beautiful UI component library for developers.',
-		stack: ['Vue 3', 'Vite', 'Storybook'],
-		github: 'https://github.com/yourusername/project-gamma',
-		demo: 'https://project-gamma.demo',
-	},
-	{
-		title: 'Project Delta',
-		description: 'Full-stack application with real-time features.',
-		stack: ['TypeScript', 'WebSocket', 'PostgreSQL'],
-		github: 'https://github.com/yourusername/project-delta',
-		demo: 'https://project-delta.demo',
-	},
-];
+interface Props {
+	lang?: Language;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	lang: 'de',
+});
+
+const t = getTranslations(props.lang);
+
+// Load projects from i18n translations
+const projects = t.projects.items;
 </script>
 
 <template>
@@ -73,7 +55,7 @@ const projects = [
 
 						<!-- Tech Stack -->
 						<div class="tech-stack">
-							<span class="stack-label">Stack:</span>
+							<span class="stack-label">{{ t.projects.stack }}</span>
 							<span v-for="tech in project.stack" :key="tech" class="tech-tag">
 								{{ tech }}
 							</span>
@@ -89,7 +71,7 @@ const projects = [
 								class="terminal-link project-link"
 							>
 								<Icon icon="simple-icons:github" class="link-icon" />
-								GitHub
+								{{ t.projects.github }}
 							</a>
 							<a
 								v-if="project.demo"
@@ -99,7 +81,7 @@ const projects = [
 								class="terminal-link project-link"
 							>
 								<Icon icon="mdi:open-in-new" class="link-icon" />
-								Live Demo
+								{{ t.projects.liveDemo }}
 							</a>
 							<a
 								v-if="project.store"
@@ -109,7 +91,7 @@ const projects = [
 								class="terminal-link project-link"
 							>
 								<Icon icon="mdi:google-play" class="link-icon" />
-								Store
+								{{ t.projects.store }}
 							</a>
 						</div>
 					</div>

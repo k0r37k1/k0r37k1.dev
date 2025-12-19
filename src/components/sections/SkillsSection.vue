@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
 import { Icon } from '@iconify/vue';
+import { getTranslations, type Language } from '@/i18n';
 
-// TODO: Replace with your actual skills
+interface Props {
+	lang?: Language;
+}
+
+const { lang = 'de' } = defineProps<Props>();
+const t = getTranslations(lang);
+
+// Technical skills (global across languages)
 const skills = {
 	languages: [
 		{ name: 'JavaScript', icon: 'simple-icons:javascript' },
@@ -18,6 +26,7 @@ const skills = {
 		{ name: 'Next.js', icon: 'simple-icons:nextdotjs' },
 		{ name: 'Vue 3', icon: 'simple-icons:vuedotjs' },
 		{ name: 'Nuxt', icon: 'simple-icons:nuxtdotjs' },
+		{ name: 'TanStack', icon: 'simple-icons:tanstack' },
 		{ name: 'React Native', icon: 'simple-icons:react' },
 		{ name: 'Expo', icon: 'simple-icons:expo' },
 		{ name: 'Flutter', icon: 'simple-icons:flutter' },
@@ -33,12 +42,12 @@ const skills = {
 		{ name: 'Claude Code', icon: 'simple-icons:anthropic' },
 	],
 	platforms: [
-		{ name: 'Desktop', icon: 'mdi:monitor' },
-		{ name: 'Mobile', icon: 'mdi:cellphone' },
+		{ key: 'desktop', icon: 'mdi:monitor' },
+		{ key: 'mobile', icon: 'mdi:cellphone' },
 	],
 	concepts: [
-		{ name: 'Testing', icon: 'mdi:test-tube' },
-		{ name: 'Accessibility', icon: 'mdi:human' },
+		{ key: 'testing', icon: 'mdi:test-tube' },
+		{ key: 'accessibility', icon: 'mdi:human' },
 	],
 };
 </script>
@@ -60,7 +69,7 @@ const skills = {
 		<div class="section-content">
 			<!-- Languages -->
 			<div class="skill-category">
-				<div class="category-title">"languages":</div>
+				<div class="category-title">"{{ t.skills.categories.languages }}":</div>
 				<div class="skills-list">
 					<span v-for="skill in skills.languages" :key="skill.name" class="skill-tag">
 						<Icon :icon="skill.icon" class="skill-icon" />
@@ -71,7 +80,7 @@ const skills = {
 
 			<!-- Frameworks & Libraries -->
 			<div class="skill-category">
-				<div class="category-title">"frameworks":</div>
+				<div class="category-title">"{{ t.skills.categories.frameworks }}":</div>
 				<div class="skills-list">
 					<span v-for="skill in skills.frameworks" :key="skill.name" class="skill-tag">
 						<Icon :icon="skill.icon" class="skill-icon" />
@@ -82,7 +91,7 @@ const skills = {
 
 			<!-- Tools -->
 			<div class="skill-category">
-				<div class="category-title">"tools":</div>
+				<div class="category-title">"{{ t.skills.categories.tools }}":</div>
 				<div class="skills-list">
 					<span v-for="skill in skills.tools" :key="skill.name" class="skill-tag">
 						<Icon :icon="skill.icon" class="skill-icon" />
@@ -93,22 +102,22 @@ const skills = {
 
 			<!-- Platforms -->
 			<div class="skill-category">
-				<div class="category-title">"platforms":</div>
+				<div class="category-title">"{{ t.skills.categories.platforms }}":</div>
 				<div class="skills-list">
-					<span v-for="skill in skills.platforms" :key="skill.name" class="skill-tag">
+					<span v-for="skill in skills.platforms" :key="skill.key" class="skill-tag">
 						<Icon :icon="skill.icon" class="skill-icon" />
-						{{ skill.name }}
+						{{ t.skills.items[skill.key] }}
 					</span>
 				</div>
 			</div>
 
 			<!-- Concepts -->
 			<div class="skill-category">
-				<div class="category-title">"concepts":</div>
+				<div class="category-title">"{{ t.skills.categories.concepts }}":</div>
 				<div class="skills-list">
-					<span v-for="skill in skills.concepts" :key="skill.name" class="skill-tag">
+					<span v-for="skill in skills.concepts" :key="skill.key" class="skill-tag">
 						<Icon :icon="skill.icon" class="skill-icon" />
-						{{ skill.name }}
+						{{ t.skills.items[skill.key] }}
 					</span>
 				</div>
 			</div>

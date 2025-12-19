@@ -4,26 +4,32 @@ import TypeWriter from '@components/ui/TypeWriter.vue';
 import figlet from 'figlet';
 import colossalFont from 'figlet/importable-fonts/Colossal.js';
 import smallFont from 'figlet/importable-fonts/Small.js';
+import { getTranslations, type Language } from '@/i18n';
 
 interface Props {
 	isMobile?: boolean;
+	lang?: Language;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	isMobile: false,
+	isMobile: undefined,
+	lang: 'de',
 });
 
-const welcomeText = 'Welcome to my personal portfolio';
+const t = getTranslations(props.lang);
 const asciiArt = ref('');
 
 onMounted(() => {
+	// Auto-detect mobile if not provided as prop
+	const isMobileDetected = props.isMobile !== undefined ? props.isMobile : window.innerWidth < 640;
+
 	// Parse and load fonts
 	figlet.parseFont('Colossal', colossalFont);
 	figlet.parseFont('Small', smallFont);
 
-	// Generate ASCII art
-	const text = props.isMobile ? 'k0r37k1' : 'k0r37k1.dev';
-	const font = props.isMobile ? 'Small' : 'Colossal';
+	// Generate ASCII art (responsive: Small font for mobile, Colossal for desktop)
+	const text = isMobileDetected ? 'k0r37k1' : 'k0r37k1.dev';
+	const font = isMobileDetected ? 'Small' : 'Colossal';
 
 	asciiArt.value = figlet.textSync(text, {
 		font,
@@ -43,11 +49,11 @@ onMounted(() => {
 
 		<!-- Welcome Message with Typing Animation -->
 		<div class="welcome-message text-center">
-			<TypeWriter :text="welcomeText" :speed="50" :delay="1000" />
+			<TypeWriter :text="t.hero.welcome" :speed="50" :delay="1000" />
 		</div>
 
 		<!-- Tagline -->
-		<div class="tagline text-center">Developer • AI Enthusiast • Problem Solver</div>
+		<div class="tagline text-center">{{ t.hero.subtitle }}</div>
 
 	</section>
 </template>

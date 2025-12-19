@@ -1,7 +1,21 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import { getTranslations, type Language } from '@/i18n';
+import { computed } from 'vue';
 
+interface Props {
+	lang?: Language;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	lang: 'de',
+});
+
+const t = getTranslations(props.lang);
 const currentYear = new Date().getFullYear();
+
+const imprintLink = computed(() => props.lang === 'en' ? '/en/imprint' : '/imprint');
+const privacyLink = computed(() => props.lang === 'en' ? '/en/privacy' : '/privacy');
 </script>
 
 <template>
@@ -10,17 +24,17 @@ const currentYear = new Date().getFullYear();
 			<div class="footer-meta">
 				<span>© {{ currentYear }} k0r37k1.dev</span>
 				<span class="separator">•</span>
-				<span>built with <span class="heart">♥</span></span>
+				<span>{{ t.footer.madeWith }} <span class="heart">♥</span></span>
 			</div>
 			<div class="footer-links">
-				<a href="/imprint" class="terminal-link footer-link">
+				<a :href="imprintLink" class="terminal-link footer-link">
 					<Icon icon="mdi:fingerprint" class="footer-icon" />
-					<span>imprint</span>
+					<span>{{ t.footer.links.imprint }}</span>
 				</a>
 				<span class="separator">•</span>
-				<a href="/privacy" class="terminal-link footer-link">
+				<a :href="privacyLink" class="terminal-link footer-link">
 					<Icon icon="mdi:scale-balance" class="footer-icon" />
-					<span>privacy</span>
+					<span>{{ t.footer.links.privacy }}</span>
 				</a>
 			</div>
 		</div>

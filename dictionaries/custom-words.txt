@@ -1,7 +1,8 @@
-# Custom Dictionary für astro
+# Custom Dictionary für k0r37k1.dev
 # Projekt-spezifische und technische Begriffe
 
 # Projekt
+k0r37k1
 astro
 
 # Tech Stack - Vite+ Stack
@@ -116,6 +117,30 @@ mcr
 # AI Tools
 claude
 Claude
+
+# Portfolio-spezifisch (k0r37k1.dev)
+neo-brutalism
+brutalism
+brutalist
+warez
+scene
+y2k
+figlet
+Figlet
+nfo
+NFO
+scanlines
+holographic
+glitch
+CRT
+crt
+retro
+ASCII
+ascii
+monospace
+berkeleys
+cascadia
+colossal
 
 # Deutsche Wörter (COMMANDS.md)
 Befehle

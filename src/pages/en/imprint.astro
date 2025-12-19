@@ -2,15 +2,15 @@
 import LegalLayout from '@layouts/LegalLayout.astro';
 import { getTranslations } from '@/i18n';
 
-const t = getTranslations('de');
+const t = getTranslations('en');
 
-const pageTitle = 'Impressum | k0r37k1.dev';
-const pageDescription = 'Rechtliche Informationen und Kontaktdaten';
-const terminalTitle = 'visitor@k0r37k1.dev:~$ cat impressum.txt';
+const pageTitle = 'Imprint | k0r37k1.dev';
+const pageDescription = 'Legal information and contact details';
+const terminalTitle = 'visitor@k0r37k1.dev:~$ cat imprint.txt';
 ---
 
 <LegalLayout
-	lang="de"
+	lang="en"
 	title={pageTitle}
 	description={pageDescription}
 	currentPath="/imprint"
@@ -62,8 +62,8 @@ const terminalTitle = 'visitor@k0r37k1.dev:~$ cat impressum.txt';
 
 	<!-- Navigation -->
 	<nav class="legal-nav" slot="navigation" aria-label="Legal pages navigation">
-		<a href="/" class="terminal-link nav-link">{t.legal.nav.backToPortfolio}</a>
+		<a href="/en/" class="terminal-link nav-link">{t.legal.nav.backToPortfolio}</a>
 		<span class="nav-separator" aria-hidden="true">•</span>
-		<a href="/privacy" class="terminal-link nav-link">{t.legal.nav.toPrivacy}</a>
+		<a href="/en/privacy" class="terminal-link nav-link">{t.legal.nav.toPrivacy}</a>
 	</nav>
 </LegalLayout>

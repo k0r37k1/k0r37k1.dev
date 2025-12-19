@@ -1,5 +1,16 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
+import { getTranslations, type Language } from '@/i18n';
+
+interface Props {
+	lang?: Language;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	lang: 'de',
+});
+
+const t = getTranslations(props.lang);
 </script>
 
 <template>
@@ -18,29 +29,25 @@ import { motion } from 'motion-v';
 		<div class="nfo-content">
 			<!-- Bio Section -->
 			<div class="nfo-section">
-				<h2 class="nfo-label">[ WHO ]</h2>
+				<h2 class="nfo-label">{{ t.about.who.label }}</h2>
 				<p class="nfo-text">
-					Full-stack developer with passion for building clean, performant web applications.
-					Specialized in modern frontend architectures and developer experience.
+					{{ t.about.who.text }}
 				</p>
 			</div>
 
 			<!-- What I Do -->
 			<div class="nfo-section">
-				<h2 class="nfo-label">[ WHAT ]</h2>
+				<h2 class="nfo-label">{{ t.about.what.label }}</h2>
 				<p class="nfo-text">
-					Crafting pixel-perfect interfaces with Vue/Nuxt, React, and Flutter.
-					Building scalable backends with PHP and TypeScript. Obsessed with
-					accessibility, performance, and clean code.
+					{{ t.about.what.text }}
 				</p>
 			</div>
 
 			<!-- Current Focus -->
 			<div class="nfo-section">
-				<h2 class="nfo-label">[ NOW ]</h2>
+				<h2 class="nfo-label">{{ t.about.now.label }}</h2>
 				<p class="nfo-text">
-					Exploring AI-assisted development workflows, contributing to open source,
-					and pushing the boundaries of what's possible with modern web technologies.
+					{{ t.about.now.text }}
 				</p>
 			</div>
 		</div>

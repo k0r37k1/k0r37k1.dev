@@ -2,7 +2,26 @@
   "name": "k0r37k1.dev",
   "type": "module",
   "version": "1.0.0",
-  "description": "Portfolio of k0r37k1.dev - App & Web Development",
+  "description": "Terminal-style portfolio with 2000s Warez Scene & Y2K aesthetics - Built with Astro 5, Vue 3, and Tailwind CSS v4",
+  "author": "k0r37k1 <https://k0r37k1.dev>",
+  "homepage": "https://k0r37k1.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k0r37k1/k0r37k1.dev.git"
+  },
+  "keywords": [
+    "portfolio",
+    "terminal",
+    "astro",
+    "vue3",
+    "tailwindcss",
+    "neo-brutalism",
+    "warez-scene",
+    "y2k-aesthetic",
+    "typescript",
+    "vite-plus"
+  ],
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

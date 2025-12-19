@@ -1,6 +1,17 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
 import { Icon } from '@iconify/vue';
+import { getTranslations, type Language } from '@/i18n';
+
+interface Props {
+	lang?: Language;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	lang: 'de',
+});
+
+const t = getTranslations(props.lang);
 
 const contacts = [
 	{
@@ -41,8 +52,7 @@ const contacts = [
 		<div class="section-content">
 			<!-- Intro Message -->
 			<p class="intro-message">
-				Feel free to reach out for collaborations, opportunities, or just to say hello! I'm always
-				open to discussing new projects and ideas.
+				{{ t.contact.description }}
 			</p>
 
 			<!-- Contact Links -->

@@ -23,6 +23,15 @@ export default defineConfig({
     // Site URL for sitemap generation
     site: 'https://k0r37k1.dev',
 
+    // i18n Configuration - German (default) + English
+    i18n: {
+        defaultLocale: 'de',
+        locales: ['de', 'en'],
+        routing: {
+            prefixDefaultLocale: false, // / = German, /en/ = English
+        },
+    },
+
     // Vue Integration mit Best Practice Settings
     integrations: [vue({
         // Vue Compiler Optionen
@@ -75,6 +84,18 @@ export default defineConfig({
                         'vendor-vue': ['vue'],
                         'vendor-motion': ['motion-v'],
                         'vendor-reka': ['reka-ui'],
+                    },
+                    // Custom CSS filenames with semantic names + cache-busting hashes
+                    assetFileNames: (assetInfo) => {
+                        if (assetInfo.name.endsWith('.css')) {
+                            // Map route-based CSS to semantic names WITH hashes
+                            if (assetInfo.name.includes('index')) return 'assets/global-[hash].css';
+                            if (assetInfo.name.includes('imprint') || assetInfo.name.includes('privacy')) {
+                                return 'assets/legal-[hash].css';
+                            }
+                            return 'assets/[name]-[hash].css'; // Fallback
+                        }
+                        return 'assets/[name]-[hash][extname]'; // Keep hashes for other assets
                     },
                 },
             },

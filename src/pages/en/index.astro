@@ -8,14 +8,14 @@ import ContactSection from '@components/sections/ContactSection.vue';
 import TerminalFooter from '@components/terminal/TerminalFooter.vue';
 import { getTranslations } from '@/i18n';
 
-const t = getTranslations('de');
+const t = getTranslations('en');
 
 const pageTitle = 'Portfolio k0r37k1.dev';
 const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development';
 ---
 
-<PortfolioLayout lang="de" title={pageTitle} description={pageDescription} currentPath="/">
-	<HeroSection client:load lang="de" />
+<PortfolioLayout lang="en" title={pageTitle} description={pageDescription} currentPath="/">
+	<HeroSection client:load lang="en" />
 
 	<section class="terminal-section section-with-corners" aria-label="Profile">
 		<div class="section-title-center" aria-hidden="true">{t.sections.profile}</div>
@@ -25,7 +25,7 @@ const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development
 			<span class="corner bottom-left">└───────────</span>
 			<span class="corner bottom-right">───────────┘</span>
 		</div>
-		<AboutSection client:visible lang="de" />
+		<AboutSection client:visible lang="en" />
 	</section>
 
 	<section class="terminal-section section-with-corners" aria-label="Projects">
@@ -36,7 +36,7 @@ const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development
 			<span class="corner bottom-left">└───────────</span>
 			<span class="corner bottom-right">───────────┘</span>
 		</div>
-		<ProjectsSection client:visible lang="de" />
+		<ProjectsSection client:visible lang="en" />
 	</section>
 
 	<section class="terminal-section section-with-corners" aria-label="Skills">
@@ -47,7 +47,7 @@ const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development
 			<span class="corner bottom-left">└───────────</span>
 			<span class="corner bottom-right">───────────┘</span>
 		</div>
-		<SkillsSection client:visible lang="de" />
+		<SkillsSection client:visible lang="en" />
 	</section>
 
 	<section class="terminal-section section-with-corners" aria-label="Contact">
@@ -58,9 +58,9 @@ const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development
 			<span class="corner bottom-left">└───────────</span>
 			<span class="corner bottom-right">───────────┘</span>
 		</div>
-		<ContactSection client:visible lang="de" />
+		<ContactSection client:visible lang="en" />
 	</section>
 
 	<!-- Footer -->
-	<TerminalFooter client:idle lang="de" />
+	<TerminalFooter client:idle lang="en" />
 </PortfolioLayout>
