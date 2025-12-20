@@ -45,7 +45,9 @@ onMounted(() => {
 		<h1 class="visually-hidden">k0r37k1.dev - Developer Portfolio</h1>
 
 		<!-- ASCII Art Logo -->
-		<pre class="ascii-art holographic-text" aria-hidden="true">{{ asciiArt }}</pre>
+		<div class="ascii-logo-wrapper">
+			<pre class="ascii-art holographic-text" aria-hidden="true">{{ asciiArt }}</pre>
+		</div>
 
 		<!-- Welcome Message with Typing Animation -->
 		<div class="welcome-message text-center">
@@ -54,7 +56,6 @@ onMounted(() => {
 
 		<!-- Tagline -->
 		<div class="tagline text-center">{{ t.hero.subtitle }}</div>
-
 	</section>
 </template>
 
@@ -69,12 +70,17 @@ onMounted(() => {
 	position: relative;
 }
 
+.ascii-logo-wrapper {
+	position: relative;
+	margin-bottom: 1.5rem;
+}
+
 .ascii-art {
 	font-family: var(--font-mono);
 	font-size: 1rem;
 	line-height: 1;
 	text-align: left;
-	margin: 0 0 1.5rem 0;
+	margin: 0;
 
 	/* Holographic gradient */
 	background: linear-gradient(
@@ -87,7 +93,6 @@ onMounted(() => {
 	);
 	background-size: 300% auto;
 	background-clip: text;
-	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	filter: drop-shadow(0 0 10px rgb(0 217 255 / 30%));
 
@@ -111,13 +116,13 @@ onMounted(() => {
 	font-size: 0.875rem;
 	opacity: 0.6;
 	color: var(--color-accent-orange);
-	text-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
+	text-shadow: 0 0 10px rgb(255 102 0 / 40%);
 	transition: all 0.3s ease;
 }
 
 .hero-section:hover .corner {
 	opacity: 1;
-	text-shadow: 0 0 15px rgba(255, 102, 0, 0.6);
+	text-shadow: 0 0 15px rgb(255 102 0 / 60%);
 }
 
 .top-left {
@@ -160,12 +165,12 @@ onMounted(() => {
 	padding: 0;
 	margin: -1px;
 	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
 	white-space: nowrap;
 	border-width: 0;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
 	.hero-section {
 		min-height: 50vh;
 	}

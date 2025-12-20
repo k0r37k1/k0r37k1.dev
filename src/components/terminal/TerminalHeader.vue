@@ -26,7 +26,11 @@ const displayTitle = props.customTitle || t.header.title;
 			>{{ displayTitle }}<span class="terminal-cursor" aria-hidden="true">|</span></span
 		>
 		<span class="header-separator" aria-hidden="true">|</span>
-		<LanguageSwitcher :current-lang="lang" :current-path="currentPath" class="header-lang-switcher" />
+		<LanguageSwitcher
+			:current-lang="lang"
+			:current-path="currentPath"
+			class="header-lang-switcher"
+		/>
 	</header>
 </template>
 
@@ -50,7 +54,7 @@ const displayTitle = props.customTitle || t.header.title;
 	margin-left: auto;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
 	.terminal-header {
 		flex-wrap: wrap;
 		gap: 0.5rem;

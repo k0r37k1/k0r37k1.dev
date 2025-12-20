@@ -2,7 +2,8 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import TerminalHeader from '@components/terminal/TerminalHeader.vue';
 import TerminalFooter from '@components/terminal/TerminalFooter.vue';
-import type { Language } from '@/i18n';
+import CookieConsent from '@components/CookieConsent.vue';
+import { getTranslations, type Language } from '@/i18n';
 
 interface Props {
 	lang?: Language;
@@ -13,16 +14,25 @@ interface Props {
 }
 
 const { lang = 'de', title, description, currentPath = '/', terminalTitle } = Astro.props;
+const t = getTranslations(lang);
 ---
 
 <BaseLayout lang={lang} title={title} description={description} currentPath={currentPath}>
+	<!-- Skip Links for Keyboard Navigation -->
+	<a href="#main-content" class="skip-link">{t.aria.navigation.skipLinks.skipToMain}</a>
+
 	<div class="legal-page">
 		<div class="terminal-window">
 			<!-- Terminal Header with Custom Title -->
-			<TerminalHeader client:idle lang={lang} currentPath={currentPath} customTitle={terminalTitle} />
+			<TerminalHeader
+				client:idle
+				lang={lang}
+				currentPath={currentPath}
+				customTitle={terminalTitle}
+			/>
 
 			<!-- Terminal Content -->
-			<main class="terminal-content">
+			<main id="main-content" class="terminal-content">
 				<!-- Main Section with Corners -->
 				<section class="terminal-section section-with-corners">
 					<slot name="title" />
@@ -40,10 +50,13 @@ const { lang = 'de', title, description, currentPath = '/', terminalTitle } = As
 
 				<!-- Navigation -->
 				<slot name="navigation" />
-			</main>
 
-			<!-- Footer -->
-			<TerminalFooter client:idle lang={lang} />
+				<!-- Footer -->
+				<TerminalFooter client:idle lang={lang} />
+			</main>
 		</div>
+
+		<!-- Cookie Consent Banner -->
+		<CookieConsent client:only="vue" lang={lang} />
 	</div>
 </BaseLayout>

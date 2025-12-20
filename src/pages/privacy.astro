@@ -17,7 +17,7 @@ const terminalTitle = 'visitor@k0r37k1.dev:~$ cat datenschutz.txt';
 	terminalTitle={terminalTitle}
 >
 	<!-- Section Title -->
-	<div slot="title" class="section-title-center" aria-hidden="true">{t.legal.privacy.title}</div>
+	<h1 slot="title" class="section-title-center">{t.legal.privacy.title}</h1>
 
 	<!-- Legal Content -->
 	<!-- Overview -->
@@ -83,7 +83,7 @@ const terminalTitle = 'visitor@k0r37k1.dev:~$ cat datenschutz.txt';
 	</div>
 
 	<!-- Navigation -->
-	<nav class="legal-nav" slot="navigation" aria-label="Legal pages navigation">
+	<nav class="legal-nav" slot="navigation" aria-label={t.aria.navigation.legal}>
 		<a href="/" class="terminal-link nav-link">{t.legal.nav.backToPortfolio}</a>
 		<span class="nav-separator" aria-hidden="true">•</span>
 		<a href="/imprint" class="terminal-link nav-link">{t.legal.nav.toImprint}</a>

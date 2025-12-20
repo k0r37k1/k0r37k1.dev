@@ -3,7 +3,8 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import TerminalHeader from '@components/terminal/TerminalHeader.vue';
 import TerminalFooter from '@components/terminal/TerminalFooter.vue';
 import GoToTop from '@components/ui/GoToTop.vue';
-import type { Language } from '@/i18n';
+import CookieConsent from '@components/CookieConsent.vue';
+import { getTranslations, type Language } from '@/i18n';
 
 interface Props {
 	lang?: Language;
@@ -13,19 +14,29 @@ interface Props {
 }
 
 const { lang = 'de', title, description, currentPath = '/' } = Astro.props;
+const t = getTranslations(lang);
 ---
 
 <BaseLayout lang={lang} title={title} description={description} currentPath={currentPath}>
+	<!-- Skip Links for Keyboard Navigation -->
+	<a href="#main-content" class="skip-link">{t.aria.navigation.skipLinks.skipToMain}</a>
+
 	<div class="terminal-window">
 		<!-- Terminal Header -->
 		<TerminalHeader client:load lang={lang} currentPath={currentPath} />
 
-		<!-- Terminal Content (Scrollable) - includes sections and footer via slot -->
-		<main class="terminal-content">
+		<!-- Terminal Content (Scrollable) -->
+		<main id="main-content" class="terminal-content">
 			<slot />
-		</main>
 
-		<!-- Go to Top Button (outside scrollable content) -->
-		<GoToTop client:idle />
+			<!-- Go to Top Button -->
+			<GoToTop client:idle lang={lang} />
+
+			<!-- Footer -->
+			<TerminalFooter client:idle lang={lang} />
+		</main>
 	</div>
+
+	<!-- Cookie Consent Banner -->
+	<CookieConsent client:only="vue" lang={lang} />
 </BaseLayout>

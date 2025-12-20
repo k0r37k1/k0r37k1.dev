@@ -16,6 +16,8 @@ const skills = {
 		{ name: 'JavaScript', icon: 'simple-icons:javascript' },
 		{ name: 'TypeScript', icon: 'simple-icons:typescript' },
 		{ name: 'PHP', icon: 'simple-icons:php' },
+		{ name: 'Python', icon: 'simple-icons:python' },
+		{ name: 'SQL', icon: 'simple-icons:postgresql' },
 		{ name: 'Swift', icon: 'simple-icons:swift' },
 		{ name: 'Kotlin', icon: 'simple-icons:kotlin' },
 		{ name: 'HTML', icon: 'simple-icons:html5' },
@@ -26,6 +28,8 @@ const skills = {
 		{ name: 'Next.js', icon: 'simple-icons:nextdotjs' },
 		{ name: 'Vue 3', icon: 'simple-icons:vuedotjs' },
 		{ name: 'Nuxt', icon: 'simple-icons:nuxtdotjs' },
+		{ name: 'Laravel', icon: 'simple-icons:laravel' },
+		{ name: 'Livewire', icon: 'simple-icons:livewire' },
 		{ name: 'TanStack', icon: 'simple-icons:tanstack' },
 		{ name: 'React Native', icon: 'simple-icons:react' },
 		{ name: 'Expo', icon: 'simple-icons:expo' },
@@ -36,8 +40,8 @@ const skills = {
 	tools: [
 		{ name: 'Git', icon: 'simple-icons:git' },
 		{ name: 'Docker', icon: 'simple-icons:docker' },
+		{ name: 'Gradle', icon: 'simple-icons:gradle' },
 		{ name: 'Vite', icon: 'simple-icons:vite' },
-		{ name: 'Creative Suite', icon: 'simple-icons:adobe' },
 		{ name: 'VS Code', icon: 'simple-icons:visualstudiocode' },
 		{ name: 'Claude Code', icon: 'simple-icons:anthropic' },
 	],
@@ -156,7 +160,7 @@ const skills = {
 	font-size: 1.125rem;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
 	.category-title {
 		font-size: 0.8rem;
 	}

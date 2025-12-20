@@ -186,7 +186,7 @@ const projects = t.projects.items;
 	font-size: 1.125rem;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
 	.projects-grid {
 		grid-template-columns: 1fr;
 	}

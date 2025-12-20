@@ -76,7 +76,7 @@ const t = getTranslations(props.lang);
 	font-size: 1.25rem;
 	letter-spacing: 0.05em;
 	margin-bottom: 0.5rem;
-	text-shadow: 0 0 8px rgba(255, 102, 0, 0.4);
+	text-shadow: 0 0 8px rgb(255 102 0 / 40%);
 }
 
 .nfo-text {
@@ -87,7 +87,7 @@ const t = getTranslations(props.lang);
 	border-left: 2px solid var(--color-terminal-border);
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
 	.nfo-label {
 		font-size: 0.75rem;
 	}

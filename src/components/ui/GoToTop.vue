@@ -1,7 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { motion } from 'motion-v';
 import { Icon } from '@iconify/vue';
+import { getTranslations, type Language } from '@/i18n';
+
+interface Props {
+	lang?: Language;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	lang: 'de',
+});
+
+const t = computed(() => getTranslations(props.lang));
 
 const isVisible = ref(false);
 const isHovering = ref(false);
@@ -89,7 +100,7 @@ onUnmounted(() => {
 			@mouseenter="handleMouseEnter"
 			@mouseleave="handleMouseLeave"
 			class="go-to-top"
-			aria-label="Scroll to top"
+			:aria-label="t.aria.actions.scrollToTop"
 		>
 			<div class="ascii-frame">
 				<span class="top-border">┌───┐</span>
@@ -149,7 +160,9 @@ onUnmounted(() => {
 /* Vue Transition */
 .fade-enter-active,
 .fade-leave-active {
-	transition: opacity 0.3s ease, transform 0.3s ease;
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
 }
 
 .fade-enter-from {
@@ -163,7 +176,7 @@ onUnmounted(() => {
 }
 
 /* Mobile adjustments */
-@media (max-width: 640px) {
+@media (width <= 640px) {
 	.go-to-top {
 		bottom: 1.5rem;
 		right: 1.5rem;

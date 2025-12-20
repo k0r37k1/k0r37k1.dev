@@ -8,9 +8,9 @@ export default {
 	hero: {
 		greeting: "Hi, I'm",
 		name: 'k0r37k1',
-		welcome: 'Welcome to my personal portfolio',
-		subtitle: 'Developer • AI Enthusiast • Problem Solver',
-		tagline: 'Full-Stack Developer & Digital Craftsman',
+		welcome: 'Where Ideas become reality',
+		subtitle: 'Vibe Engineer • AI Enthusiast • Problem Solver',
+		tagline: 'Vibe Engineer & Digital Craftsman',
 		description:
 			'I build modern web applications with a focus on performance, accessibility, and clean code.',
 		cta: {
@@ -23,7 +23,7 @@ export default {
 	sections: {
 		profile: '▀▄▀▄ PROFILE ▄▀▄▀',
 		projects: '▀▄▀▄ PROJECTS ▄▀▄▀',
-		skills: '▀▄▀▄ SKILLS ▄▀▄▀',
+		skills: '▀▄▀▄ ENVIRONMENT ▄▀▄▀',
 		contact: '▀▄▀▄ CONTACT ▄▀▄▀',
 	},
 
@@ -127,6 +127,76 @@ export default {
 		links: {
 			imprint: 'Imprint',
 			privacy: 'Privacy',
+			wcag: 'WCAG 2.2 AA',
+		},
+	},
+
+	// Accessibility / ARIA Labels
+	aria: {
+		sections: {
+			profile: 'Profile',
+			projects: 'Projects',
+			environment: 'Environment',
+			contact: 'Contact',
+		},
+		navigation: {
+			legal: 'Legal pages navigation',
+			languageSwitcher: {
+				switchToGerman: 'Switch to German',
+				switchToEnglish: 'Switch to English',
+			},
+			skipLinks: {
+				skipToMain: 'Skip to main content',
+				skipToNav: 'Skip to navigation',
+			},
+		},
+		actions: {
+			scrollToTop: 'Scroll to top',
+			wcagCompliance: 'WCAG 2.2 AA Compliance Guidelines',
+		},
+	},
+
+	// Cookie Consent
+	cookieConsent: {
+		consentModal: {
+			title: 'We use cookies',
+			description:
+				'This website uses essential cookies for basic functionality. With your consent, we also use analytics cookies to improve the website.',
+			acceptAll: 'Accept all',
+			acceptNecessary: 'Necessary only',
+			showSettings: 'Manage preferences',
+			closeIconLabel: 'Close dialog',
+		},
+		preferencesModal: {
+			title: 'Cookie Preferences',
+			acceptAll: 'Accept all',
+			acceptNecessary: 'Necessary only',
+			save: 'Save preferences',
+			closeIconLabel: 'Close modal',
+			sections: [
+				{
+					title: 'Cookie Usage',
+					description:
+						'We use cookies to ensure basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in or opt-out.',
+				},
+				{
+					title: 'Necessary Cookies <span class="cookie-badge">Always enabled</span>',
+					description:
+						'These cookies are essential for the proper functioning of the website. Without these cookies, the website would not work properly.',
+					linkedCategory: 'necessary',
+				},
+				{
+					title: 'Analytics Cookies',
+					description:
+						'These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.',
+					linkedCategory: 'analytics',
+				},
+				{
+					title: 'More Information',
+					description:
+						'For any questions regarding our cookie policy and your choices, please contact us at <a href="/en/privacy" class="terminal-link">Privacy</a>.',
+				},
+			],
 		},
 	},
 

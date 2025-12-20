@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { getTranslations } from '@/i18n';
 
 interface Props {
 	currentLang: 'de' | 'en';
@@ -9,6 +10,8 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
 	currentPath: '/',
 });
+
+const t = computed(() => getTranslations(props.currentLang));
 
 const getAlternateUrl = (targetLang: 'de' | 'en') => {
 	// Remove language prefix from current path
@@ -25,36 +28,28 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 
 <template>
 	<div class="language-switcher">
-		<span
-			v-if="currentLang === 'de'"
-			class="lang-item lang-active"
-			aria-current="true"
-		>
+		<span v-if="currentLang === 'de'" class="lang-item lang-active" aria-current="true">
 			<span class="bracket-left">[ </span>DE<span class="bracket-right"> ]</span>
 		</span>
 		<a
 			v-else
 			:href="getAlternateUrl('de')"
 			class="lang-item lang-link"
-			aria-label="Switch to German"
+			:aria-label="t.aria.navigation.languageSwitcher.switchToGerman"
 		>
 			DE
 		</a>
 
 		<span class="lang-separator">|</span>
 
-		<span
-			v-if="currentLang === 'en'"
-			class="lang-item lang-active"
-			aria-current="true"
-		>
+		<span v-if="currentLang === 'en'" class="lang-item lang-active" aria-current="true">
 			<span class="bracket-left">[ </span>EN<span class="bracket-right"> ]</span>
 		</span>
 		<a
 			v-else
 			:href="getAlternateUrl('en')"
 			class="lang-item lang-link"
-			aria-label="Switch to English"
+			:aria-label="t.aria.navigation.languageSwitcher.switchToEnglish"
 		>
 			EN
 		</a>
@@ -116,7 +111,7 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 	padding: 0 0.125rem;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
 	.language-switcher {
 		font-size: 0.75rem;
 		gap: 0.5rem;

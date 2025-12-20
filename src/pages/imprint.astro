@@ -17,7 +17,7 @@ const terminalTitle = 'visitor@k0r37k1.dev:~$ cat impressum.txt';
 	terminalTitle={terminalTitle}
 >
 	<!-- Section Title -->
-	<div slot="title" class="section-title-center" aria-hidden="true">{t.legal.imprint.title}</div>
+	<h1 slot="title" class="section-title-center">{t.legal.imprint.title}</h1>
 
 	<!-- Legal Content -->
 	<!-- Angaben gemäß § 5 TMG -->
@@ -34,7 +34,9 @@ const terminalTitle = 'visitor@k0r37k1.dev:~$ cat impressum.txt';
 	<div class="nfo-block">
 		<div class="nfo-label">{t.legal.imprint.contact}</div>
 		<div class="nfo-text">
-			{t.contact.email}: <a href="mailto:hello@k0r37k1.dev" class="terminal-link">hello@k0r37k1.dev</a>
+			{t.contact.email}: <a href="mailto:hello@k0r37k1.dev" class="terminal-link"
+				>hello@k0r37k1.dev</a
+			>
 		</div>
 	</div>
 
@@ -61,7 +63,7 @@ const terminalTitle = 'visitor@k0r37k1.dev:~$ cat impressum.txt';
 	</div>
 
 	<!-- Navigation -->
-	<nav class="legal-nav" slot="navigation" aria-label="Legal pages navigation">
+	<nav class="legal-nav" slot="navigation" aria-label={t.aria.navigation.legal}>
 		<a href="/" class="terminal-link nav-link">{t.legal.nav.backToPortfolio}</a>
 		<span class="nav-separator" aria-hidden="true">•</span>
 		<a href="/privacy" class="terminal-link nav-link">{t.legal.nav.toPrivacy}</a>

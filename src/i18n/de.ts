@@ -8,9 +8,9 @@ export default {
 	hero: {
 		greeting: 'Hi, ich bin',
 		name: 'k0r37k1',
-		welcome: 'Willkommen zu meinem Portfolio',
-		subtitle: 'Entwickler • KI-Enthusiast • Problem-Löser',
-		tagline: 'Full-Stack Developer & Digital Craftsman',
+		welcome: 'Wo Ideen zu Realität werden',
+		subtitle: 'Vibe Engineer • KI-Enthusiast • Problem-Löser',
+		tagline: 'Vibe Engineer & Digital Craftsman',
 		description:
 			'Ich entwickle moderne Webanwendungen mit Fokus auf Performance, Barrierefreiheit und Clean Code.',
 		cta: {
@@ -23,22 +23,22 @@ export default {
 	sections: {
 		profile: '▀▄▀▄ PROFIL ▄▀▄▀',
 		projects: '▀▄▀▄ PROJEKTE ▄▀▄▀',
-		skills: '▀▄▀▄ KENNTNISSE ▄▀▄▀',
+		skills: '▀▄▀▄ ENTWICKLUNGSUMGEBUNG ▄▀▄▀',
 		contact: '▀▄▀▄ KONTAKT ▄▀▄▀',
 	},
 
 	// About Section
 	about: {
 		who: {
-			label: '[ WHO ]',
+			label: '[ WER ]',
 			text: 'Full-Stack Developer mit Leidenschaft für saubere, performante Webanwendungen. Spezialisiert auf moderne Frontend-Architekturen und Developer Experience.',
 		},
 		what: {
-			label: '[ WHAT ]',
+			label: '[ WAS ]',
 			text: 'Entwicklung pixelgenauer Interfaces mit Vue/Nuxt, React und Flutter. Aufbau skalierbarer Backends mit PHP und TypeScript. Besessen von Barrierefreiheit, Performance und Clean Code.',
 		},
 		now: {
-			label: '[ NOW ]',
+			label: '[ JETZT ]',
 			text: 'Erkundung KI-gestützter Development-Workflows, Open-Source-Beiträge und das Ausloten der Grenzen moderner Webtechnologien.',
 		},
 	},
@@ -127,21 +127,91 @@ export default {
 		links: {
 			imprint: 'Impressum',
 			privacy: 'Datenschutz',
+			wcag: 'WCAG 2.2 AA',
+		},
+	},
+
+	// Accessibility / ARIA Labels
+	aria: {
+		sections: {
+			profile: 'Profil',
+			projects: 'Projekte',
+			environment: 'Entwicklungsumgebung',
+			contact: 'Kontakt',
+		},
+		navigation: {
+			legal: 'Navigation für rechtliche Seiten',
+			languageSwitcher: {
+				switchToGerman: 'Zu Deutsch wechseln',
+				switchToEnglish: 'Zu Englisch wechseln',
+			},
+			skipLinks: {
+				skipToMain: 'Direkt zum Hauptinhalt springen',
+				skipToNav: 'Direkt zur Navigation springen',
+			},
+		},
+		actions: {
+			scrollToTop: 'Nach oben scrollen',
+			wcagCompliance: 'WCAG 2.2 AA Konformität Richtlinien',
+		},
+	},
+
+	// Cookie Consent
+	cookieConsent: {
+		consentModal: {
+			title: 'Wir verwenden Cookies',
+			description:
+				'Diese Website nutzt essentielle Cookies für grundlegende Funktionen. Mit Ihrer Zustimmung verwenden wir auch Analyse-Cookies zur Verbesserung der Website.',
+			acceptAll: 'Alle akzeptieren',
+			acceptNecessary: 'Nur notwendige',
+			showSettings: 'Einstellungen verwalten',
+			closeIconLabel: 'Dialog schließen',
+		},
+		preferencesModal: {
+			title: 'Cookie-Einstellungen',
+			acceptAll: 'Alle akzeptieren',
+			acceptNecessary: 'Nur notwendige',
+			save: 'Einstellungen speichern',
+			closeIconLabel: 'Modal schließen',
+			sections: [
+				{
+					title: 'Cookie-Verwendung',
+					description:
+						'Wir verwenden Cookies, um die grundlegenden Funktionen der Website zu gewährleisten und Ihr Online-Erlebnis zu verbessern. Sie können für jede Kategorie wählen, ob Sie sich an- oder abmelden möchten.',
+				},
+				{
+					title: 'Notwendige Cookies <span class="cookie-badge">Immer aktiv</span>',
+					description:
+						'Diese Cookies sind für das ordnungsgemäße Funktionieren der Website unerlässlich. Ohne diese Cookies würde die Website nicht richtig funktionieren.',
+					linkedCategory: 'necessary',
+				},
+				{
+					title: 'Analyse-Cookies',
+					description:
+						'Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, indem sie anonyme Informationen sammeln und melden.',
+					linkedCategory: 'analytics',
+				},
+				{
+					title: 'Weitere Informationen',
+					description:
+						'Bei Fragen zu unserer Cookie-Richtlinie und Ihren Wahlmöglichkeiten kontaktieren Sie uns bitte unter <a href="/privacy" class="terminal-link">Datenschutz</a>.',
+				},
+			],
 		},
 	},
 
 	// Legal Pages
 	legal: {
 		imprint: {
-			title: '▀▄▀▄ IMPRINT ▄▀▄▀',
+			title: '▀▄▀▄ IMPRESSUM ▄▀▄▀',
 			tmg: '[ § 5 TMG ]',
-			contact: '[ CONTACT ]',
+			contact: '[ KONTAKT ]',
 			responsible: '[ § 55 ABS. 2 RSTV ]',
-			liability: '[ LIABILITY ]',
-			liabilityContent: '// Liability for Content',
+			liability: '[ HAFTUNG ]',
+			liabilityContent: '// Haftung für Inhalte',
 			liabilityContentText:
 				'Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.',
-			liabilityLinks: '// Liability for Links',
+			liabilityLinks: '// Haftung für Links',
 			liabilityLinksText:
 				'Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.',
 		},
@@ -174,8 +244,7 @@ export default {
 			rightsPortability: '→ Datenübertragbarkeit',
 			rightsObject: '→ Widerspruch gegen die Verarbeitung',
 			contact: '[ KONTAKT ]',
-			contactText:
-				'Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden.',
+			contactText: 'Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden.',
 		},
 		nav: {
 			backToPortfolio: '← zurück zum Portfolio',

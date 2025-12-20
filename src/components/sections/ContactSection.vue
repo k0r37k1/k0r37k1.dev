@@ -81,7 +81,7 @@ const contacts = [
 .intro-message {
 	color: var(--color-terminal-text-dim);
 	line-height: 1.6;
-	margin: 0 0 1.5rem 0;
+	margin: 0 0 1.5rem;
 	font-size: 0.875rem;
 }
 
@@ -116,7 +116,7 @@ const contacts = [
 	font-size: 1.125rem;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
 	.intro-message {
 		font-size: 0.8rem;
 	}

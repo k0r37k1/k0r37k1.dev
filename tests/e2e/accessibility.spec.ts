@@ -42,11 +42,11 @@ test.describe('Site-wide Accessibility', () => {
 });
 
 test.describe('Component-Specific Accessibility', () => {
-	test('benefits section should be accessible', async ({ page, makeAxeBuilder }) => {
+	test('about section should be accessible', async ({ page, makeAxeBuilder }) => {
 		await page.goto('/');
 
-		// Wait for benefits grid to be visible
-		await page.waitForSelector('text=Lightning-Fast Builds');
+		// Wait for about section to be visible
+		await page.waitForSelector('[aria-label="Profil"]');
 
 		// Best Practice: Test specific components with .include()
 		// More focused and faster than full page scans
@@ -57,13 +57,13 @@ test.describe('Component-Specific Accessibility', () => {
 		expect(results.violations).toEqual([]);
 	});
 
-	test('tech showcase tabs should be accessible', async ({ page, makeAxeBuilder }) => {
+	test('skills section should be accessible', async ({ page, makeAxeBuilder }) => {
 		await page.goto('/');
 
-		// Wait for tabs section to be visible
-		await page.waitForSelector('text=Deep Dive');
+		// Wait for skills section to be visible
+		await page.waitForSelector('[aria-label="Entwicklungsumgebung"]');
 
-		// Test tabs component specifically
+		// Test skills section specifically
 		const results = await makeAxeBuilder().analyze();
 
 		expect(results.violations).toEqual([]);
@@ -71,25 +71,15 @@ test.describe('Component-Specific Accessibility', () => {
 });
 
 test.describe('Interactive Components', () => {
-	test('counter should be accessible in all states', async ({ page, makeAxeBuilder }) => {
+	test('navigation and interactive elements should be accessible', async ({ page, makeAxeBuilder }) => {
 		await page.goto('/');
 
-		// Wait for counter to be visible
-		const incrementBtn = page.locator('button[aria-label="Increment"]');
-		await incrementBtn.waitFor();
+		// Wait for page to be fully loaded (German page has "Switch to English" link)
+		await page.waitForSelector('[aria-label="Zu Englisch wechseln"]');
 
-		// Best Practice: Test initial state
-		const initialResults = await makeAxeBuilder().analyze();
-		expect(initialResults.violations).toEqual([]);
-
-		// Interact with counter
-		await incrementBtn.click();
-		await expect(page.locator('.text-6xl')).toHaveText('1');
-
-		// Best Practice: Test after interaction
-		// Dynamic content may introduce new accessibility issues
-		const afterClickResults = await makeAxeBuilder().analyze();
-		expect(afterClickResults.violations).toEqual([]);
+		// Test all interactive elements
+		const results = await makeAxeBuilder().analyze();
+		expect(results.violations).toEqual([]);
 	});
 });
 
@@ -165,7 +155,16 @@ test.describe('WCAG Compliance Levels', () => {
 		await page.goto('/');
 		await page.waitForLoadState('networkidle');
 
-		const results = await makeAxeBuilder().withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+		const results = await makeAxeBuilder().withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
+
+		expect(results.violations).toEqual([]);
+	});
+
+	test('homepage meets WCAG 2.2 Level AA', async ({ page, makeAxeBuilder }) => {
+		await page.goto('/');
+		await page.waitForLoadState('networkidle');
+
+		const results = await makeAxeBuilder().withTags(['wcag22aa']).analyze();
 
 		expect(results.violations).toEqual([]);
 	});

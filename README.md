@@ -51,21 +51,21 @@ k0r37k1.dev/
 
 All commands are run from the root of the project:
 
-| Command                     | Action                                              |
-| :-------------------------- | :-------------------------------------------------- |
-| `npm install`               | Installs dependencies                               |
-| `npm run dev`               | Starts local dev server at `localhost:4321`         |
-| `npm run build`             | Build production site to `./dist/`                  |
-| `npm run preview`           | Preview production build locally                    |
-| `npm test`                  | Run Vitest unit tests                               |
-| `npm run test:ui`           | Run unit tests with UI                              |
-| `npm run test:e2e`          | Run E2E tests (Chromium only, fast)                |
-| `npm run test:e2e:all`      | Run E2E tests (all browsers)                        |
-| `npm run test:a11y`         | Run accessibility tests                             |
-| `npm run lint:all`          | Run all linters + spell check                       |
-| `npm run format`            | Format with Prettier                                |
-| `npm run astro ...`         | Run CLI commands like `astro add`, `astro check`    |
-| `npm run astro -- --help`   | Get help using the Astro CLI                        |
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build production site to `./dist/`               |
+| `npm run preview`         | Preview production build locally                 |
+| `npm test`                | Run Vitest unit tests                            |
+| `npm run test:ui`         | Run unit tests with UI                           |
+| `npm run test:e2e`        | Run E2E tests (Chromium only, fast)              |
+| `npm run test:e2e:all`    | Run E2E tests (all browsers)                     |
+| `npm run test:a11y`       | Run accessibility tests                          |
+| `npm run lint:all`        | Run all linters + spell check                    |
+| `npm run format`          | Format with Prettier                             |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
 ## ✨ Features
 
@@ -90,13 +90,13 @@ All commands are run from the root of the project:
 
 ```css
 /* Base */
---color-terminal-bg: oklch(0.15 0.02 240);     /* Dark blue-black */
+--color-terminal-bg: oklch(0.15 0.02 240); /* Dark blue-black */
 
 /* Neon Accents */
---color-terminal-primary: #00d9ff;             /* Cyan */
---color-terminal-secondary: #ff00ff;           /* Magenta */
---color-accent-orange: #ff6600;                /* Neon Orange */
---color-accent-purple: #9d00ff;                /* Electric Purple */
+--color-terminal-primary: #00d9ff; /* Cyan */
+--color-terminal-secondary: #ff00ff; /* Magenta */
+--color-accent-orange: #ff6600; /* Neon Orange */
+--color-accent-purple: #9d00ff; /* Electric Purple */
 ```
 
 ### Typography

@@ -14,8 +14,8 @@ const props = withDefaults(defineProps<Props>(), {
 const t = getTranslations(props.lang);
 const currentYear = new Date().getFullYear();
 
-const imprintLink = computed(() => props.lang === 'en' ? '/en/imprint' : '/imprint');
-const privacyLink = computed(() => props.lang === 'en' ? '/en/privacy' : '/privacy');
+const imprintLink = computed(() => (props.lang === 'en' ? '/en/imprint' : '/imprint'));
+const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/privacy'));
 </script>
 
 <template>
@@ -27,6 +27,17 @@ const privacyLink = computed(() => props.lang === 'en' ? '/en/privacy' : '/priva
 				<span>{{ t.footer.madeWith }} <span class="heart">♥</span></span>
 			</div>
 			<div class="footer-links">
+				<a
+					href="https://www.w3.org/WAI/WCAG22/quickref/"
+					class="terminal-link footer-link"
+					target="_blank"
+					rel="noopener noreferrer"
+					:aria-label="t.aria.actions.wcagCompliance"
+				>
+					<Icon icon="mdi:shield-check" class="footer-icon" />
+					<span>{{ t.footer.links.wcag }}</span>
+				</a>
+				<span class="separator">•</span>
 				<a :href="imprintLink" class="terminal-link footer-link">
 					<Icon icon="mdi:fingerprint" class="footer-icon" />
 					<span>{{ t.footer.links.imprint }}</span>
@@ -43,9 +54,9 @@ const privacyLink = computed(() => props.lang === 'en' ? '/en/privacy' : '/priva
 
 <style scoped>
 .terminal-footer {
-	border-top: 1px solid var(--color-terminal-border);
-	padding: 2rem 1.5rem;
-	margin-top: 4rem;
+	padding: 1.5rem;
+	margin-top: 8rem;
+	position: relative;
 }
 
 .footer-content {
@@ -100,11 +111,24 @@ const privacyLink = computed(() => props.lang === 'en' ? '/en/privacy' : '/priva
 	color: #f55;
 }
 
-@media (max-width: 640px) {
+.footer-button {
+	background: none;
+	border: none;
+	padding: 0;
+	font-family: var(--font-mono);
+	font-size: 0.875rem;
+	cursor: pointer;
+}
+
+@media (width <= 640px) {
 	.footer-content {
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 1rem;
+	}
+
+	.footer-cat {
+		font-size: 0.6rem;
 	}
 }
 </style>

@@ -24,14 +24,26 @@ export const testPages: TestPage[] = [
 	{
 		url: '/',
 		name: 'Homepage',
-		description: 'Main landing page',
-		waitForSelectors: ['text=Lightning-Fast Builds'],
+		description: 'Portfolio landing page (German)',
+		waitForSelectors: ['text=k0r37k1.dev'],
 	},
 	{
-		url: '/demo',
-		name: 'Demo Page',
-		description: 'Component showcase and demos',
-		waitForSelectors: ['text=Component Showcase'],
+		url: '/en',
+		name: 'Homepage EN',
+		description: 'Portfolio landing page (English)',
+		waitForSelectors: ['text=k0r37k1.dev'],
+	},
+	{
+		url: '/imprint',
+		name: 'Imprint',
+		description: 'Legal imprint page',
+		waitForSelectors: ['text=Impressum'],
+	},
+	{
+		url: '/privacy',
+		name: 'Privacy',
+		description: 'Privacy policy page',
+		waitForSelectors: ['text=Datenschutz'],
 	},
 ];
 
@@ -41,8 +53,8 @@ export const testPages: TestPage[] = [
 export const criticalFlows: TestPage[] = [
 	{
 		url: '/',
-		name: 'Interactive Counter Flow',
-		description: 'Test counter interaction',
-		waitForSelectors: ['button[aria-label="Increment"]'],
+		name: 'Contact Section',
+		description: 'Test contact section accessibility',
+		waitForSelectors: ['text=hello@k0r37k1.dev'],
 	},
 ];
