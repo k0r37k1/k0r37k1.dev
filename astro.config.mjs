@@ -75,7 +75,7 @@ export default defineConfig({
             // Supports: Chrome 94+, Safari 15.4+, Firefox 93+, Edge 94+
             target: 'es2022',
             cssMinify: 'lightningcss',
-            // Enable CSS code splitting - each page loads only its CSS
+            // Enable CSS code splitting for optimal page loads
             cssCodeSplit: true,
             // Chunk size warnings
             chunkSizeWarningLimit: 1000,
@@ -95,16 +95,10 @@ export default defineConfig({
                         // Let Vite handle app code splitting
                         return undefined;
                     },
-                    // Clean naming without hashes for CSS (optional)
+                    // Optimized naming with hashes for cache busting
                     entryFileNames: '[name].[hash].js',
                     chunkFileNames: '[name].[hash].js',
-                    assetFileNames: (assetInfo) => {
-                        if (assetInfo.name.endsWith('.css')) {
-                            // Each page gets its own CSS file
-                            return '[name].[hash].css';
-                        }
-                        return 'assets/[name].[hash][extname]'; // Other assets
-                    },
+                    assetFileNames: 'assets/[name].[hash][extname]',
                 },
             },
         },
