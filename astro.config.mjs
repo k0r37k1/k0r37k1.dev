@@ -85,17 +85,20 @@ export default defineConfig({
                         'vendor-motion': ['motion-v'],
                         'vendor-reka': ['reka-ui'],
                     },
+                    // Organized folder structure: assets/js/ and assets/css/
+                    entryFileNames: 'assets/js/[name].[hash].js',
+                    chunkFileNames: 'assets/js/[name].[hash].js',
                     // Custom CSS filenames with semantic names + cache-busting hashes
                     assetFileNames: (assetInfo) => {
                         if (assetInfo.name.endsWith('.css')) {
                             // Map route-based CSS to semantic names WITH hashes
-                            if (assetInfo.name.includes('index')) return 'assets/global-[hash].css';
+                            if (assetInfo.name.includes('index')) return 'assets/css/global.[hash].css';
                             if (assetInfo.name.includes('imprint') || assetInfo.name.includes('privacy')) {
-                                return 'assets/legal-[hash].css';
+                                return 'assets/css/legal.[hash].css';
                             }
-                            return 'assets/[name]-[hash].css'; // Fallback
+                            return 'assets/css/[name].[hash].css'; // Fallback
                         }
-                        return 'assets/[name]-[hash][extname]'; // Keep hashes for other assets
+                        return 'assets/[name].[hash][extname]'; // Other assets in assets/
                     },
                 },
             },
