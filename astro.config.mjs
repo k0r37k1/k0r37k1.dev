@@ -75,30 +75,35 @@ export default defineConfig({
             // Supports: Chrome 94+, Safari 15.4+, Firefox 93+, Edge 94+
             target: 'es2022',
             cssMinify: 'lightningcss',
+            // Enable CSS code splitting - each page loads only its CSS
+            cssCodeSplit: true,
             // Chunk size warnings
             chunkSizeWarningLimit: 1000,
-            // Manual chunking for better caching
+            // Optimized output configuration
             rollupOptions: {
                 output: {
-                    manualChunks: {
-                        'vendor-vue': ['vue'],
-                        'vendor-motion': ['motion-v'],
-                        'vendor-reka': ['reka-ui'],
+                    // Bundle vendor code into single chunk
+                    manualChunks(id) {
+                        // Don't bundle Astro's internals or server code
+                        if (id.includes('astro/dist') || id.includes('/server/')) {
+                            return undefined;
+                        }
+                        // Bundle all node_modules into single vendor chunk
+                        if (id.includes('node_modules')) {
+                            return 'vendor';
+                        }
+                        // Let Vite handle app code splitting
+                        return undefined;
                     },
-                    // Organized folder structure: assets/js/ and assets/css/
-                    entryFileNames: 'assets/js/[name].[hash].js',
-                    chunkFileNames: 'assets/js/[name].[hash].js',
-                    // Custom CSS filenames with semantic names + cache-busting hashes
+                    // Clean naming without hashes for CSS (optional)
+                    entryFileNames: '[name].[hash].js',
+                    chunkFileNames: '[name].[hash].js',
                     assetFileNames: (assetInfo) => {
                         if (assetInfo.name.endsWith('.css')) {
-                            // Map route-based CSS to semantic names WITH hashes
-                            if (assetInfo.name.includes('index')) return 'assets/css/global.[hash].css';
-                            if (assetInfo.name.includes('imprint') || assetInfo.name.includes('privacy')) {
-                                return 'assets/css/legal.[hash].css';
-                            }
-                            return 'assets/css/[name].[hash].css'; // Fallback
+                            // Each page gets its own CSS file
+                            return '[name].[hash].css';
                         }
-                        return 'assets/[name].[hash][extname]'; // Other assets in assets/
+                        return 'assets/[name].[hash][extname]'; // Other assets
                     },
                 },
             },
