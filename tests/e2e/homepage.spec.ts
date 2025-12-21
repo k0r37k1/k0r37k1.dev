@@ -10,10 +10,7 @@ test.describe('Homepage', () => {
 			await expect(page).toHaveTitle(/Portfolio k0r37k1\.dev/);
 
 			const description = page.locator('meta[name="description"]');
-			await expect(description).toHaveAttribute(
-				'content',
-				/Project showcase of k0r37k1\.dev/
-			);
+			await expect(description).toHaveAttribute('content', /Project showcase of k0r37k1\.dev/);
 		});
 
 		test('loads without console errors', async ({ page }) => {

@@ -71,7 +71,10 @@ test.describe('Component-Specific Accessibility', () => {
 });
 
 test.describe('Interactive Components', () => {
-	test('navigation and interactive elements should be accessible', async ({ page, makeAxeBuilder }) => {
+	test('navigation and interactive elements should be accessible', async ({
+		page,
+		makeAxeBuilder,
+	}) => {
 		await page.goto('/');
 
 		// Wait for page to be fully loaded (German page has "Switch to English" link)
@@ -155,7 +158,9 @@ test.describe('WCAG Compliance Levels', () => {
 		await page.goto('/');
 		await page.waitForLoadState('networkidle');
 
-		const results = await makeAxeBuilder().withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
+		const results = await makeAxeBuilder()
+			.withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+			.analyze();
 
 		expect(results.violations).toEqual([]);
 	});

@@ -1196,9 +1196,7 @@ a:focus-visible,
 	animation: shimmer-enhanced 4s linear infinite;
 
 	/* Enhanced multi-color phosphor glow */
-	filter:
-		drop-shadow(0 0 4px rgb(0 217 255 / 30%))
-		drop-shadow(0 0 8px rgb(191 128 255 / 20%))
+	filter: drop-shadow(0 0 4px rgb(0 217 255 / 30%)) drop-shadow(0 0 8px rgb(191 128 255 / 20%))
 		drop-shadow(0 0 12px rgb(255 0 255 / 15%));
 }
 
