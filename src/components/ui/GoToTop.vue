@@ -123,7 +123,7 @@ onUnmounted(() => {
 	border: none;
 	cursor: pointer;
 	z-index: 9999;
-	font-family: 'Courier New', 'Consolas', monospace;
+	font-family: 'Courier New', Consolas, monospace;
 	font-size: 0.875rem;
 	line-height: 1;
 	padding: 0;
@@ -162,7 +162,7 @@ onUnmounted(() => {
 .arrow-line {
 	display: block;
 	white-space: pre;
-	font-family: 'Courier New', 'Consolas', monospace;
+	font-family: 'Courier New', Consolas, monospace;
 	font-variant-numeric: tabular-nums;
 	line-height: 1;
 	letter-spacing: 0;
