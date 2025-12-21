@@ -52,6 +52,7 @@ const skills = {
 	concepts: [
 		{ key: 'testing', icon: 'mdi:test-tube' },
 		{ key: 'accessibility', icon: 'mdi:human' },
+		{ key: 'restfulApi', icon: 'mdi:api' },
 	],
 };
 </script>

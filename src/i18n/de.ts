@@ -98,6 +98,7 @@ export default {
 			mobile: 'Mobil',
 			testing: 'Testing',
 			accessibility: 'Barrierefreiheit',
+		restfulApi: 'RESTful API',
 		},
 	},
 
