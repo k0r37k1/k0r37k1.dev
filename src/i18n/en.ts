@@ -31,15 +31,15 @@ export default {
 	about: {
 		who: {
 			label: '[ WHO ]',
-			text: 'Full-stack developer with a passion for building clean, performant web applications. Specialized in modern frontend architectures and developer experience.',
+			text: "Alex. I build digital stuff – web, apps, whatever's interesting. Vibe Engineer, because full-stack sounds too boring.",
 		},
 		what: {
 			label: '[ WHAT ]',
-			text: 'Crafting pixel-perfect interfaces with Vue/Nuxt, React, and Flutter. Building scalable backends with PHP and TypeScript. Obsessed with accessibility, performance, and clean code.',
+			text: "Vue, React, Flutter. AI makes the code faster, I focus on accessibility and performance. Frontend is my thing, but I'm versatile.",
 		},
 		now: {
 			label: '[ NOW ]',
-			text: "Exploring AI-assisted development workflows, contributing to open source, and pushing the boundaries of what's possible with modern web technologies.",
+			text: 'Contributing to open source, playing with new web tech, optimizing AI workflows. Always experimenting.',
 		},
 	},
 
@@ -106,7 +106,7 @@ export default {
 	contact: {
 		title: "Let's Work Together",
 		description:
-			"Have a project in mind? I'm always open to new challenges and interesting collaborations. Feel free to reach out on social media or leave a donation if you appreciate my work.",
+			"Got a project? Let's talk. Or just say hi on social media. Like what I do? Donations are welcome.",
 		email: 'Email',
 		github: 'GitHub',
 		linkedin: 'LinkedIn',

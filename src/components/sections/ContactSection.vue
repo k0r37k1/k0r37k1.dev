@@ -55,7 +55,7 @@ const contacts = [
 		class="terminal-section contact-section"
 	>
 		<!-- Contact Content -->
-		<div class="section-content">
+		<div class="nfo-content">
 			<!-- Intro Message -->
 			<p class="intro-message">
 				{{ t.contact.description }}
@@ -80,8 +80,10 @@ const contacts = [
 </template>
 
 <style scoped>
-.section-content {
-	margin-top: 1rem;
+.nfo-content {
+	font-family: var(--font-mono);
+	color: var(--color-terminal-text);
+	line-height: 1.6;
 }
 
 .intro-message {

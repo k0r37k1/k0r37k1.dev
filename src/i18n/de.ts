@@ -31,15 +31,15 @@ export default {
 	about: {
 		who: {
 			label: '[ WER ]',
-			text: 'Full-Stack Developer mit Leidenschaft für saubere, performante Webanwendungen. Spezialisiert auf moderne Frontend-Architekturen und Developer Experience.',
+			text: 'Alex. Ich baue digitale Sachen – Web, Apps, was gerade interessant ist. Vibe Engineer, weil Full-Stack zu langweilig klingt.',
 		},
 		what: {
 			label: '[ WAS ]',
-			text: 'Entwicklung pixelgenauer Interfaces mit Vue/Nuxt, React und Flutter. Aufbau skalierbarer Backends mit PHP und TypeScript. Besessen von Barrierefreiheit, Performance und Clean Code.',
+			text: 'Vue, React, Flutter. AI macht den Code schneller, ich achte auf Barrierefreiheit und Performance. Frontend ist mein Ding, aber ich bin vielseitig unterwegs.',
 		},
 		now: {
 			label: '[ JETZT ]',
-			text: 'Erkundung KI-gestützter Development-Workflows, Open-Source-Beiträge und das Ausloten der Grenzen moderner Webtechnologien.',
+			text: 'Open Source beitragen, mit neuen Web-Technologien spielen, AI-Workflows optimieren. Immer am Experimentieren.',
 		},
 	},
 
@@ -106,7 +106,7 @@ export default {
 	contact: {
 		title: 'Lass uns zusammenarbeiten',
 		description:
-			'Du hast ein Projekt im Kopf? Ich bin immer offen für neue Herausforderungen und spannende Kooperationen. Schreib mir auf Social Media oder lass eine Spende da, wenn dir meine Arbeit gefällt.',
+			'Projekt im Kopf? Lass uns reden. Oder schreib mir einfach auf Social Media. Gefällt dir, was ich mache? Spenden sind willkommen.',
 		email: 'E-Mail',
 		github: 'GitHub',
 		linkedin: 'LinkedIn',
