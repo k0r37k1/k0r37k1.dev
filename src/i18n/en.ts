@@ -8,7 +8,7 @@ export default {
 	hero: {
 		greeting: "Hi, I'm",
 		name: 'k0r37k1',
-		welcome: 'Where Ideas become reality',
+		welcome: 'Welcome to my Portfolio where ideas become reality',
 		subtitle: 'Vibe Engineer • AI Enthusiast • Problem Solver',
 		tagline: 'Vibe Engineer & Digital Craftsman',
 		description:

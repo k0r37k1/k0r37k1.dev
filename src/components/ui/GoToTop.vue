@@ -126,6 +126,10 @@ onUnmounted(() => {
 	line-height: 1;
 	padding: 0;
 	transition: all 0.2s ease;
+	/* Subtle cyan phosphor glow */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 30%),
+		0 0 6px rgb(0 217 255 / 18%);
 }
 
 .go-to-top:hover {

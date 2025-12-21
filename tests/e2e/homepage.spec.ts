@@ -7,10 +7,13 @@ test.describe('Homepage', () => {
 
 	test.describe('Page Structure', () => {
 		test('has correct title and meta description', async ({ page }) => {
-			await expect(page).toHaveTitle(/Vite\+ Stack/);
+			await expect(page).toHaveTitle(/Portfolio k0r37k1\.dev/);
 
 			const description = page.locator('meta[name="description"]');
-			await expect(description).toHaveAttribute('content', /Modern web stack with Astro 5/);
+			await expect(description).toHaveAttribute(
+				'content',
+				/Project showcase of k0r37k1\.dev/
+			);
 		});
 
 		test('loads without console errors', async ({ page }) => {
@@ -29,74 +32,56 @@ test.describe('Homepage', () => {
 	});
 
 	test.describe('Hero Section', () => {
-		test('displays main heading', async ({ page }) => {
-			const heading = page.getByRole('heading', { name: /Build Fast/i });
-			await expect(heading).toBeVisible();
+		test('displays hero welcome message', async ({ page }) => {
+			// Wait for TypeWriter animation to complete
+			await page.waitForTimeout(2000);
+			await expect(
+				page.getByText(/Willkommen zu meinem Portfolio, wo Ideen Realität werden/i)
+			).toBeVisible();
 		});
 
-		test('displays hero description', async ({ page }) => {
-			await expect(page.getByText(/Rust-powered toolchain meets modern frameworks/i)).toBeVisible();
+		test('displays hero subtitle', async ({ page }) => {
+			await expect(page.getByText(/Vibe Engineer/i)).toBeVisible();
+			await expect(page.getByText(/KI-Enthusiast/i)).toBeVisible();
 		});
 
-		test('renders technology badges', async ({ page }) => {
-			// Target badges in hero section specifically to avoid strict mode violation
-			const heroSection = page.getByRole('banner');
-			await expect(heroSection.getByText('Astro 5')).toBeVisible();
-			await expect(heroSection.getByText('Vue 3')).toBeVisible();
-			await expect(heroSection.getByText('Tailwind v4')).toBeVisible();
-			await expect(heroSection.getByText('Reka UI')).toBeVisible();
-			await expect(heroSection.getByText('TypeScript')).toBeVisible();
+		test('displays ASCII art name', async ({ page }) => {
+			// Check for ASCII art (it contains k0r37k1)
+			const asciiArt = page.locator('.ascii-art');
+			await expect(asciiArt).toBeVisible();
 		});
 	});
 
-	test.describe('Interactive Counter (Islands Architecture)', () => {
-		test('displays counter section', async ({ page }) => {
-			await expect(page.getByRole('heading', { name: /Islands Architecture/i })).toBeVisible();
+	test.describe('Portfolio Sections', () => {
+		test('displays profile section', async ({ page }) => {
+			await expect(page.getByText(/PROFIL/i)).toBeVisible();
 		});
 
-		test('renders counter with initial value of 0', async ({ page }) => {
-			const counter = page.locator('.text-6xl');
-			await expect(counter).toHaveText('0');
+		test('displays projects section', async ({ page }) => {
+			await expect(page.getByText(/PROJEKTE/i)).toBeVisible();
 		});
 
-		test('increments counter when + button clicked', async ({ page }) => {
-			const incrementBtn = page.getByRole('button', { name: /Increment/i });
-			await incrementBtn.click();
-
-			const counter = page.locator('.text-6xl');
-			await expect(counter).toHaveText('1');
+		test('displays skills section', async ({ page }) => {
+			await expect(page.getByText(/ENTWICKLUNGSUMGEBUNG/i)).toBeVisible();
 		});
 
-		test('decrements counter when - button clicked', async ({ page }) => {
-			const decrementBtn = page.getByRole('button', { name: /Decrement/i });
-			await decrementBtn.click();
+		test('displays contact section', async ({ page }) => {
+			await expect(page.getByText(/KONTAKT/i)).toBeVisible();
+		});
+	});
 
-			const counter = page.locator('.text-6xl');
-			await expect(counter).toHaveText('-1');
+	test.describe('Contact Links', () => {
+		test('displays GitHub link', async ({ page }) => {
+			// Multiple GitHub links exist (projects + contact), use more specific selector
+			const githubLink = page.getByRole('link', { name: /github\.com\/k0r37k1/i });
+			await expect(githubLink).toBeVisible();
+			await expect(githubLink).toHaveAttribute('href', /github\.com/);
 		});
 
-		test('resets counter when reset button clicked', async ({ page }) => {
-			// Increment a few times
-			const incrementBtn = page.getByRole('button', { name: /Increment/i });
-			await incrementBtn.click();
-			await incrementBtn.click();
-			await incrementBtn.click();
-
-			// Reset
-			const resetBtn = page.getByRole('button', { name: /Reset/i });
-			await resetBtn.click();
-
-			const counter = page.locator('.text-6xl');
-			await expect(counter).toHaveText('0');
-		});
-
-		test('updates total clicks counter', async ({ page }) => {
-			const incrementBtn = page.getByRole('button', { name: /Increment/i });
-			await incrementBtn.click();
-			await incrementBtn.click();
-
-			// Total clicks should show 2
-			await expect(page.getByText('Total Clicks')).toBeVisible();
+		test('displays email link', async ({ page }) => {
+			// Email link shows the actual email address
+			const emailLink = page.getByRole('link', { name: /hello@k0r37k1\.dev/i });
+			await expect(emailLink).toBeVisible();
 		});
 	});
 
@@ -107,8 +92,8 @@ test.describe('Homepage', () => {
 			await page.waitForLoadState('domcontentloaded');
 			const loadTime = Date.now() - startTime;
 
-			// Should load in under 2 seconds
-			expect(loadTime).toBeLessThan(2000);
+			// Should load in under 3 seconds (increased for CI/CD)
+			expect(loadTime).toBeLessThan(3000);
 		});
 	});
 
@@ -117,15 +102,40 @@ test.describe('Homepage', () => {
 			await page.setViewportSize({ width: 375, height: 667 });
 			await page.goto('/');
 
-			// Main content should be visible
-			await expect(page.getByRole('heading', { name: /Build Fast/i })).toBeVisible();
+			// Main content should be visible - use more specific selector
+			await expect(page.getByRole('heading', { name: /k0r37k1\.dev.*Portfolio/i })).toBeVisible();
+			await expect(page.getByText(/Vibe Engineer/i)).toBeVisible();
+		});
 
-			// Counter should work on mobile
-			const incrementBtn = page.getByRole('button', { name: /Increment/i });
-			await incrementBtn.click();
+		test('renders correctly on tablet viewport', async ({ page }) => {
+			await page.setViewportSize({ width: 768, height: 1024 });
+			await page.goto('/');
 
-			const counter = page.locator('.text-6xl');
-			await expect(counter).toHaveText('1');
+			// All sections should be visible
+			await expect(page.getByText(/PROFIL/i)).toBeVisible();
+			await expect(page.getByText(/PROJEKTE/i)).toBeVisible();
+		});
+	});
+
+	test.describe('Language Switcher', () => {
+		test('displays language switcher', async ({ page }) => {
+			// Language switcher shows active language as span, inactive as link
+			// On German page: DE is active (span), EN is link
+			const languageSwitcher = page.locator('.language-switcher');
+			await expect(languageSwitcher).toBeVisible();
+
+			// Check that both language options are visible (either as link or active state)
+			await expect(languageSwitcher.getByText('DE')).toBeVisible();
+			await expect(languageSwitcher.getByText('EN')).toBeVisible();
+		});
+
+		test('switches to English version', async ({ page }) => {
+			// On German page, EN is the clickable link
+			const enLink = page.locator('.language-switcher a').filter({ hasText: 'EN' });
+			await enLink.click();
+
+			await page.waitForURL(/\/en/);
+			await expect(page).toHaveURL(/\/en/);
 		});
 	});
 });

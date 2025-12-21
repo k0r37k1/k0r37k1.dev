@@ -64,6 +64,7 @@ body {
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	/* Phosphor glow removed from body text for better readability */
 }
 
 /* Terminal Window Container */
@@ -162,6 +163,10 @@ body {
 	font-family: var(--font-mono); /* IBM Plex Mono for better readability */
 	font-size: 1rem;
 	letter-spacing: 0.02em;
+	/* Subtle green phosphor glow */
+	text-shadow:
+		0 0 3px rgb(68 213 68 / 35%),
+		0 0 6px rgb(68 213 68 / 20%);
 }
 
 .terminal-cursor {
@@ -170,6 +175,10 @@ body {
 	margin-left: 0;
 	color: var(--color-terminal-success);
 	animation: cursor-blink 1s step-end infinite;
+	/* Subtle green phosphor glow */
+	text-shadow:
+		0 0 3px rgb(68 213 68 / 40%),
+		0 0 6px rgb(68 213 68 / 25%);
 }
 
 @keyframes cursor-blink {
@@ -220,10 +229,18 @@ body {
 .prompt {
 	color: var(--color-prompt);
 	font-weight: 600;
+	/* Subtle green phosphor glow */
+	text-shadow:
+		0 0 2px rgb(68 213 68 / 30%),
+		0 0 4px rgb(68 213 68 / 18%);
 }
 
 .command {
 	color: var(--color-command);
+	/* Subtle blue phosphor glow */
+	text-shadow:
+		0 0 2px rgb(85 85 255 / 30%),
+		0 0 4px rgb(85 85 255 / 18%);
 }
 
 /* ASCII Art */
@@ -233,6 +250,10 @@ body {
 	white-space: pre;
 	color: var(--color-terminal-primary);
 	margin: 1rem 0;
+	/* Enhanced phosphor glow for cyan text */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 35%),
+		0 0 6px rgb(0 217 255 / 22%);
 }
 
 .ascii-icon {
@@ -242,6 +263,10 @@ body {
 	color: var(--color-highlight);
 	font-size: 0.875rem;
 	margin: 1rem 0;
+	/* Magenta phosphor glow */
+	text-shadow:
+		0 0 4px rgb(255 0 255 / 40%),
+		0 0 8px rgb(255 0 255 / 25%);
 }
 
 /* Section Styling */
@@ -259,11 +284,16 @@ body {
 	font-size: 1.5rem;
 	font-weight: 700;
 	margin-bottom: 1rem;
+	/* Subtle white phosphor glow for headings */
+	text-shadow:
+		0 0 3px rgb(255 255 255 / 30%),
+		0 0 6px rgb(255 255 255 / 18%);
 }
 
 .section-content p {
 	color: var(--color-terminal-text-dim);
 	margin-bottom: 0.75rem;
+	/* Phosphor glow removed for better readability */
 }
 
 /* Links */
@@ -272,22 +302,37 @@ body {
 	text-decoration: none;
 	border-bottom: 2px solid transparent;
 	transition: all 0.2s;
+	/* Subtle cyan phosphor glow */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 30%),
+		0 0 6px rgb(0 217 255 / 18%);
 }
 
 .terminal-link:hover {
 	color: var(--color-accent-orange);
 	border-bottom-color: var(--color-accent-orange);
-	text-shadow: 0 0 8px rgb(255 102 0 / 40%);
+	/* Enhanced orange phosphor glow on hover */
+	text-shadow:
+		0 0 4px rgb(255 102 0 / 50%),
+		0 0 8px rgb(255 102 0 / 30%);
 }
 
 .terminal-link:hover::before {
 	content: '[ ';
 	color: var(--color-terminal-primary);
+	/* Cyan phosphor glow */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 40%),
+		0 0 6px rgb(0 217 255 / 40%);
 }
 
 .terminal-link:hover::after {
 	content: ' ]';
 	color: var(--color-terminal-primary);
+	/* Cyan phosphor glow */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 40%),
+		0 0 6px rgb(0 217 255 / 40%);
 }
 
 /* Blinking Cursor */
@@ -298,6 +343,10 @@ body {
 	background: var(--color-terminal-primary);
 	margin-left: 0.1em;
 	animation: blink 1s step-end infinite;
+	/* Subtle cyan phosphor glow */
+	box-shadow:
+		0 0 4px rgb(0 217 255 / 40%),
+		0 0 8px rgb(0 217 255 / 40%);
 }
 
 @keyframes blink {
@@ -383,6 +432,7 @@ body {
 	transition: all 0.2s ease;
 	will-change: transform;
 	transform: translateZ(0);
+	/* Phosphor glow removed for better readability */
 }
 
 .project-card:hover {
@@ -396,11 +446,19 @@ body {
 .project-name::before {
 	content: '[ ';
 	color: var(--color-terminal-primary);
+	/* Cyan phosphor glow */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 40%),
+		0 0 6px rgb(0 217 255 / 40%);
 }
 
 .project-name::after {
 	content: ' ]';
 	color: var(--color-terminal-primary);
+	/* Cyan phosphor glow */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 40%),
+		0 0 6px rgb(0 217 255 / 40%);
 }
 
 /* Skills List */
@@ -423,6 +481,7 @@ body {
 	transition: all 0.15s;
 	will-change: transform;
 	transform: translateZ(0);
+	/* Phosphor glow removed for better readability */
 }
 
 .skill-tag:hover {
@@ -431,6 +490,8 @@ body {
 	box-shadow: 3px 3px 0 rgb(0 217 255 / 30%);
 	background: var(--color-terminal-primary);
 	color: var(--color-terminal-bg);
+	/* Remove glow on hover (dark background) */
+	text-shadow: none;
 }
 
 /* Visually Hidden - Screen Reader Only Content */
@@ -582,12 +643,20 @@ a:focus-visible,
 	animation: chromatic-aberration 4s ease-in-out infinite;
 }
 
+/* Strong phosphor glow utility - for special emphasis */
 .crt-phosphor-glow {
 	text-shadow:
 		0 0 5px currentColor,
 		0 0 10px currentColor,
 		0 0 15px rgb(0 217 255 / 50%);
 	animation: phosphor-pulse 2s ease-in-out infinite;
+}
+
+/* Subtle phosphor glow utility - for general use */
+.crt-phosphor-subtle {
+	text-shadow:
+		0 0 3px rgb(255 255 255 / 12%),
+		0 0 6px rgb(255 255 255 / 6%);
 }
 
 @keyframes phosphor-pulse {
@@ -766,11 +835,19 @@ a:focus-visible,
 .terminal-box-title::before {
 	content: '[ ';
 	color: var(--color-accent-orange);
+	/* Orange phosphor glow */
+	text-shadow:
+		0 0 3px rgb(255 102 0 / 40%),
+		0 0 6px rgb(255 102 0 / 25%);
 }
 
 .terminal-box-title::after {
 	content: ' ]';
 	color: var(--color-accent-orange);
+	/* Orange phosphor glow */
+	text-shadow:
+		0 0 3px rgb(255 102 0 / 40%),
+		0 0 6px rgb(255 102 0 / 25%);
 }
 
 /* NFO Border Components */
@@ -792,6 +869,10 @@ a:focus-visible,
 	line-height: 1.4;
 	font-weight: 600;
 	border-bottom: 2px solid var(--color-terminal-primary);
+	/* Cyan phosphor glow */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 25%),
+		0 0 6px rgb(0 217 255 / 8%);
 }
 
 .nfo-border-bottom {
@@ -815,12 +896,20 @@ a:focus-visible,
 	text-align: center;
 	font-weight: 600;
 	letter-spacing: 0.1em;
+	/* Subtle phosphor glow */
+	text-shadow:
+		0 0 3px rgb(140 140 140 / 30%),
+		0 0 6px rgb(140 140 140 / 30%);
 }
 
 .divider-icon {
 	color: var(--color-accent-orange);
 	font-weight: bold;
 	font-size: 1.2em;
+	/* Orange phosphor glow */
+	text-shadow:
+		0 0 4px rgb(255 102 0 / 40%),
+		0 0 8px rgb(255 102 0 / 25%);
 }
 
 /* Section with Corner Ornaments */
@@ -861,6 +950,10 @@ a:focus-visible,
 	padding: 0 1rem;
 	z-index: 5;
 	animation: crt-flicker 3s steps(1) infinite;
+	/* Orange phosphor glow for section titles */
+	text-shadow:
+		0 0 4px rgb(255 102 0 / 40%),
+		0 0 8px rgb(255 102 0 / 25%);
 }
 
 /* ASCII Decorations (global for all sections) */
@@ -878,14 +971,20 @@ a:focus-visible,
 	font-size: 0.875rem;
 	opacity: 0.6;
 	color: var(--color-accent-orange);
-	text-shadow: 0 0 10px rgb(255 102 0 / 40%);
+	/* Subtle phosphor glow for corners */
+	text-shadow:
+		0 0 4px rgb(255 102 0 / 40%),
+		0 0 8px rgb(255 102 0 / 25%);
 	transition: all 0.3s ease;
 	animation: crt-flicker 3s steps(1) infinite;
 }
 
 .section-with-corners:hover .corner {
 	opacity: 1;
-	text-shadow: 0 0 15px rgb(255 102 0 / 60%);
+	/* Enhanced phosphor glow on hover */
+	text-shadow:
+		0 0 6px rgb(255 102 0 / 40%),
+		0 0 12px rgb(255 102 0 / 40%);
 }
 
 .top-left {
@@ -911,54 +1010,86 @@ a:focus-visible,
 /* Different colors per section - Titles and Corners */
 .terminal-content .section-with-corners:nth-child(2) .section-title-center {
 	color: var(--color-accent-purple);
+	/* Purple phosphor glow */
+	text-shadow:
+		0 0 4px rgb(191 128 255 / 40%),
+		0 0 8px rgb(191 128 255 / 25%);
 }
 
 .terminal-content .section-with-corners:nth-child(2) .corner {
 	color: var(--color-accent-purple); /* Purple for About */
-	text-shadow: 0 0 10px rgb(157 0 255 / 40%);
+	text-shadow:
+		0 0 4px rgb(191 128 255 / 40%),
+		0 0 8px rgb(191 128 255 / 25%);
 }
 
 .terminal-content .section-with-corners:nth-child(2):hover .corner {
-	text-shadow: 0 0 15px rgb(157 0 255 / 60%);
+	text-shadow:
+		0 0 6px rgb(191 128 255 / 40%),
+		0 0 12px rgb(191 128 255 / 40%);
 }
 
 .terminal-content .section-with-corners:nth-child(3) .section-title-center {
 	color: var(--color-accent-orange);
+	/* Orange phosphor glow */
+	text-shadow:
+		0 0 4px rgb(255 102 0 / 40%),
+		0 0 8px rgb(255 102 0 / 25%);
 }
 
 .terminal-content .section-with-corners:nth-child(3) .corner {
 	color: var(--color-accent-orange); /* Orange for Projects */
-	text-shadow: 0 0 10px rgb(255 102 0 / 40%);
+	text-shadow:
+		0 0 4px rgb(255 102 0 / 40%),
+		0 0 8px rgb(255 102 0 / 25%);
 }
 
 .terminal-content .section-with-corners:nth-child(3):hover .corner {
-	text-shadow: 0 0 15px rgb(255 102 0 / 60%);
+	text-shadow:
+		0 0 6px rgb(255 102 0 / 40%),
+		0 0 12px rgb(255 102 0 / 40%);
 }
 
 .terminal-content .section-with-corners:nth-child(4) .section-title-center {
 	color: var(--color-terminal-error);
+	/* Red phosphor glow */
+	text-shadow:
+		0 0 4px rgb(255 85 85 / 40%),
+		0 0 8px rgb(255 85 85 / 25%);
 }
 
 .terminal-content .section-with-corners:nth-child(4) .corner {
 	color: var(--color-terminal-error); /* Red for Skills */
-	text-shadow: 0 0 10px rgb(255 85 85 / 40%);
+	text-shadow:
+		0 0 4px rgb(255 85 85 / 40%),
+		0 0 8px rgb(255 85 85 / 25%);
 }
 
 .terminal-content .section-with-corners:nth-child(4):hover .corner {
-	text-shadow: 0 0 15px rgb(255 85 85 / 60%);
+	text-shadow:
+		0 0 6px rgb(255 85 85 / 40%),
+		0 0 12px rgb(255 85 85 / 40%);
 }
 
 .terminal-content .section-with-corners:nth-child(5) .section-title-center {
 	color: var(--color-terminal-primary);
+	/* Cyan phosphor glow */
+	text-shadow:
+		0 0 4px rgb(0 217 255 / 40%),
+		0 0 8px rgb(0 217 255 / 25%);
 }
 
 .terminal-content .section-with-corners:nth-child(5) .corner {
 	color: var(--color-terminal-primary); /* Cyan for Contact */
-	text-shadow: 0 0 10px rgb(0 217 255 / 40%);
+	text-shadow:
+		0 0 4px rgb(0 217 255 / 40%),
+		0 0 8px rgb(0 217 255 / 25%);
 }
 
 .terminal-content .section-with-corners:nth-child(5):hover .corner {
-	text-shadow: 0 0 15px rgb(0 217 255 / 60%);
+	text-shadow:
+		0 0 6px rgb(0 217 255 / 40%),
+		0 0 12px rgb(0 217 255 / 40%);
 }
 
 .section-divider {
@@ -973,6 +1104,10 @@ a:focus-visible,
 	margin-bottom: 0.25rem;
 	text-transform: capitalize;
 	letter-spacing: 0.02em;
+	/* Cyan phosphor glow */
+	text-shadow:
+		0 0 4px rgb(0 217 255 / 35%),
+		0 0 8px rgb(0 217 255 / 22%);
 }
 
 .section-underline {
@@ -980,6 +1115,10 @@ a:focus-visible,
 	color: var(--color-terminal-text-muted);
 	font-size: 0.875rem;
 	letter-spacing: 0.1em;
+	/* Subtle phosphor glow */
+	text-shadow:
+		0 0 3px rgb(140 140 140 / 30%),
+		0 0 6px rgb(140 140 140 / 18%);
 }
 
 @media (width <= 640px) {
@@ -1022,7 +1161,11 @@ a:focus-visible,
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	animation: shimmer-enhanced 4s linear infinite;
-	filter: drop-shadow(0 0 10px rgb(0 217 255 / 30%));
+	/* Enhanced multi-color phosphor glow */
+	filter:
+		drop-shadow(0 0 4px rgb(0 217 255 / 30%))
+		drop-shadow(0 0 8px rgb(191 128 255 / 20%))
+		drop-shadow(0 0 12px rgb(255 0 255 / 15%));
 }
 
 @keyframes shimmer {
@@ -1093,7 +1236,10 @@ a:focus-visible,
 	font-size: 1.25rem;
 	letter-spacing: 0.05em;
 	margin-bottom: 0.5rem;
-	text-shadow: 0 0 8px rgb(255 102 0 / 40%);
+	/* Orange phosphor glow */
+	text-shadow:
+		0 0 4px rgb(255 102 0 / 40%),
+		0 0 8px rgb(255 102 0 / 25%);
 }
 
 .legal-content .sub-label {
@@ -1101,6 +1247,10 @@ a:focus-visible,
 	font-size: 0.875rem;
 	margin-bottom: 0.25rem;
 	font-weight: 600;
+	/* Magenta phosphor glow */
+	text-shadow:
+		0 0 3px rgb(255 0 255 / 35%),
+		0 0 6px rgb(255 0 255 / 20%);
 }
 
 .legal-content .nfo-text {
@@ -1108,6 +1258,7 @@ a:focus-visible,
 	line-height: 1.6;
 	margin-bottom: 0.75rem;
 	font-size: 0.875rem;
+	/* Phosphor glow removed for better readability */
 }
 
 /* Legal Navigation */
@@ -1122,12 +1273,20 @@ a:focus-visible,
 
 .legal-nav .nav-link {
 	font-size: 0.875rem;
+	/* Subtle cyan phosphor glow */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 22%),
+		0 0 6px rgb(0 217 255 / 6%);
 }
 
 .legal-nav .nav-separator {
 	color: var(--color-terminal-text-muted);
 	opacity: 0.5;
 	font-size: 0.875rem;
+	/* Subtle phosphor glow */
+	text-shadow:
+		0 0 3px rgb(140 140 140 / 30%),
+		0 0 6px rgb(140 140 140 / 30%);
 }
 
 /* Responsive Styles */
@@ -1194,6 +1353,11 @@ a:focus-visible,
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	margin: 0;
+
+	/* Magenta phosphor glow */
+	text-shadow:
+		0 0 3px rgb(255 0 255 / 35%),
+		0 0 6px rgb(255 0 255 / 20%);
 }
 
 /* Body */
@@ -1208,6 +1372,7 @@ a:focus-visible,
 .cc-description {
 	margin: 0;
 	font-size: 1rem;
+	/* Phosphor glow removed for better readability */
 }
 
 /* Footer */
@@ -1234,6 +1399,7 @@ a:focus-visible,
 	cursor: pointer;
 	letter-spacing: 0.02em;
 	transition: all 0.2s;
+	/* Phosphor glow removed for better readability */
 }
 
 .cc-btn:hover {
@@ -1241,6 +1407,8 @@ a:focus-visible,
 	color: var(--color-terminal-bg);
 	border-color: var(--color-terminal-primary);
 	box-shadow: 4px 4px 0 rgb(0 217 255 / 40%);
+	/* Remove glow on hover (dark background) */
+	text-shadow: none;
 }
 
 /* Mobile */

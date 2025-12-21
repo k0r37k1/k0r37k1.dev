@@ -50,50 +50,32 @@ test.describe('Dynamic Content Accessibility', () => {
 	 * Wait for specific selectors before testing
 	 */
 	test('conditionally rendered content is accessible', async ({ page, makeAxeBuilder }) => {
-		await page.goto('/demo');
+		await page.goto('/');
 		await page.waitForLoadState('networkidle');
 
-		// Look for accordions in main content (exclude header navigation)
-		const toggleButtons = page.locator('main [aria-expanded]');
-		const count = await toggleButtons.count();
-
-		if (count > 0) {
-			// Test collapsed state
-			const collapsedResults = await makeAxeBuilder().analyze();
-			expect(collapsedResults.violations).toEqual([]);
-
-			// Expand first accordion
-			await toggleButtons.first().click();
-			await page.waitForTimeout(300); // Wait for animation
-
-			// Test expanded state
-			const expandedResults = await makeAxeBuilder().analyze();
-			expect(expandedResults.violations).toEqual([]);
-		} else {
-			test.skip();
-		}
+		// Test main page content
+		const results = await makeAxeBuilder().analyze();
+		expect(results.violations).toEqual([]);
 	});
 
-	test('tabs maintain accessibility when switching', async ({ page, makeAxeBuilder }) => {
-		await page.goto('/demo');
+	test('language switching maintains accessibility', async ({ page, makeAxeBuilder }) => {
+		await page.goto('/');
 		await page.waitForLoadState('networkidle');
 
-		// Look for tab panels
-		const tabs = page.locator('[role="tab"]');
-		const tabCount = await tabs.count();
+		// Test German version
+		const deResults = await makeAxeBuilder().analyze();
+		expect(deResults.violations).toEqual([]);
 
-		if (tabCount > 0) {
-			// Test all tabs
-			for (let i = 0; i < Math.min(tabCount, 3); i++) {
-				await tabs.nth(i).click();
-				await page.waitForTimeout(200);
+		// On German page, EN is the clickable link
+		const enLink = page.locator('.language-switcher a').filter({ hasText: 'EN' });
+		await enLink.waitFor({ state: 'visible', timeout: 5000 });
+		await enLink.click();
+		await page.waitForURL(/\/en/, { timeout: 10000 });
+		await page.waitForLoadState('networkidle');
 
-				const results = await makeAxeBuilder().analyze();
-				expect(results.violations).toEqual([]);
-			}
-		} else {
-			test.skip();
-		}
+		// Test English version
+		const enResults = await makeAxeBuilder().analyze();
+		expect(enResults.violations).toEqual([]);
 	});
 });
 
@@ -102,28 +84,17 @@ test.describe('Component State Testing', () => {
 	 * Best Practice: Test all states of interactive components
 	 * Source: Advanced Patterns - Component State Testing
 	 */
-	test('buttons maintain accessibility in all states', async ({ page, makeAxeBuilder }) => {
+	test('language switcher maintains accessibility', async ({ page, makeAxeBuilder }) => {
 		await page.goto('/');
+		await page.waitForLoadState('networkidle');
 
-		const button = page.locator('button[aria-label="Increment"]');
-		await button.waitFor();
+		// Test language switcher component
+		const languageSwitcher = page.locator('.language-switcher');
+		await languageSwitcher.waitFor();
 
-		// Test enabled state
-		const enabledResults = await makeAxeBuilder()
-			.include('button[aria-label="Increment"]')
-			.analyze();
+		const results = await makeAxeBuilder().include('.language-switcher').analyze();
 
-		expect(enabledResults.violations).toEqual([]);
-
-		// Click and test after interaction
-		await button.click();
-		await page.waitForTimeout(100);
-
-		const afterClickResults = await makeAxeBuilder()
-			.include('button[aria-label="Increment"]')
-			.analyze();
-
-		expect(afterClickResults.violations).toEqual([]);
+		expect(results.violations).toEqual([]);
 	});
 });
 
