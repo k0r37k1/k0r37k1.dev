@@ -100,7 +100,14 @@ export default defineConfig({
                     chunkFileNames: 'assets/js/[name].[hash].js',
                     assetFileNames: (assetInfo) => {
                         if (assetInfo.name?.endsWith('.css')) {
-                            return 'assets/css/[name].[hash][extname]';
+                            // Custom CSS naming: index → style, imprint → style2
+                            let cssName = assetInfo.name.replace('.css', '');
+                            if (cssName === 'index') {
+                                cssName = 'style';
+                            } else if (cssName === 'imprint') {
+                                cssName = 'style2';
+                            }
+                            return `assets/css/${cssName}.[hash][extname]`;
                         }
                         return 'assets/[name].[hash][extname]';
                     },
