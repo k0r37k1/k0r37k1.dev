@@ -106,7 +106,7 @@ export default {
 	contact: {
 		title: 'Lass uns zusammenarbeiten',
 		description:
-			'Du hast ein Projekt im Kopf? Ich bin immer offen für neue Herausforderungen und spannende Kooperationen.',
+			'Du hast ein Projekt im Kopf? Ich bin immer offen für neue Herausforderungen und spannende Kooperationen. Schreib mir auf Social Media oder lass eine Spende da, wenn dir meine Arbeit gefällt.',
 		email: 'E-Mail',
 		github: 'GitHub',
 		linkedin: 'LinkedIn',

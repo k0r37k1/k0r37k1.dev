@@ -106,7 +106,7 @@ export default {
 	contact: {
 		title: "Let's Work Together",
 		description:
-			"Have a project in mind? I'm always open to new challenges and interesting collaborations.",
+			"Have a project in mind? I'm always open to new challenges and interesting collaborations. Feel free to reach out on social media or leave a donation if you appreciate my work.",
 		email: 'Email',
 		github: 'GitHub',
 		linkedin: 'LinkedIn',

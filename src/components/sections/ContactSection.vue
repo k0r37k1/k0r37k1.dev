@@ -32,6 +32,12 @@ const contacts = [
 		link: 'https://x.com/k0r37k1',
 		icon: 'simple-icons:x',
 	},
+	{
+		label: 'Buy Me a Coffee',
+		value: 'buymeacoffee.com/k0r37k1',
+		link: 'https://buymeacoffee.com/k0r37k1',
+		icon: 'simple-icons:buymeacoffee',
+	},
 ];
 </script>
 
