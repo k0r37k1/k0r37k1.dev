@@ -16,7 +16,7 @@ import { join } from 'node:path';
 import { glob } from 'glob';
 
 const DIST_DIR = 'dist';
-const ASSETS_DIR = join(DIST_DIR, 'assets');
+const CSS_DIR = join(DIST_DIR, 'assets', 'css');
 
 async function findReferencedCSS() {
 	// Find all HTML files
@@ -30,8 +30,8 @@ async function findReferencedCSS() {
 		const cssMatches = content.matchAll(/href="([^"]*\.css)"/g);
 
 		for (const match of cssMatches) {
-			// Convert /assets/foo.css -> foo.css
-			const cssPath = match[1].replace(/^\/assets\//, '');
+			// Convert /assets/css/foo.css -> foo.css
+			const cssPath = match[1].replace(/^\/assets\/css\//, '');
 			referenced.add(cssPath);
 		}
 	}
@@ -41,8 +41,8 @@ async function findReferencedCSS() {
 
 async function cleanup() {
 	try {
-		// Get all CSS files in assets
-		const cssFiles = await readdir(ASSETS_DIR);
+		// Get all CSS files in assets/css
+		const cssFiles = await readdir(CSS_DIR);
 		const allCSS = cssFiles.filter((file) => file.endsWith('.css'));
 
 		// Find which CSS files are actually referenced
@@ -52,7 +52,7 @@ async function cleanup() {
 		let deletedCount = 0;
 		for (const css of allCSS) {
 			if (!referenced.has(css)) {
-				await unlink(join(ASSETS_DIR, css));
+				await unlink(join(CSS_DIR, css));
 				console.log(`🗑️  Deleted orphaned: ${css}`);
 				deletedCount++;
 			}

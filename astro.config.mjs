@@ -95,10 +95,15 @@ export default defineConfig({
                         // Let Vite handle app code splitting
                         return undefined;
                     },
-                    // Optimized naming with hashes for cache busting
-                    entryFileNames: '[name].[hash].js',
-                    chunkFileNames: '[name].[hash].js',
-                    assetFileNames: 'assets/[name].[hash][extname]',
+                    // Organized output structure: assets/css/ and assets/js/
+                    entryFileNames: 'assets/js/[name].[hash].js',
+                    chunkFileNames: 'assets/js/[name].[hash].js',
+                    assetFileNames: (assetInfo) => {
+                        if (assetInfo.name?.endsWith('.css')) {
+                            return 'assets/css/[name].[hash][extname]';
+                        }
+                        return 'assets/[name].[hash][extname]';
+                    },
                 },
             },
         },
