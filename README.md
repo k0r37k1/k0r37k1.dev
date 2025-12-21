@@ -1,15 +1,17 @@
 # k0r37k1.dev
 
-Terminal-style portfolio with 2000s Warez Scene & Y2K aesthetics, built with **Astro 5**, **Vue 3**, and **Tailwind CSS v4**.
+Terminal-style portfolio with 2000s Warez Scene & Y2K aesthetics, built with **Astro 5**, **Vue 3**, and
+**Tailwind CSS v4**.
 
 ## Design Philosophy
 
-**Neo-Brutalism meets Underground Scene**
+### Neo-Brutalism meets Underground Scene
 
 - 70% Modern (Vue 3, TypeScript, Motion-v, Tailwind v4)
 - 30% Scene Elements (NFO borders, ASCII art, retro CRT effects)
 
-This portfolio combines contemporary web technologies with authentic 2000s underground aesthetics—hard shadows, flat colors, Scene NFO-style borders, and subtle digital grit.
+This portfolio combines contemporary web technologies with authentic 2000s underground aesthetics—hard
+shadows, flat colors, Scene NFO-style borders, and subtle digital grit.
 
 ## Tech Stack
 
@@ -24,7 +26,9 @@ This portfolio combines contemporary web technologies with authentic 2000s under
 - **UI Libraries:** Motion-v, Reka UI, Astro Icon
 - **Code Quality:** Husky, lint-staged, commitlint, Prettier, stylelint
 
-> **Note:** This project manually implements the philosophy behind [Vite+](https://viteplus.dev/) - "The Unified Toolchain for the Web". Vite+ (currently in development) will eventually provide all of this in a single dependency.
+> **Note:** This project manually implements the philosophy behind [Vite+](https://viteplus.dev/) - "The
+> Unified Toolchain for the Web". Vite+ (currently in development) will eventually provide all of this in
+> a single dependency.
 
 ## 🚀 Project Structure
 
