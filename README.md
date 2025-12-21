@@ -158,6 +158,30 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`
 
 Example: `feat(terminal): add glitch effect on hover`
 
+### Git Hooks (automated quality checks)
+
+This project uses Husky to enforce code quality **before commits and pushes**:
+
+**Pre-commit Hook** (runs on `git commit`)
+- Auto-fixes linting errors (OxLint, Stylelint, Markdownlint)
+- Auto-formats code (Prettier)
+- Runs spell check on changed files
+- Only processes **staged files** (fast!)
+
+**Pre-push Hook** (runs on `git push`)
+- Runs all linters (`npm run lint:all`)
+- Checks formatting (`npm run format:check`)
+- Runs unit tests (`npm test`)
+- Validates build (`npm run build`)
+
+**Why?** These hooks catch issues **locally before CI/CD**, saving time and preventing failed builds.
+
+**Bypass (not recommended):**
+```bash
+git commit --no-verify  # Skip pre-commit
+git push --no-verify    # Skip pre-push
+```
+
 ## 📚 Documentation
 
 - `.claude/CLAUDE.md` - Claude Code instructions

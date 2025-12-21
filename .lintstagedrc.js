@@ -33,6 +33,7 @@ export default {
 	'*.md': [
 		'markdownlint-cli2 --fix', // Fix Markdown issues
 		'prettier --write', // Format Markdown
+		'cspell lint --no-progress', // Spell check (non-blocking)
 	],
 
 	// JSON files
