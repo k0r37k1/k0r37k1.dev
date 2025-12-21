@@ -136,8 +136,8 @@ onUnmounted(() => {
 }
 
 .go-to-top:hover {
-	color: var(--color-accent-orange);
-	text-shadow: 0 0 10px rgb(255 102 0 / 50%);
+	color: #00ff9f;
+	text-shadow: 0 0 10px rgb(0 255 159 / 50%);
 }
 
 .go-to-top:focus-visible {
@@ -187,13 +187,13 @@ onUnmounted(() => {
 }
 
 .go-to-top:hover .arrow {
-	color: #fff;
+	color: #00ff9f;
 	transform: scale(2) translateY(-2px);
 	text-shadow:
-		0 0 2px #fff,
-		0 0 4px #fff,
-		0 0 12px rgb(255 255 255 / 100%),
-		0 0 20px rgb(0 217 255 / 80%);
+		0 0 2px #00ff9f,
+		0 0 4px #00ff9f,
+		0 0 12px rgb(0 255 159 / 100%),
+		0 0 20px rgb(0 255 159 / 80%);
 	filter: drop-shadow(0 0 4px currentColor);
 }
 
