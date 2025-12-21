@@ -25,7 +25,14 @@ npm test -- --run || {
 	exit 1
 }
 
-# 4. Build check (medium speed)
+# 4. Run accessibility tests (medium speed)
+echo "\n♿ Running accessibility tests..."
+npm run test:a11y || {
+	echo "❌ Accessibility tests failed! Fix a11y issues before pushing."
+	exit 1
+}
+
+# 5. Build check (medium speed)
 echo "\n🏗️  Running build check..."
 npm run build || {
 	echo "❌ Build failed! Fix build errors before pushing."

@@ -114,6 +114,13 @@ JS
 TS
 mcr
 
+# Core Web Vitals
+LCP
+FID
+CLS
+INP
+TTFB
+
 # AI Tools
 claude
 Claude
