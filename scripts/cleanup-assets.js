@@ -1,14 +1,11 @@
 #!/usr/bin/env node
 /**
- * Cleanup orphaned asset files after Astro build
+ * Intelligent cleanup of orphaned asset files after Astro build
  *
- * Problem: Astro/Vite generates assets (CSS/JS) through multiple paths, creating
- * orphaned files that are reported in build output but never referenced in HTML.
- *
- * This script:
- * 1. Scans all HTML files for CSS and JS references
- * 2. Finds all CSS/JS files in dist/assets
- * 3. Deletes files that aren't referenced by any HTML
+ * Strategy:
+ * 1. CSS: Delete files not referenced in any HTML
+ * 2. JS: Delete server-side chunks (imports from "astro/server")
+ * 3. JS: Keep all client-side chunks (referenced in HTML or imported by them)
  */
 
 import { readdir, readFile, unlink } from 'node:fs/promises';
@@ -19,26 +16,47 @@ const DIST_DIR = 'dist';
 const CSS_DIR = join(DIST_DIR, 'assets', 'css');
 const JS_DIR = join(DIST_DIR, 'assets', 'js');
 
-async function findReferencedAssets() {
-	// Find all HTML files
+/**
+ * Find all CSS files referenced in HTML
+ */
+async function findReferencedCSS() {
 	const htmlFiles = await glob(`${DIST_DIR}/**/*.html`);
-
 	const referencedCSS = new Set();
-	const referencedJS = new Set();
 
-	// Scan each HTML file for CSS and JS references
 	for (const htmlFile of htmlFiles) {
 		const content = await readFile(htmlFile, 'utf-8');
-
-		// Find CSS references: href="/assets/css/foo.css"
 		const cssMatches = content.matchAll(/href="\/assets\/css\/([^"]+\.css)"/g);
 		for (const match of cssMatches) {
 			referencedCSS.add(match[1]);
 		}
+	}
 
-		// Find JS references in multiple formats:
-		// 1. <script src="/assets/js/foo.js">
-		// 2. component-url="/assets/js/foo.js" (Astro islands)
+	return referencedCSS;
+}
+
+/**
+ * Check if a JS file is a server-side chunk
+ */
+async function isServerChunk(filePath) {
+	try {
+		const content = await readFile(filePath, 'utf-8');
+		// Server chunks import from astro/server
+		return content.includes('astro/server');
+	} catch {
+		return false;
+	}
+}
+
+/**
+ * Find all JS files referenced in HTML (client chunks)
+ */
+async function findReferencedJS() {
+	const htmlFiles = await glob(`${DIST_DIR}/**/*.html`);
+	const referencedJS = new Set();
+
+	for (const htmlFile of htmlFiles) {
+		const content = await readFile(htmlFile, 'utf-8');
+		// Match src, component-url, renderer-url attributes
 		const jsMatches = content.matchAll(
 			/(?:src|component-url|renderer-url)="\/assets\/js\/([^"]+\.js)"/g
 		);
@@ -47,52 +65,103 @@ async function findReferencedAssets() {
 		}
 	}
 
-	return { css: referencedCSS, js: referencedJS };
+	return referencedJS;
+}
+
+/**
+ * Find all JS files imported by referenced JS files (recursive)
+ */
+async function findImportedJS(referencedFiles) {
+	const allReferenced = new Set(referencedFiles);
+	const toProcess = [...referencedFiles];
+	const processed = new Set();
+
+	while (toProcess.length > 0) {
+		const fileName = toProcess.pop();
+		if (processed.has(fileName)) continue;
+		processed.add(fileName);
+
+		try {
+			const filePath = join(JS_DIR, fileName);
+			const content = await readFile(filePath, 'utf-8');
+
+			// Find all relative imports: from "./foo.js" or from"./foo.js"
+			const importMatches = content.matchAll(/from\s*["']\.\/([^"']+\.js)["']/g);
+			for (const match of importMatches) {
+				const importedFile = match[1];
+				if (!allReferenced.has(importedFile)) {
+					allReferenced.add(importedFile);
+					toProcess.push(importedFile);
+				}
+			}
+		} catch {
+			// File might not exist or be readable, skip
+		}
+	}
+
+	return allReferenced;
 }
 
 async function cleanup() {
 	try {
-		// Find which assets are actually referenced
-		const { css: referencedCSS, js: referencedJS } = await findReferencedAssets();
-
 		let totalDeleted = 0;
 
-		// Cleanup CSS files
+		// 1. Cleanup CSS files not referenced in HTML
+		console.log('\n🔍 Analyzing CSS files...');
 		try {
+			const referencedCSS = await findReferencedCSS();
 			const cssFiles = await readdir(CSS_DIR);
 			const allCSS = cssFiles.filter((file) => file.endsWith('.css'));
 
 			for (const css of allCSS) {
 				if (!referencedCSS.has(css)) {
 					await unlink(join(CSS_DIR, css));
-					console.log(`🗑️  Deleted orphaned CSS: ${css}`);
+					console.log(`🗑️  Deleted unreferenced CSS: ${css}`);
 					totalDeleted++;
 				}
 			}
 		} catch (err) {
-			// CSS dir might not exist, skip
+			// CSS dir might not exist
 		}
 
-		// Cleanup JS files
+		// 2. Cleanup JS files
+		console.log('\n🔍 Analyzing JS files...');
 		try {
+			// Find all client-side JS (referenced in HTML)
+			const directlyReferenced = await findReferencedJS();
+			console.log(`   Found ${directlyReferenced.size} directly referenced JS files`);
+
+			// Find all imports recursively
+			const allClientJS = await findImportedJS(directlyReferenced);
+			console.log(`   Found ${allClientJS.size} total client-side JS files (including imports)`);
+
+			// Check all JS files
 			const jsFiles = await readdir(JS_DIR);
 			const allJS = jsFiles.filter((file) => file.endsWith('.js'));
 
 			for (const js of allJS) {
-				if (!referencedJS.has(js)) {
-					await unlink(join(JS_DIR, js));
-					console.log(`🗑️  Deleted orphaned JS: ${js}`);
+				const filePath = join(JS_DIR, js);
+
+				// Skip if it's a client chunk
+				if (allClientJS.has(js)) {
+					continue;
+				}
+
+				// Check if it's a server chunk
+				if (await isServerChunk(filePath)) {
+					await unlink(filePath);
+					console.log(`🗑️  Deleted server-side chunk: ${js}`);
 					totalDeleted++;
 				}
 			}
 		} catch (err) {
-			// JS dir might not exist, skip
+			console.error('❌ JS cleanup failed:', err.message);
 		}
 
 		if (totalDeleted === 0) {
-			console.log('✅ No orphaned asset files found');
+			console.log('\n✅ No orphaned asset files found');
 		} else {
-			console.log(`✅ Cleaned up ${totalDeleted} orphaned asset file(s)`);
+			console.log(`\n✅ Cleaned up ${totalDeleted} orphaned asset file(s)`);
 		}
 	} catch (err) {
 		console.error('❌ Asset cleanup failed:', err.message);
