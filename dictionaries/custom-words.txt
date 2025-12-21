@@ -97,6 +97,9 @@ componentset
 oklch
 OKLCH
 
+# CSS Font Features
+nums
+
 # MCP (Model Context Protocol)
 mcp
 MCP
