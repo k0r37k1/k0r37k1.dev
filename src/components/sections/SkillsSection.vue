@@ -42,6 +42,8 @@ const skills = {
 		{ name: 'Docker', icon: 'simple-icons:docker' },
 		{ name: 'Gradle', icon: 'simple-icons:gradle' },
 		{ name: 'Vite', icon: 'simple-icons:vite' },
+		{ name: 'Node.js', icon: 'simple-icons:nodedotjs' },
+		{ name: 'Bun', icon: 'simple-icons:bun' },
 		{ name: 'VS Code', icon: 'simple-icons:visualstudiocode' },
 		{ name: 'Claude Code', icon: 'simple-icons:anthropic' },
 	],
