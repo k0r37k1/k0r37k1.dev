@@ -22,6 +22,10 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 	<footer class="terminal-footer">
 		<div class="footer-content">
 			<div class="footer-meta">
+				<a :href="lang === 'de' ? '/' : '/en/'" class="logo-link" :aria-label="t.header.title">
+					<img src="/logo/logo.svg" alt="k0r37k1 Logo" class="logo" width="24" height="24" />
+				</a>
+				<span class="separator">•</span>
 				<span>© {{ currentYear }} k0r37k1.dev</span>
 				<span class="separator">•</span>
 				<span>{{ t.footer.madeWith }} <span class="heart">♥</span></span>
@@ -82,6 +86,22 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+}
+
+.logo-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	transition: opacity 0.2s ease;
+}
+
+.logo-link:hover {
+	opacity: 0.85;
+}
+
+.logo {
+	display: block;
 }
 
 .separator {

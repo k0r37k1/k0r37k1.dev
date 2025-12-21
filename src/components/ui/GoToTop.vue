@@ -103,9 +103,11 @@ onUnmounted(() => {
 			:aria-label="t.aria.actions.scrollToTop"
 		>
 			<div class="ascii-frame">
-				<span class="top-border">┌───┐</span>
-				<span class="content">│ ↑ │</span>
-				<span class="bottom-border">└───┘</span>
+				<span class="frame-line">┌─────┐</span>
+				<span class="frame-line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│</span>
+				<span class="arrow-line">│&nbsp;&nbsp;<span class="arrow">↑</span>&nbsp;&nbsp;│</span>
+				<span class="frame-line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│</span>
+				<span class="frame-line">└─────┘</span>
 			</div>
 		</motion.button>
 	</Transition>
@@ -121,7 +123,7 @@ onUnmounted(() => {
 	border: none;
 	cursor: pointer;
 	z-index: 9999;
-	font-family: var(--font-mono);
+	font-family: 'Courier New', 'Consolas', monospace;
 	font-size: 0.875rem;
 	line-height: 1;
 	padding: 0;
@@ -138,6 +140,11 @@ onUnmounted(() => {
 	text-shadow: 0 0 10px rgb(255 102 0 / 50%);
 }
 
+.go-to-top:focus-visible {
+	outline: 3px solid var(--color-accent-orange);
+	outline-offset: 2px;
+}
+
 .ascii-frame {
 	display: flex;
 	flex-direction: column;
@@ -145,21 +152,49 @@ onUnmounted(() => {
 	text-align: left;
 	letter-spacing: 0;
 	font-variant-ligatures: none;
-	font-feature-settings: 'liga' 0;
-	white-space: pre;
+	font-feature-settings:
+		'liga' 0,
+		'calt' 0;
+	line-height: 1;
 }
 
-.top-border,
-.content,
-.bottom-border,
-.spacer {
+.frame-line,
+.arrow-line {
 	display: block;
 	white-space: pre;
-	font-family: 'IBM Plex Mono', 'Courier New', monospace;
+	font-family: 'Courier New', 'Consolas', monospace;
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+	letter-spacing: 0;
 }
 
-.content {
-	font-weight: 600;
+.arrow {
+	font-size: 0.875rem;
+	font-weight: 900;
+	color: var(--color-terminal-primary);
+	text-shadow:
+		0 0 1px var(--color-terminal-primary),
+		0 0 2px var(--color-terminal-primary),
+		0 0 8px rgb(0 217 255 / 90%),
+		0 0 16px rgb(0 217 255 / 60%);
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1;
+	transform: scale(1.8);
+	transform-origin: center center;
+	transition: all 0.3s ease;
+	filter: drop-shadow(0 0 2px currentColor);
+}
+
+.go-to-top:hover .arrow {
+	color: #fff;
+	transform: scale(2) translateY(-2px);
+	text-shadow:
+		0 0 2px #fff,
+		0 0 4px #fff,
+		0 0 12px rgb(255 255 255 / 100%),
+		0 0 20px rgb(0 217 255 / 80%);
+	filter: drop-shadow(0 0 4px currentColor);
 }
 
 /* Vue Transition */

@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
 	<text
 		x="50%"
 		y="50%"
 		dominant-baseline="middle"
 		text-anchor="middle"
 		font-family="'IBM Plex Mono', monospace"
-		font-size="76"
+		font-size="60"
 		font-weight="600"
 		fill="#00ff9f"
-		letter-spacing="-10"
-		transform="translate(-3, 3)"
+		letter-spacing="-8"
+		transform="translate(-2, 2)"
 	>|{</text>
 </svg>
