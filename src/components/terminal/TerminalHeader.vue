@@ -48,6 +48,7 @@ const displayTitle = props.customTitle || t.header.title;
 	opacity: 0.4;
 	font-family: var(--font-mono);
 	margin: 0 0.5rem;
+
 	/* Subtle phosphor glow */
 	text-shadow:
 		0 0 3px rgb(140 140 140 / 30%),

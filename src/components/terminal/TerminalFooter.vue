@@ -68,6 +68,7 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 	font-size: 0.875rem;
 	color: var(--color-terminal-text-dim);
 	flex-wrap: wrap;
+
 	/* Phosphor glow removed for better readability */
 }
 
@@ -96,6 +97,7 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 
 .terminal-link:hover {
 	color: var(--color-accent-orange);
+
 	/* Orange phosphor glow on hover */
 	text-shadow:
 		0 0 4px rgb(255 102 0 / 50%),
@@ -114,6 +116,7 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 
 .heart {
 	color: #f55;
+
 	/* Red phosphor glow */
 	text-shadow:
 		0 0 4px rgb(255 85 85 / 40%),

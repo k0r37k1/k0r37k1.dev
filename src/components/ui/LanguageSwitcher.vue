@@ -70,6 +70,7 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 	color: var(--color-terminal-text-muted);
 	transition: all 0.2s ease;
 	position: relative;
+
 	/* Subtle phosphor glow */
 	text-shadow:
 		0 0 3px rgb(168 168 168 / 30%),
@@ -87,6 +88,7 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 .lang-active .bracket-right {
 	color: var(--color-accent-orange);
 	font-weight: 700;
+
 	/* Orange phosphor glow */
 	text-shadow:
 		0 0 3px rgb(255 102 0 / 40%),
@@ -117,6 +119,7 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 	font-size: 0.875rem;
 	font-weight: 600;
 	padding: 0 0.125rem;
+
 	/* Subtle phosphor glow */
 	text-shadow:
 		0 0 3px rgb(140 140 140 / 30%),
