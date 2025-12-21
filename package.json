@@ -24,7 +24,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/cleanup-css.js",
+    "build": "astro build && node scripts/cleanup-assets.js",
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest",
