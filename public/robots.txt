@@ -1,0 +1,8 @@
+# robots.txt for k0r37k1.dev
+# Allow all crawlers to access all content
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://k0r37k1.dev/sitemap-index.xml

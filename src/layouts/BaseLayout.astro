@@ -45,6 +45,23 @@ const canonicalUrl = lang === 'de' ? `${baseUrl}${currentPath}` : `${baseUrl}/en
 		<link rel="alternate" hreflang="en" href={lang === 'en' ? canonicalUrl : alternateUrl} />
 		<link rel="alternate" hreflang="x-default" href={baseUrl + currentPath} />
 
+		<!-- Open Graph Tags (Facebook, LinkedIn, Discord, WhatsApp) -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={`${baseUrl}/og-image.png`} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content={lang === 'de' ? 'de_DE' : 'en_US'} />
+		<meta property="og:site_name" content="k0r37k1.dev" />
+
+		<!-- Twitter Card Tags (X/Twitter) -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@k0r37k1" />
+		<meta name="twitter:creator" content="@k0r37k1" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={`${baseUrl}/og-image.png`} />
+
 		<!-- Favicons -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
