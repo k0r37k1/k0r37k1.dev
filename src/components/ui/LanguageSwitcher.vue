@@ -91,6 +91,7 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 .lang-link:hover:visited,
 .lang-link:hover:active {
 	color: var(--color-accent-orange);
+
 	/* Orange phosphor glow */
 	text-shadow:
 		0 0 3px rgb(255 102 0 / 40%),
@@ -100,6 +101,7 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 .lang-link:hover .bracket-left,
 .lang-link:hover .bracket-right {
 	color: var(--color-terminal-primary);
+
 	/* Cyan phosphor glow */
 	text-shadow:
 		0 0 3px rgb(0 217 255 / 40%),
