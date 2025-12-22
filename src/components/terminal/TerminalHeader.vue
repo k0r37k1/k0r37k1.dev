@@ -22,9 +22,6 @@ const displayTitle = props.customTitle || t.header.title;
 
 <template>
 	<header class="terminal-header">
-		<a :href="lang === 'de' ? '/' : '/en/'" class="logo-link" :aria-label="t.header.title">
-			<img src="/logo/logo.svg" alt="k0r37k1 Logo" class="logo" width="32" height="32" />
-		</a>
 		<span class="terminal-title"
 			>{{ displayTitle }}<span class="terminal-cursor" aria-hidden="true">|</span></span
 		>
@@ -44,22 +41,6 @@ const displayTitle = props.customTitle || t.header.title;
 	justify-content: space-between;
 	align-items: center;
 	gap: 1rem;
-}
-
-.logo-link {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-decoration: none;
-	transition: opacity 0.2s ease;
-}
-
-.logo-link:hover {
-	opacity: 0.85;
-}
-
-.logo {
-	display: block;
 }
 
 .header-separator {
