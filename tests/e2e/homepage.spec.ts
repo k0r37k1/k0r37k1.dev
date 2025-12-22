@@ -38,8 +38,10 @@ test.describe('Homepage', () => {
 		});
 
 		test('displays hero subtitle', async ({ page }) => {
-			await expect(page.getByText(/Vibe Engineer/i)).toBeVisible();
-			await expect(page.getByText(/KI-Enthusiast/i)).toBeVisible();
+			// Use the full subtitle text which is unique to the hero section
+			await expect(
+				page.locator('.tagline').getByText(/Vibe Engineer • KI-Enthusiast/i)
+			).toBeVisible();
 		});
 
 		test('displays ASCII art name', async ({ page }) => {
@@ -101,7 +103,9 @@ test.describe('Homepage', () => {
 
 			// Main content should be visible - use more specific selector
 			await expect(page.getByRole('heading', { name: /k0r37k1\.dev.*Portfolio/i })).toBeVisible();
-			await expect(page.getByText(/Vibe Engineer/i)).toBeVisible();
+			await expect(
+				page.locator('.tagline').getByText(/Vibe Engineer • KI-Enthusiast/i)
+			).toBeVisible();
 		});
 
 		test('renders correctly on tablet viewport', async ({ page }) => {
