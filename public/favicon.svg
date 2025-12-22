@@ -8,9 +8,9 @@
 		dominant-baseline="middle"
 		text-anchor="middle"
 		font-family="'IBM Plex Mono', 'Courier New', monospace"
-		font-size="92"
+		font-size="68"
 		font-weight="500"
 		fill="#00ff9f"
-		letter-spacing="-18"
+		letter-spacing="-15"
 	>|{</text>
 </svg>
