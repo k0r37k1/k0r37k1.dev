@@ -55,6 +55,15 @@
 	--crt-flicker-intensity: 0.02; /* Subtle screen flicker */
 }
 
+/* Font Rendering Optimization - Universal */
+*,
+*::before,
+*::after {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
 /* Global Terminal Styles */
 body {
 	background: var(--color-terminal-bg);
@@ -64,6 +73,7 @@ body {
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 
 	/* Phosphor glow removed from body text for better readability */
 }
@@ -81,8 +91,9 @@ body {
 	min-height: calc(100vh - 2rem);
 	position: relative;
 	overflow: hidden;
-	will-change: transform;
 	transform: translateZ(0);
+	backface-visibility: hidden;
+	filter: blur(0);
 	contain: layout style paint;
 }
 
@@ -295,41 +306,21 @@ body {
 	text-decoration: none;
 	border-bottom: 2px solid transparent;
 	transition: all 0.2s;
-
-	/* Subtle cyan phosphor glow */
-	text-shadow:
-		0 0 3px rgb(0 217 255 / 30%),
-		0 0 6px rgb(0 217 255 / 18%);
 }
 
 .terminal-link:hover {
 	color: var(--color-accent-orange);
 	border-bottom-color: var(--color-accent-orange);
-
-	/* Enhanced orange phosphor glow on hover */
-	text-shadow:
-		0 0 4px rgb(255 102 0 / 50%),
-		0 0 8px rgb(255 102 0 / 30%);
 }
 
 .terminal-link:hover::before {
 	content: '[ ';
 	color: var(--color-terminal-primary);
-
-	/* Cyan phosphor glow */
-	text-shadow:
-		0 0 3px rgb(0 217 255 / 40%),
-		0 0 6px rgb(0 217 255 / 40%);
 }
 
 .terminal-link:hover::after {
 	content: ' ]';
 	color: var(--color-terminal-primary);
-
-	/* Cyan phosphor glow */
-	text-shadow:
-		0 0 3px rgb(0 217 255 / 40%),
-		0 0 6px rgb(0 217 255 / 40%);
 }
 
 /* Blinking Cursor */
@@ -427,17 +418,34 @@ body {
 	border-radius: 0;
 	padding: 1.5rem;
 	box-shadow: 4px 4px 0 rgb(0 0 0 / 30%);
-	transition: all 0.2s ease;
-	will-change: transform;
+	transition: all 0.2s;
 	transform: translateZ(0);
+	backface-visibility: hidden;
+	filter: blur(0);
+	position: relative;
+}
 
-	/* Phosphor glow removed for better readability */
+.project-card::before {
+	content: '';
+	position: absolute;
+	inset: -2px;
+	border: 2px solid var(--color-accent-orange);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	box-shadow:
+		0 0 4px rgb(255 102 0 / 40%),
+		0 0 8px rgb(255 102 0 / 25%);
 }
 
 .project-card:hover {
-	transform: translate(-2px, -2px);
+	transform: translate(-2px, -2px) translateZ(0);
 	border-color: var(--color-accent-orange);
 	box-shadow: 6px 6px 0 rgb(255 102 0 / 30%);
+}
+
+.project-card:hover::before {
+	opacity: 1;
 	animation: crt-flicker 3s steps(1) infinite;
 }
 
@@ -446,20 +454,20 @@ body {
 	content: '[ ';
 	color: var(--color-terminal-primary);
 
-	/* Cyan phosphor glow */
+	/* Very subtle cyan phosphor glow */
 	text-shadow:
-		0 0 3px rgb(0 217 255 / 40%),
-		0 0 6px rgb(0 217 255 / 40%);
+		0 0 1px rgb(0 217 255 / 30%),
+		0 0 3px rgb(0 217 255 / 15%);
 }
 
 .project-name::after {
 	content: ' ]';
 	color: var(--color-terminal-primary);
 
-	/* Cyan phosphor glow */
+	/* Very subtle cyan phosphor glow */
 	text-shadow:
-		0 0 3px rgb(0 217 255 / 40%),
-		0 0 6px rgb(0 217 255 / 40%);
+		0 0 1px rgb(0 217 255 / 30%),
+		0 0 3px rgb(0 217 255 / 15%);
 }
 
 /* Skills List */
@@ -480,14 +488,15 @@ body {
 	font-weight: 500;
 	box-shadow: 2px 2px 0 rgb(0 0 0 / 20%);
 	transition: all 0.15s;
-	will-change: transform;
 	transform: translateZ(0);
+	backface-visibility: hidden;
+	filter: blur(0);
 
 	/* Phosphor glow removed for better readability */
 }
 
 .skill-tag:hover {
-	transform: translate(-1px, -1px);
+	transform: translate(-1px, -1px) translateZ(0);
 	border-color: var(--color-terminal-primary);
 	box-shadow: 3px 3px 0 rgb(0 217 255 / 30%);
 	background: var(--color-terminal-primary);
@@ -826,12 +835,13 @@ a:focus-visible,
 	transition:
 		transform 0.2s,
 		box-shadow 0.2s;
-	will-change: transform;
 	transform: translateZ(0);
+	backface-visibility: hidden;
+	filter: blur(0);
 }
 
 .brutalist-box:hover {
-	transform: translate(-2px, -2px);
+	transform: translate(-2px, -2px) translateZ(0);
 	box-shadow: 8px 8px 0 rgb(0 217 255 / 40%);
 }
 
@@ -974,6 +984,14 @@ a:focus-visible,
 	font-weight: 400;
 	letter-spacing: 0.05em;
 	animation: crt-flicker 3s steps(1) infinite;
+
+	/* Orange phosphor glow */
+	text-shadow: 0 0 8px rgb(255 102 0 / 40%);
+
+	/* VT323 bitmap font optimization - disable smoothing for sharp pixels */
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: unset;
+	text-rendering: optimizeSpeed;
 }
 
 /* Desktop: Show decorated title, hide mobile title */
@@ -1144,6 +1162,11 @@ a:focus-visible,
 	text-shadow:
 		0 0 4px rgb(0 217 255 / 35%),
 		0 0 8px rgb(0 217 255 / 22%);
+
+	/* VT323 bitmap font optimization */
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: unset;
+	text-rendering: optimizeSpeed;
 }
 
 .section-underline {
@@ -1194,6 +1217,11 @@ a:focus-visible,
 		font-size: 1.2rem; /* Larger for main section titles */
 		font-family: var(--font-display); /* VT323 for consistency with desktop */
 		letter-spacing: 0.05em;
+
+		/* VT323 bitmap font optimization */
+		-webkit-font-smoothing: none;
+		-moz-osx-font-smoothing: unset;
+		text-rendering: optimizeSpeed;
 	}
 
 	/* Corners - Smaller on mobile */
@@ -1300,6 +1328,11 @@ a:focus-visible,
 	text-shadow:
 		0 0 4px rgb(255 102 0 / 40%),
 		0 0 8px rgb(255 102 0 / 25%);
+
+	/* VT323 bitmap font optimization */
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: unset;
+	text-rendering: optimizeSpeed;
 }
 
 .legal-content .sub-label {
@@ -1455,6 +1488,11 @@ a:focus-visible,
 	text-shadow:
 		0 0 3px rgb(255 0 255 / 35%),
 		0 0 6px rgb(255 0 255 / 20%);
+
+	/* VT323 bitmap font optimization */
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: unset;
+	text-rendering: optimizeSpeed;
 }
 
 /* Body */

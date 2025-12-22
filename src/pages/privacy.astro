@@ -1,5 +1,6 @@
 ---
 import TerminalLayout from '@layouts/TerminalLayout.astro';
+import LegalSection from '@components/sections/LegalSection.vue';
 import { getTranslations } from '@/i18n';
 
 const t = getTranslations('de');
@@ -18,7 +19,7 @@ const customTitle = 'visitor@k0r37k1.dev:~$ cat datenschutz.txt';
 	showGoToTop={false}
 >
 	<!-- Main Section with Corners -->
-	<section class="terminal-section section-with-corners">
+	<LegalSection client:visible>
 		<h1 class="section-title-center">
 			<span class="title-desktop">{t.legal.privacy.title}</span>
 			<span class="title-mobile">DATENSCHUTZ</span>
@@ -94,7 +95,7 @@ const customTitle = 'visitor@k0r37k1.dev:~$ cat datenschutz.txt';
 				</div>
 			</div>
 		</div>
-	</section>
+	</LegalSection>
 
 	<!-- Navigation -->
 	<nav class="legal-nav" aria-label={t.aria.navigation.legal}>
