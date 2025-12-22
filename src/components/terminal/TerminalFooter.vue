@@ -28,7 +28,16 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 				<span class="separator">•</span>
 				<span>© {{ currentYear }} k0r37k1.dev</span>
 				<span class="separator">•</span>
-				<span>{{ t.footer.madeWith }} <span class="heart">♥</span></span>
+				<a
+					href="https://astro.build"
+					class="terminal-link footer-link"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Built with Astro"
+				>
+					<span>Built with</span>
+					<Icon icon="simple-icons:astro" class="footer-icon" />
+				</a>
 			</div>
 			<div class="footer-links">
 				<a
@@ -132,15 +141,6 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 
 .footer-icon {
 	font-size: 1.125rem;
-}
-
-.heart {
-	color: #f55;
-
-	/* Red phosphor glow */
-	text-shadow:
-		0 0 4px rgb(255 85 85 / 40%),
-		0 0 8px rgb(255 85 85 / 25%);
 }
 
 .footer-button {

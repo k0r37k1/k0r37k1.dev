@@ -115,22 +115,6 @@ body {
 	animation: crt-flicker 3s infinite alternate;
 }
 
-/* CRT Screen Flicker Animation */
-@keyframes crt-flicker {
-	0%,
-	100% {
-		opacity: 1;
-	}
-
-	50% {
-		opacity: 0.98;
-	}
-
-	75% {
-		opacity: 0.99;
-	}
-}
-
 /* RGB Chromatic Aberration Effect (subtle) */
 @keyframes chromatic-aberration {
 	0%,
@@ -989,6 +973,7 @@ a:focus-visible,
 	font-size: 1.5rem;
 	font-weight: 400;
 	letter-spacing: 0.05em;
+	animation: crt-flicker 3s steps(1) infinite;
 }
 
 /* Desktop: Show decorated title, hide mobile title */

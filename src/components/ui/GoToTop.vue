@@ -128,6 +128,7 @@ onUnmounted(() => {
 	line-height: 1;
 	padding: 0;
 	transition: all 0.2s ease;
+	animation: crt-flicker 3s steps(1) infinite;
 
 	/* Subtle cyan phosphor glow */
 	text-shadow:
