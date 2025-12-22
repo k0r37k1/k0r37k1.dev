@@ -36,3 +36,7 @@ coverage/
 CLAUDE.local.md
 CLAUDE.new.md
 CLAUDE-ANALYSIS.md
+claude.md
+
+# Documentation (project-specific)
+docs/
