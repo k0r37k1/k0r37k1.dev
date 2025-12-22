@@ -1,71 +1,85 @@
 ---
-import LegalLayout from '@layouts/LegalLayout.astro';
+import TerminalLayout from '@layouts/TerminalLayout.astro';
 import { getTranslations } from '@/i18n';
 
 const t = getTranslations('en');
 
 const pageTitle = 'Imprint | k0r37k1.dev';
 const pageDescription = 'Legal information and contact details';
-const terminalTitle = 'visitor@k0r37k1.dev:~$ cat imprint.txt';
+const customTitle = 'visitor@k0r37k1.dev:~$ cat imprint.txt';
 ---
 
-<LegalLayout
+<TerminalLayout
 	lang="en"
 	title={pageTitle}
 	description={pageDescription}
 	currentPath="/imprint"
-	terminalTitle={terminalTitle}
+	customTitle={customTitle}
+	showGoToTop={false}
 >
-	<!-- Section Title -->
-	<h1 slot="title" class="section-title-center">{t.legal.imprint.title}</h1>
+	<!-- Main Section with Corners -->
+	<section class="terminal-section section-with-corners">
+		<h1 class="section-title-center">
+			<span class="title-desktop">{t.legal.imprint.title}</span>
+			<span class="title-mobile">IMPRINT</span>
+		</h1>
+		<div class="ascii-decorations" aria-hidden="true">
+			<span class="corner top-left">┌───────────</span>
+			<span class="corner top-right">───────────┐</span>
+			<span class="corner bottom-left">└───────────</span>
+			<span class="corner bottom-right">───────────┘</span>
+		</div>
 
-	<!-- Legal Content -->
-	<!-- Angaben gemäß § 5 TMG -->
-	<div class="nfo-block">
-		<div class="nfo-label">{t.legal.imprint.tmg}</div>
-		<div class="nfo-text">
-			[Your Name]<br />
-			[Your Street]<br />
-			[ZIP City]
-		</div>
-	</div>
+		<div class="legal-content">
+			<!-- Legal Content -->
+			<!-- Angaben gemäß § 5 TMG -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.imprint.tmg}</div>
+				<div class="nfo-text">
+					[Your Name]<br />
+					[Your Street]<br />
+					[ZIP City]
+				</div>
+			</div>
 
-	<!-- Kontakt -->
-	<div class="nfo-block">
-		<div class="nfo-label">{t.legal.imprint.contact}</div>
-		<div class="nfo-text">
-			{t.contact.email}: <a href="mailto:hello@k0r37k1.dev" class="terminal-link"
-				>hello@k0r37k1.dev</a
-			>
-		</div>
-	</div>
+			<!-- Kontakt -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.imprint.contact}</div>
+				<div class="nfo-text">
+					{t.contact.email}: <a href="mailto:hello@k0r37k1.dev" class="terminal-link"
+						>hello@k0r37k1.dev</a
+					>
+				</div>
+			</div>
 
-	<!-- Verantwortlich für den Inhalt -->
-	<div class="nfo-block">
-		<div class="nfo-label">{t.legal.imprint.responsible}</div>
-		<div class="nfo-text">
-			[Your Name]<br />
-			[Your Address]
-		</div>
-	</div>
+			<!-- Verantwortlich für den Inhalt -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.imprint.responsible}</div>
+				<div class="nfo-text">
+					[Your Name]<br />
+					[Your Address]
+				</div>
+			</div>
 
-	<!-- Haftungsausschluss -->
-	<div class="nfo-block">
-		<div class="nfo-label">{t.legal.imprint.liability}</div>
-		<div class="nfo-text">
-			<div class="sub-label">{t.legal.imprint.liabilityContent}</div>
-			{t.legal.imprint.liabilityContentText}
+			<!-- Haftungsausschluss -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.imprint.liability}</div>
+				<div class="nfo-text">
+					<div class="sub-label">{t.legal.imprint.liabilityContent}</div>
+					{t.legal.imprint.liabilityContentText}
+				</div>
+				<div class="nfo-text">
+					<div class="sub-label">{t.legal.imprint.liabilityLinks}</div>
+					{t.legal.imprint.liabilityLinksText}
+				</div>
+			</div>
 		</div>
-		<div class="nfo-text">
-			<div class="sub-label">{t.legal.imprint.liabilityLinks}</div>
-			{t.legal.imprint.liabilityLinksText}
-		</div>
-	</div>
+	</section>
 
 	<!-- Navigation -->
-	<nav class="legal-nav" slot="navigation" aria-label={t.aria.navigation.legal}>
+	<nav class="legal-nav" aria-label={t.aria.navigation.legal}>
 		<a href="/en/" class="terminal-link nav-link">{t.legal.nav.backToPortfolio}</a>
 		<span class="nav-separator" aria-hidden="true">•</span>
 		<a href="/en/privacy" class="terminal-link nav-link">{t.legal.nav.toPrivacy}</a>
 	</nav>
-</LegalLayout>
+</TerminalLayout>

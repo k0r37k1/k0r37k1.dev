@@ -126,7 +126,7 @@ const contacts = [
 
 @media (width <= 640px) {
 	.intro-message {
-		font-size: 0.8rem;
+		font-size: 0.825rem; /* Compact content text size */
 	}
 
 	.contact-item {
@@ -136,11 +136,11 @@ const contacts = [
 
 	.contact-label {
 		min-width: auto;
-		font-size: 0.8rem;
+		font-size: 0.95rem; /* Sub-label size for VT323 */
 	}
 
 	.contact-link {
-		font-size: 0.8rem;
+		font-size: 0.825rem; /* Compact content text size */
 	}
 }
 </style>

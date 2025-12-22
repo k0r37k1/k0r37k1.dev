@@ -9,12 +9,6 @@ import path from 'path';
 
 import sitemap from '@astrojs/sitemap';
 
-import mdx from '@astrojs/mdx';
-
-import icon from 'astro-icon';
-
-import alpinejs from '@astrojs/alpinejs';
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Vite+ Stack Configuration
@@ -33,20 +27,18 @@ export default defineConfig({
     },
 
     // Vue Integration mit Best Practice Settings
-    integrations: [vue({
-        // Vue Compiler Optionen
-        template: {
-            compilerOptions: {
-                // Whitespace-Handling optimieren
-                whitespace: 'condense',
+    integrations: [
+        vue({
+            // Vue Compiler Optionen
+            template: {
+                compilerOptions: {
+                    // Whitespace-Handling optimieren
+                    whitespace: 'condense',
+                },
             },
-        },
-        // JSX Support (optional, falls benötigt)
-        // jsx: true,
-    }), alpinejs({
-        // Alpine.js Config für Plugins (Fallback für problematische Components)
-        entrypoint: '/src/config/alpine',
-    }), sitemap(), mdx(), icon()],
+        }),
+        sitemap(),
+    ],
 
     vite: {
         // Rolldown-Vite specific optimizations
@@ -75,14 +67,14 @@ export default defineConfig({
             // Supports: Chrome 94+, Safari 15.4+, Firefox 93+, Edge 94+
             target: 'es2022',
             cssMinify: 'lightningcss',
-            // Enable CSS code splitting for optimal page loads
-            cssCodeSplit: true,
+            // Disable CSS code splitting to prevent duplicate CSS files with different hashes
+            cssCodeSplit: false,
             // Chunk size warnings
             chunkSizeWarningLimit: 1000,
             // Optimized output configuration
             rollupOptions: {
                 output: {
-                    // Bundle vendor code into single chunk
+                    // Separate vendor code for better caching
                     manualChunks(id) {
                         // Don't bundle Astro's internals or server code
                         if (id.includes('astro/dist') || id.includes('/server/')) {
@@ -92,7 +84,11 @@ export default defineConfig({
                         if (id.includes('node_modules')) {
                             return 'vendor';
                         }
-                        // Let Vite handle app code splitting
+                        // Bundle ALL components into ONE shared chunk
+                        if (id.includes('src/components/')) {
+                            return 'components';
+                        }
+                        // Let Vite handle remaining app code splitting
                         return undefined;
                     },
                     // Organized output structure: _astro/ (Astro standard)
@@ -100,13 +96,8 @@ export default defineConfig({
                     chunkFileNames: '_astro/[name].[hash].js',
                     assetFileNames: (assetInfo) => {
                         if (assetInfo.name?.endsWith('.css')) {
-                            // Custom CSS naming: index → style, imprint → style2
-                            let cssName = assetInfo.name.replace('.css', '');
-                            if (cssName === 'index') {
-                                cssName = 'style';
-                            } else if (cssName === 'imprint') {
-                                cssName = 'style2';
-                            }
+                            // Simplified CSS naming: index → style
+                            const cssName = assetInfo.name === 'index.css' ? 'style' : assetInfo.name.replace('.css', '');
                             return `_astro/${cssName}.[hash][extname]`;
                         }
                         return '_astro/[name].[hash][extname]';
@@ -122,19 +113,13 @@ export default defineConfig({
             },
         },
 
-        // Optimizations for Vue + Alpine.js
+        // Optimizations for Vue
         optimizeDeps: {
             include: [
                 'vue',
                 'reka-ui',
                 'motion-v',
-                'alpinejs',
-                '@alpinejs/anchor',
-                '@alpinejs/collapse',
-                '@alpinejs/focus',
-                '@alpinejs/intersect',
             ],
-            exclude: ['@astrojs/mdx'],
         },
 
         plugins: [

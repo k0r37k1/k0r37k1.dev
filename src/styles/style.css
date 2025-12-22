@@ -593,6 +593,27 @@ a:focus-visible,
 		font-size: 1.25rem;
 	}
 
+	/* Terminal Header - Mobile */
+	.terminal-header {
+		padding: 0.5rem 1rem;
+		font-size: 0.75rem;
+	}
+
+	.terminal-title {
+		font-size: 0.75rem; /* Small size to fit everything in one line */
+		letter-spacing: 0.01em;
+	}
+
+	/* Hide only ASCII icons on mobile */
+	.ascii-icon {
+		display: none;
+	}
+
+	/* ASCII art logo stays visible but smaller */
+	.ascii-art {
+		font-size: 0.5rem;
+	}
+
 	/* Scaled-down Neo-Brutalism for mobile */
 	.terminal-box,
 	.project-card,
@@ -964,21 +985,19 @@ a:focus-visible,
 	left: 50%;
 	transform: translateX(-50%);
 	color: var(--color-accent-orange);
+	font-family: var(--font-display); /* VT323 for retro section titles */
 	font-size: 1.5rem;
 	font-weight: 400;
 	letter-spacing: 0.05em;
-	text-align: center;
-	text-transform: uppercase;
-	transition: all 0.3s ease;
-	font-family: var(--font-display);
-	padding: 0 1rem;
-	z-index: 5;
-	animation: crt-flicker 3s steps(1) infinite;
+}
 
-	/* Orange phosphor glow for section titles */
-	text-shadow:
-		0 0 4px rgb(255 102 0 / 40%),
-		0 0 8px rgb(255 102 0 / 25%);
+/* Desktop: Show decorated title, hide mobile title */
+.section-title-center .title-desktop {
+	display: inline;
+}
+
+.section-title-center .title-mobile {
+	display: none;
 }
 
 /* ASCII Decorations (global for all sections) */
@@ -1179,6 +1198,29 @@ a:focus-visible,
 	.section-underline {
 		font-size: 0.75rem;
 	}
+
+	/* Section titles - Mobile optimization */
+	.section-title-center .title-desktop {
+		display: none;
+	}
+
+	.section-title-center .title-mobile {
+		display: inline;
+		font-size: 1.2rem; /* Larger for main section titles */
+		font-family: var(--font-display); /* VT323 for consistency with desktop */
+		letter-spacing: 0.05em;
+	}
+
+	/* Corners - Smaller on mobile */
+	.corner {
+		font-size: 0.75rem;
+	}
+
+	/* Section padding - Reduce for mobile */
+	.section-with-corners {
+		padding: 3rem 1rem;
+		margin: 2rem 0;
+	}
 }
 
 .holographic-text {
@@ -1330,8 +1372,31 @@ a:focus-visible,
 @media (width <= 640px) {
 	.legal-nav {
 		flex-direction: column;
+		align-items: stretch;
+		gap: 0.75rem;
+		margin-top: 1.5rem;
+		padding: 0 1rem;
+	}
+
+	.legal-nav .nav-link {
+		font-size: 0.875rem;
+		padding: 0.75rem 1rem;
+		text-align: center;
+		border: 1px solid var(--color-terminal-border);
+		border-radius: 4px;
+		background: rgb(0 0 0 / 20%);
+		transition: all 0.2s ease;
+
+		/* Minimum touch target size */
+		min-height: 44px;
+		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		justify-content: center;
+	}
+
+	.legal-nav .nav-link:active {
+		background: rgb(0 217 255 / 10%);
+		transform: scale(0.98);
 	}
 
 	.legal-nav .nav-separator {
@@ -1339,11 +1404,21 @@ a:focus-visible,
 	}
 
 	.legal-content .nfo-label {
-		font-size: 1.1rem;
+		font-size: 0.95rem; /* Consistent with portfolio sub-labels */
 	}
 
 	.legal-content .nfo-text {
-		font-size: 0.8rem;
+		font-size: 0.825rem; /* Consistent with portfolio content */
+		line-height: 1.6;
+	}
+
+	.legal-content .sub-label {
+		font-size: 0.825rem; /* Consistent with portfolio content */
+		margin-top: 0.75rem;
+	}
+
+	.legal-content .nfo-block {
+		margin-bottom: 1.5rem;
 	}
 }
 

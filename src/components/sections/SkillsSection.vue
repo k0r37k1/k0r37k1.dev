@@ -29,12 +29,10 @@ const skills = {
 		{ name: 'Vue 3', icon: 'simple-icons:vuedotjs' },
 		{ name: 'Nuxt', icon: 'simple-icons:nuxtdotjs' },
 		{ name: 'Laravel', icon: 'simple-icons:laravel' },
-		{ name: 'Livewire', icon: 'simple-icons:livewire' },
 		{ name: 'TanStack', icon: 'simple-icons:tanstack' },
 		{ name: 'React Native', icon: 'simple-icons:react' },
 		{ name: 'Expo', icon: 'simple-icons:expo' },
 		{ name: 'Flutter', icon: 'simple-icons:flutter' },
-		{ name: 'Astro', icon: 'simple-icons:astro' },
 		{ name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
 	],
 	tools: [
@@ -43,9 +41,8 @@ const skills = {
 		{ name: 'Gradle', icon: 'simple-icons:gradle' },
 		{ name: 'Vite', icon: 'simple-icons:vite' },
 		{ name: 'Node.js', icon: 'simple-icons:nodedotjs' },
-		{ name: 'Bun', icon: 'simple-icons:bun' },
 		{ name: 'VS Code', icon: 'simple-icons:visualstudiocode' },
-		{ name: 'Claude Code', icon: 'simple-icons:anthropic' },
+		{ name: 'Claude', icon: 'simple-icons:anthropic' },
 	],
 	platforms: [
 		{ key: 'desktop', icon: 'mdi:monitor' },
@@ -165,7 +162,11 @@ const skills = {
 
 @media (width <= 640px) {
 	.category-title {
-		font-size: 0.8rem;
+		font-size: 0.85rem; /* Smaller than sub-labels, nested category titles */
+	}
+
+	.skill-tag {
+		font-size: 0.825rem; /* Compact skill label text size */
 	}
 }
 </style>

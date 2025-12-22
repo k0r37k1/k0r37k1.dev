@@ -89,11 +89,11 @@ const t = getTranslations(props.lang);
 
 @media (width <= 640px) {
 	.nfo-label {
-		font-size: 0.75rem;
+		font-size: 0.95rem; /* Sub-label size for VT323 */
 	}
 
 	.nfo-text {
-		font-size: 0.75rem;
+		font-size: 0.825rem; /* Compact content text size */
 		padding-left: 0.5rem;
 	}
 }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import LanguageSwitcher from '@components/ui/LanguageSwitcher.vue';
 import { getTranslations, type Language } from '@/i18n';
+import { computed } from 'vue';
 
 interface Props {
 	lang?: Language;
@@ -17,14 +18,33 @@ const props = withDefaults(defineProps<Props>(), {
 const t = getTranslations(props.lang);
 
 // Use custom title if provided, otherwise use default from translations
-const displayTitle = props.customTitle || t.header.title;
+const baseTitle = props.customTitle || t.header.title;
+
+// Split title to hide .txt on mobile via CSS
+const titleParts = computed(() => {
+	if (baseTitle.includes('.txt')) {
+		const parts = baseTitle.split('.txt');
+		return {
+			main: parts[0],
+			extension: '.txt',
+			hasExtension: true,
+		};
+	}
+	return {
+		main: baseTitle,
+		extension: '',
+		hasExtension: false,
+	};
+});
 </script>
 
 <template>
 	<header class="terminal-header">
-		<span class="terminal-title"
-			>{{ displayTitle }}<span class="terminal-cursor" aria-hidden="true">|</span></span
-		>
+		<span class="terminal-title">
+			{{ titleParts.main
+			}}<span v-if="titleParts.hasExtension" class="txt-extension">{{ titleParts.extension }}</span
+			><span class="terminal-cursor" aria-hidden="true">|</span>
+		</span>
 		<span class="header-separator" aria-hidden="true">|</span>
 		<LanguageSwitcher
 			:current-lang="lang"
@@ -66,6 +86,11 @@ const displayTitle = props.customTitle || t.header.title;
 	}
 
 	.header-separator {
+		display: none;
+	}
+
+	/* Hide .txt extension on mobile */
+	.txt-extension {
 		display: none;
 	}
 }

@@ -1,5 +1,5 @@
 ---
-import PortfolioLayout from '@layouts/PortfolioLayout.astro';
+import TerminalLayout from '@layouts/TerminalLayout.astro';
 import HeroSection from '@components/sections/HeroSection.vue';
 import AboutSection from '@components/sections/AboutSection.vue';
 import ProjectsSection from '@components/sections/ProjectsSection.vue';
@@ -13,11 +13,14 @@ const pageTitle = 'Portfolio k0r37k1.dev';
 const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development';
 ---
 
-<PortfolioLayout lang="de" title={pageTitle} description={pageDescription} currentPath="/">
+<TerminalLayout lang="de" title={pageTitle} description={pageDescription} currentPath="/">
 	<HeroSection client:load lang="de" />
 
 	<section class="terminal-section section-with-corners" aria-label={t.aria.sections.profile}>
-		<div class="section-title-center" aria-hidden="true">{t.sections.profile}</div>
+		<div class="section-title-center" aria-hidden="true">
+			<span class="title-desktop">{t.sections.profile}</span>
+			<span class="title-mobile">PROFIL</span>
+		</div>
 		<div class="ascii-decorations" aria-hidden="true">
 			<span class="corner top-left">┌───────────</span>
 			<span class="corner top-right">───────────┐</span>
@@ -28,7 +31,10 @@ const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development
 	</section>
 
 	<section class="terminal-section section-with-corners" aria-label={t.aria.sections.projects}>
-		<div class="section-title-center" aria-hidden="true">{t.sections.projects}</div>
+		<div class="section-title-center" aria-hidden="true">
+			<span class="title-desktop">{t.sections.projects}</span>
+			<span class="title-mobile">PROJEKTE</span>
+		</div>
 		<div class="ascii-decorations" aria-hidden="true">
 			<span class="corner top-left">┌───────────</span>
 			<span class="corner top-right">───────────┐</span>
@@ -39,7 +45,10 @@ const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development
 	</section>
 
 	<section class="terminal-section section-with-corners" aria-label={t.aria.sections.environment}>
-		<div class="section-title-center" aria-hidden="true">{t.sections.skills}</div>
+		<div class="section-title-center" aria-hidden="true">
+			<span class="title-desktop">{t.sections.skills}</span>
+			<span class="title-mobile">UMGEBUNG</span>
+		</div>
 		<div class="ascii-decorations" aria-hidden="true">
 			<span class="corner top-left">┌───────────</span>
 			<span class="corner top-right">───────────┐</span>
@@ -50,7 +59,10 @@ const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development
 	</section>
 
 	<section class="terminal-section section-with-corners" aria-label={t.aria.sections.contact}>
-		<div class="section-title-center" aria-hidden="true">{t.sections.contact}</div>
+		<div class="section-title-center" aria-hidden="true">
+			<span class="title-desktop">{t.sections.contact}</span>
+			<span class="title-mobile">KONTAKT</span>
+		</div>
 		<div class="ascii-decorations" aria-hidden="true">
 			<span class="corner top-left">┌───────────</span>
 			<span class="corner top-right">───────────┐</span>
@@ -59,4 +71,4 @@ const pageDescription = 'Project showcase of k0r37k1.dev - App & Web Development
 		</div>
 		<ContactSection client:visible lang="de" />
 	</section>
-</PortfolioLayout>
+</TerminalLayout>

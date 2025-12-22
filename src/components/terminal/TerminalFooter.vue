@@ -157,6 +157,32 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 1rem;
+		font-size: 0.75rem;
+	}
+
+	.footer-meta {
+		flex-wrap: wrap;
+		gap: 0.375rem;
+		font-size: 0.75rem;
+	}
+
+	.footer-links {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+		width: 100%;
+	}
+
+	.footer-link {
+		font-size: 0.875rem;
+	}
+
+	.separator {
+		display: none;
+	}
+
+	.footer-icon {
+		font-size: 1rem;
 	}
 
 	.footer-cat {

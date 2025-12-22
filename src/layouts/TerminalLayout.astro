@@ -11,9 +11,18 @@ interface Props {
 	title: string;
 	description: string;
 	currentPath?: string;
+	customTitle?: string;
+	showGoToTop?: boolean;
 }
 
-const { lang = 'de', title, description, currentPath = '/' } = Astro.props;
+const {
+	lang = 'de',
+	title,
+	description,
+	currentPath = '/',
+	customTitle,
+	showGoToTop = true,
+} = Astro.props;
 const t = getTranslations(lang);
 ---
 
@@ -23,14 +32,14 @@ const t = getTranslations(lang);
 
 	<div class="terminal-window">
 		<!-- Terminal Header -->
-		<TerminalHeader client:load lang={lang} currentPath={currentPath} />
+		<TerminalHeader client:idle lang={lang} currentPath={currentPath} customTitle={customTitle} />
 
 		<!-- Terminal Content (Scrollable) -->
 		<main id="main-content" class="terminal-content">
 			<slot />
 
-			<!-- Go to Top Button -->
-			<GoToTop client:idle lang={lang} />
+			<!-- Go to Top Button (optional) -->
+			{showGoToTop && <GoToTop client:idle lang={lang} />}
 
 			<!-- Footer -->
 			<TerminalFooter client:idle lang={lang} />

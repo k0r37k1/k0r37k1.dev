@@ -172,11 +172,12 @@ onMounted(() => {
 
 @media (width <= 640px) {
 	.hero-section {
-		min-height: 50vh;
+		min-height: 40vh;
+		padding: 1rem 0;
 	}
 
 	.ascii-art {
-		font-size: 0.7rem;
+		font-size: 0.65rem;
 	}
 
 	.corner {
@@ -184,11 +185,13 @@ onMounted(() => {
 	}
 
 	.welcome-message {
-		font-size: 1rem;
+		font-size: 0.875rem;
+		margin: 0.75rem 0;
 	}
 
 	.tagline {
-		font-size: 0.875rem;
+		font-size: 0.75rem;
+		letter-spacing: 0.02em;
 	}
 }
 </style>

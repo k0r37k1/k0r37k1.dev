@@ -28,30 +28,22 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 
 <template>
 	<div class="language-switcher">
-		<span v-if="currentLang === 'de'" class="lang-item lang-active" aria-current="true">
-			<span class="bracket-left">[ </span>DE<span class="bracket-right"> ]</span>
-		</span>
+		<!-- Show only the target language with brackets in terminal style -->
+		<a
+			v-if="currentLang === 'de'"
+			:href="getAlternateUrl('en')"
+			class="lang-link"
+			:aria-label="t.aria.navigation.languageSwitcher.switchToEnglish"
+		>
+			<span class="bracket-left">[ </span>EN<span class="bracket-right"> ]</span>
+		</a>
 		<a
 			v-else
 			:href="getAlternateUrl('de')"
-			class="lang-item lang-link"
+			class="lang-link"
 			:aria-label="t.aria.navigation.languageSwitcher.switchToGerman"
 		>
-			DE
-		</a>
-
-		<span class="lang-separator">|</span>
-
-		<span v-if="currentLang === 'en'" class="lang-item lang-active" aria-current="true">
-			<span class="bracket-left">[ </span>EN<span class="bracket-right"> ]</span>
-		</span>
-		<a
-			v-else
-			:href="getAlternateUrl('en')"
-			class="lang-item lang-link"
-			:aria-label="t.aria.navigation.languageSwitcher.switchToEnglish"
-		>
-			EN
+			<span class="bracket-left">[ </span>DE<span class="bracket-right"> ]</span>
 		</a>
 	</div>
 </template>
@@ -60,34 +52,16 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 .language-switcher {
 	display: inline-flex;
 	align-items: center;
-	gap: 0.375rem;
 	font-family: var(--font-mono);
 	font-size: 0.875rem;
 	font-weight: 600;
 }
 
-.lang-item {
-	color: var(--color-terminal-text-muted);
-	transition: all 0.2s ease;
-	position: relative;
-
-	/* Subtle phosphor glow */
-	text-shadow:
-		0 0 3px rgb(168 168 168 / 30%),
-		0 0 6px rgb(168 168 168 / 18%);
-}
-
-.lang-active {
-	color: var(--color-terminal-primary);
-	font-weight: 700;
-	cursor: default;
-	text-shadow: 0 0 8px rgb(0 217 255 / 40%);
-}
-
-.lang-active .bracket-left,
-.lang-active .bracket-right {
+.lang-link {
 	color: var(--color-accent-orange);
-	font-weight: 700;
+	text-decoration: none;
+	cursor: pointer;
+	transition: all 0.2s ease;
 
 	/* Orange phosphor glow */
 	text-shadow:
@@ -95,41 +69,52 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 		0 0 6px rgb(255 102 0 / 25%);
 }
 
-.lang-link {
-	text-decoration: none;
-	cursor: pointer;
-	opacity: 0.6;
+/* Prevent browser default link colors */
+.lang-link:visited,
+.lang-link:active,
+.lang-link:link {
+	color: var(--color-accent-orange);
 }
 
-.lang-link:hover {
-	color: var(--color-terminal-text);
-	opacity: 1;
-	text-shadow: 0 0 5px rgb(255 255 255 / 30%);
+.bracket-left,
+.bracket-right {
+	color: var(--color-terminal-primary);
+	font-weight: 700;
+
+	/* Cyan phosphor glow */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 40%),
+		0 0 6px rgb(0 217 255 / 25%);
+}
+
+.lang-link:hover,
+.lang-link:hover:visited,
+.lang-link:hover:active {
+	color: var(--color-accent-orange);
+	/* Orange phosphor glow */
+	text-shadow:
+		0 0 3px rgb(255 102 0 / 40%),
+		0 0 6px rgb(255 102 0 / 25%);
+}
+
+.lang-link:hover .bracket-left,
+.lang-link:hover .bracket-right {
+	color: var(--color-terminal-primary);
+	/* Cyan phosphor glow */
+	text-shadow:
+		0 0 3px rgb(0 217 255 / 40%),
+		0 0 6px rgb(0 217 255 / 25%);
 }
 
 .lang-link:focus-visible {
 	outline: 2px solid var(--color-accent-orange);
 	outline-offset: 2px;
-	border-radius: 2px;
-}
-
-.lang-separator {
-	color: var(--color-terminal-text-muted);
-	opacity: 0.8;
-	font-size: 0.875rem;
-	font-weight: 600;
-	padding: 0 0.125rem;
-
-	/* Subtle phosphor glow */
-	text-shadow:
-		0 0 3px rgb(140 140 140 / 30%),
-		0 0 6px rgb(140 140 140 / 18%);
+	border-radius: 3px;
 }
 
 @media (width <= 640px) {
 	.language-switcher {
 		font-size: 0.75rem;
-		gap: 0.5rem;
 	}
 }
 </style>

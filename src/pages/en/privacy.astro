@@ -1,91 +1,105 @@
 ---
-import LegalLayout from '@layouts/LegalLayout.astro';
+import TerminalLayout from '@layouts/TerminalLayout.astro';
 import { getTranslations } from '@/i18n';
 
 const t = getTranslations('en');
 
 const pageTitle = 'Privacy | k0r37k1.dev';
 const pageDescription = 'Privacy policy and data protection information';
-const terminalTitle = 'visitor@k0r37k1.dev:~$ cat privacy.txt';
+const customTitle = 'visitor@k0r37k1.dev:~$ cat privacy.txt';
 ---
 
-<LegalLayout
+<TerminalLayout
 	lang="en"
 	title={pageTitle}
 	description={pageDescription}
 	currentPath="/privacy"
-	terminalTitle={terminalTitle}
+	customTitle={customTitle}
+	showGoToTop={false}
 >
-	<!-- Section Title -->
-	<h1 slot="title" class="section-title-center">{t.legal.privacy.title}</h1>
+	<!-- Main Section with Corners -->
+	<section class="terminal-section section-with-corners">
+		<h1 class="section-title-center">
+			<span class="title-desktop">{t.legal.privacy.title}</span>
+			<span class="title-mobile">PRIVACY</span>
+		</h1>
+		<div class="ascii-decorations" aria-hidden="true">
+			<span class="corner top-left">┌───────────</span>
+			<span class="corner top-right">───────────┐</span>
+			<span class="corner bottom-left">└───────────</span>
+			<span class="corner bottom-right">───────────┘</span>
+		</div>
 
-	<!-- Legal Content -->
-	<!-- Overview -->
-	<div class="nfo-block">
-		<div class="nfo-label">{t.legal.privacy.overview}</div>
-		<div class="nfo-text">
-			{t.legal.privacy.overviewText}
-		</div>
-	</div>
+		<div class="legal-content">
+			<!-- Legal Content -->
+			<!-- Overview -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.privacy.overview}</div>
+				<div class="nfo-text">
+					{t.legal.privacy.overviewText}
+				</div>
+			</div>
 
-	<!-- Data Collection -->
-	<div class="nfo-block">
-		<div class="nfo-label">{t.legal.privacy.dataCollection}</div>
-		<div class="nfo-text">
-			<div class="sub-label">{t.legal.privacy.whoResponsible}</div>
-			{t.legal.privacy.whoResponsibleText}
-		</div>
-		<div class="nfo-text">
-			<div class="sub-label">{t.legal.privacy.howCollect}</div>
-			{t.legal.privacy.howCollectText}
-			<br /><br />
-			{t.legal.privacy.howCollectText2}
-		</div>
-	</div>
+			<!-- Data Collection -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.privacy.dataCollection}</div>
+				<div class="nfo-text">
+					<div class="sub-label">{t.legal.privacy.whoResponsible}</div>
+					{t.legal.privacy.whoResponsibleText}
+				</div>
+				<div class="nfo-text">
+					<div class="sub-label">{t.legal.privacy.howCollect}</div>
+					{t.legal.privacy.howCollectText}
+					<br /><br />
+					{t.legal.privacy.howCollectText2}
+				</div>
+			</div>
 
-	<!-- Hosting -->
-	<div class="nfo-block">
-		<div class="nfo-label">{t.legal.privacy.hosting}</div>
-		<div class="nfo-text">
-			{t.legal.privacy.hostingText}
-		</div>
-	</div>
+			<!-- Hosting -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.privacy.hosting}</div>
+				<div class="nfo-text">
+					{t.legal.privacy.hostingText}
+				</div>
+			</div>
 
-	<!-- Cookies -->
-	<div class="nfo-block">
-		<div class="nfo-label">{t.legal.privacy.cookies}</div>
-		<div class="nfo-text">
-			{t.legal.privacy.cookiesText}
-		</div>
-	</div>
+			<!-- Cookies -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.privacy.cookies}</div>
+				<div class="nfo-text">
+					{t.legal.privacy.cookiesText}
+				</div>
+			</div>
 
-	<!-- Your Rights -->
-	<div class="nfo-block">
-		<div class="nfo-label">{t.legal.privacy.rights}</div>
-		<div class="nfo-text">
-			<div class="sub-label">{t.legal.privacy.rightsIntro}</div>
-			{t.legal.privacy.rightsInfo}<br />
-			{t.legal.privacy.rightsCorrection}<br />
-			{t.legal.privacy.rightsDeletion}<br />
-			{t.legal.privacy.rightsRestriction}<br />
-			{t.legal.privacy.rightsPortability}<br />
-			{t.legal.privacy.rightsObject}
-		</div>
-	</div>
+			<!-- Your Rights -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.privacy.rights}</div>
+				<div class="nfo-text">
+					<div class="sub-label">{t.legal.privacy.rightsIntro}</div>
+					{t.legal.privacy.rightsInfo}<br />
+					{t.legal.privacy.rightsCorrection}<br />
+					{t.legal.privacy.rightsDeletion}<br />
+					{t.legal.privacy.rightsRestriction}<br />
+					{t.legal.privacy.rightsPortability}<br />
+					{t.legal.privacy.rightsObject}
+				</div>
+			</div>
 
-	<!-- Contact -->
-	<div class="nfo-block">
-		<div class="nfo-label">{t.legal.privacy.contact}</div>
-		<div class="nfo-text">
-			{t.legal.privacy.contactText}<br />
-			E-Mail: <a href="mailto:hello@k0r37k1.dev" class="terminal-link">hello@k0r37k1.dev</a>
+			<!-- Contact -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.privacy.contact}</div>
+				<div class="nfo-text">
+					{t.legal.privacy.contactText}<br />
+					E-Mail: <a href="mailto:hello@k0r37k1.dev" class="terminal-link">hello@k0r37k1.dev</a>
+				</div>
+			</div>
 		</div>
-	</div>
+	</section>
 
 	<!-- Navigation -->
-	<nav class="legal-nav" slot="navigation" aria-label={t.aria.navigation.legal}>
+	<nav class="legal-nav" aria-label={t.aria.navigation.legal}>
 		<a href="/en/" class="terminal-link nav-link">{t.legal.nav.backToPortfolio}</a>
 		<span class="nav-separator" aria-hidden="true">•</span>
 		<a href="/en/imprint" class="terminal-link nav-link">{t.legal.nav.toImprint}</a>
 	</nav>
-</LegalLayout>
+</TerminalLayout>

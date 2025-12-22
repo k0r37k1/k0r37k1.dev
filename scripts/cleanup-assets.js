@@ -142,17 +142,16 @@ async function cleanup() {
 			for (const js of allJS) {
 				const filePath = join(JS_DIR, js);
 
-				// Skip if it's a client chunk
+				// Skip if it's a referenced client chunk
 				if (allClientJS.has(js)) {
 					continue;
 				}
 
-				// Check if it's a server chunk
-				if (await isServerChunk(filePath)) {
-					await unlink(filePath);
-					console.log(`🗑️  Deleted server-side chunk: ${js}`);
-					totalDeleted++;
-				}
+				// Delete orphaned chunks (both server and client)
+				const isServer = await isServerChunk(filePath);
+				await unlink(filePath);
+				console.log(`🗑️  Deleted ${isServer ? 'server-side' : 'orphaned client'} chunk: ${js}`);
+				totalDeleted++;
 			}
 		} catch (err) {
 			console.error('❌ JS cleanup failed:', err.message);

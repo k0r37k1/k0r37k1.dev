@@ -195,8 +195,16 @@ const projects = t.projects.items;
 		padding: 1rem;
 	}
 
+	.project-name {
+		font-size: 0.85rem; /* Slightly smaller card title */
+	}
+
 	.project-description {
-		font-size: 0.8rem;
+		font-size: 0.825rem; /* Compact content text size */
+	}
+
+	.project-links {
+		font-size: 0.825rem; /* Compact link text size */
 	}
 }
 </style>

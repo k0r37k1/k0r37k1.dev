@@ -50,7 +50,7 @@ export default {
 		technologies: 'Technologien',
 		stack: 'Stack:',
 		github: 'GitHub',
-		liveDemo: 'Live Demo',
+		liveDemo: 'Demo',
 		store: 'Store',
 		items: [
 			{
