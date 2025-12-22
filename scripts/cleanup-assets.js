@@ -13,8 +13,8 @@ import { join } from 'node:path';
 import { glob } from 'glob';
 
 const DIST_DIR = 'dist';
-const CSS_DIR = join(DIST_DIR, 'assets', 'css');
-const JS_DIR = join(DIST_DIR, 'assets', 'js');
+const CSS_DIR = join(DIST_DIR, '_astro');
+const JS_DIR = join(DIST_DIR, '_astro');
 
 /**
  * Find all CSS files referenced in HTML
@@ -25,7 +25,7 @@ async function findReferencedCSS() {
 
 	for (const htmlFile of htmlFiles) {
 		const content = await readFile(htmlFile, 'utf-8');
-		const cssMatches = content.matchAll(/href="\/assets\/css\/([^"]+\.css)"/g);
+		const cssMatches = content.matchAll(/href="\/_astro\/([^"]+\.css)"/g);
 		for (const match of cssMatches) {
 			referencedCSS.add(match[1]);
 		}
@@ -58,7 +58,7 @@ async function findReferencedJS() {
 		const content = await readFile(htmlFile, 'utf-8');
 		// Match src, component-url, renderer-url attributes
 		const jsMatches = content.matchAll(
-			/(?:src|component-url|renderer-url)="\/assets\/js\/([^"]+\.js)"/g
+			/(?:src|component-url|renderer-url)="\/_astro\/([^"]+\.js)"/g
 		);
 		for (const match of jsMatches) {
 			referencedJS.add(match[1]);
@@ -107,7 +107,7 @@ async function cleanup() {
 		let totalDeleted = 0;
 
 		// 1. Cleanup CSS files not referenced in HTML
-		console.log('\n🔍 Analyzing CSS files...');
+		console.log('\n🔍 Analyzing _astro CSS files...');
 		try {
 			const referencedCSS = await findReferencedCSS();
 			const cssFiles = await readdir(CSS_DIR);
@@ -125,7 +125,7 @@ async function cleanup() {
 		}
 
 		// 2. Cleanup JS files
-		console.log('\n🔍 Analyzing JS files...');
+		console.log('\n🔍 Analyzing _astro JS files...');
 		try {
 			// Find all client-side JS (referenced in HTML)
 			const directlyReferenced = await findReferencedJS();

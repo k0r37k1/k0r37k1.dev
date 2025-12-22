@@ -95,9 +95,9 @@ export default defineConfig({
                         // Let Vite handle app code splitting
                         return undefined;
                     },
-                    // Organized output structure: assets/css/ and assets/js/
-                    entryFileNames: 'assets/js/[name].[hash].js',
-                    chunkFileNames: 'assets/js/[name].[hash].js',
+                    // Organized output structure: _astro/ (Astro standard)
+                    entryFileNames: '_astro/[name].[hash].js',
+                    chunkFileNames: '_astro/[name].[hash].js',
                     assetFileNames: (assetInfo) => {
                         if (assetInfo.name?.endsWith('.css')) {
                             // Custom CSS naming: index → style, imprint → style2
@@ -107,9 +107,9 @@ export default defineConfig({
                             } else if (cssName === 'imprint') {
                                 cssName = 'style2';
                             }
-                            return `assets/css/${cssName}.[hash][extname]`;
+                            return `_astro/${cssName}.[hash][extname]`;
                         }
-                        return 'assets/[name].[hash][extname]';
+                        return '_astro/[name].[hash][extname]';
                     },
                 },
             },
