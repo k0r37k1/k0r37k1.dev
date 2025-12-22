@@ -351,3 +351,19 @@ Datenü
 Abhä
 üfung
 ägen
+
+# GitHub/Git-spezifische Begriffe
+müssen
+Gehe
+gelöst
+erhöhte
+GPG
+Löschen
+alleine
+reichen
+grün
+kannst
+sollte
+
+# Browser/CSS-spezifische Begriffe
+osx

@@ -1,0 +1,36 @@
+# Code Owners
+#
+# These owners will be automatically requested for review when someone opens a pull request
+# that modifies code in a given directory or file.
+#
+# Learn more: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global owner - default for everything
+* @k0r37k1
+
+# GitHub Actions & CI/CD
+/.github/ @k0r37k1
+/.github/workflows/ @k0r37k1
+
+# Configuration files
+*.config.js @k0r37k1
+*.config.ts @k0r37k1
+package.json @k0r37k1
+package-lock.json @k0r37k1
+tsconfig.json @k0r37k1
+
+# Security-related files
+SECURITY.md @k0r37k1
+.gitignore @k0r37k1
+
+# Documentation
+*.md @k0r37k1
+/docs/ @k0r37k1
+
+# Source code
+/src/ @k0r37k1
+
+# Tests
+/tests/ @k0r37k1
+*.test.* @k0r37k1
+*.spec.* @k0r37k1
