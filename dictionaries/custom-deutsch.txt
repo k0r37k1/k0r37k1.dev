@@ -367,3 +367,16 @@ sollte
 
 # Browser/CSS-spezifische Begriffe
 osx
+
+# README.md spezifische Begriffe
+Ästhetik
+rohen
+Szene
+Effekte
+Auflösungen
+Dicke
+konform
+klonen
+Aktion
+lokal
+Lizenz
