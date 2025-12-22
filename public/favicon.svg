@@ -7,7 +7,7 @@
 		y="50%"
 		dominant-baseline="middle"
 		text-anchor="middle"
-		font-family="'IBM Plex Mono', 'Courier New', monospace"
+		font-family="'IBM Plex Sans', 'Helvetica Neue', sans-serif"
 		font-size="68"
 		font-weight="500"
 		fill="#00ff9f"
