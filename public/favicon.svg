@@ -1,11 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+	<!-- Dark background for better contrast -->
+	<rect width="128" height="128" fill="#0a0e27" rx="16"/>
+	<!-- Logo text centered -->
 	<text
-		y="82"
-		font-family="monospace"
-		font-size="76"
-		font-weight="700"
+		x="50%"
+		y="50%"
+		dominant-baseline="middle"
+		text-anchor="middle"
+		font-family="'IBM Plex Mono', 'Courier New', monospace"
+		font-size="92"
+		font-weight="500"
 		fill="#00ff9f"
-	>
-		<tspan x="32">|</tspan><tspan x="52">{</tspan>
-	</text>
+		letter-spacing="-18"
+	>|{</text>
 </svg>
