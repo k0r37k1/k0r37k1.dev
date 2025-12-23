@@ -175,6 +175,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
+	text-shadow: none; /* No glow effect */
 }
 
 .link-icon {

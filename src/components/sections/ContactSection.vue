@@ -137,10 +137,12 @@ const contacts = [
 	transform: translateZ(0);
 	backface-visibility: hidden;
 	filter: blur(0);
+	text-shadow: none; /* No glow effect */
 }
 
 .contact-link:hover {
 	transform: translateZ(0);
+	text-shadow: none; /* No glow effect */
 }
 
 .contact-link:hover .contact-icon {
