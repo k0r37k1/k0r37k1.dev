@@ -427,31 +427,14 @@ body {
 	transform: translateZ(0);
 	backface-visibility: hidden;
 	filter: blur(0);
-	position: relative;
-}
-
-.project-card::before {
-	content: '';
-	position: absolute;
-	inset: -2px;
-	border: 2px solid var(--color-accent-orange);
-	opacity: 0;
-	pointer-events: none;
-	transition: opacity 0.2s;
-	box-shadow:
-		0 0 4px rgb(255 102 0 / 40%),
-		0 0 8px rgb(255 102 0 / 25%);
 }
 
 .project-card:hover {
 	transform: translate(-2px, -2px) translateZ(0);
 	border-color: var(--color-accent-orange);
-	box-shadow: 6px 6px 0 rgb(255 102 0 / 30%);
-}
-
-.project-card:hover::before {
-	opacity: 1;
-	animation: crt-flicker 3s steps(1) infinite;
+	box-shadow:
+		6px 6px 0 rgb(255 102 0 / 30%),
+		0 0 8px rgb(255 102 0 / 25%);
 }
 
 /* Project card header brackets */

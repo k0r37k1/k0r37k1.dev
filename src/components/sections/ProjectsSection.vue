@@ -31,6 +31,8 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 				:key="project.title"
 				:initial="{ opacity: 0, scale: 0.95 }"
 				:whileInView="{ opacity: 1, scale: 1 }"
+				:whileHover="{ scale: 1.02 }"
+				:whileTap="{ scale: 0.98 }"
 				:transition="{
 					type: 'spring',
 					stiffness: 400,
@@ -38,58 +40,57 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 					delay: index * 0.1,
 				}"
 				:viewport="{ once: true }"
+				class="project-card"
 			>
-				<motion.div :whileHover="{ scale: 1.02 }" class="project-card">
-					<div class="project-header">
-						<Icon icon="tabler:folder-code" class="project-icon" aria-hidden="true" />
-						<h3 class="project-name">{{ project.title }}</h3>
-					</div>
-					<div class="project-content">
-						<p class="project-description">{{ project.description }}</p>
+				<div class="project-header">
+					<Icon icon="tabler:folder-code" class="project-icon" aria-hidden="true" />
+					<h3 class="project-name">{{ project.title }}</h3>
+				</div>
+				<div class="project-content">
+					<p class="project-description">{{ project.description }}</p>
 
-						<!-- Tech Stack -->
-						<div class="tech-stack">
-							<span class="stack-label">{{ t.projects.stack }}</span>
-							<span v-for="tech in project.stack" :key="tech" class="tech-tag">
-								{{ tech }}
-							</span>
-						</div>
-
-						<!-- Links -->
-						<div class="project-links">
-							<a
-								v-if="project.github"
-								:href="project.github"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="terminal-link project-link"
-							>
-								<Icon icon="simple-icons:github" class="link-icon" />
-								{{ t.projects.github }}
-							</a>
-							<a
-								v-if="project.demo"
-								:href="project.demo"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="terminal-link project-link"
-							>
-								<Icon icon="mdi:open-in-new" class="link-icon" />
-								{{ t.projects.liveDemo }}
-							</a>
-							<a
-								v-if="project.store"
-								:href="project.store"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="terminal-link project-link"
-							>
-								<Icon icon="mdi:google-play" class="link-icon" />
-								{{ t.projects.store }}
-							</a>
-						</div>
+					<!-- Tech Stack -->
+					<div class="tech-stack">
+						<span class="stack-label">{{ t.projects.stack }}</span>
+						<span v-for="tech in project.stack" :key="tech" class="tech-tag">
+							{{ tech }}
+						</span>
 					</div>
-				</motion.div>
+
+					<!-- Links -->
+					<div class="project-links">
+						<a
+							v-if="project.github"
+							:href="project.github"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="terminal-link project-link"
+						>
+							<Icon icon="simple-icons:github" class="link-icon" />
+							{{ t.projects.github }}
+						</a>
+						<a
+							v-if="project.demo"
+							:href="project.demo"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="terminal-link project-link"
+						>
+							<Icon icon="mdi:open-in-new" class="link-icon" />
+							{{ t.projects.liveDemo }}
+						</a>
+						<a
+							v-if="project.store"
+							:href="project.store"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="terminal-link project-link"
+						>
+							<Icon icon="mdi:google-play" class="link-icon" />
+							{{ t.projects.store }}
+						</a>
+					</div>
+				</div>
 			</motion.div>
 		</div>
 	</motion.section>

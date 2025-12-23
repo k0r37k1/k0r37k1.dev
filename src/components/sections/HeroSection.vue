@@ -94,7 +94,7 @@ onMounted(() => {
 	background-size: 300% auto;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
-	filter: drop-shadow(0 0 6px rgb(0 217 255 / 18%));
+	filter: drop-shadow(0 0 3px rgb(0 217 255 / 10%));
 
 	/* Beide Animationen: Gradient shimmer + CRT flicker */
 	animation:
