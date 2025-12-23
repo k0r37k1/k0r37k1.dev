@@ -30,13 +30,13 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 				<span class="separator">•</span>
 				<a
 					href="https://astro.build"
-					class="terminal-link footer-link"
+					class="astro-link"
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Built with Astro"
 				>
 					<span>Built with</span>
-					<Icon icon="simple-icons:astro" class="footer-icon" />
+					<Icon icon="simple-icons:astro" class="astro-icon" />
 				</a>
 			</div>
 			<div class="footer-links">
@@ -126,11 +126,7 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 
 .terminal-link:hover {
 	color: var(--color-accent-orange);
-
-	/* Orange phosphor glow on hover */
-	text-shadow:
-		0 0 4px rgb(255 102 0 / 50%),
-		0 0 8px rgb(255 102 0 / 30%);
+	text-shadow: none; /* No glow effect */
 }
 
 .footer-link {
@@ -141,6 +137,30 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 
 .footer-icon {
 	font-size: 1.125rem;
+}
+
+/* Astro link - no hover effect on link, only icon */
+.astro-link {
+	color: var(--color-terminal-text-dim);
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.astro-link:hover {
+	color: var(--color-terminal-text-dim); /* Keep text color */
+	text-shadow: none; /* No glow on text */
+}
+
+.astro-icon {
+	font-size: 1.125rem;
+	color: var(--color-terminal-text-dim);
+	transition: color 0.2s ease;
+}
+
+.astro-link:hover .astro-icon {
+	color: #bc52ee; /* Astro brand purple */
 }
 
 .footer-button {

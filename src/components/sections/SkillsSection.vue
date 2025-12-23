@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
+import { computed } from 'vue';
 import { Icon } from '@iconify/vue';
 import { getTranslations, type Language } from '@/i18n';
+import { useReducedMotion, getMotionConfig } from '@/composables/useReducedMotion';
 
 interface Props {
 	lang?: Language;
@@ -9,6 +11,8 @@ interface Props {
 
 const { lang = 'de' } = defineProps<Props>();
 const t = getTranslations(lang);
+const { prefersReducedMotion } = useReducedMotion();
+const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value));
 
 // Technical skills (global across languages)
 const skills = {
@@ -54,18 +58,7 @@ const skills = {
 </script>
 
 <template>
-	<motion.section
-		:initial="{ opacity: 0, y: 20, scale: 0.98 }"
-		:whileInView="{ opacity: 1, y: 0, scale: 1 }"
-		:transition="{
-			type: 'spring',
-			stiffness: 200,
-			damping: 20,
-			duration: 0.4,
-		}"
-		:viewport="{ once: true, margin: '-100px' }"
-		class="terminal-section skills-section"
-	>
+	<motion.section v-bind="motionConfig" class="terminal-section skills-section">
 		<!-- Skills Content -->
 		<div class="section-content">
 			<!-- Languages -->

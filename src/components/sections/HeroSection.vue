@@ -94,7 +94,7 @@ onMounted(() => {
 	background-size: 300% auto;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
-	filter: drop-shadow(0 0 10px rgb(0 217 255 / 30%));
+	filter: drop-shadow(0 0 6px rgb(0 217 255 / 18%));
 
 	/* Beide Animationen: Gradient shimmer + CRT flicker */
 	animation:
@@ -116,13 +116,13 @@ onMounted(() => {
 	font-size: 0.875rem;
 	opacity: 0.6;
 	color: var(--color-accent-orange);
-	text-shadow: 0 0 10px rgb(255 102 0 / 40%);
+	text-shadow: 0 0 6px rgb(255 102 0 / 25%);
 	transition: all 0.3s ease;
 }
 
 .hero-section:hover .corner {
 	opacity: 1;
-	text-shadow: 0 0 15px rgb(255 102 0 / 60%);
+	text-shadow: 0 0 10px rgb(255 102 0 / 40%);
 }
 
 .top-left {

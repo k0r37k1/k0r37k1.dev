@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 
 interface Props {
 	text: string;
@@ -40,7 +40,13 @@ onMounted(() => {
 	startTyping();
 });
 
-// Cleanup on unmount
+// Cleanup timers on unmount to prevent memory leaks
+onBeforeUnmount(() => {
+	if (timeoutId) clearTimeout(timeoutId);
+	if (intervalId) clearInterval(intervalId);
+});
+
+// Cleanup and restart on text change
 watch(
 	() => props.text,
 	() => {

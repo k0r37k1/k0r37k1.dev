@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue';
-import { motion } from 'motion-v';
+import { motion, AnimatePresence } from 'motion-v';
 import { Icon } from '@iconify/vue';
 import { getTranslations, type Language } from '@/i18n';
 
@@ -90,9 +90,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-	<Transition name="fade">
+	<AnimatePresence>
 		<motion.button
 			v-if="isVisible"
+			key="go-to-top"
+			:initial="{ opacity: 0, scale: 0.8 }"
+			:animate="{ opacity: 1, scale: 1 }"
+			:exit="{ opacity: 0, scale: 0.8 }"
 			:whileHover="{ y: -4 }"
 			:whileTap="{ scale: 0.98 }"
 			:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
@@ -110,7 +114,7 @@ onUnmounted(() => {
 				<span class="frame-line">└─────┘</span>
 			</div>
 		</motion.button>
-	</Transition>
+	</AnimatePresence>
 </template>
 
 <style scoped>
@@ -129,6 +133,7 @@ onUnmounted(() => {
 	padding: 0;
 	transition: all 0.2s ease;
 	animation: crt-flicker 3s steps(1) infinite;
+	will-change: opacity, transform;
 
 	/* Subtle cyan phosphor glow */
 	text-shadow:
@@ -185,6 +190,7 @@ onUnmounted(() => {
 	transform-origin: center center;
 	transition: all 0.3s ease;
 	filter: drop-shadow(0 0 2px currentColor);
+	will-change: transform;
 }
 
 .go-to-top:hover .arrow {
@@ -196,24 +202,6 @@ onUnmounted(() => {
 		0 0 12px rgb(0 255 159 / 100%),
 		0 0 20px rgb(0 255 159 / 80%);
 	filter: drop-shadow(0 0 4px currentColor);
-}
-
-/* Vue Transition */
-.fade-enter-active,
-.fade-leave-active {
-	transition:
-		opacity 0.3s ease,
-		transform 0.3s ease;
-}
-
-.fade-enter-from {
-	opacity: 0;
-	transform: scale(0.8);
-}
-
-.fade-leave-to {
-	opacity: 0;
-	transform: scale(0.8);
 }
 
 /* Mobile adjustments */

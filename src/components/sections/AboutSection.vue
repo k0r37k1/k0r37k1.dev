@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
+import { computed } from 'vue';
 import { getTranslations, type Language } from '@/i18n';
+import { useReducedMotion, getMotionConfig } from '@/composables/useReducedMotion';
 
 interface Props {
 	lang?: Language;
@@ -11,21 +13,12 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const t = getTranslations(props.lang);
+const { prefersReducedMotion } = useReducedMotion();
+const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value));
 </script>
 
 <template>
-	<motion.section
-		:initial="{ opacity: 0, y: 20, scale: 0.98 }"
-		:whileInView="{ opacity: 1, y: 0, scale: 1 }"
-		:transition="{
-			type: 'spring',
-			stiffness: 200,
-			damping: 20,
-			duration: 0.4,
-		}"
-		:viewport="{ once: true, margin: '-100px' }"
-		class="terminal-section about-section"
-	>
+	<motion.section v-bind="motionConfig" class="terminal-section about-section">
 		<div class="nfo-content">
 			<!-- Bio Section -->
 			<div class="nfo-section">
