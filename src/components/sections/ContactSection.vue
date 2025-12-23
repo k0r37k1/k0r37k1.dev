@@ -50,7 +50,7 @@ const contacts = [
 		<!-- Contact Content -->
 		<div class="nfo-content">
 			<!-- Section Label -->
-			<h2 class="nfo-label">[ {{ props.lang === 'de' ? 'KONTAKT' : 'CONTACT' }} ]</h2>
+			<h2 class="nfo-label">[ {{ t.contact.title.toUpperCase() }} ]</h2>
 
 			<!-- Intro Message -->
 			<p class="intro-message">

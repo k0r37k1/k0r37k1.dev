@@ -298,7 +298,8 @@ saubere
 gebaut
 reale
 schöne
-Nimm
+Sag
+Hallo
 
 # Portfolio-spezifisch
 Löser
@@ -310,6 +311,7 @@ gestützter
 Beiträge
 Grenzen
 FALSCH
+Idee
 vorübergehend
 Datenübertragung
 Datenschutzerklärung

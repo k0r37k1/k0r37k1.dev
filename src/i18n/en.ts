@@ -106,7 +106,7 @@ export default {
 	contact: {
 		title: 'Get in Touch',
 		description:
-			"Got a project? Let's talk. Or just say hi on social media. Like what I do? Donations are welcome.",
+			"Got an idea? Let's talk. Or just say hi on social media. Like what I do? Donations are welcome.",
 		email: 'Email',
 		github: 'GitHub',
 		linkedin: 'LinkedIn',

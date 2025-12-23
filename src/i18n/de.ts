@@ -104,9 +104,9 @@ export default {
 
 	// Contact Section
 	contact: {
-		title: 'Nimm Kontakt auf',
+		title: 'Sag Hallo',
 		description:
-			'Projekt im Kopf? Lass uns reden. Oder schreib mir einfach auf Social Media. Gefällt dir, was ich mache? Spenden sind willkommen.',
+			'Idee im Kopf? Lass uns reden. Oder schreib mir einfach auf Social Media. Gefällt dir, was ich mache? Spenden sind willkommen.',
 		email: 'E-Mail',
 		github: 'GitHub',
 		linkedin: 'LinkedIn',
