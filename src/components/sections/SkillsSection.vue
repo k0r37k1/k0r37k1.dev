@@ -133,11 +133,16 @@ const skills = {
 }
 
 .category-title {
-	color: var(--color-terminal-secondary);
+	color: oklch(85% 0.22 125deg);
 	font-size: 0.875rem;
 	font-weight: 600;
 	letter-spacing: 0.02em;
 	margin-bottom: 0.75rem;
+
+	/* Radioactive lime glow */
+	text-shadow:
+		0 0 3px oklch(85% 0.22 125deg / 40%),
+		0 0 6px oklch(85% 0.22 125deg / 25%);
 }
 
 .skill-tag {

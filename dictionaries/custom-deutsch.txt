@@ -298,6 +298,7 @@ saubere
 gebaut
 reale
 schöne
+Nimm
 
 # Portfolio-spezifisch
 Löser

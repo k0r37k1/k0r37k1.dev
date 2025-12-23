@@ -104,7 +104,7 @@ export default {
 
 	// Contact Section
 	contact: {
-		title: 'Lass uns zusammenarbeiten',
+		title: 'Nimm Kontakt auf',
 		description:
 			'Projekt im Kopf? Lass uns reden. Oder schreib mir einfach auf Social Media. Gefällt dir, was ich mache? Spenden sind willkommen.',
 		email: 'E-Mail',
