@@ -25,6 +25,7 @@ export default {
 		projects: '▀▄▀▄ PROJEKTE ▄▀▄▀',
 		skills: '▀▄▀▄ ENTWICKLUNGSUMGEBUNG ▄▀▄▀',
 		contact: '▀▄▀▄ KONTAKT ▄▀▄▀',
+		blog: '▀▄▀▄ BLOG ▄▀▄▀',
 	},
 
 	// About Section
@@ -41,6 +42,19 @@ export default {
 			label: '[ JETZT ]',
 			text: 'Open Source beitragen, mit neuen Web-Technologien spielen, AI-Workflows optimieren. Immer am Experimentieren.',
 		},
+	},
+
+	// Blog Section
+	blog: {
+		title: 'Blog',
+		description: 'Persönliches Dev-Blog',
+		readMore: 'Weiterlesen →',
+		publishedOn: 'Veröffentlicht am',
+		updatedOn: 'Aktualisiert am',
+		tags: 'Tags',
+		allPosts: 'Alle Beiträge',
+		noPosts: 'Noch keine Beiträge vorhanden.',
+		backToBlog: '← zurück zum Blog',
 	},
 
 	// Projects Section
@@ -128,7 +142,8 @@ export default {
 		links: {
 			imprint: 'Impressum',
 			privacy: 'Datenschutz',
-			wcag: 'WCAG 2.2 AA',
+			blog: 'Blog',
+			home: 'Portfolio',
 		},
 	},
 
@@ -139,6 +154,7 @@ export default {
 			projects: 'Projekte',
 			environment: 'Entwicklungsumgebung',
 			contact: 'Kontakt',
+			blog: 'Blog',
 		},
 		navigation: {
 			legal: 'Navigation für rechtliche Seiten',

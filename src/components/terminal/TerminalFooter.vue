@@ -5,10 +5,12 @@ import { computed } from 'vue';
 
 interface Props {
 	lang?: Language;
+	isBlog?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	lang: 'de',
+	isBlog: false,
 });
 
 const t = getTranslations(props.lang);
@@ -16,6 +18,8 @@ const currentYear = new Date().getFullYear();
 
 const imprintLink = computed(() => (props.lang === 'en' ? '/en/imprint' : '/imprint'));
 const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/privacy'));
+const blogLink = computed(() => (props.lang === 'en' ? '/en/blog' : '/blog'));
+const homeLink = computed(() => (props.lang === 'en' ? '/en' : '/'));
 </script>
 
 <template>
@@ -40,15 +44,13 @@ const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/priv
 				</a>
 			</div>
 			<div class="footer-links">
-				<a
-					href="https://www.w3.org/WAI/WCAG22/quickref/"
-					class="terminal-link footer-link"
-					target="_blank"
-					rel="noopener noreferrer"
-					:aria-label="t.aria.actions.wcagCompliance"
-				>
-					<Icon icon="mdi:shield-check" class="footer-icon" />
-					<span>{{ t.footer.links.wcag }}</span>
+				<a v-if="!isBlog" :href="blogLink" class="terminal-link footer-link">
+					<Icon icon="mdi:post-outline" class="footer-icon" />
+					<span>{{ t.footer.links.blog }}</span>
+				</a>
+				<a v-else :href="homeLink" class="terminal-link footer-link">
+					<Icon icon="mdi:home" class="footer-icon" />
+					<span>{{ t.footer.links.home }}</span>
 				</a>
 				<span class="separator">•</span>
 				<a :href="imprintLink" class="terminal-link footer-link">

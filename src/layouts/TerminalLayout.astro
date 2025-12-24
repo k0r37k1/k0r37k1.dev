@@ -13,6 +13,7 @@ interface Props {
 	currentPath?: string;
 	customTitle?: string;
 	showGoToTop?: boolean;
+	isBlog?: boolean;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
 	currentPath = '/',
 	customTitle,
 	showGoToTop = true,
+	isBlog = false,
 } = Astro.props;
 const t = getTranslations(lang);
 ---
@@ -42,7 +44,7 @@ const t = getTranslations(lang);
 			{showGoToTop && <GoToTop client:idle lang={lang} />}
 
 			<!-- Footer -->
-			<TerminalFooter client:idle lang={lang} />
+			<TerminalFooter client:idle lang={lang} isBlog={isBlog} />
 		</main>
 	</div>
 

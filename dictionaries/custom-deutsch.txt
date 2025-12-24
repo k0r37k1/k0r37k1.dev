@@ -383,3 +383,14 @@ klonen
 Aktion
 lokal
 Lizenz
+
+# Blog-spezifische Begriffe
+erste
+Beitrag
+gestützte
+Persönliche
+meiner
+lerne
+finde
+sondern
+echte
