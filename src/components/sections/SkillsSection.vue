@@ -48,8 +48,6 @@ const skills = {
 	platforms: [
 		{ key: 'desktop', icon: 'mdi:monitor' },
 		{ key: 'mobile', icon: 'mdi:cellphone' },
-		{ key: 'ios', icon: 'mdi:apple' },
-		{ key: 'android', icon: 'mdi:android' },
 	],
 	concepts: [
 		{ key: 'testing', icon: 'mdi:test-tube' },
