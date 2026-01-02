@@ -54,40 +54,6 @@ const show = ref(true);
 - Combine with `client:visible` for optimal loading
 - Avoid animating expensive properties (width, height, left, top)
 
-## Floating UI & Alpine.js Fallback
-
-**IMPORTANT:** Floating UI (Tooltip positioning) doesn't work reliably with Vue 3 and
-Astro Islands Architecture.
-
-### Problem
-
-- Reka UI Tooltip/Popover use Floating UI internally
-- Floating UI has compatibility issues with Astro's partial hydration
-- Vue Components in Islands can't reliably react to DOM position changes
-
-### Solution: Alpine.js Fallback
-
-For positioning-critical components (Tooltips, Popovers, Dropdowns) use Alpine.js with
-`@alpinejs/anchor` plugin:
-
-```astro
-<!-- Alpine.js Tooltip (reliable positioning) -->
-<Tooltip content="Text" side="top">
-  <Button>Hover</Button>
-</Tooltip>
-```
-
-**When to use Alpine.js:**
-
-- Tooltips and Popovers
-- Dropdown Menus with dynamic positioning
-- Floating UI features in Astro Islands
-- Components that need global DOM coordinates
-
-**Alpine.js loads globally** - no `client:*` directives needed!
-
-See `docs/ALPINEJS-FALLBACK.md` for details.
-
 ## Astro + Vue Known Issues
 
 ### VueUse Composables SSR Problem

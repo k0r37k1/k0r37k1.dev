@@ -7,12 +7,18 @@ interface Props {
 	lang?: Language;
 	currentPath?: string;
 	customTitle?: string;
+	/** Override URL for language switcher (e.g., blog posts without translation) */
+	alternateUrl?: string;
+	/** Whether to show the language switcher (default: true) */
+	showLanguageSwitcher?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	lang: 'de',
 	currentPath: '/',
 	customTitle: undefined,
+	alternateUrl: undefined,
+	showLanguageSwitcher: true,
 });
 
 const t = getTranslations(props.lang);
@@ -45,12 +51,15 @@ const titleParts = computed(() => {
 			}}<span v-if="titleParts.hasExtension" class="txt-extension">{{ titleParts.extension }}</span
 			><span class="terminal-cursor" aria-hidden="true">|</span>
 		</span>
-		<span class="header-separator" aria-hidden="true">|</span>
-		<LanguageSwitcher
-			:current-lang="lang"
-			:current-path="currentPath"
-			class="header-lang-switcher"
-		/>
+		<template v-if="showLanguageSwitcher">
+			<span class="header-separator" aria-hidden="true">|</span>
+			<LanguageSwitcher
+				:current-lang="lang"
+				:current-path="currentPath"
+				:alternate-url="alternateUrl"
+				class="header-lang-switcher"
+			/>
+		</template>
 	</header>
 </template>
 
@@ -68,11 +77,6 @@ const titleParts = computed(() => {
 	opacity: 0.4;
 	font-family: var(--font-mono);
 	margin: 0 0.5rem;
-
-	/* Subtle phosphor glow */
-	text-shadow:
-		0 0 3px rgb(140 140 140 / 30%),
-		0 0 6px rgb(140 140 140 / 18%);
 }
 
 .header-lang-switcher {

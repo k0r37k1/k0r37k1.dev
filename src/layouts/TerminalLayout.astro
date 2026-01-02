@@ -14,6 +14,10 @@ interface Props {
 	customTitle?: string;
 	showGoToTop?: boolean;
 	isBlog?: boolean;
+	/** Override URL for language switcher (e.g., blog posts without translation) */
+	alternateUrl?: string;
+	/** Whether to show the language switcher (default: true) */
+	showLanguageSwitcher?: boolean;
 }
 
 const {
@@ -24,6 +28,8 @@ const {
 	customTitle,
 	showGoToTop = true,
 	isBlog = false,
+	alternateUrl,
+	showLanguageSwitcher = true,
 } = Astro.props;
 const t = getTranslations(lang);
 ---
@@ -34,7 +40,14 @@ const t = getTranslations(lang);
 
 	<div class="terminal-window">
 		<!-- Terminal Header -->
-		<TerminalHeader client:idle lang={lang} currentPath={currentPath} customTitle={customTitle} />
+		<TerminalHeader
+			client:idle
+			lang={lang}
+			currentPath={currentPath}
+			customTitle={customTitle}
+			alternateUrl={alternateUrl}
+			showLanguageSwitcher={showLanguageSwitcher}
+		/>
 
 		<!-- Terminal Content (Scrollable) -->
 		<main id="main-content" class="terminal-content">

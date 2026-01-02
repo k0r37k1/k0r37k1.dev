@@ -217,6 +217,15 @@ export default {
 		},
 	},
 
+	// 404 Page
+	notFound: {
+		title: 'Seite nicht gefunden',
+		subtitle: 'Die angeforderte Seite existiert nicht.',
+		description: 'Vielleicht wurde sie verschoben, gelöscht oder du hast dich vertippt.',
+		backHome: 'zur Startseite',
+		backBlog: 'zum Blog',
+	},
+
 	// Legal Pages
 	legal: {
 		imprint: {

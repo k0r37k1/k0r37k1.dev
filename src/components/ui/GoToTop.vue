@@ -134,16 +134,10 @@ onUnmounted(() => {
 	transition: all 0.2s ease;
 	animation: crt-flicker 3s steps(1) infinite;
 	will-change: opacity, transform;
-
-	/* Subtle cyan phosphor glow */
-	text-shadow:
-		0 0 3px rgb(0 217 255 / 30%),
-		0 0 6px rgb(0 217 255 / 18%);
 }
 
 .go-to-top:hover {
 	color: #00ff9f;
-	text-shadow: 0 0 10px rgb(0 255 159 / 50%);
 }
 
 .go-to-top:focus-visible {
@@ -178,30 +172,18 @@ onUnmounted(() => {
 	font-size: 0.875rem;
 	font-weight: 900;
 	color: var(--color-terminal-primary);
-	text-shadow:
-		0 0 1px var(--color-terminal-primary),
-		0 0 2px var(--color-terminal-primary),
-		0 0 8px rgb(0 217 255 / 90%),
-		0 0 16px rgb(0 217 255 / 60%);
 	display: inline-block;
 	vertical-align: middle;
 	line-height: 1;
 	transform: scale(1.8);
 	transform-origin: center center;
 	transition: all 0.3s ease;
-	filter: drop-shadow(0 0 2px currentColor);
 	will-change: transform;
 }
 
 .go-to-top:hover .arrow {
 	color: #00ff9f;
 	transform: scale(2) translateY(-2px);
-	text-shadow:
-		0 0 2px #00ff9f,
-		0 0 4px #00ff9f,
-		0 0 12px rgb(0 255 159 / 100%),
-		0 0 20px rgb(0 255 159 / 80%);
-	filter: drop-shadow(0 0 4px currentColor);
 }
 
 /* Mobile adjustments */

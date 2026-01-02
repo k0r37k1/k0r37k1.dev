@@ -217,6 +217,15 @@ export default {
 		},
 	},
 
+	// 404 Page
+	notFound: {
+		title: 'Page not found',
+		subtitle: 'The requested page does not exist.',
+		description: 'Maybe it was moved, deleted, or you made a typo.',
+		backHome: 'back to home',
+		backBlog: 'back to blog',
+	},
+
 	// Legal Pages
 	legal: {
 		imprint: {

@@ -1,16 +1,13 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import TerminalLayout from '@layouts/TerminalLayout.astro';
 import { getTranslations } from '@/i18n';
+import { getBlogStaticPaths, getAlternatePostUrl } from '@utils/blog';
 
 const t = getTranslations('de');
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+	return getBlogStaticPaths('de');
 }
 
 type Props = CollectionEntry<'blog'>;
@@ -20,6 +17,7 @@ const { Content } = await post.render();
 
 const pageTitle = `${post.data.title} | Blog | k0r37k1.dev`;
 const pageDescription = post.data.description;
+const alternateUrl = await getAlternatePostUrl(post, 'en');
 ---
 
 <TerminalLayout
@@ -28,6 +26,7 @@ const pageDescription = post.data.description;
 	description={pageDescription}
 	currentPath={`/blog/${post.slug}`}
 	isBlog={true}
+	alternateUrl={alternateUrl}
 >
 	<article class="blog-post">
 		<div class="post-header">

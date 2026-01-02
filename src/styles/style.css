@@ -31,11 +31,11 @@
 	--color-highlight: #f0f; /* Magenta for highlights */
 	--color-link: #00d9ff; /* Cyan for links */
 
-	/* Y2K Accent Colors (NEW) */
+	/* Accent Colors */
 	--color-accent-orange: #f60; /* Neon orange for highlights */
 	--color-accent-purple: #bf80ff; /* Electric purple for glitch effects (brightened for WCAG AA) */
 
-	/* Neo-Brutalist Shadows (NEW) */
+	/* Shadows */
 	--shadow-cyan: 4px 4px 0 rgb(0 217 255 / 30%);
 	--shadow-magenta: 4px 4px 0 rgb(255 0 255 / 30%);
 	--shadow-orange: 4px 4px 0 rgb(255 102 0 / 30%);
@@ -160,11 +160,6 @@ body {
 	font-family: var(--font-mono); /* IBM Plex Mono for better readability */
 	font-size: 1rem;
 	letter-spacing: 0.02em;
-
-	/* Subtle green phosphor glow */
-	text-shadow:
-		0 0 3px rgb(68 213 68 / 35%),
-		0 0 6px rgb(68 213 68 / 20%);
 }
 
 .terminal-cursor {
@@ -173,11 +168,6 @@ body {
 	margin-left: 0;
 	color: var(--color-terminal-success);
 	animation: cursor-blink 1s step-end infinite;
-
-	/* Subtle green phosphor glow */
-	text-shadow:
-		0 0 3px rgb(68 213 68 / 40%),
-		0 0 6px rgb(68 213 68 / 25%);
 }
 
 @keyframes cursor-blink {
@@ -228,20 +218,10 @@ body {
 .prompt {
 	color: var(--color-prompt);
 	font-weight: 600;
-
-	/* Subtle green phosphor glow */
-	text-shadow:
-		0 0 2px rgb(68 213 68 / 30%),
-		0 0 4px rgb(68 213 68 / 18%);
 }
 
 .command {
 	color: var(--color-command);
-
-	/* Subtle blue phosphor glow */
-	text-shadow:
-		0 0 2px rgb(85 85 255 / 30%),
-		0 0 4px rgb(85 85 255 / 18%);
 }
 
 /* ASCII Art */
@@ -251,11 +231,6 @@ body {
 	white-space: pre;
 	color: var(--color-terminal-primary);
 	margin: 1rem 0;
-
-	/* Enhanced phosphor glow for cyan text */
-	text-shadow:
-		0 0 3px rgb(0 217 255 / 35%),
-		0 0 6px rgb(0 217 255 / 22%);
 }
 
 .ascii-icon {
@@ -265,11 +240,6 @@ body {
 	color: var(--color-highlight);
 	font-size: 0.875rem;
 	margin: 1rem 0;
-
-	/* Magenta phosphor glow */
-	text-shadow:
-		0 0 4px rgb(255 0 255 / 40%),
-		0 0 8px rgb(255 0 255 / 25%);
 }
 
 /* Section Styling */
@@ -287,11 +257,6 @@ body {
 	font-size: 1.5rem;
 	font-weight: 700;
 	margin-bottom: 1rem;
-
-	/* Subtle white phosphor glow for headings */
-	text-shadow:
-		0 0 3px rgb(255 255 255 / 30%),
-		0 0 6px rgb(255 255 255 / 18%);
 }
 
 .section-content p {
@@ -336,11 +301,6 @@ body {
 	background: var(--color-terminal-primary);
 	margin-left: 0.1em;
 	animation: blink 1s step-end infinite;
-
-	/* Subtle cyan phosphor glow */
-	box-shadow:
-		0 0 4px rgb(0 217 255 / 40%),
-		0 0 8px rgb(0 217 255 / 40%);
 }
 
 @keyframes blink {
@@ -441,21 +401,11 @@ body {
 .project-name::before {
 	content: '[ ';
 	color: var(--color-terminal-primary);
-
-	/* Very subtle cyan phosphor glow */
-	text-shadow:
-		0 0 1px rgb(0 217 255 / 30%),
-		0 0 3px rgb(0 217 255 / 15%);
 }
 
 .project-name::after {
 	content: ' ]';
 	color: var(--color-terminal-primary);
-
-	/* Very subtle cyan phosphor glow */
-	text-shadow:
-		0 0 1px rgb(0 217 255 / 30%),
-		0 0 3px rgb(0 217 255 / 15%);
 }
 
 /* Skills List */
@@ -595,7 +545,7 @@ a:focus-visible,
 		font-size: 0.5rem;
 	}
 
-	/* Scaled-down Neo-Brutalism for mobile */
+	/* Scaled-down styles for mobile */
 	.terminal-box,
 	.project-card,
 	.nfo-brutalist-container {
@@ -664,20 +614,14 @@ a:focus-visible,
 	animation: chromatic-aberration 4s ease-in-out infinite;
 }
 
-/* Strong phosphor glow utility - for special emphasis */
+/* Phosphor glow utilities - disabled (kept for reference) */
 .crt-phosphor-glow {
-	text-shadow:
-		0 0 5px currentColor,
-		0 0 10px currentColor,
-		0 0 15px rgb(0 217 255 / 50%);
+	/* text-shadow removed */
 	animation: phosphor-pulse 2s ease-in-out infinite;
 }
 
-/* Subtle phosphor glow utility - for general use */
 .crt-phosphor-subtle {
-	text-shadow:
-		0 0 3px rgb(255 255 255 / 12%),
-		0 0 6px rgb(255 255 255 / 6%);
+	/* text-shadow removed */
 }
 
 @keyframes phosphor-pulse {
@@ -836,21 +780,11 @@ a:focus-visible,
 .terminal-box-title::before {
 	content: '[ ';
 	color: var(--color-accent-orange);
-
-	/* Orange phosphor glow */
-	text-shadow:
-		0 0 3px rgb(255 102 0 / 40%),
-		0 0 6px rgb(255 102 0 / 25%);
 }
 
 .terminal-box-title::after {
 	content: ' ]';
 	color: var(--color-accent-orange);
-
-	/* Orange phosphor glow */
-	text-shadow:
-		0 0 3px rgb(255 102 0 / 40%),
-		0 0 6px rgb(255 102 0 / 25%);
 }
 
 /* NFO Border Components */
@@ -872,11 +806,6 @@ a:focus-visible,
 	line-height: 1.4;
 	font-weight: 600;
 	border-bottom: 2px solid var(--color-terminal-primary);
-
-	/* Cyan phosphor glow */
-	text-shadow:
-		0 0 3px rgb(0 217 255 / 25%),
-		0 0 6px rgb(0 217 255 / 8%);
 }
 
 .nfo-border-bottom {
@@ -900,22 +829,12 @@ a:focus-visible,
 	text-align: center;
 	font-weight: 600;
 	letter-spacing: 0.1em;
-
-	/* Subtle phosphor glow */
-	text-shadow:
-		0 0 3px rgb(140 140 140 / 30%),
-		0 0 6px rgb(140 140 140 / 30%);
 }
 
 .divider-icon {
 	color: var(--color-accent-orange);
 	font-weight: bold;
 	font-size: 1.2em;
-
-	/* Orange phosphor glow */
-	text-shadow:
-		0 0 4px rgb(255 102 0 / 40%),
-		0 0 8px rgb(255 102 0 / 25%);
 }
 
 /* Section with Corner Ornaments */
@@ -1143,11 +1062,6 @@ a:focus-visible,
 	color: var(--color-terminal-text-muted);
 	font-size: 0.875rem;
 	letter-spacing: 0.1em;
-
-	/* Subtle phosphor glow */
-	text-shadow:
-		0 0 3px rgb(140 140 140 / 30%),
-		0 0 6px rgb(140 140 140 / 18%);
 }
 
 @media (width <= 640px) {
@@ -1344,11 +1258,6 @@ a:focus-visible,
 	color: var(--color-terminal-text-muted);
 	opacity: 0.5;
 	font-size: 0.875rem;
-
-	/* Subtle phosphor glow */
-	text-shadow:
-		0 0 3px rgb(140 140 140 / 30%),
-		0 0 6px rgb(140 140 140 / 30%);
 }
 
 /* Responsive Styles */
@@ -1449,11 +1358,6 @@ a:focus-visible,
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	margin: 0;
-
-	/* Magenta phosphor glow */
-	text-shadow:
-		0 0 3px rgb(255 0 255 / 35%),
-		0 0 6px rgb(255 0 255 / 20%);
 
 	/* VT323 bitmap font optimization */
 	-webkit-font-smoothing: none;

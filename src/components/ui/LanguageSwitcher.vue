@@ -5,6 +5,8 @@ import { getTranslations } from '@/i18n';
 interface Props {
 	currentLang: 'de' | 'en';
 	currentPath?: string;
+	/** Override the alternate URL (e.g., for blog posts without translation) */
+	alternateUrl?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -14,6 +16,11 @@ const props = withDefaults(defineProps<Props>(), {
 const t = computed(() => getTranslations(props.currentLang));
 
 const getAlternateUrl = (targetLang: 'de' | 'en') => {
+	// Use override if provided
+	if (props.alternateUrl) {
+		return props.alternateUrl;
+	}
+
 	// Remove language prefix from current path
 	const pathWithoutLang = props.currentPath.replace(/^\/(en|de)\//, '/');
 
@@ -62,11 +69,6 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 	text-decoration: none;
 	cursor: pointer;
 	transition: all 0.2s ease;
-
-	/* Orange phosphor glow */
-	text-shadow:
-		0 0 3px rgb(255 102 0 / 40%),
-		0 0 6px rgb(255 102 0 / 25%);
 }
 
 /* Prevent browser default link colors */
@@ -80,32 +82,17 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 .bracket-right {
 	color: var(--color-terminal-primary);
 	font-weight: 700;
-
-	/* Cyan phosphor glow */
-	text-shadow:
-		0 0 3px rgb(0 217 255 / 40%),
-		0 0 6px rgb(0 217 255 / 25%);
 }
 
 .lang-link:hover,
 .lang-link:hover:visited,
 .lang-link:hover:active {
 	color: var(--color-accent-orange);
-
-	/* Orange phosphor glow */
-	text-shadow:
-		0 0 3px rgb(255 102 0 / 40%),
-		0 0 6px rgb(255 102 0 / 25%);
 }
 
 .lang-link:hover .bracket-left,
 .lang-link:hover .bracket-right {
 	color: var(--color-terminal-primary);
-
-	/* Cyan phosphor glow */
-	text-shadow:
-		0 0 3px rgb(0 217 255 / 40%),
-		0 0 6px rgb(0 217 255 / 25%);
 }
 
 .lang-link:focus-visible {

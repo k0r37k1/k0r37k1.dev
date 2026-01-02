@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 import vue from '@astrojs/vue';
 import tailwindcss from '@tailwindcss/vite';
 import Components from 'unplugin-vue-components/vite';
-import RekaResolver from 'reka-ui/resolver';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
@@ -117,7 +116,6 @@ export default defineConfig({
         optimizeDeps: {
             include: [
                 'vue',
-                'reka-ui',
                 'motion-v',
             ],
         },
@@ -127,7 +125,6 @@ export default defineConfig({
             // @ts-ignore - Vite plugin type mismatch between Astro and unplugin-vue-components
             Components({
                 dts: path.resolve(__dirname, 'types/components.d.ts'),
-                resolvers: [RekaResolver()],
             }),
         ],
     },

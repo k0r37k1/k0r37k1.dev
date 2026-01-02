@@ -130,12 +130,6 @@ claude
 Claude
 
 # Portfolio-spezifisch (k0r37k1.dev)
-neo-brutalism
-brutalism
-brutalist
-warez
-scene
-y2k
 figlet
 Figlet
 nfo
@@ -237,3 +231,14 @@ spielen
 reden
 mache
 Spenden
+
+# 404 Page
+gelöscht
+dich
+
+# Imprint/Legal
+Korezki
+Greven
+Pakete
+Päckchen
+Annahme

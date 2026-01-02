@@ -1,0 +1,20 @@
+---
+import TerminalLayout from '@layouts/TerminalLayout.astro';
+import NotFoundHero from '@components/sections/NotFoundHero.vue';
+
+// Default to German for static build - component detects language client-side
+const pageTitle = '404 - Page not found | k0r37k1.dev';
+const pageDescription = 'The requested page does not exist.';
+---
+
+<TerminalLayout
+	lang="de"
+	title={pageTitle}
+	description={pageDescription}
+	currentPath="/404"
+	customTitle="visitor@k0r37k1.dev:~$ cat error.log"
+	showGoToTop={false}
+	showLanguageSwitcher={false}
+>
+	<NotFoundHero client:load />
+</TerminalLayout>

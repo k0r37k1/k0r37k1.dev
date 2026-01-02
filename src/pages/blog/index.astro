@@ -1,15 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
 import TerminalLayout from '@layouts/TerminalLayout.astro';
 import { getTranslations } from '@/i18n';
+import { getBlogPosts } from '@utils/blog';
 
 const t = getTranslations('de');
-
-const allPosts = await getCollection('blog', ({ data }) => {
-	return data.draft !== true;
-});
-
-const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sortedPosts = await getBlogPosts('de');
 
 const pageTitle = `${t.blog.title} | k0r37k1.dev`;
 const pageDescription = t.blog.description;

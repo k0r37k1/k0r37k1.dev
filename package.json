@@ -2,7 +2,7 @@
   "name": "k0r37k1.dev",
   "type": "module",
   "version": "1.0.0",
-  "description": "Terminal-style portfolio with 2000s Warez Scene & Y2K aesthetics - Built with Astro 5, Vue 3, and Tailwind CSS v4",
+  "description": "Terminal-style portfolio with retro aesthetic - Built with Astro 5, Vue 3, and Tailwind CSS v4",
   "author": "k0r37k1 <https://k0r37k1.dev>",
   "homepage": "https://k0r37k1.dev",
   "repository": {
@@ -12,14 +12,11 @@
   "keywords": [
     "portfolio",
     "terminal",
+    "retro",
     "astro",
     "vue3",
     "tailwindcss",
-    "neo-brutalism",
-    "warez-scene",
-    "y2k-aesthetic",
-    "typescript",
-    "vite-plus"
+    "typescript"
   ],
   "license": "MIT",
   "scripts": {
@@ -65,7 +62,6 @@
     "axe-core": "^4.11.0",
     "figlet": "^1.9.4",
     "motion-v": "^1.7.4",
-    "reka-ui": "^2.6.0",
     "shiki": "^3.15.0",
     "tailwindcss": "^4.1.17",
     "vue": "^3.5.24"
