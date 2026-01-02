@@ -108,13 +108,14 @@ export default {
 			concepts: 'other skills',
 		},
 		items: {
-			desktop: 'Desktop',
-			mobile: 'Mobile',
+			web: 'Web',
 			ios: 'iOS',
 			android: 'Android',
+			macos: 'macOS',
+			windows: 'Windows',
+			linux: 'Linux',
 			testing: 'Testing',
 			accessibility: 'Accessibility',
-			restfulApi: 'RESTful API',
 		},
 	},
 

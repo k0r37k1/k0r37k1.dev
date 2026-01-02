@@ -46,15 +46,16 @@ const skills = {
 		{ name: 'Claude', icon: 'simple-icons:anthropic' },
 	],
 	platforms: [
-		{ key: 'desktop', icon: 'mdi:monitor' },
-		{ key: 'mobile', icon: 'mdi:cellphone' },
-		{ key: 'ios', icon: 'mdi:apple' },
+		{ key: 'web', icon: 'mdi:web' },
+		{ key: 'ios', icon: 'mdi:apple-ios' },
 		{ key: 'android', icon: 'mdi:android' },
+		{ key: 'macos', icon: 'mdi:apple' },
+		{ key: 'windows', icon: 'mdi:microsoft-windows' },
+		{ key: 'linux', icon: 'mdi:linux' },
 	],
 	concepts: [
 		{ key: 'testing', icon: 'mdi:test-tube' },
 		{ key: 'accessibility', icon: 'mdi:human' },
-		{ key: 'restfulApi', icon: 'mdi:api' },
 	],
 };
 </script>

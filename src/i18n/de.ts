@@ -108,13 +108,14 @@ export default {
 			concepts: 'Weitere Kompetenzen',
 		},
 		items: {
-			desktop: 'Desktop',
-			mobile: 'Mobil',
+			web: 'Web',
 			ios: 'iOS',
 			android: 'Android',
+			macos: 'macOS',
+			windows: 'Windows',
+			linux: 'Linux',
 			testing: 'Testing',
 			accessibility: 'Barrierefreiheit',
-			restfulApi: 'RESTful API',
 		},
 	},
 
