@@ -110,6 +110,8 @@ export default {
 		items: {
 			desktop: 'Desktop',
 			mobile: 'Mobile',
+			ios: 'iOS',
+			android: 'Android',
 			testing: 'Testing',
 			accessibility: 'Accessibility',
 			restfulApi: 'RESTful API',
