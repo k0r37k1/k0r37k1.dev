@@ -31,15 +31,7 @@ const canonicalUrl = lang === 'de' ? `${baseUrl}${currentPath}` : `${baseUrl}/en
 		<!-- Canonical URL -->
 		<link rel="canonical" href={canonicalUrl} />
 
-		<!-- Preload fonts for performance -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-		<!-- Terminal Fonts: VT323 for titles, IBM Plex Mono for content -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
-			rel="stylesheet"
-		/>
+		<!-- Fonts: Self-hosted via @fontsource (GDPR-compliant) -->
 
 		<!-- Language alternates for SEO -->
 		<link rel="alternate" hreflang="de" href={lang === 'de' ? canonicalUrl : alternateUrl} />
