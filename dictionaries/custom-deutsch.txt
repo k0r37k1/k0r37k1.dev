@@ -467,3 +467,47 @@ MSTV
 # Kleinunternehmerregelung
 UStG
 Kleinunternehmerregelung
+
+# CSpell Umlaut-Parsing-Fragmente (Blog-Posts)
+Geschä
+Einschätzung
+
+# Blog-Posts 2026
+geht's
+Jahr
+zwei
+Kurzes
+Endlich
+raus
+warte
+Dauert
+Zwei
+Öffnen
+sanfter
+Weckton
+kurz
+wollen
+kommen
+grünes
+gibt
+mehr
+Kram
+Nächstes
+meldet
+geht
+Eintrag
+steht
+landet
+steht's
+selbst
+gerne
+früher
+gewusst
+hätte
+willen
+Kurz
+hilft
+Mehr
+Nächster
+kommt
+Geschäftsadresse
