@@ -321,12 +321,23 @@ export default {
 			paymentServicesNote:
 				'When using these services, their respective privacy policies apply. We only receive the data necessary for processing.',
 
-			// 7. External Links
+			// 7. Data Transfers to Third Countries
+			thirdCountries: '[ DATA TRANSFERS TO THIRD COUNTRIES ]',
+			thirdCountriesText: 'Some of the external services we use are based outside the EU/EEA:',
+			thirdCountriesIconify: '→ Iconify OÜ (Estonia) - EU Member State',
+			thirdCountriesApple: '→ Apple Inc. (USA) - EU-US Data Privacy Framework',
+			thirdCountriesGoogle: '→ Google LLC (USA) - EU-US Data Privacy Framework',
+			thirdCountriesBuyMeACoffee: '→ Publisherr Inc. (USA) - Standard Contractual Clauses',
+			thirdCountriesPaypal: '→ PayPal (Europe) S.à r.l. (Luxembourg) - EU Member State',
+			thirdCountriesNote:
+				'Data transfers to the USA are based on the EU-US Data Privacy Framework or EU Standard Contractual Clauses pursuant to Art. 46(2)(c) GDPR.',
+
+			// 8. External Links
 			externalLinks: '[ EXTERNAL LINKS ]',
 			externalLinksText:
-				'This website contains links to external websites (e.g., GitHub, LinkedIn). When you click on these links, you leave our website. We have no control over data processing by the linked websites. Please refer to their privacy policies for information.',
+				'This website contains links to external websites (e.g., GitHub, X/Twitter). When you click on these links, you leave our website. We have no control over data processing by the linked websites. Please refer to their privacy policies for information.',
 
-			// 8. Your Rights
+			// 9. Your Rights
 			rights: '[ YOUR RIGHTS ]',
 			rightsIntro: '// Under the GDPR, you have the following rights:',
 			rightsInfo: '→ Access to your stored data (Art. 15 GDPR)',
@@ -339,7 +350,12 @@ export default {
 			rightsAuthority:
 				'Supervisory authority: State Commissioner for Data Protection and Freedom of Information North Rhine-Westphalia, Kavalleriestr. 2-4, 40213 Düsseldorf, Germany',
 
-			// 9. Contact
+			// 10. Changes
+			changes: '[ CHANGES ]',
+			changesText:
+				'We reserve the right to update this privacy policy to adapt it to changed legal requirements or changes to our services. The current version is always available on this page. We will inform you appropriately of any significant changes.',
+
+			// 11. Contact
 			contact: '[ CONTACT ]',
 			contactText:
 				'If you have any questions about data protection, you can contact us at any time:',

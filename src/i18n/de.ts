@@ -321,12 +321,24 @@ export default {
 			paymentServicesNote:
 				'Bei Nutzung dieser Dienste gelten deren jeweilige Datenschutzbestimmungen. Wir erhalten nur die für die Abwicklung notwendigen Daten.',
 
-			// 7. Externe Links
+			// 7. Datenübermittlung in Drittländer
+			thirdCountries: '[ DATENÜBERMITTLUNG IN DRITTLÄNDER ]',
+			thirdCountriesText:
+				'Einige der von uns genutzten externen Dienste haben ihren Sitz außerhalb der EU/des EWR:',
+			thirdCountriesIconify: '→ Iconify OÜ (Estland) - EU-Mitgliedstaat',
+			thirdCountriesApple: '→ Apple Inc. (USA) - EU-US Data Privacy Framework',
+			thirdCountriesGoogle: '→ Google LLC (USA) - EU-US Data Privacy Framework',
+			thirdCountriesBuyMeACoffee: '→ Publisherr Inc. (USA) - Standardvertragsklauseln',
+			thirdCountriesPaypal: '→ PayPal (Europe) S.à r.l. (Luxemburg) - EU-Mitgliedstaat',
+			thirdCountriesNote:
+				'Die Datenübermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework bzw. EU-Standardvertragsklauseln gemäß Art. 46 Abs. 2 lit. c DSGVO.',
+
+			// 8. Externe Links
 			externalLinks: '[ EXTERNE LINKS ]',
 			externalLinksText:
-				'Diese Website enthält Links zu externen Websites (z. B. GitHub, LinkedIn). Bei Klick auf diese Links verlassen Sie unsere Website. Wir haben keinen Einfluss auf die Datenverarbeitung durch die verlinkten Websites. Bitte informieren Sie sich dort über deren Datenschutzbestimmungen.',
+				'Diese Website enthält Links zu externen Websites (z. B. GitHub, X/Twitter). Bei Klick auf diese Links verlassen Sie unsere Website. Wir haben keinen Einfluss auf die Datenverarbeitung durch die verlinkten Websites. Bitte informieren Sie sich dort über deren Datenschutzbestimmungen.',
 
-			// 8. Ihre Rechte
+			// 9. Ihre Rechte
 			rights: '[ IHRE RECHTE ]',
 			rightsIntro: '// Nach der DSGVO haben Sie folgende Rechte:',
 			rightsInfo: '→ Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)',
@@ -339,7 +351,12 @@ export default {
 			rightsAuthority:
 				'Zuständige Aufsichtsbehörde: Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen, Kavalleriestr. 2-4, 40213 Düsseldorf',
 
-			// 9. Kontakt
+			// 10. Änderungen
+			changes: '[ ÄNDERUNGEN ]',
+			changesText:
+				'Wir behalten uns vor, diese Datenschutzerklärung anzupassen, um sie an geänderte Rechtslagen oder bei Änderungen des Dienstes anzupassen. Die aktuelle Version finden Sie stets auf dieser Seite. Bei wesentlichen Änderungen werden wir Sie in geeigneter Weise informieren.',
+
+			// 11. Kontakt
 			contact: '[ KONTAKT ]',
 			contactText: 'Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden:',
 		},
