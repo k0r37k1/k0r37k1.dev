@@ -236,6 +236,8 @@ export default {
 			tmg: '[ § 5 TMG ]',
 			contact: '[ CONTACT ]',
 			responsible: '[ § 18 ABS. 2 MSTV ]',
+			vat: '[ VAT ]',
+			vatText: 'No VAT is charged pursuant to § 19 UStG (small business regulation).',
 			liability: '[ LIABILITY ]',
 			liabilityContent: '// Liability for Content',
 			liabilityContentText:

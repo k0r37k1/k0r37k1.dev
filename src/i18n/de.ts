@@ -236,6 +236,8 @@ export default {
 			tmg: '[ § 5 TMG ]',
 			contact: '[ KONTAKT ]',
 			responsible: '[ § 18 ABS. 2 MSTV ]',
+			vat: '[ UMSATZSTEUER ]',
+			vatText: 'Gemäß § 19 UStG wird keine Umsatzsteuer berechnet (Kleinunternehmerregelung).',
 			liability: '[ HAFTUNG ]',
 			liabilityContent: '// Haftung für Inhalte',
 			liabilityContentText:

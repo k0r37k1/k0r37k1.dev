@@ -463,3 +463,7 @@ Weise
 
 # Medienstaatsvertrag
 MSTV
+
+# Kleinunternehmerregelung
+UStG
+Kleinunternehmerregelung
