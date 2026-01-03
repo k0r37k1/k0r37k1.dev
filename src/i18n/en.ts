@@ -310,6 +310,17 @@ export default {
 			appStoresNote:
 				'Data processing when visiting these platforms is subject to their respective privacy policies.',
 
+			// Payment Services / Donations
+			paymentServices: '// Payment Services & Donations',
+			paymentServicesText:
+				'This website contains links to the following payment and donation platforms:',
+			paymentPaypal: '→ PayPal (PayPal (Europe) S.à r.l. et Cie, S.C.A.)',
+			paymentPaypalPrivacy: 'Privacy Policy: https://www.paypal.com/legalhub/privacy-full',
+			paymentBuyMeACoffee: '→ Buy Me a Coffee (Publisherr Inc.)',
+			paymentBuyMeACoffeePrivacy: 'Privacy Policy: https://www.buymeacoffee.com/privacy-policy',
+			paymentServicesNote:
+				'When using these services, their respective privacy policies apply. We only receive the data necessary for processing.',
+
 			// 7. External Links
 			externalLinks: '[ EXTERNAL LINKS ]',
 			externalLinksText:
