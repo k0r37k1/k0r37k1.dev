@@ -84,15 +84,17 @@ const getAlternateUrl = (targetLang: 'de' | 'en') => {
 	font-weight: 700;
 }
 
-.lang-link:hover,
-.lang-link:hover:visited,
-.lang-link:hover:active {
-	color: var(--color-accent-orange);
-}
+@media (hover: hover) {
+	.lang-link:hover,
+	.lang-link:hover:visited,
+	.lang-link:hover:active {
+		color: var(--color-accent-orange);
+	}
 
-.lang-link:hover .bracket-left,
-.lang-link:hover .bracket-right {
-	color: var(--color-terminal-primary);
+	.lang-link:hover .bracket-left,
+	.lang-link:hover .bracket-right {
+		color: var(--color-terminal-primary);
+	}
 }
 
 .lang-link:focus-visible {

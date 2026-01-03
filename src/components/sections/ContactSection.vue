@@ -140,13 +140,15 @@ const contacts = [
 	text-shadow: none; /* No glow effect */
 }
 
-.contact-link:hover {
-	transform: translateZ(0);
-	text-shadow: none; /* No glow effect */
-}
+@media (hover: hover) {
+	.contact-link:hover {
+		transform: translateZ(0);
+		text-shadow: none; /* No glow effect */
+	}
 
-.contact-link:hover .contact-icon {
-	transform: scale(1.1) translateZ(0);
+	.contact-link:hover .contact-icon {
+		transform: scale(1.1) translateZ(0);
+	}
 }
 
 .contact-icon {

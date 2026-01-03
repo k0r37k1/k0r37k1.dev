@@ -120,9 +120,11 @@ onMounted(() => {
 	transition: all 0.3s ease;
 }
 
-.hero-section:hover .corner {
-	opacity: 1;
-	text-shadow: 0 0 10px rgb(255 102 0 / 40%);
+@media (hover: hover) {
+	.hero-section:hover .corner {
+		opacity: 1;
+		text-shadow: 0 0 10px rgb(255 102 0 / 40%);
+	}
 }
 
 .top-left {

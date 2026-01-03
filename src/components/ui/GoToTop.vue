@@ -136,8 +136,10 @@ onUnmounted(() => {
 	will-change: opacity, transform;
 }
 
-.go-to-top:hover {
-	color: #00ff9f;
+@media (hover: hover) {
+	.go-to-top:hover {
+		color: #00ff9f;
+	}
 }
 
 .go-to-top:focus-visible {
@@ -181,9 +183,11 @@ onUnmounted(() => {
 	will-change: transform;
 }
 
-.go-to-top:hover .arrow {
-	color: #00ff9f;
-	transform: scale(2) translateY(-2px);
+@media (hover: hover) {
+	.go-to-top:hover .arrow {
+		color: #00ff9f;
+		transform: scale(2) translateY(-2px);
+	}
 }
 
 /* Mobile adjustments */

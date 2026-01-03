@@ -146,19 +146,21 @@ onMounted(() => {
 	transition: all 0.2s ease;
 }
 
-.error-link:hover {
-	color: var(--color-accent-orange);
-	border-bottom-color: var(--color-accent-orange);
-}
+@media (hover: hover) {
+	.error-link:hover {
+		color: var(--color-accent-orange);
+		border-bottom-color: var(--color-accent-orange);
+	}
 
-.error-link:hover::before {
-	content: '[ ';
-	color: var(--color-terminal-primary);
-}
+	.error-link:hover::before {
+		content: '[ ';
+		color: var(--color-terminal-primary);
+	}
 
-.error-link:hover::after {
-	content: ' ]';
-	color: var(--color-terminal-primary);
+	.error-link:hover::after {
+		content: ' ]';
+		color: var(--color-terminal-primary);
+	}
 }
 
 .link-icon {

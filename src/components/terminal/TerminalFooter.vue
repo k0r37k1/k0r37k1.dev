@@ -107,8 +107,10 @@ const homeLink = computed(() => (props.lang === 'en' ? '/en' : '/'));
 	transition: opacity 0.2s ease;
 }
 
-.logo-link:hover {
-	opacity: 0.85;
+@media (hover: hover) {
+	.logo-link:hover {
+		opacity: 0.85;
+	}
 }
 
 .logo {
@@ -126,9 +128,11 @@ const homeLink = computed(() => (props.lang === 'en' ? '/en' : '/'));
 	transition: color 0.2s ease;
 }
 
-.terminal-link:hover {
-	color: var(--color-accent-orange);
-	text-shadow: none; /* No glow effect */
+@media (hover: hover) {
+	.terminal-link:hover {
+		color: var(--color-accent-orange);
+		text-shadow: none; /* No glow effect */
+	}
 }
 
 .footer-link {
@@ -150,9 +154,11 @@ const homeLink = computed(() => (props.lang === 'en' ? '/en' : '/'));
 	gap: 0.5rem;
 }
 
-.astro-link:hover {
-	color: var(--color-terminal-text-dim); /* Keep text color */
-	text-shadow: none; /* No glow on text */
+@media (hover: hover) {
+	.astro-link:hover {
+		color: var(--color-terminal-text-dim); /* Keep text color */
+		text-shadow: none; /* No glow on text */
+	}
 }
 
 .astro-icon {
@@ -161,8 +167,10 @@ const homeLink = computed(() => (props.lang === 'en' ? '/en' : '/'));
 	transition: color 0.2s ease;
 }
 
-.astro-link:hover .astro-icon {
-	color: #bc52ee; /* Astro brand purple */
+@media (hover: hover) {
+	.astro-link:hover .astro-icon {
+		color: #bc52ee; /* Astro brand purple */
+	}
 }
 
 .footer-button {
