@@ -235,7 +235,7 @@ export default {
 			title: '▀▄▀▄ IMPRINT ▄▀▄▀',
 			tmg: '[ § 5 TMG ]',
 			contact: '[ CONTACT ]',
-			responsible: '[ § 55 ABS. 2 RSTV ]',
+			responsible: '[ § 18 ABS. 2 MSTV ]',
 			liability: '[ LIABILITY ]',
 			liabilityContent: '// Liability for Content',
 			liabilityContentText:

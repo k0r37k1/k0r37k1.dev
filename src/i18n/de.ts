@@ -235,7 +235,7 @@ export default {
 			title: '▀▄▀▄ IMPRESSUM ▄▀▄▀',
 			tmg: '[ § 5 TMG ]',
 			contact: '[ KONTAKT ]',
-			responsible: '[ § 55 ABS. 2 RSTV ]',
+			responsible: '[ § 18 ABS. 2 MSTV ]',
 			liability: '[ HAFTUNG ]',
 			liabilityContent: '// Haftung für Inhalte',
 			liabilityContentText:
