@@ -246,34 +246,80 @@ export default {
 		},
 		privacy: {
 			title: '▀▄▀▄ DATENSCHUTZ ▄▀▄▀',
+			lastUpdated: 'Stand: Januar 2025',
+
+			// 1. Verantwortlicher
+			responsible: '[ VERANTWORTLICHER ]',
+			responsibleText: 'Verantwortlich für die Datenverarbeitung auf dieser Website ist:',
+			responsibleName: 'Alex Korezki',
+			responsibleAddress: 'c/o Postflex #10164, Emsdettener Str. 10, 48268 Greven',
+			responsibleEmail: 'E-Mail: contact@k0r37k1.dev',
+
+			// 2. Überblick
 			overview: '[ ÜBERBLICK ]',
 			overviewText:
-				'Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.',
-			dataCollection: '[ DATENERFASSUNG ]',
-			whoResponsible: '// Wer ist verantwortlich?',
-			whoResponsibleText:
-				'Die Datenverarbeitung auf dieser Website erfolgt durch den Website-Betreiber. Die Kontaktdaten können Sie dem Impressum dieser Website entnehmen.',
-			howCollect: '// Wie erfassen wir Ihre Daten?',
-			howCollectText:
-				'Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben.',
-			howCollectText2:
-				'Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Webbrowser, Betriebssystem oder Zeitpunkt des Seitenaufrufs).',
+				'Diese Datenschutzerklärung informiert Sie über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten auf dieser Website. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.',
+
+			// 3. Hosting
 			hosting: '[ HOSTING ]',
-			hostingText:
-				'Diese Website wird von einem externen Dienstleister (Hoster) gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert.',
+			hostingProvider: '// Hoster',
+			hostingProviderText:
+				'Diese Website wird bei netcup GmbH, Daimlerstraße 25, 76185 Karlsruhe, Deutschland gehostet. netcup ist ein deutscher Hosting-Anbieter mit Rechenzentren in Deutschland.',
+			hostingData: '// Server-Logfiles',
+			hostingDataText:
+				'Bei jedem Zugriff auf diese Website werden automatisch Informationen in Server-Logfiles gespeichert: IP-Adresse (anonymisiert), Browsertyp und -version, Betriebssystem, Referrer-URL, aufgerufene Seiten, Datum und Uhrzeit des Zugriffs.',
+			hostingLegal: '// Rechtsgrundlage',
+			hostingLegalText:
+				'Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und effizienten Websitebetrieb). Die Logfiles werden nach 7 Tagen automatisch gelöscht.',
+
+			// 4. SSL/TLS
+			ssl: '[ SSL/TLS-VERSCHLÜSSELUNG ]',
+			sslText:
+				'Diese Website nutzt aus Sicherheitsgründen eine SSL/TLS-Verschlüsselung. Die Zertifikate werden von Let\'s Encrypt bereitgestellt. Eine verschlüsselte Verbindung erkennen Sie am Schloss-Symbol in der Browserzeile und an "https://" in der URL.',
+
+			// 5. Cookies
 			cookies: '[ COOKIES ]',
-			cookiesText:
-				'Unsere Website verwendet sogenannte "Cookies". Cookies sind kleine Textdateien und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert.',
+			cookiesWhat: '// Was sind Cookies?',
+			cookiesWhatText:
+				'Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden. Sie richten keinen Schaden an und enthalten keine Viren.',
+			cookiesUsed: '// Verwendete Cookies',
+			cookiesUsedText:
+				'Diese Website verwendet ausschließlich technisch notwendige Cookies für die Cookie-Einstellungen. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.',
+			cookiesControl: '// Ihre Kontrolle',
+			cookiesControlText:
+				'Sie können Cookies in Ihren Browsereinstellungen jederzeit löschen oder deren Speicherung verhindern. Bei Deaktivierung aller Cookies kann die Funktionalität der Website eingeschränkt sein.',
+
+			// 6. Externe Dienste
+			externalServices: '[ EXTERNE DIENSTE ]',
+			iconify: '// Iconify (Icons)',
+			iconifyText:
+				'Für die Darstellung von Icons nutzen wir die Iconify API (api.iconify.design). Beim Laden der Icons wird Ihre IP-Adresse an die Server von Iconify übermittelt. Dies ist technisch notwendig, um die Icons anzuzeigen.',
+			iconifyProvider: 'Anbieter: Iconify OÜ',
+			iconifyPrivacy: 'Datenschutz: https://iconify.design/privacy/',
+			iconifyLegal:
+				'Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer ansprechenden Darstellung der Website).',
+
+			// 7. Externe Links
+			externalLinks: '[ EXTERNE LINKS ]',
+			externalLinksText:
+				'Diese Website enthält Links zu externen Websites (z. B. GitHub, LinkedIn). Bei Klick auf diese Links verlassen Sie unsere Website. Wir haben keinen Einfluss auf die Datenverarbeitung durch die verlinkten Websites. Bitte informieren Sie sich dort über deren Datenschutzbestimmungen.',
+
+			// 8. Ihre Rechte
 			rights: '[ IHRE RECHTE ]',
-			rightsIntro: '// Sie haben folgende Rechte:',
-			rightsInfo: '→ Auskunft über Ihre gespeicherten Daten und deren Verarbeitung',
-			rightsCorrection: '→ Berichtigung unrichtiger personenbezogener Daten',
-			rightsDeletion: '→ Löschung Ihrer bei uns gespeicherten Daten',
-			rightsRestriction: '→ Einschränkung der Datenverarbeitung',
-			rightsPortability: '→ Datenübertragbarkeit',
-			rightsObject: '→ Widerspruch gegen die Verarbeitung',
+			rightsIntro: '// Nach der DSGVO haben Sie folgende Rechte:',
+			rightsInfo: '→ Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)',
+			rightsCorrection: '→ Berichtigung unrichtiger Daten (Art. 16 DSGVO)',
+			rightsDeletion: '→ Löschung Ihrer Daten (Art. 17 DSGVO)',
+			rightsRestriction: '→ Einschränkung der Verarbeitung (Art. 18 DSGVO)',
+			rightsPortability: '→ Datenübertragbarkeit (Art. 20 DSGVO)',
+			rightsObject: '→ Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)',
+			rightsComplaint: '→ Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)',
+			rightsAuthority:
+				'Zuständige Aufsichtsbehörde: Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen, Kavalleriestr. 2-4, 40213 Düsseldorf',
+
+			// 9. Kontakt
 			contact: '[ KONTAKT ]',
-			contactText: 'Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden.',
+			contactText: 'Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden:',
 		},
 		nav: {
 			backToPortfolio: '← zurück zum Portfolio',

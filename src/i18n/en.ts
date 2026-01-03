@@ -246,35 +246,81 @@ export default {
 		},
 		privacy: {
 			title: '▀▄▀▄ PRIVACY ▄▀▄▀',
+			lastUpdated: 'Last updated: January 2025',
+
+			// 1. Controller
+			responsible: '[ DATA CONTROLLER ]',
+			responsibleText: 'The controller responsible for data processing on this website is:',
+			responsibleName: 'Alex Korezki',
+			responsibleAddress: 'c/o Postflex #10164, Emsdettener Str. 10, 48268 Greven, Germany',
+			responsibleEmail: 'Email: contact@k0r37k1.dev',
+
+			// 2. Overview
 			overview: '[ OVERVIEW ]',
 			overviewText:
-				'The following information provides a simple overview of what happens to your personal data when you visit this website.',
-			dataCollection: '[ DATA COLLECTION ]',
-			whoResponsible: '// Who is responsible?',
-			whoResponsibleText:
-				'The data processing on this website is carried out by the website operator. You can find their contact details in the imprint of this website.',
-			howCollect: '// How do we collect your data?',
-			howCollectText:
-				'Your data is collected on the one hand by you providing it to us. This can be data that you enter into a contact form, for example.',
-			howCollectText2:
-				'Other data is collected automatically by our IT systems when you visit the website. This is mainly technical data (e.g. internet browser, operating system or time of page access).',
+				'This privacy policy informs you about the nature, scope and purpose of processing personal data on this website. Personal data is any data that can be used to personally identify you.',
+
+			// 3. Hosting
 			hosting: '[ HOSTING ]',
-			hostingText:
-				"This website is hosted by an external service provider (hoster). The personal data collected on this website is stored on the hoster's servers.",
+			hostingProvider: '// Hosting Provider',
+			hostingProviderText:
+				'This website is hosted by netcup GmbH, Daimlerstraße 25, 76185 Karlsruhe, Germany. netcup is a German hosting provider with data centers located in Germany.',
+			hostingData: '// Server Log Files',
+			hostingDataText:
+				'Each time you access this website, information is automatically stored in server log files: IP address (anonymized), browser type and version, operating system, referrer URL, pages accessed, date and time of access.',
+			hostingLegal: '// Legal Basis',
+			hostingLegalText:
+				'Processing is based on Art. 6(1)(f) GDPR (legitimate interest in secure and efficient website operation). Log files are automatically deleted after 7 days.',
+
+			// 4. SSL/TLS
+			ssl: '[ SSL/TLS ENCRYPTION ]',
+			sslText:
+				'This website uses SSL/TLS encryption for security reasons. Certificates are provided by Let\'s Encrypt. You can recognize an encrypted connection by the lock icon in your browser bar and "https://" in the URL.',
+
+			// 5. Cookies
 			cookies: '[ COOKIES ]',
-			cookiesText:
-				'Our website uses so-called "cookies". Cookies are small text files and do not cause any damage to your device. They are stored either temporarily for the duration of a session (session cookies) or permanently (permanent cookies) on your device.',
+			cookiesWhat: '// What are Cookies?',
+			cookiesWhatText:
+				'Cookies are small text files stored on your device. They cause no harm and contain no viruses.',
+			cookiesUsed: '// Cookies Used',
+			cookiesUsedText:
+				'This website only uses technically necessary cookies for cookie settings. No tracking or analytics cookies are used.',
+			cookiesControl: '// Your Control',
+			cookiesControlText:
+				'You can delete cookies in your browser settings at any time or prevent their storage. Disabling all cookies may limit website functionality.',
+
+			// 6. External Services
+			externalServices: '[ EXTERNAL SERVICES ]',
+			iconify: '// Iconify (Icons)',
+			iconifyText:
+				'We use the Iconify API (api.iconify.design) to display icons. When loading icons, your IP address is transmitted to Iconify servers. This is technically necessary to display the icons.',
+			iconifyProvider: 'Provider: Iconify OÜ',
+			iconifyPrivacy: 'Privacy Policy: https://iconify.design/privacy/',
+			iconifyLegal:
+				'Legal basis: Art. 6(1)(f) GDPR (legitimate interest in an appealing website presentation).',
+
+			// 7. External Links
+			externalLinks: '[ EXTERNAL LINKS ]',
+			externalLinksText:
+				'This website contains links to external websites (e.g., GitHub, LinkedIn). When you click on these links, you leave our website. We have no control over data processing by the linked websites. Please refer to their privacy policies for information.',
+
+			// 8. Your Rights
 			rights: '[ YOUR RIGHTS ]',
-			rightsIntro: '// You have the right to:',
-			rightsInfo: '→ Information about your stored data and its processing',
-			rightsCorrection: '→ Correction of incorrect personal data',
-			rightsDeletion: '→ Deletion of your data stored with us',
-			rightsRestriction: '→ Restriction of data processing',
-			rightsPortability: '→ Data portability',
-			rightsObject: '→ Object to the processing',
+			rightsIntro: '// Under the GDPR, you have the following rights:',
+			rightsInfo: '→ Access to your stored data (Art. 15 GDPR)',
+			rightsCorrection: '→ Rectification of inaccurate data (Art. 16 GDPR)',
+			rightsDeletion: '→ Erasure of your data (Art. 17 GDPR)',
+			rightsRestriction: '→ Restriction of processing (Art. 18 GDPR)',
+			rightsPortability: '→ Data portability (Art. 20 GDPR)',
+			rightsObject: '→ Object to processing (Art. 21 GDPR)',
+			rightsComplaint: '→ Lodge a complaint with a supervisory authority (Art. 77 GDPR)',
+			rightsAuthority:
+				'Supervisory authority: State Commissioner for Data Protection and Freedom of Information North Rhine-Westphalia, Kavalleriestr. 2-4, 40213 Düsseldorf, Germany',
+
+			// 9. Contact
 			contact: '[ CONTACT ]',
 			contactText:
-				'If you have any questions about data protection, you can contact us at any time.',
+				'If you have any questions about data protection, you can contact us at any time:',
 		},
 		nav: {
 			backToPortfolio: '← back to portfolio',

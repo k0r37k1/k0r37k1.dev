@@ -1194,6 +1194,13 @@ a:focus-visible,
 	margin-top: 1rem;
 }
 
+.legal-content .last-updated {
+	color: var(--color-text-muted);
+	font-size: 0.875rem;
+	font-style: italic;
+	margin-bottom: 1.5rem;
+}
+
 /* Legal Content Blocks */
 .legal-content .nfo-block {
 	margin-bottom: 1.5rem;

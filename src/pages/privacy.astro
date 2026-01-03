@@ -32,8 +32,21 @@ const customTitle = 'visitor@k0r37k1.dev:~$ cat datenschutz.txt';
 		</div>
 
 		<div class="legal-content">
-			<!-- Legal Content -->
-			<!-- Overview -->
+			<!-- Last Updated -->
+			<p class="last-updated">{t.legal.privacy.lastUpdated}</p>
+
+			<!-- 1. Verantwortlicher -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.privacy.responsible}</div>
+				<div class="nfo-text">
+					{t.legal.privacy.responsibleText}<br /><br />
+					{t.legal.privacy.responsibleName}<br />
+					{t.legal.privacy.responsibleAddress}<br />
+					{t.legal.privacy.responsibleEmail}
+				</div>
+			</div>
+
+			<!-- 2. Überblick -->
 			<div class="nfo-block">
 				<div class="nfo-label">{t.legal.privacy.overview}</div>
 				<div class="nfo-text">
@@ -41,38 +54,74 @@ const customTitle = 'visitor@k0r37k1.dev:~$ cat datenschutz.txt';
 				</div>
 			</div>
 
-			<!-- Data Collection -->
-			<div class="nfo-block">
-				<div class="nfo-label">{t.legal.privacy.dataCollection}</div>
-				<div class="nfo-text">
-					<div class="sub-label">{t.legal.privacy.whoResponsible}</div>
-					{t.legal.privacy.whoResponsibleText}
-				</div>
-				<div class="nfo-text">
-					<div class="sub-label">{t.legal.privacy.howCollect}</div>
-					{t.legal.privacy.howCollectText}
-					<br /><br />
-					{t.legal.privacy.howCollectText2}
-				</div>
-			</div>
-
-			<!-- Hosting -->
+			<!-- 3. Hosting -->
 			<div class="nfo-block">
 				<div class="nfo-label">{t.legal.privacy.hosting}</div>
 				<div class="nfo-text">
-					{t.legal.privacy.hostingText}
+					<div class="sub-label">{t.legal.privacy.hostingProvider}</div>
+					{t.legal.privacy.hostingProviderText}
+				</div>
+				<div class="nfo-text">
+					<div class="sub-label">{t.legal.privacy.hostingData}</div>
+					{t.legal.privacy.hostingDataText}
+				</div>
+				<div class="nfo-text">
+					<div class="sub-label">{t.legal.privacy.hostingLegal}</div>
+					{t.legal.privacy.hostingLegalText}
 				</div>
 			</div>
 
-			<!-- Cookies -->
+			<!-- 4. SSL/TLS -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.privacy.ssl}</div>
+				<div class="nfo-text">
+					{t.legal.privacy.sslText}
+				</div>
+			</div>
+
+			<!-- 5. Cookies -->
 			<div class="nfo-block">
 				<div class="nfo-label">{t.legal.privacy.cookies}</div>
 				<div class="nfo-text">
-					{t.legal.privacy.cookiesText}
+					<div class="sub-label">{t.legal.privacy.cookiesWhat}</div>
+					{t.legal.privacy.cookiesWhatText}
+				</div>
+				<div class="nfo-text">
+					<div class="sub-label">{t.legal.privacy.cookiesUsed}</div>
+					{t.legal.privacy.cookiesUsedText}
+				</div>
+				<div class="nfo-text">
+					<div class="sub-label">{t.legal.privacy.cookiesControl}</div>
+					{t.legal.privacy.cookiesControlText}
 				</div>
 			</div>
 
-			<!-- Your Rights -->
+			<!-- 6. Externe Dienste -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.privacy.externalServices}</div>
+				<div class="nfo-text">
+					<div class="sub-label">{t.legal.privacy.iconify}</div>
+					{t.legal.privacy.iconifyText}<br /><br />
+					{t.legal.privacy.iconifyProvider}<br />
+					<a
+						href="https://iconify.design/privacy/"
+						class="terminal-link"
+						target="_blank"
+						rel="noopener noreferrer">{t.legal.privacy.iconifyPrivacy}</a
+					><br /><br />
+					{t.legal.privacy.iconifyLegal}
+				</div>
+			</div>
+
+			<!-- 7. Externe Links -->
+			<div class="nfo-block">
+				<div class="nfo-label">{t.legal.privacy.externalLinks}</div>
+				<div class="nfo-text">
+					{t.legal.privacy.externalLinksText}
+				</div>
+			</div>
+
+			<!-- 8. Ihre Rechte -->
 			<div class="nfo-block">
 				<div class="nfo-label">{t.legal.privacy.rights}</div>
 				<div class="nfo-text">
@@ -82,11 +131,13 @@ const customTitle = 'visitor@k0r37k1.dev:~$ cat datenschutz.txt';
 					{t.legal.privacy.rightsDeletion}<br />
 					{t.legal.privacy.rightsRestriction}<br />
 					{t.legal.privacy.rightsPortability}<br />
-					{t.legal.privacy.rightsObject}
+					{t.legal.privacy.rightsObject}<br />
+					{t.legal.privacy.rightsComplaint}<br /><br />
+					{t.legal.privacy.rightsAuthority}
 				</div>
 			</div>
 
-			<!-- Contact -->
+			<!-- 9. Kontakt -->
 			<div class="nfo-block">
 				<div class="nfo-label">{t.legal.privacy.contact}</div>
 				<div class="nfo-text">
