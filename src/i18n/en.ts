@@ -246,7 +246,7 @@ export default {
 		},
 		privacy: {
 			title: '▀▄▀▄ PRIVACY ▄▀▄▀',
-			lastUpdated: 'Last updated: January 2025',
+			lastUpdated: 'Last updated: January 2026',
 
 			// 1. Controller
 			responsible: '[ DATA CONTROLLER ]',
@@ -298,6 +298,17 @@ export default {
 			iconifyPrivacy: 'Privacy Policy: https://iconify.design/privacy/',
 			iconifyLegal:
 				'Legal basis: Art. 6(1)(f) GDPR (legitimate interest in an appealing website presentation).',
+
+			// App Stores
+			appStores: '// App Stores',
+			appStoresText:
+				'This website contains links to my apps in the following app stores. Clicking these links will take you to the respective platforms:',
+			appStoresApple: '→ Apple App Store (Apple Inc.)',
+			appStoresApplePrivacy: 'Privacy Policy: https://www.apple.com/legal/privacy/',
+			appStoresGoogle: '→ Google Play Store (Google LLC)',
+			appStoresGooglePrivacy: 'Privacy Policy: https://policies.google.com/privacy',
+			appStoresNote:
+				'Data processing when visiting these platforms is subject to their respective privacy policies.',
 
 			// 7. External Links
 			externalLinks: '[ EXTERNAL LINKS ]',

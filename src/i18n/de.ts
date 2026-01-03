@@ -246,7 +246,7 @@ export default {
 		},
 		privacy: {
 			title: '▀▄▀▄ DATENSCHUTZ ▄▀▄▀',
-			lastUpdated: 'Stand: Januar 2025',
+			lastUpdated: 'Stand: Januar 2026',
 
 			// 1. Verantwortlicher
 			responsible: '[ VERANTWORTLICHER ]',
@@ -298,6 +298,17 @@ export default {
 			iconifyPrivacy: 'Datenschutz: https://iconify.design/privacy/',
 			iconifyLegal:
 				'Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer ansprechenden Darstellung der Website).',
+
+			// App Stores
+			appStores: '// App Stores',
+			appStoresText:
+				'Diese Website enthält Links zu meinen Apps in den folgenden App Stores. Bei Klick auf diese Links gelangen Sie zu den jeweiligen Plattformen:',
+			appStoresApple: '→ Apple App Store (Apple Inc.)',
+			appStoresApplePrivacy: 'Datenschutz: https://www.apple.com/legal/privacy/',
+			appStoresGoogle: '→ Google Play Store (Google LLC)',
+			appStoresGooglePrivacy: 'Datenschutz: https://policies.google.com/privacy',
+			appStoresNote:
+				'Die Datenverarbeitung beim Besuch dieser Plattformen unterliegt deren jeweiligen Datenschutzbestimmungen.',
 
 			// 7. Externe Links
 			externalLinks: '[ EXTERNE LINKS ]',
