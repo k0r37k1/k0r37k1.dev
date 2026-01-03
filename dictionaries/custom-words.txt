@@ -246,3 +246,20 @@ Annahme
 # Product Names
 DoZzzy
 Zzzy
+
+# Missing technical terms
+plex
+laravel
+Laravel
+ios
+iOS
+cta
+CTA
+vimeo
+Vimeo
+GSAP
+gsap
+osx
+OSX
+SEO
+seo

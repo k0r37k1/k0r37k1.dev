@@ -178,8 +178,8 @@
     "shellscript"
   ],
 
-  // Import Empfehlungen
-  "import": [],
+  // Import Wörterbücher
+  "import": ["@cspell/dict-de-de/cspell-ext.json"],
 
   // Flags
   "useGitignore": true,
