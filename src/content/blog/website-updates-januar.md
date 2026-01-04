@@ -41,7 +41,7 @@ Die Projekt-Cards haben jetzt dezente Hover-Effekte mit farbigen Schatten:
 
 Subtle, aber macht die UI etwas lebendiger. Motion-v macht den Rest. 🎨
 
-## Screenshot hinzugefugt
+## Screenshot hinzugefügt
 
 Das k0r37k1.dev Projekt hat jetzt einen echten Screenshot statt dem "no img" Placeholder. Sieht gleich professioneller aus.
 
