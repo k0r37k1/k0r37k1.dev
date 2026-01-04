@@ -30,7 +30,6 @@ const alternateUrl = await getAlternatePostUrl(post, 'de');
 >
 	<article class="blog-post">
 		<div class="post-header">
-			<a href="/en/blog" class="back-link">{t.blog.backToBlog}</a>
 			<h1>{post.data.title}</h1>
 			<div class="post-meta">
 				<time datetime={post.data.pubDate.toISOString()}>
@@ -72,7 +71,7 @@ const alternateUrl = await getAlternatePostUrl(post, 'de');
 		</div>
 
 		<div class="post-footer">
-			<a href="/en/blog" class="back-link">{t.blog.backToBlog}</a>
+			<a href="/en/blog" class="terminal-btn">{t.blog.backToBlog}</a>
 		</div>
 	</article>
 </TerminalLayout>

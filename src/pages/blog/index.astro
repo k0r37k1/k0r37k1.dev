@@ -61,7 +61,7 @@ const pageDescription = t.blog.description;
 											))}
 										</div>
 									)}
-									<a href={`/blog/${post.slug}`} class="read-more">
+									<a href={`/blog/${post.slug}`} class="terminal-btn">
 										{t.blog.readMore}
 									</a>
 								</article>
@@ -102,12 +102,12 @@ const pageDescription = t.blog.description;
 	}
 
 	.blog-item {
-		padding: 2rem 0;
+		padding: 1.5rem 0;
+		border-bottom: 1px solid var(--color-terminal-border);
 	}
 
-	.blog-item:not(:last-child) {
-		border-bottom: 1px solid var(--color-terminal-border);
-		margin-bottom: 2rem;
+	.blog-item:first-child {
+		padding-top: 0;
 	}
 
 	.blog-item h2 {
@@ -157,37 +157,11 @@ const pageDescription = t.blog.description;
 
 	.tag {
 		display: inline-block;
-		background: transparent;
 		color: var(--color-terminal-text-dim);
-		padding: 0.25rem 0.625rem;
-		border-radius: 0.25rem;
+		padding: 0.125rem 0.5rem;
 		font-size: 0.75rem;
 		font-weight: 500;
-		border: 1px solid var(--color-terminal-border);
-	}
-
-	.read-more {
-		display: inline-block;
-		color: var(--color-link);
-		text-decoration: none;
-		border-bottom: 2px solid transparent;
-		transition: all 0.2s;
-		font-weight: 600;
-	}
-
-	.read-more:hover {
-		color: var(--color-accent-orange);
-		border-bottom-color: var(--color-accent-orange);
-	}
-
-	.read-more:hover::before {
-		content: '[ ';
-		color: var(--color-terminal-primary);
-	}
-
-	.read-more:hover::after {
-		content: ' ]';
-		color: var(--color-terminal-primary);
+		background: rgb(255 255 255 / 5%);
 	}
 
 	.no-posts {
@@ -198,16 +172,12 @@ const pageDescription = t.blog.description;
 	}
 
 	@media (width <= 768px) {
-		.blog-header h1 {
-			font-size: 2rem;
-		}
-
-		.blog-item {
-			padding: 1rem;
+		.blog-container {
+			padding: 1rem 0.5rem;
 		}
 
 		.blog-item h2 {
-			font-size: 1.5rem;
+			font-size: 1.35rem;
 		}
 	}
 </style>

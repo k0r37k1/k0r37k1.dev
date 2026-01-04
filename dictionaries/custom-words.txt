@@ -1,265 +1,240 @@
-# Custom Dictionary für k0r37k1.dev
-# Projekt-spezifische und technische Begriffe
 
-# Projekt
-k0r37k1
-astro
-
-# Tech Stack - Vite+ Stack
-rolldown
-vite
-vitest
-oxlint
-oxc
-OXC
-lightningcss
-tailwindcss
-astro
-cspell
-ATX
-
-# Frameworks
-Astro
-Vue
-Nuxt
-
+# 404 Page
+# AI Tools
+# Abbreviations
+# Accessibility
+# Architecture Patterns
 # Build Tools
-esbuild
-tsup
-unbuild
-
-# TypeScript/JavaScript Keywords
-typeof
-readonly
-keyof
-instanceof
-asyncio
-
-# Development Terms
-composables
-utils
-middlewares
-repos
-browserslist
-sourcemap
-transpile
-polyfill
-shim
-frontmatter
-
-# Formatters & Linters
-prettier
-stylelint
-
+# CSS Font Features
+# Color Systems
+# Component Analysis
 # Config Files
-astroconfig
-gitignore
-dockerignore
-prettierrc
-eslintrc
-tsconfig
-viteconfig
-stylelintrc
-
+# Core Web Vitals
+# Custom Dictionary für k0r37k1.dev
+# Deutsche Wörter (COMMANDS.md)
+# Deutsche Wörter (COMPONENT-ANALYSIS.md)
+# Development Terms
+# Fonts
+# Formatters & Linters
+# Frameworks
+# Imprint/Legal
+# MCP (Model Context Protocol)
+# Missing technical terms
+# Portfolio-spezifisch (k0r37k1.dev)
+# Product Names
+# Projekt
+# Projekt-spezifische und technische Begriffe
+# Tech Stack - Vite+ Stack
+# TypeScript/JavaScript Keywords
 # UI Libraries & Components
-reka
-Reka
-iconify
+API
+ARIA
+ASCII
+ATX
+Abhängigkeiten
+Agentur
+Anmerkung
+Annahme
+Arbeit
+Arztpraxen
+Astro
+Ausführung
+Befehl
+Befehle
+Behebt
+Beratungsunternehmen
+CLI
+CLS
+CRT
+CSS
+CTA
+CTRL
+Checklisten
+Claude
+Deque
+Dienstleister
+DoZzzy
+Einsparung
+Empfehlungen
+FID
+Figlet
+Freiberufler
+GSAP
+Greven
+HMR
+HTML
+Handlungsempfehlungen
+Handwerker
+Hinweis
+INP
 Iconify
 Iconify's
-tabler
-shiki
-mdi
-
-# Fonts
-Satoshi
-
-# Accessibility
-WAI
-ARIA
-wcag
-WCAG
-axe
-testid
-Deque
-
-# Architecture Patterns
-SSG
-ssg
-
-# Component Analysis
-gzipped
-LOC
-componentSets
-componentset
-
-# Color Systems
-oklch
-OKLCH
-
-# CSS Font Features
-nums
-
-# MCP (Model Context Protocol)
-mcp
-MCP
-
-# Abbreviations
-CTRL
-CLI
-API
-UI
-UX
-URL
-JSON
-HTML
-CSS
+Inkludiert
+Inventar
 JS
-TS
-mcr
-
-# Core Web Vitals
-LCP
-FID
-CLS
-INP
-TTFB
-
-# AI Tools
-claude
-Claude
-
-# Portfolio-spezifisch (k0r37k1.dev)
-figlet
-Figlet
-nfo
-NFO
-scanlines
-holographic
-glitch
-CRT
-crt
-retro
-ASCII
-ascii
-monospace
-berkeleys
-cascadia
-colossal
-
-# Deutsche Wörter (COMMANDS.md)
-Befehle
-Vollständige
-verfügbaren
-Abhängigkeiten
-lokale
-lokalen
-zur
-Ausführung
-Zeigt
-letzten
-basiert
-behebt
-Behebt
-Prüfung
-Vorschlägen
-führen
-Qualitätsprüfung
-Tipps
-vollständige
-meisten
-haben
-siehe
-Befehl
-HMR
-
-# Deutsche Wörter (COMPONENT-ANALYSIS.md)
-zwecks
-Kundensegmente
-Kernbedarf
-Nutzung
-Kundentyp
-Kernerkenntnisse
-Dienstleister
-Handwerker
-Mittelständische
-Beratungsunternehmen
+JSON
+Kalkulation
 Kanzleien
-Lokale
-Freiberufler
-Arztpraxen
+Kategorisierung
+Kernbedarf
+Kernerkenntnisse
 Komponente
 Komponenten
 Komponentenoptimierung
-Kategorisierung
-Optimierungsempfehlungen
-Inventar
-Marktanalyse
-Recherche
-Segmentierung
-Webdesign
-Agentur
-Inkludiert
-Einsparung
-Empfehlungen
-Zeitersparnis
-Kalkulation
-Szenario
-Reduzierung
-Handlungsempfehlungen
-umsetzen
-aufsetzen
-Checklisten
-excludieren
-unprofessionell
-projektbasiert
-servicebasiert
-Hinweis
-Anmerkung
-Resultat
-Schreib
-Spende
-Arbeit
-gefällt
-baue
-gerade
-weil
-klingt
-macht
-achte
-spielen
-reden
-mache
-Spenden
-
-# 404 Page
-gelöscht
-dich
-
-# Imprint/Legal
 Korezki
-Greven
-Pakete
-Päckchen
-Annahme
-
-# Product Names
-DoZzzy
-Zzzy
-
-# Missing technical terms
-plex
-laravel
+Kundensegmente
+Kundentyp
+LCP
+LOC
 Laravel
-ios
-iOS
-cta
-CTA
-vimeo
-Vimeo
-GSAP
-gsap
-osx
+Lokale
+MCP
+Marktanalyse
+Mittelständische
+NFO
+Nutzung
+Nuxt
+OKLCH
 OSX
+OXC
+Optimierungsempfehlungen
+Pakete
+Prüfung
+Päckchen
+Qualitätsprüfung
+Recherche
+Reduzierung
+Reka
+Resultat
 SEO
+SSG
+Satoshi
+Schreib
+Segmentierung
+Spende
+Spenden
+Szenario
+TS
+TTFB
+Tipps
+UI
+URL
+UX
+Vimeo
+Vollständige
+Vorschlägen
+Vue
+WAI
+WCAG
+Webdesign
+Zeigt
+Zeitersparnis
+Zzzy
+achte
+ascii
+astro
+astroconfig
+asyncio
+aufsetzen
+axe
+basiert
+baue
+behebt
+berkeleys
+browserslist
+btn
+cascadia
+claude
+colossal
+componentSets
+componentset
+composables
+crt
+cspell
+cta
+dich
+dockerignore
+esbuild
+eslintrc
+excludieren
+figlet
+frontmatter
+führen
+gefällt
+gelöscht
+gerade
+gitignore
+glitch
+gsap
+gzipped
+haben
+holographic
+iOS
+iconify
+instanceof
+ios
+k0r37k1
+keyof
+klingt
+laravel
+letzten
+lightningcss
+lokale
+lokalen
+mache
+macht
+mcp
+mcr
+mdi
+meisten
+middlewares
+monospace
+nfo
+nums
+oklch
+osx
+oxc
+oxlint
+plex
+polyfill
+prettier
+prettierrc
+projektbasiert
+readonly
+reden
+reka
+repos
+retro
+rolldown
+scanlines
 seo
+servicebasiert
+shiki
+shim
+siehe
+sourcemap
+spielen
+ssg
+stylelint
+stylelintrc
+tabler
+tailwindcss
+testid
+transpile
+tsconfig
+tsup
+typeof
+umsetzen
+unbuild
+unprofessionell
+utils
+verfügbaren
+vimeo
+vite
+viteconfig
+vitest
+vollständige
+wcag
+weil
+zur
+zwecks

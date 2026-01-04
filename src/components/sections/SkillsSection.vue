@@ -68,10 +68,17 @@ const skills = {
 			<div class="skill-category">
 				<div class="category-title">"{{ t.skills.categories.languages }}":</div>
 				<div class="skills-list">
-					<span v-for="skill in skills.languages" :key="skill.name" class="skill-tag">
+					<motion.span
+						v-for="skill in skills.languages"
+						:key="skill.name"
+						class="skill-tag"
+						:whileHover="{ scale: 1.04 }"
+						:whileTap="{ scale: 0.95 }"
+						:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
+					>
 						<Icon :icon="skill.icon" class="skill-icon" />
 						{{ skill.name }}
-					</span>
+					</motion.span>
 				</div>
 			</div>
 
@@ -79,10 +86,17 @@ const skills = {
 			<div class="skill-category">
 				<div class="category-title">"{{ t.skills.categories.frameworks }}":</div>
 				<div class="skills-list">
-					<span v-for="skill in skills.frameworks" :key="skill.name" class="skill-tag">
+					<motion.span
+						v-for="skill in skills.frameworks"
+						:key="skill.name"
+						class="skill-tag"
+						:whileHover="{ scale: 1.04 }"
+						:whileTap="{ scale: 0.95 }"
+						:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
+					>
 						<Icon :icon="skill.icon" class="skill-icon" />
 						{{ skill.name }}
-					</span>
+					</motion.span>
 				</div>
 			</div>
 
@@ -90,10 +104,17 @@ const skills = {
 			<div class="skill-category">
 				<div class="category-title">"{{ t.skills.categories.tools }}":</div>
 				<div class="skills-list">
-					<span v-for="skill in skills.tools" :key="skill.name" class="skill-tag">
+					<motion.span
+						v-for="skill in skills.tools"
+						:key="skill.name"
+						class="skill-tag"
+						:whileHover="{ scale: 1.04 }"
+						:whileTap="{ scale: 0.95 }"
+						:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
+					>
 						<Icon :icon="skill.icon" class="skill-icon" />
 						{{ skill.name }}
-					</span>
+					</motion.span>
 				</div>
 			</div>
 
@@ -101,10 +122,17 @@ const skills = {
 			<div class="skill-category">
 				<div class="category-title">"{{ t.skills.categories.platforms }}":</div>
 				<div class="skills-list">
-					<span v-for="skill in skills.platforms" :key="skill.key" class="skill-tag">
+					<motion.span
+						v-for="skill in skills.platforms"
+						:key="skill.key"
+						class="skill-tag"
+						:whileHover="{ scale: 1.04 }"
+						:whileTap="{ scale: 0.95 }"
+						:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
+					>
 						<Icon :icon="skill.icon" class="skill-icon" />
 						{{ t.skills.items[skill.key] }}
-					</span>
+					</motion.span>
 				</div>
 			</div>
 
@@ -112,10 +140,17 @@ const skills = {
 			<div class="skill-category">
 				<div class="category-title">"{{ t.skills.categories.concepts }}":</div>
 				<div class="skills-list">
-					<span v-for="skill in skills.concepts" :key="skill.key" class="skill-tag">
+					<motion.span
+						v-for="skill in skills.concepts"
+						:key="skill.key"
+						class="skill-tag"
+						:whileHover="{ scale: 1.04 }"
+						:whileTap="{ scale: 0.95 }"
+						:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
+					>
 						<Icon :icon="skill.icon" class="skill-icon" />
 						{{ t.skills.items[skill.key] }}
-					</span>
+					</motion.span>
 				</div>
 			</div>
 		</div>

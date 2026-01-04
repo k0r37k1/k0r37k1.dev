@@ -31,6 +31,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 				:key="project.title"
 				:initial="{ opacity: 0, scale: 0.95 }"
 				:whileInView="{ opacity: 1, scale: 1 }"
+				:whileHover="{ scale: 1.02, x: -2, y: -2 }"
 				:whileTap="{ scale: 0.98 }"
 				:transition="{
 					type: 'spring',
@@ -44,6 +45,17 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 				<div class="project-header">
 					<Icon icon="tabler:folder-code" class="project-icon" aria-hidden="true" />
 					<h3 class="project-name">{{ project.title }}</h3>
+				</div>
+				<img
+					v-if="project.image"
+					:src="project.image"
+					:alt="`Screenshot von ${project.title}`"
+					class="project-image"
+					loading="lazy"
+				/>
+				<div v-else class="project-image-placeholder">
+					<Icon icon="mdi:image-off-outline" class="placeholder-icon" />
+					<span>no img</span>
 				</div>
 				<div class="project-content">
 					<p class="project-description">{{ project.description }}</p>
@@ -101,6 +113,34 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	gap: 1.5rem;
 	margin-top: 1rem;
+}
+
+.project-image {
+	width: 100%;
+	max-height: 180px;
+	object-fit: cover;
+	margin-top: 0.75rem;
+	border: 1px solid var(--color-terminal-border);
+}
+
+.project-image-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	height: 120px;
+	margin-top: 0.75rem;
+	border: 1px dashed var(--color-terminal-border);
+	color: var(--color-terminal-text-dim);
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.placeholder-icon {
+	font-size: 2rem;
+	opacity: 0.5;
 }
 
 .project-header {

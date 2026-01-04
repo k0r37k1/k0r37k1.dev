@@ -68,6 +68,15 @@ export default {
 		store: 'Store',
 		items: [
 			{
+				title: 'k0r37k1.dev',
+				description:
+					'Mein persönliches Portfolio – gebaut mit modernem Tech-Stack und neo-brutalistischem Design.',
+				stack: ['Astro', 'Vue', 'Motion', 'Tailwind', 'CSS'],
+				image: '/images/projects/k0r37k1-dev.png',
+				github: 'https://github.com/k0r37k1/k0r37k1.dev',
+				demo: 'https://k0r37k1.dev',
+			},
+			{
 				title: 'Project Alpha',
 				description: 'Eine revolutionäre Webanwendung, gebaut mit modernen Technologien.',
 				stack: ['Vue 3', 'TypeScript', 'Tailwind CSS'],
@@ -87,13 +96,6 @@ export default {
 				stack: ['Vue 3', 'Vite', 'Storybook'],
 				github: 'https://github.com/yourusername/project-gamma',
 				demo: 'https://project-gamma.demo',
-			},
-			{
-				title: 'Project Delta',
-				description: 'Full-Stack-Anwendung mit Echtzeit-Features.',
-				stack: ['TypeScript', 'WebSocket', 'PostgreSQL'],
-				github: 'https://github.com/yourusername/project-delta',
-				demo: 'https://project-delta.demo',
 			},
 		],
 	},

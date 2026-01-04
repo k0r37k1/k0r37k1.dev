@@ -295,6 +295,44 @@ body {
 	}
 }
 
+/* Button-Style Links (Brutalist BG-Block) */
+.terminal-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	color: var(--color-link);
+	text-decoration: none;
+	background: rgb(0 217 255 / 10%);
+	border: 1px solid var(--color-terminal-border);
+	transition: all 0.2s;
+	font-weight: 500;
+}
+
+@media (hover: hover) {
+	.terminal-btn:hover {
+		color: var(--color-terminal-bg);
+		background: var(--color-terminal-primary);
+		border-color: var(--color-terminal-primary);
+		transform: translate(-1px, -1px);
+		box-shadow: 2px 2px 0 rgb(0 0 0 / 30%);
+	}
+}
+
+@media (hover: none) and (pointer: coarse) {
+	.terminal-btn {
+		min-height: 44px;
+		padding: 0.75rem 1rem;
+	}
+
+	.terminal-btn:active {
+		background: var(--color-terminal-primary);
+		color: var(--color-terminal-bg);
+		transform: scale(0.98);
+	}
+}
+
 /* Blinking Cursor */
 .cursor {
 	display: inline-block;
@@ -389,20 +427,18 @@ body {
 	border-radius: 0;
 	padding: 1.5rem;
 	box-shadow: 4px 4px 0 rgb(0 0 0 / 30%);
-	transition: all 0.2s;
-	transform: translateZ(0);
-	backface-visibility: hidden;
-	filter: blur(0);
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s;
 }
 
-/* Hover only on devices that support it (not touch) */
+/* Hover only on devices that support it (not touch) - transform via motion-v */
 @media (hover: hover) {
 	.project-card:hover {
-		transform: translate(-2px, -2px) translateZ(0);
 		border-color: var(--color-accent-orange);
 		box-shadow:
-			6px 6px 0 rgb(255 102 0 / 30%),
-			0 0 8px rgb(255 102 0 / 25%);
+			6px 6px 0 rgb(255 0 0 / 50%),
+			0 0 8px rgb(255 0 0 / 25%);
 	}
 }
 
@@ -446,7 +482,7 @@ body {
 	.skill-tag:hover {
 		transform: translate(-1px, -1px) translateZ(0);
 		border-color: var(--color-terminal-primary);
-		box-shadow: 3px 3px 0 rgb(0 217 255 / 30%);
+		box-shadow: 3px 3px 0 rgb(255 0 255 / 50%);
 		background: var(--color-terminal-primary);
 		color: var(--color-terminal-bg);
 
@@ -574,7 +610,7 @@ a:focus-visible,
 	/* Tap feedback */
 	.project-card:active {
 		transform: translate(-1px, -1px);
-		box-shadow: 4px 4px 0 rgb(255 102 0 / 30%);
+		box-shadow: 4px 4px 0 rgb(255 0 0 / 50%);
 	}
 
 	/* Scene borders - compact */
@@ -1277,7 +1313,7 @@ a:focus-visible,
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 0.75rem;
+	gap: 1rem;
 	flex-wrap: wrap;
 }
 
