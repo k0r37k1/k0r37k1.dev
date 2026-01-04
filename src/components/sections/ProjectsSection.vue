@@ -49,12 +49,12 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 				<img
 					v-if="project.image"
 					:src="project.image"
-					:alt="`Screenshot von ${project.title}`"
+					:alt="t.projects.imageAlt.replace('{title}', project.title)"
 					class="project-image"
 					loading="lazy"
 				/>
-				<div v-else class="project-image-placeholder">
-					<Icon icon="mdi:image-off-outline" class="placeholder-icon" />
+				<div v-else class="project-image-placeholder" aria-hidden="true">
+					<Icon icon="mdi:image-off-outline" class="placeholder-icon" aria-hidden="true" />
 					<span>no img</span>
 				</div>
 				<div class="project-content">
@@ -77,7 +77,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 							rel="noopener noreferrer"
 							class="terminal-link project-link"
 						>
-							<Icon icon="simple-icons:github" class="link-icon" />
+							<Icon icon="simple-icons:github" class="link-icon" aria-hidden="true" />
 							{{ t.projects.github }}
 						</a>
 						<a
@@ -87,7 +87,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 							rel="noopener noreferrer"
 							class="terminal-link project-link"
 						>
-							<Icon icon="mdi:open-in-new" class="link-icon" />
+							<Icon icon="mdi:open-in-new" class="link-icon" aria-hidden="true" />
 							{{ t.projects.liveDemo }}
 						</a>
 						<a
@@ -97,7 +97,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 							rel="noopener noreferrer"
 							class="terminal-link project-link"
 						>
-							<Icon icon="mdi:google-play" class="link-icon" />
+							<Icon icon="mdi:google-play" class="link-icon" aria-hidden="true" />
 							{{ t.projects.store }}
 						</a>
 					</div>

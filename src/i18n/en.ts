@@ -66,36 +66,30 @@ export default {
 		github: 'GitHub',
 		liveDemo: 'Demo',
 		store: 'Store',
+		imageAlt: 'Screenshot of {title}',
 		items: [
 			{
 				title: 'k0r37k1.dev',
 				description:
-					'My personal portfolio – built with modern tech stack and neo-brutalist design.',
+					'My personal portfolio – modern tech stack, neo-brutalist design. Accessible, DE/EN.',
 				stack: ['Astro', 'Vue', 'Motion', 'Tailwind', 'CSS'],
 				image: '/images/projects/k0r37k1-dev.png',
 				github: 'https://github.com/k0r37k1/k0r37k1.dev',
 				demo: 'https://k0r37k1.dev',
 			},
 			{
-				title: 'Project Alpha',
-				description: 'A revolutionary web application built with modern technologies.',
-				stack: ['Vue 3', 'TypeScript', 'Tailwind CSS'],
-				github: 'https://github.com/yourusername/project-alpha',
-				demo: 'https://project-alpha.demo',
+				title: 'DoZzzy',
+				description:
+					'Minimalist nap timer for Android. Timer up to 3h, presets, customizable alarm with snooze. Accessible, DE/EN.',
+				stack: ['Flutter', 'Dart', 'Riverpod'],
+				store: 'https://play.google.com/store',
 			},
 			{
-				title: 'Project Beta',
-				description: 'An innovative solution for real-world problems.',
-				stack: ['Astro', 'React', 'Node.js'],
-				github: 'https://github.com/yourusername/project-beta',
-				demo: null,
-			},
-			{
-				title: 'Project Gamma',
-				description: 'A beautiful UI component library for developers.',
-				stack: ['Vue 3', 'Vite', 'Storybook'],
-				github: 'https://github.com/yourusername/project-gamma',
-				demo: 'https://project-gamma.demo',
+				title: 'Plain Text Editor',
+				description:
+					'Minimalist text editor for Android. Focus Mode, Typewriter Mode, font settings, auto-save. Accessible, DE/EN.',
+				stack: ['Flutter', 'Dart'],
+				store: 'https://play.google.com/store',
 			},
 		],
 	},
