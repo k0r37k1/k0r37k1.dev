@@ -46,6 +46,19 @@ Project cards now have subtle hover effects with colored shadows:
 
 Subtle, but makes the UI feel more alive. Motion-v does the rest. 🎨
 
+## Syntax Highlighting with Shiki
+
+The blog now has syntax highlighting for code blocks. Shiki renders at build time – no client-side JavaScript needed.
+
+```typescript
+const config = {
+  theme: 'dracula',
+  wrap: true,
+};
+```
+
+Dracula fits the terminal aesthetic of the site. 🧛
+
 ## Screenshot Added
 
 The k0r37k1.dev project now has a real screenshot instead of the "no img" placeholder. Looks way more professional.
