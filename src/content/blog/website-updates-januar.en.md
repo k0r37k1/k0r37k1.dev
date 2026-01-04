@@ -45,6 +45,4 @@ Subtle, but makes the UI feel more alive. Motion-v does the rest. 🎨
 
 The k0r37k1.dev project now has a real screenshot instead of the "no img" placeholder. Looks way more professional.
 
----
-
 Next update when the apps hit the Play Store. Stay tuned. ✌️
