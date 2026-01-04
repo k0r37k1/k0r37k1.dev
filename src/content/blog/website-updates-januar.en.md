@@ -21,7 +21,12 @@ Both are still waiting for the Google Play Store release. The project cards link
 
 ## Accessibility Improvements
 
-Small but important fix: All decorative icons now have `aria-hidden="true"`.
+Small but important fix: All decorative icons now have the attribute:
+
+```html
+aria-hidden="true"
+```
+
 Screen readers now only read the relevant text, not the icon descriptions.
 
 Affected components:
