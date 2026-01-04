@@ -24,7 +24,7 @@ Beide warten noch auf den Google Play Store Release. Die Projekt-Cards verlinken
 Kleiner aber wichtiger Fix: Alle dekorativen Icons haben jetzt das Attribut:
 
 ```html
-aria-hidden="true"
+<Icon icon="mdi:email" aria-hidden="true" />
 ```
 
 Screenreader lesen jetzt nur noch den relevanten Text, nicht die Icon-Beschreibungen.

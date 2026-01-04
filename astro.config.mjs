@@ -151,7 +151,7 @@ export default defineConfig({
     // Markdown & Syntax Highlighting
     markdown: {
         shikiConfig: {
-            theme: 'github-dark',
+            theme: 'dracula',
             wrap: true,
         },
     },

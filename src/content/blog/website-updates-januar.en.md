@@ -24,7 +24,7 @@ Both are still waiting for the Google Play Store release. The project cards link
 Small but important fix: All decorative icons now have the attribute:
 
 ```html
-aria-hidden="true"
+<Icon icon="mdi:email" aria-hidden="true" />
 ```
 
 Screen readers now only read the relevant text, not the icon descriptions.
