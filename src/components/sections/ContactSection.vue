@@ -71,7 +71,7 @@ const contacts = [
 						rel="noopener noreferrer"
 						class="terminal-link contact-link"
 					>
-						<Icon :icon="contact.icon" class="contact-icon" />
+						<Icon :icon="contact.icon" class="contact-icon" aria-hidden="true" />
 						<span>{{ contact.value }}</span>
 					</a>
 				</motion.div>

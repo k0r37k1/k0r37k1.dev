@@ -40,26 +40,26 @@ const homeLink = computed(() => (props.lang === 'en' ? '/en' : '/'));
 					aria-label="Built with Astro"
 				>
 					<span>Built with</span>
-					<Icon icon="simple-icons:astro" class="astro-icon" />
+					<Icon icon="simple-icons:astro" class="astro-icon" aria-hidden="true" />
 				</a>
 			</div>
 			<div class="footer-links">
 				<a v-if="!isBlog" :href="blogLink" class="terminal-link footer-link">
-					<Icon icon="mdi:post-outline" class="footer-icon" />
+					<Icon icon="mdi:post-outline" class="footer-icon" aria-hidden="true" />
 					<span>{{ t.footer.links.blog }}</span>
 				</a>
 				<a v-else :href="homeLink" class="terminal-link footer-link">
-					<Icon icon="mdi:home" class="footer-icon" />
+					<Icon icon="mdi:home" class="footer-icon" aria-hidden="true" />
 					<span>{{ t.footer.links.home }}</span>
 				</a>
 				<span class="separator">•</span>
 				<a :href="imprintLink" class="terminal-link footer-link">
-					<Icon icon="mdi:fingerprint" class="footer-icon" />
+					<Icon icon="mdi:fingerprint" class="footer-icon" aria-hidden="true" />
 					<span>{{ t.footer.links.imprint }}</span>
 				</a>
 				<span class="separator">•</span>
 				<a :href="privacyLink" class="terminal-link footer-link">
-					<Icon icon="mdi:scale-balance" class="footer-icon" />
+					<Icon icon="mdi:scale-balance" class="footer-icon" aria-hidden="true" />
 					<span>{{ t.footer.links.privacy }}</span>
 				</a>
 			</div>

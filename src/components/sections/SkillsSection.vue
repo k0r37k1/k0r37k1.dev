@@ -76,7 +76,7 @@ const skills = {
 						:whileTap="{ scale: 0.95 }"
 						:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
 					>
-						<Icon :icon="skill.icon" class="skill-icon" />
+						<Icon :icon="skill.icon" class="skill-icon" aria-hidden="true" />
 						{{ skill.name }}
 					</motion.span>
 				</div>
@@ -94,7 +94,7 @@ const skills = {
 						:whileTap="{ scale: 0.95 }"
 						:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
 					>
-						<Icon :icon="skill.icon" class="skill-icon" />
+						<Icon :icon="skill.icon" class="skill-icon" aria-hidden="true" />
 						{{ skill.name }}
 					</motion.span>
 				</div>
@@ -112,7 +112,7 @@ const skills = {
 						:whileTap="{ scale: 0.95 }"
 						:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
 					>
-						<Icon :icon="skill.icon" class="skill-icon" />
+						<Icon :icon="skill.icon" class="skill-icon" aria-hidden="true" />
 						{{ skill.name }}
 					</motion.span>
 				</div>
@@ -130,7 +130,7 @@ const skills = {
 						:whileTap="{ scale: 0.95 }"
 						:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
 					>
-						<Icon :icon="skill.icon" class="skill-icon" />
+						<Icon :icon="skill.icon" class="skill-icon" aria-hidden="true" />
 						{{ t.skills.items[skill.key] }}
 					</motion.span>
 				</div>
@@ -148,7 +148,7 @@ const skills = {
 						:whileTap="{ scale: 0.95 }"
 						:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
 					>
-						<Icon :icon="skill.icon" class="skill-icon" />
+						<Icon :icon="skill.icon" class="skill-icon" aria-hidden="true" />
 						{{ t.skills.items[skill.key] }}
 					</motion.span>
 				</div>
