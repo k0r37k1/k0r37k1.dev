@@ -16,7 +16,7 @@
 	--breakpoint-xl: 1280px;
 
 	/* Container Widths */
-	--container-max: 1280px; /* Main layout max-width (xl breakpoint) */
+	--container-max: 1200px; /* Main layout max-width (Bootstrap standard) */
 	--content-max: 960px; /* Content sections */
 	--prose-max: 800px; /* Blog/text content (optimal readability) */
 	--nfo-max: 960px; /* NFO art container */
@@ -101,7 +101,7 @@ body {
 	box-shadow:
 		8px 8px 0 rgb(0 0 0 / 40%),
 		0 0 60px rgb(0 217 255 / 8%);
-	max-width: var(--container-max); /* 1280px - Tailwind xl */
+	max-width: var(--container-max); /* 1200px - Bootstrap standard */
 	margin: 1rem auto;
 	min-height: calc(100vh - 2rem);
 	position: relative;
