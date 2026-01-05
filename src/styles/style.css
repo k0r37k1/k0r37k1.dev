@@ -6,6 +6,21 @@
 @import 'tailwindcss';
 
 @theme {
+	/* ==========================================
+	 * Layout Breakpoints (Tailwind v4 Standard)
+	 * sm: 640px, md: 768px, lg: 1024px, xl: 1280px
+	 * ========================================== */
+	--breakpoint-sm: 640px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1280px;
+
+	/* Container Widths */
+	--container-max: 1280px; /* Main layout max-width */
+	--content-max: 1024px; /* Content sections */
+	--prose-max: 800px; /* Blog/text content (optimal readability) */
+	--nfo-max: 960px; /* NFO art container */
+
 	/* Terminal Color Palette - Retro-Futuristic */
 	--color-terminal-bg: oklch(15% 0.02 240deg); /* Deep blue-black */
 	--color-terminal-bg-lighter: oklch(20% 0.02 240deg);
@@ -86,7 +101,7 @@ body {
 	box-shadow:
 		8px 8px 0 rgb(0 0 0 / 40%),
 		0 0 60px rgb(0 217 255 / 8%);
-	max-width: 1200px;
+	max-width: var(--container-max); /* 1280px - Tailwind xl */
 	margin: 1rem auto;
 	min-height: calc(100vh - 2rem);
 	position: relative;
@@ -248,7 +263,7 @@ body {
 }
 
 .section-content {
-	max-width: 800px;
+	max-width: var(--prose-max); /* 800px - optimal for readability */
 	margin-top: 1rem;
 }
 
@@ -843,7 +858,7 @@ a:focus-visible,
 	border: 3px solid var(--color-terminal-primary);
 	box-shadow: 8px 8px 0 rgb(0 217 255 / 30%);
 	background: var(--color-terminal-surface);
-	max-width: 900px;
+	max-width: var(--nfo-max); /* 960px - NFO art container */
 	margin: 0 auto;
 }
 
