@@ -61,12 +61,13 @@ export const testPages: TestPage[] = [
 
 /**
  * Critical user flows to test
+ * Note: Email is obfuscated and loaded client-side, so we use a different selector
  */
 export const criticalFlows: TestPage[] = [
 	{
 		url: '/',
 		name: 'Contact Section',
 		description: 'Test contact section accessibility',
-		waitForSelectors: ['text=hello@k0r37k1.dev'],
+		waitForSelectors: ['text=github.com/k0r37k1'],
 	},
 ];

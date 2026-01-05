@@ -98,9 +98,14 @@ test.describe('Homepage', () => {
 		});
 
 		test('displays email link', async ({ page }) => {
-			// Email link shows the actual email address
+			// Email is obfuscated and loaded client-side via JS
+			// ContactSection uses client:visible, so we need to scroll to it first
+			const contactSection = page.locator('.contact-section');
+			await contactSection.scrollIntoViewIfNeeded();
+
+			// Wait for Vue hydration to complete after scroll triggers client:visible
 			const emailLink = page.getByRole('link', { name: /hello@k0r37k1\.dev/i });
-			await expect(emailLink).toBeVisible();
+			await expect(emailLink).toBeVisible({ timeout: 15000 });
 		});
 	});
 

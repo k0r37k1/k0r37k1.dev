@@ -251,7 +251,7 @@ export default {
 			responsibleText: 'Verantwortlich für die Datenverarbeitung auf dieser Website ist:',
 			responsibleName: 'Alex Korezki',
 			responsibleAddress: 'c/o Postflex #10164, Emsdettener Str. 10, 48268 Greven',
-			responsibleEmail: 'E-Mail: contact@k0r37k1.dev',
+			responsibleEmail: 'E-Mail:',
 
 			// 2. Überblick
 			overview: '[ ÜBERBLICK ]',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
-import { computed } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import { getTranslations, type Language } from '@/i18n';
 import { useReducedMotion, getMotionConfig } from '@/composables/useReducedMotion';
@@ -17,32 +17,47 @@ const t = getTranslations(props.lang);
 const { prefersReducedMotion } = useReducedMotion();
 const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value));
 
-const contacts = [
+// Email obfuscation - built client-side only
+const email = ref('');
+const emailLink = ref('');
+
+onMounted(() => {
+	// Bots can't execute JS, so this protects against harvesting
+	const parts = ['hello', 'k0r37k1', 'dev'];
+	email.value = `${parts[0]}@${parts[1]}.${parts[2]}`;
+	emailLink.value = `mailto:${email.value}`;
+});
+
+const contacts = computed(() => [
 	{
 		label: 'Email',
-		value: 'hello@k0r37k1.dev',
-		link: 'mailto:hello@k0r37k1.dev',
+		value: email.value || '[loading...]',
+		link: emailLink.value || '#',
 		icon: 'mdi:email-outline',
+		isEmail: true,
 	},
 	{
 		label: 'GitHub',
 		value: 'github.com/k0r37k1',
 		link: 'https://github.com/k0r37k1',
 		icon: 'simple-icons:github',
+		isEmail: false,
 	},
 	{
 		label: 'X',
 		value: '@k0r37k1',
 		link: 'https://x.com/k0r37k1',
 		icon: 'simple-icons:x',
+		isEmail: false,
 	},
 	{
 		label: 'Buy Me a Coffee',
 		value: 'buymeacoffee.com/k0r37k1',
 		link: 'https://buymeacoffee.com/k0r37k1',
 		icon: 'simple-icons:buymeacoffee',
+		isEmail: false,
 	},
-];
+]);
 </script>
 
 <template>

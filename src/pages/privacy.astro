@@ -1,6 +1,7 @@
 ---
 import TerminalLayout from '@layouts/TerminalLayout.astro';
 import LegalSection from '@components/sections/LegalSection.vue';
+import ObfuscatedEmail from '@components/ui/ObfuscatedEmail.vue';
 import { getTranslations } from '@/i18n';
 
 const t = getTranslations('de');
@@ -43,6 +44,7 @@ const customTitle = 'visitor@k0r37k1.dev:~$ cat datenschutz.txt';
 					{t.legal.privacy.responsibleName}<br />
 					{t.legal.privacy.responsibleAddress}<br />
 					{t.legal.privacy.responsibleEmail}
+					<ObfuscatedEmail user="contact" domain="k0r37k1" tld="dev" client:only="vue" />
 				</div>
 			</div>
 
@@ -202,7 +204,7 @@ const customTitle = 'visitor@k0r37k1.dev:~$ cat datenschutz.txt';
 				<div class="nfo-label">{t.legal.privacy.contact}</div>
 				<div class="nfo-text">
 					{t.legal.privacy.contactText}<br />
-					E-Mail: <a href="mailto:contact@k0r37k1.dev" class="terminal-link">contact@k0r37k1.dev</a>
+					E-Mail: <ObfuscatedEmail user="contact" domain="k0r37k1" tld="dev" client:only="vue" />
 				</div>
 			</div>
 		</div>

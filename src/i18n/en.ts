@@ -251,7 +251,7 @@ export default {
 			responsibleText: 'The controller responsible for data processing on this website is:',
 			responsibleName: 'Alex Korezki',
 			responsibleAddress: 'c/o Postflex #10164, Emsdettener Str. 10, 48268 Greven, Germany',
-			responsibleEmail: 'Email: contact@k0r37k1.dev',
+			responsibleEmail: 'Email:',
 
 			// 2. Overview
 			overview: '[ OVERVIEW ]',

@@ -1,6 +1,7 @@
 ---
 import TerminalLayout from '@layouts/TerminalLayout.astro';
 import LegalSection from '@components/sections/LegalSection.vue';
+import ObfuscatedEmail from '@components/ui/ObfuscatedEmail.vue';
 import { getTranslations } from '@/i18n';
 
 const t = getTranslations('de');
@@ -51,9 +52,12 @@ const customTitle = 'visitor@k0r37k1.dev:~$ cat impressum.txt';
 			<div class="nfo-block">
 				<div class="nfo-label">{t.legal.imprint.contact}</div>
 				<div class="nfo-text">
-					{t.contact.email}: <a href="mailto:contact@k0r37k1.dev" class="terminal-link"
-						>contact@k0r37k1.dev</a
-					>
+					{t.contact.email}: <ObfuscatedEmail
+						user="contact"
+						domain="k0r37k1"
+						tld="dev"
+						client:only="vue"
+					/>
 				</div>
 			</div>
 
