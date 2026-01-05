@@ -120,7 +120,7 @@ async function cleanup() {
 					totalDeleted++;
 				}
 			}
-		} catch (err) {
+		} catch {
 			// CSS dir might not exist
 		}
 
