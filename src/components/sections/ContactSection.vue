@@ -149,30 +149,22 @@ const contacts = computed(() => [
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
-	transform: translateZ(0);
-	backface-visibility: hidden;
-	filter: blur(0);
 	text-shadow: none; /* No glow effect */
 }
 
 @media (hover: hover) {
 	.contact-link:hover {
-		transform: translateZ(0);
 		text-shadow: none; /* No glow effect */
 	}
 
 	.contact-link:hover .contact-icon {
-		transform: scale(1.1) translateZ(0);
+		transform: scale(1.1);
 	}
 }
 
 .contact-icon {
 	font-size: 1.125rem;
 	transition: transform 0.2s ease;
-	transform: translateZ(0);
-	backface-visibility: hidden;
-	filter: blur(0);
-	will-change: transform;
 }
 
 @media (width <= 640px) {

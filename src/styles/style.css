@@ -106,10 +106,7 @@ body {
 	min-height: calc(100vh - 2rem);
 	position: relative;
 	overflow: hidden;
-	transform: translateZ(0);
-	backface-visibility: hidden;
-	filter: blur(0);
-	contain: layout style paint;
+	contain: layout style paint; /* Modern GPU optimization without blur side effects */
 }
 
 /* CRT Scanline Effect - Disabled (too subtle) */
@@ -486,16 +483,13 @@ body {
 	font-weight: 500;
 	box-shadow: 2px 2px 0 rgb(0 0 0 / 20%);
 	transition: all 0.15s;
-	transform: translateZ(0);
-	backface-visibility: hidden;
-	filter: blur(0);
 
 	/* Phosphor glow removed for better readability */
 }
 
 @media (hover: hover) {
 	.skill-tag:hover {
-		transform: translate(-1px, -1px) translateZ(0);
+		transform: translate(-1px, -1px);
 		border-color: var(--color-terminal-primary);
 		box-shadow: 3px 3px 0 rgb(255 0 255 / 50%);
 		background: var(--color-terminal-primary);
@@ -808,14 +802,11 @@ a:focus-visible,
 	transition:
 		transform 0.2s,
 		box-shadow 0.2s;
-	transform: translateZ(0);
-	backface-visibility: hidden;
-	filter: blur(0);
 }
 
 @media (hover: hover) {
 	.brutalist-box:hover {
-		transform: translate(-2px, -2px) translateZ(0);
+		transform: translate(-2px, -2px);
 		box-shadow: 8px 8px 0 rgb(0 217 255 / 40%);
 	}
 }
