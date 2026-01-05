@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
 # CodeRabbit Configuration
 # https://docs.coderabbit.ai/guides/configure-coderabbit
 
@@ -13,7 +14,7 @@ reviews:
   request_changes_workflow: false
   high_level_summary: true
   poem: false
-  review_status: true
+  review_status: false
   collapse_walkthrough: false
   auto_review:
     enabled: true
@@ -90,23 +91,19 @@ chat:
 knowledge_base:
   # Tech Stack Documentation
   learnings:
-    - "Project uses Astro 5 with Vue 3 Composition API (NOT Options API)"
-    - "Styling with Tailwind CSS v4 - CSS-first configuration using @theme"
-    - "Vite+ inspired toolchain: Rolldown (bundler), OXC (linter), Lightning CSS (parser)"
-    - "Project manually implements Vite+ philosophy (https://viteplus.dev/)"
-    - "Testing: Vitest (unit), Playwright (E2E), @vue/test-utils"
-    - "Code quality: Husky, lint-staged, commitlint, Prettier, oxlint, stylelint"
-    - "UI Libraries: Motion (motion-v), Reka UI, Astro Icon"
-    - "Path aliases MUST be used: @/, @components/, @layouts/, @utils/"
-    - "Vue components MUST use Composition API with <script setup lang='ts'>"
-    - "Client directives: Prefer client:visible over client:load for performance"
-    - "Motion: NEVER combine whileInView and whileHover on same element"
-    - "Motion: Spring animations only support 2 keyframes, use ease for multiple keyframes"
-    - "Tailwind v4: Use @theme in CSS for design tokens, not JavaScript config"
-    - "Reka UI components are auto-imported via unplugin-vue-components"
-    - "Conventional Commits enforced by commitlint"
-    - "Maximum line length: code=100, commit header=100, commit body=120"
-    - "Tabs for indentation (NOT spaces), single quotes, semicolons required"
+    scope: "repo"
+    items:
+      - "Project uses Astro 5 with Vue 3 Composition API (NOT Options API)"
+      - "Styling with Tailwind CSS v4 - CSS-first configuration using @theme"
+      - "Vite+ inspired toolchain: Rolldown (bundler), OXC (linter), Lightning CSS (parser)"
+      - "Testing: Vitest (unit), Playwright (E2E), @vue/test-utils"
+      - "Path aliases MUST be used: @/, @components/, @layouts/, @utils/"
+      - "Vue components MUST use Composition API with <script setup lang='ts'>"
+      - "Client directives: Prefer client:visible over client:load for performance"
+      - "GSAP for animations - always use gsap.context() with cleanup in onBeforeUnmount"
+      - "Tailwind v4: Use @theme in CSS for design tokens, not JavaScript config"
+      - "Conventional Commits enforced by commitlint"
+      - "Tabs for indentation (NOT spaces), single quotes, semicolons required"
 
 # Issue validation and PR title checking
 issues:
