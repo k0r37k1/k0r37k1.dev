@@ -1258,7 +1258,8 @@ a:focus-visible,
 }
 
 .legal-content {
-	margin-top: 1rem;
+	max-width: var(--prose-max); /* 800px - optimal for readability */
+	margin: 1rem auto 0;
 }
 
 .legal-content .last-updated {
