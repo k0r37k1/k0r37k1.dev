@@ -44,14 +44,24 @@ onMounted(() => {
 		<!-- Main heading for SEO and screen readers -->
 		<h1 class="visually-hidden">k0r37k1.dev - Developer Portfolio</h1>
 
-		<!-- ASCII Art Logo -->
+		<!-- ASCII Art Logo (JS required) -->
 		<div class="ascii-logo-wrapper">
 			<pre class="ascii-art holographic-text" aria-hidden="true">{{ asciiArt }}</pre>
+		</div>
+
+		<!-- Static Fallback for no-JS (hidden when JS runs) -->
+		<div class="noscript-fallback hero-fallback" aria-hidden="true">
+			<span class="logo-text holographic-text">k0r37k1.dev</span>
 		</div>
 
 		<!-- Welcome Message with Typing Animation -->
 		<div class="welcome-message text-center">
 			<TypeWriter :text="t.hero.welcome" :speed="50" :delay="1000" />
+		</div>
+
+		<!-- Static Welcome Fallback for no-JS -->
+		<div class="noscript-fallback welcome-fallback text-center">
+			{{ t.hero.welcome }}
 		</div>
 
 		<!-- Tagline -->
@@ -159,6 +169,41 @@ onMounted(() => {
 	color: var(--color-terminal-text-dim);
 }
 
+/* No-JS Fallback (hidden by default, shown via noscript styles) */
+.noscript-fallback {
+	display: none;
+}
+
+.hero-fallback {
+	margin-bottom: 1.5rem;
+}
+
+.logo-text {
+	font-family: var(--font-mono);
+	font-size: 3rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+
+	/* Holographic gradient */
+	background: linear-gradient(
+		90deg,
+		var(--color-terminal-primary) 0%,
+		var(--color-accent-purple) 25%,
+		var(--color-terminal-secondary) 50%,
+		var(--color-accent-orange) 75%,
+		var(--color-terminal-primary) 100%
+	);
+	background-size: 300% auto;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.welcome-fallback {
+	font-size: 1.25rem;
+	color: var(--color-terminal-primary);
+	margin: 1rem 0;
+}
+
 /* Accessibility: Visually hidden but available to screen readers */
 .visually-hidden {
 	position: absolute;
@@ -194,6 +239,14 @@ onMounted(() => {
 	.tagline {
 		font-size: 0.75rem;
 		letter-spacing: 0.02em;
+	}
+
+	.logo-text {
+		font-size: 1.75rem;
+	}
+
+	.welcome-fallback {
+		font-size: 0.875rem;
 	}
 }
 </style>
