@@ -61,7 +61,7 @@ const skills = {
 </script>
 
 <template>
-	<motion.section v-bind="motionConfig" class="terminal-section skills-section">
+	<motion.section v-bind="motionConfig" class="motion terminal-section skills-section">
 		<!-- Skills Content -->
 		<div class="section-content">
 			<!-- Languages -->

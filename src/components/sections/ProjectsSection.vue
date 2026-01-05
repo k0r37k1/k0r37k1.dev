@@ -23,7 +23,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 </script>
 
 <template>
-	<motion.section v-bind="motionConfig" class="terminal-section projects-section">
+	<motion.section v-bind="motionConfig" class="motion terminal-section projects-section">
 		<!-- Projects Grid -->
 		<div class="projects-grid">
 			<motion.div
@@ -40,7 +40,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 					delay: index * 0.1,
 				}"
 				:viewport="{ once: true }"
-				class="project-card"
+				class="motion project-card"
 			>
 				<div class="project-header">
 					<Icon icon="tabler:folder-code" class="project-icon" aria-hidden="true" />

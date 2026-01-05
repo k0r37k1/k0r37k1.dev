@@ -8,7 +8,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 </script>
 
 <template>
-	<motion.section v-bind="motionConfig" class="terminal-section section-with-corners">
+	<motion.section v-bind="motionConfig" class="motion terminal-section section-with-corners">
 		<slot />
 	</motion.section>
 </template>

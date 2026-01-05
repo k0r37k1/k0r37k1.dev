@@ -1,5 +1,7 @@
 import { getViteConfig } from 'astro/config';
 
+// Use type assertion to bypass Astro's incomplete Vite config types
+// Vitest test config is valid but not recognized by Astro's UserConfig type
 export default getViteConfig({
 	test: {
 		globals: true,
@@ -14,4 +16,4 @@ export default getViteConfig({
 			reporter: ['text', 'json', 'html'],
 		},
 	},
-});
+} as Parameters<typeof getViteConfig>[0]);

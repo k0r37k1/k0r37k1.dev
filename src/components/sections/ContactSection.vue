@@ -61,7 +61,7 @@ const contacts = computed(() => [
 </script>
 
 <template>
-	<motion.section v-bind="motionConfig" class="terminal-section contact-section">
+	<motion.section v-bind="motionConfig" class="motion terminal-section contact-section">
 		<!-- Contact Content -->
 		<div class="nfo-content">
 			<!-- Section Label -->

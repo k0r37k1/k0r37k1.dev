@@ -103,7 +103,7 @@ onUnmounted(() => {
 			@click="scrollToTop"
 			@mouseenter="handleMouseEnter"
 			@mouseleave="handleMouseLeave"
-			class="go-to-top"
+			class="motion go-to-top"
 			:aria-label="t.aria.actions.scrollToTop"
 		>
 			<div class="ascii-frame">

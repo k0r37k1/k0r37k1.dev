@@ -18,7 +18,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 </script>
 
 <template>
-	<motion.section v-bind="motionConfig" class="terminal-section about-section">
+	<motion.section v-bind="motionConfig" class="motion terminal-section about-section">
 		<div class="nfo-content">
 			<!-- Bio Section -->
 			<div class="nfo-section">

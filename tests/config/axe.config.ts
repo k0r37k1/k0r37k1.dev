@@ -1,5 +1,3 @@
-import type { Spec } from 'axe-core';
-
 /**
  * Global axe-core configuration
  *
@@ -8,47 +6,26 @@ import type { Spec } from 'axe-core';
  *
  * For Playwright tests, use the test fixture in `tests/fixtures/axe-test.ts`
  */
-export const axeConfig: Spec = {
-	// Rule-specific configuration
-	rules: [
-		{
-			id: 'color-contrast',
-			enabled: true,
-		},
-		{
-			id: 'image-alt',
-			enabled: true,
-		},
-		{
-			id: 'label',
-			enabled: true,
-		},
-		{
-			id: 'button-name',
-			enabled: true,
-		},
-		{
-			id: 'link-name',
-			enabled: true,
-		},
-		{
-			id: 'aria-allowed-attr',
-			enabled: true,
-		},
-		{
-			id: 'aria-required-attr',
-			enabled: true,
-		},
-	],
+export const axeRules = [
+	{ id: 'color-contrast', enabled: true },
+	{ id: 'image-alt', enabled: true },
+	{ id: 'label', enabled: true },
+	{ id: 'button-name', enabled: true },
+	{ id: 'link-name', enabled: true },
+	{ id: 'aria-allowed-attr', enabled: true },
+	{ id: 'aria-required-attr', enabled: true },
+] as const;
 
-	// Global exclusions (elements we can't control)
-	exclude: [
-		['#ads'], // Ad containers
-		['.cookie-banner'], // External cookie consent
-		['iframe[src*="youtube"]'], // YouTube embeds
-		['iframe[src*="vimeo"]'], // Vimeo embeds
-	],
-};
+/**
+ * Global exclusions (elements we can't control)
+ * Use with AxeBuilder.exclude() in Playwright tests
+ */
+export const axeExclusions = [
+	'#ads', // Ad containers
+	'.cookie-banner', // External cookie consent
+	'iframe[src*="youtube"]', // YouTube embeds
+	'iframe[src*="vimeo"]', // Vimeo embeds
+] as const;
 
 /**
  * Impact levels for prioritizing fixes

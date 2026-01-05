@@ -33,10 +33,10 @@ class ResizeObserverMock {
 global.ResizeObserver = ResizeObserverMock as unknown as typeof ResizeObserver;
 
 // Mock requestAnimationFrame for animations
-global.requestAnimationFrame = ((callback: FrameRequestCallback) => {
-	return setTimeout(() => callback(Date.now()), 16);
-}) as typeof requestAnimationFrame;
+global.requestAnimationFrame = (callback: FrameRequestCallback): number => {
+	return setTimeout(() => callback(Date.now()), 16) as unknown as number;
+};
 
-global.cancelAnimationFrame = ((id: number) => {
+global.cancelAnimationFrame = (id: number): void => {
 	clearTimeout(id);
-}) as typeof cancelAnimationFrame;
+};

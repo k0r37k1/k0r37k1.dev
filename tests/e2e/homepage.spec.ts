@@ -32,8 +32,9 @@ test.describe('Homepage', () => {
 		test('displays hero welcome message', async ({ page }) => {
 			// Wait for TypeWriter animation to complete
 			await page.waitForTimeout(2000);
+			// Target .welcome-message to avoid matching hidden noscript-fallback
 			await expect(
-				page.getByText(/Willkommen zu meinem Portfolio, wo Ideen Realität werden/i)
+				page.locator('.welcome-message').getByText(/Willkommen zu meinem Portfolio/i)
 			).toBeVisible();
 		});
 

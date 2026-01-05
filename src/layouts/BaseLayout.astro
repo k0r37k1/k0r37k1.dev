@@ -67,27 +67,11 @@ const canonicalUrl = lang === 'de' ? `${baseUrl}${currentPath}` : `${baseUrl}/en
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
 		<!-- Progressive Enhancement: Show content when JS is blocked -->
+		<!-- Following Motion library best practice: https://github.com/motiondivision/motion/discussions/1792 -->
 		<noscript>
 			<style>
-				/* Override motion-v inline styles (opacity:0, transform) */
-
-				/* Target any element with opacity in inline style */
-				[style*='opacity: 0'],
-				[style*='opacity:0'] {
-					opacity: 1 !important;
-				}
-
-				[style*='transform'] {
-					transform: none !important;
-				}
-
-				/* Specific motion-v animated sections */
-				.about-section,
-				.projects-section,
-				.skills-section,
-				.contact-section,
-				.section-with-corners,
-				.project-card {
+				/* Motion library recommended approach: target .motion class */
+				.motion {
 					opacity: 1 !important;
 					transform: none !important;
 				}
