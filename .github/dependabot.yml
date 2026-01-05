@@ -82,6 +82,7 @@ updates:
           - '@iconify/*'
           - 'alpinejs'
           - '@alpinejs/*'
+          - 'gsap'
         update-types:
           - 'minor'
           - 'patch'
@@ -91,7 +92,9 @@ updates:
         patterns:
           - 'vite'
           - 'rolldown-vite'
+          - 'rollup'
           - 'lightningcss'
+          - 'typescript'
         update-types:
           - 'minor'
           - 'patch'
@@ -106,13 +109,31 @@ updates:
           - 'minor'
           - 'patch'
 
-    # Open pull requests for version updates
-    open-pull-requests-limit: 10
+      # Catch-all for remaining minor/patch updates
+      other-dependencies:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+        exclude-patterns:
+          # Exclude packages already in other groups
+          - '@astrojs/*'
+          - 'astro'
+          - 'astro-icon'
+          - 'vue'
+          - '@vue/*'
+          - 'tailwindcss'
+          - '@tailwindcss/*'
+          - 'vitest'
+          - '@vitest/*'
+          - '@playwright/test'
+          - 'eslint*'
+          - 'prettier*'
+          - 'stylelint*'
 
-    # Auto-merge configuration (optional - requires GitHub auto-merge)
-    # Uncomment when ready:
-    # pull-request-branch-name:
-    #   separator: '-'
+    # Limit open PRs to prevent flooding
+    open-pull-requests-limit: 5
 
     # Labels for PRs
     labels:
@@ -124,24 +145,16 @@ updates:
       prefix: 'chore(deps)'
       include: 'scope'
 
-    # Review configuration
-    reviewers:
-      - 'k0r37k1'  # Ihr GitHub Username
-
-    # Ignore major version updates for stable dependencies
+    # Ignore major version updates (require manual review)
     ignore:
-      # Wait for manual upgrade to major versions
       - dependency-name: 'vue'
         update-types: ['version-update:semver-major']
       - dependency-name: 'astro'
         update-types: ['version-update:semver-major']
       - dependency-name: 'tailwindcss'
         update-types: ['version-update:semver-major']
-
-    # Allow both direct and indirect updates
-    allow:
-      - dependency-type: 'direct'
-      - dependency-type: 'indirect'
+      - dependency-name: 'vite'
+        update-types: ['version-update:semver-major']
 
   # ==========================================
   # GitHub Actions
@@ -153,6 +166,18 @@ updates:
       day: 'monday'
       time: '09:00'
       timezone: 'Europe/Berlin'
+
+    # Group ALL GitHub Actions together
+    groups:
+      github-actions:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+    # Limit to 2 PRs for actions
+    open-pull-requests-limit: 2
 
     labels:
       - 'dependencies'
