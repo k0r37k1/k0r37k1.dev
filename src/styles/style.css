@@ -93,22 +93,6 @@ body {
 	/* Phosphor glow removed from body text for better readability */
 }
 
-/* Motion Library Fallback
-   Ensures content is visible even if JS animations fail to initialize.
-   The animation acts as a delayed fallback - Motion.js will override
-   inline styles when it initializes, but if it fails, CSS takes over.
-   NOTE: Only set opacity, NOT transform - transform is needed for hover effects
-   Using .motion.motion for higher specificity to compete with inline styles */
-.motion.motion {
-	animation: motion-fallback 0.01ms 1s forwards;
-}
-
-@keyframes motion-fallback {
-	to {
-		opacity: 1;
-	}
-}
-
 /* Terminal Window Container */
 .terminal-window {
 	background: var(--color-terminal-surface);

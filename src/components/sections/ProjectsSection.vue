@@ -26,11 +26,12 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 	<motion.section v-bind="motionConfig" class="motion terminal-section projects-section">
 		<!-- Projects Grid -->
 		<div class="projects-grid">
+			<!-- NO opacity in initial - prevents invisible cards if animation fails -->
 			<motion.div
 				v-for="(project, index) in projects"
 				:key="project.title"
-				:initial="{ opacity: 0, scale: 0.95 }"
-				:whileInView="{ opacity: 1, scale: 1 }"
+				:initial="{ scale: 0.95, y: 10 }"
+				:whileInView="{ scale: 1, y: 0 }"
 				:whileHover="{ scale: 1.02, x: -2, y: -2 }"
 				:whileTap="{ scale: 0.98 }"
 				:transition="{

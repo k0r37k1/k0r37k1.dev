@@ -91,12 +91,13 @@ onUnmounted(() => {
 
 <template>
 	<AnimatePresence>
+		<!-- NO opacity in initial - prevents invisible button if animation fails -->
 		<motion.button
 			v-if="isVisible"
 			key="go-to-top"
-			:initial="{ opacity: 0, scale: 0.8 }"
-			:animate="{ opacity: 1, scale: 1 }"
-			:exit="{ opacity: 0, scale: 0.8 }"
+			:initial="{ scale: 0.8, y: 10 }"
+			:animate="{ scale: 1, y: 0 }"
+			:exit="{ scale: 0.8, y: 10 }"
 			:whileHover="{ y: -4 }"
 			:whileTap="{ scale: 0.98 }"
 			:transition="{ type: 'spring', stiffness: 400, damping: 17 }"
