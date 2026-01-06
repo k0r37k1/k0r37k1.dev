@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import { motion } from 'motion-v';
-import { computed } from 'vue';
-import { useReducedMotion, getMotionConfig } from '@/composables/useReducedMotion';
-
-const { prefersReducedMotion } = useReducedMotion();
-const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value));
+// Legal pages don't need animations - content should be immediately visible
+// This prevents opacity:0 issues with motion library hydration timing
 </script>
 
 <template>
-	<motion.section v-bind="motionConfig" class="motion terminal-section section-with-corners">
+	<section class="terminal-section section-with-corners legal-section">
 		<slot />
-	</motion.section>
+	</section>
 </template>

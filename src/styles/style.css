@@ -93,6 +93,22 @@ body {
 	/* Phosphor glow removed from body text for better readability */
 }
 
+/* Motion Library Fallback
+   Ensures content is visible even if JS animations fail to initialize.
+   The animation acts as a delayed fallback - Motion.js will override
+   inline styles when it initializes, but if it fails, CSS takes over.
+   NOTE: Only set opacity, NOT transform - transform is needed for hover effects
+   Using .motion.motion for higher specificity to compete with inline styles */
+.motion.motion {
+	animation: motion-fallback 0.01ms 1s forwards;
+}
+
+@keyframes motion-fallback {
+	to {
+		opacity: 1;
+	}
+}
+
 /* Terminal Window Container */
 .terminal-window {
 	background: var(--color-terminal-surface);
@@ -444,13 +460,23 @@ body {
 		box-shadow 0.2s;
 }
 
-/* Hover only on devices that support it (not touch) - transform via motion-v */
+/* Hover only on devices that support it (not touch) */
 @media (hover: hover) {
+	.project-card {
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
+	}
+
 	.project-card:hover {
 		border-color: var(--color-accent-orange);
 		box-shadow:
 			6px 6px 0 rgb(255 0 0 / 50%),
 			0 0 8px rgb(255 0 0 / 25%);
+
+		/* CSS scale - !important needed to override motion-v inline styles */
+		transform: scale(1.02) translate(-2px, -2px) !important;
 	}
 }
 
