@@ -25,27 +25,30 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 // Override Carousel's inline styles for equal card heights
 const carouselWrapper = ref<HTMLElement>();
 let observer: MutationObserver | null = null;
+const observerConfig: MutationObserverInit = { childList: true, attributes: true, subtree: true };
 
 function applyCarouselFixes() {
 	const wrapper = carouselWrapper.value;
 	if (!wrapper) return;
 
+	// Disconnect before modifying observed elements to prevent recursion
+	observer?.disconnect();
+
 	const ul = wrapper.querySelector<HTMLElement>('ul');
 	if (ul) {
-		if (ul.style.alignItems !== 'stretch') {
-			ul.style.alignItems = 'stretch';
-		}
+		ul.style.alignItems = 'stretch';
 		// Carousel sets role="group" but <li> children require role="list"
-		if (ul.getAttribute('role') !== 'list') {
-			ul.setAttribute('role', 'list');
-		}
+		ul.setAttribute('role', 'list');
 	}
 
 	wrapper.querySelectorAll<HTMLElement>('.ticker-item').forEach((item) => {
-		if (item.style.height !== 'auto') {
-			item.style.height = 'auto';
-		}
+		item.style.height = 'auto';
 	});
+
+	// Reconnect to catch future Carousel DOM changes
+	if (ul && observer) {
+		observer.observe(ul, observerConfig);
+	}
 }
 
 onMounted(() => {
@@ -55,7 +58,7 @@ onMounted(() => {
 	const ul = carouselWrapper.value?.querySelector('ul');
 	if (ul) {
 		observer = new MutationObserver(applyCarouselFixes);
-		observer.observe(ul, { childList: true, attributes: true, subtree: true });
+		observer.observe(ul, observerConfig);
 	}
 });
 
@@ -68,7 +71,7 @@ onBeforeUnmount(() => {
 	<motion.section v-bind="motionConfig" class="motion terminal-section projects-section">
 		<!-- Projects Carousel -->
 		<div ref="carouselWrapper" class="carousel-wrapper">
-			<Carousel :gap="24">
+			<Carousel :loop="true" :gap="24">
 				<motion.div
 					v-for="(project, index) in projects"
 					:key="project.title"
@@ -166,11 +169,11 @@ const CarouselControls = defineComponent({
 		nextLabel: { type: String, default: 'Forward ▶' },
 	},
 	setup() {
-		const { prevPage, nextPage } = useCarouselHook();
-		return { prevPage, nextPage };
+		const { prevPage, nextPage, paginationState } = useCarouselHook();
+		return { prevPage, nextPage, paginationState };
 	},
 	render() {
-		const { prevPage, nextPage, prevLabel, nextLabel } = this;
+		const { prevPage, nextPage, paginationState, prevLabel, nextLabel } = this;
 
 		return h('div', { class: 'carousel-nav' }, [
 			h(
@@ -178,6 +181,7 @@ const CarouselControls = defineComponent({
 				{
 					class: 'terminal-btn carousel-btn',
 					onClick: prevPage,
+					disabled: !paginationState.isPrevActive,
 					'aria-label': prevLabel,
 				},
 				prevLabel
@@ -187,6 +191,7 @@ const CarouselControls = defineComponent({
 				{
 					class: 'terminal-btn carousel-btn',
 					onClick: nextPage,
+					disabled: !paginationState.isNextActive,
 					'aria-label': nextLabel,
 				},
 				nextLabel
