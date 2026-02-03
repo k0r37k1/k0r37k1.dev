@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Carousel } from 'motion-plus-vue';
 import { motion } from 'motion-v';
-import { computed, ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import { getTranslations, type Language } from '@/i18n';
 import { useReducedMotion, getMotionConfig } from '@/composables/useReducedMotion';
@@ -22,48 +22,10 @@ const projects = t.projects.items;
 const { prefersReducedMotion } = useReducedMotion();
 const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value));
 
-// Override Carousel's inline styles for equal card heights
+// Fix Carousel's role="group" on <ul> — <li> children require role="list"
 const carouselWrapper = ref<HTMLElement>();
-let observer: MutationObserver | null = null;
-const observerConfig: MutationObserverInit = { childList: true, attributes: true, subtree: true };
-
-function applyCarouselFixes() {
-	const wrapper = carouselWrapper.value;
-	if (!wrapper) return;
-
-	// Disconnect before modifying observed elements to prevent recursion
-	observer?.disconnect();
-
-	const ul = wrapper.querySelector<HTMLElement>('ul');
-	if (ul) {
-		ul.style.alignItems = 'stretch';
-		// Carousel sets role="group" but <li> children require role="list"
-		ul.setAttribute('role', 'list');
-	}
-
-	wrapper.querySelectorAll<HTMLElement>('.ticker-item').forEach((item) => {
-		item.style.height = 'auto';
-	});
-
-	// Reconnect to catch future Carousel DOM changes
-	if (ul && observer) {
-		observer.observe(ul, observerConfig);
-	}
-}
-
 onMounted(() => {
-	nextTick(applyCarouselFixes);
-
-	// Re-apply when Carousel modifies DOM (e.g., cloning items for infinite loop)
-	const ul = carouselWrapper.value?.querySelector('ul');
-	if (ul) {
-		observer = new MutationObserver(applyCarouselFixes);
-		observer.observe(ul, observerConfig);
-	}
-});
-
-onBeforeUnmount(() => {
-	observer?.disconnect();
+	carouselWrapper.value?.querySelector('ul')?.setAttribute('role', 'list');
 });
 </script>
 
@@ -202,16 +164,33 @@ const CarouselControls = defineComponent({
 </script>
 
 <style scoped>
-/* Carousel wrapper — padding prevents card border/shadow clipping on hover */
+/* Carousel wrapper — extra space so overflow:hidden doesn't clip card shadows */
 .carousel-wrapper {
 	position: relative;
-	padding-inline: 8px;
+	padding: 10px;
+	margin: -10px;
 }
 
-/* Carousel wraps each card in li.ticker-item — stretch handled via JS */
+/* Expand Carousel root into wrapper padding so clipping boundary moves outward */
+.carousel-wrapper :deep(> div) {
+	margin: -10px;
+	padding: 10px;
+}
+
+/*
+ * Third-party overrides (motion-plus-vue Carousel)
+ * The Carousel sets inline styles on <ul> and <li> that we need to override.
+ * Using !important is the standard CSS pattern for overriding inline styles
+ * from third-party components that can't be configured via props.
+ */
+.carousel-wrapper :deep(ul) {
+	align-items: stretch !important;
+}
+
 .carousel-wrapper :deep(.ticker-item) {
 	display: flex;
 	align-self: stretch;
+	height: auto !important;
 }
 
 /* Equal-sized cards */
