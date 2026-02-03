@@ -45,18 +45,6 @@ export const testPages: TestPage[] = [
 		description: 'Privacy policy page',
 		waitForSelectors: ['text=Datenschutz'],
 	},
-	{
-		url: '/blog',
-		name: 'Blog DE',
-		description: 'Blog index page (German)',
-		waitForSelectors: ['text=BLOG'],
-	},
-	{
-		url: '/en/blog',
-		name: 'Blog EN',
-		description: 'Blog index page (English)',
-		waitForSelectors: ['text=BLOG'],
-	},
 ];
 
 /**

@@ -25,7 +25,6 @@ export default {
 		projects: '▀▄▀▄ PROJECTS ▄▀▄▀',
 		skills: '▀▄▀▄ ENVIRONMENT ▄▀▄▀',
 		contact: '▀▄▀▄ CONTACT ▄▀▄▀',
-		blog: '▀▄▀▄ BLOG ▄▀▄▀',
 	},
 
 	// About Section
@@ -44,19 +43,6 @@ export default {
 		},
 	},
 
-	// Blog Section
-	blog: {
-		title: 'Blog',
-		description: 'Personal dev blog',
-		readMore: 'Read more →',
-		publishedOn: 'Published on',
-		updatedOn: 'Updated on',
-		tags: 'Tags',
-		allPosts: 'All Posts',
-		noPosts: 'No posts yet.',
-		backToBlog: '← back to blog',
-	},
-
 	// Projects Section
 	projects: {
 		viewProject: 'View Project',
@@ -66,6 +52,8 @@ export default {
 		github: 'GitHub',
 		liveDemo: 'Demo',
 		store: 'Store',
+		prevPage: '◀ Back',
+		nextPage: 'Forward ▶',
 		imageAlt: 'Screenshot of {title}',
 		items: [
 			{
@@ -90,6 +78,12 @@ export default {
 					'Minimalist text editor for Android. Focus Mode, Typewriter Mode, font settings, auto-save. Accessible, DE/EN.',
 				stack: ['Flutter', 'Dart'],
 				store: 'https://play.google.com/store',
+			},
+			{
+				title: 'AI Chat Assistant',
+				description:
+					'AI-powered chat assistant with real-time streaming. RAG pipeline, context management and adaptive UI. Accessible, DE/EN.',
+				stack: ['Vue', 'TypeScript', 'OpenAI', 'Supabase'],
 			},
 		],
 	},
@@ -141,7 +135,6 @@ export default {
 		links: {
 			imprint: 'Imprint',
 			privacy: 'Privacy',
-			blog: 'Blog',
 			home: 'Portfolio',
 		},
 	},
@@ -153,7 +146,6 @@ export default {
 			projects: 'Projects',
 			environment: 'Environment',
 			contact: 'Contact',
-			blog: 'Blog',
 		},
 		navigation: {
 			legal: 'Legal pages navigation',
@@ -222,7 +214,6 @@ export default {
 		subtitle: 'The requested page does not exist.',
 		description: 'Maybe it was moved, deleted, or you made a typo.',
 		backHome: 'back to home',
-		backBlog: 'back to blog',
 	},
 
 	// Legal Pages

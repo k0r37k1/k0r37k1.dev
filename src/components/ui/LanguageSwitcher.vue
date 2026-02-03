@@ -5,7 +5,7 @@ import { getTranslations } from '@/i18n';
 interface Props {
 	currentLang: 'de' | 'en';
 	currentPath?: string;
-	/** Override the alternate URL (e.g., for blog posts without translation) */
+	/** Override the alternate URL (e.g., for pages without translation) */
 	alternateUrl?: string;
 }
 

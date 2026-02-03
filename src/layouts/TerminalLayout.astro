@@ -13,8 +13,7 @@ interface Props {
 	currentPath?: string;
 	customTitle?: string;
 	showGoToTop?: boolean;
-	isBlog?: boolean;
-	/** Override URL for language switcher (e.g., blog posts without translation) */
+	/** Override URL for language switcher (e.g., pages without translation) */
 	alternateUrl?: string;
 	/** Whether to show the language switcher (default: true) */
 	showLanguageSwitcher?: boolean;
@@ -27,7 +26,6 @@ const {
 	currentPath = '/',
 	customTitle,
 	showGoToTop = true,
-	isBlog = false,
 	alternateUrl,
 	showLanguageSwitcher = true,
 } = Astro.props;
@@ -57,7 +55,7 @@ const t = getTranslations(lang);
 			{showGoToTop && <GoToTop client:idle lang={lang} />}
 
 			<!-- Footer -->
-			<TerminalFooter client:idle lang={lang} isBlog={isBlog} />
+			<TerminalFooter client:idle lang={lang} />
 		</main>
 	</div>
 

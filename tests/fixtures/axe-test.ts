@@ -41,6 +41,7 @@ export const test = base.extend<AxeFixture>({
 				.disableRules([
 					'aria-hidden-focus', // Astro framework SSR limitation (aria-hidden on un-hydrated islands)
 					'color-contrast', // Theme-based colors (Shiki syntax highlighting, design system colors)
+					'listitem', // motion-plus-vue Carousel renders <ul role="group"><li> (fixed at runtime via MutationObserver)
 					'page-has-heading-one', // Best practice - not strict WCAG requirement
 					'region', // Best practice - content landmark requirement
 				]);

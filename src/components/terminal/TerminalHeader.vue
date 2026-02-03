@@ -7,7 +7,7 @@ interface Props {
 	lang?: Language;
 	currentPath?: string;
 	customTitle?: string;
-	/** Override URL for language switcher (e.g., blog posts without translation) */
+	/** Override URL for language switcher (e.g., pages without translation) */
 	alternateUrl?: string;
 	/** Whether to show the language switcher (default: true) */
 	showLanguageSwitcher?: boolean;

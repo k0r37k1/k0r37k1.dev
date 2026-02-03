@@ -107,13 +107,7 @@ onUnmounted(() => {
 			class="motion go-to-top"
 			:aria-label="t.aria.actions.scrollToTop"
 		>
-			<div class="ascii-frame">
-				<span class="frame-line">┌─────┐</span>
-				<span class="frame-line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│</span>
-				<span class="arrow-line">│&nbsp;&nbsp;<span class="arrow">↑</span>&nbsp;&nbsp;│</span>
-				<span class="frame-line">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│</span>
-				<span class="frame-line">└─────┘</span>
-			</div>
+			<span class="arrow">▲</span>
 		</motion.button>
 	</AnimatePresence>
 </template>
@@ -123,23 +117,24 @@ onUnmounted(() => {
 	position: fixed;
 	bottom: 2rem;
 	right: 2rem;
-	background: transparent;
-	color: var(--color-terminal-primary);
+	display: grid;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	background: color-mix(in oklch, var(--color-terminal-primary) 70%, transparent);
+	color: var(--color-terminal-bg, #0a0a0a);
 	border: none;
 	cursor: pointer;
 	z-index: 9999;
-	font-family: 'Courier New', Consolas, monospace;
-	font-size: 0.875rem;
-	line-height: 1;
 	padding: 0;
-	transition: all 0.2s ease;
+	transition: background 0.2s ease;
 	animation: crt-flicker 3s steps(1) infinite;
 	will-change: opacity, transform;
 }
 
 @media (hover: hover) {
 	.go-to-top:hover {
-		color: #00ff9f;
+		background: #00ff9f;
 	}
 }
 
@@ -148,59 +143,19 @@ onUnmounted(() => {
 	outline-offset: 2px;
 }
 
-.ascii-frame {
-	display: flex;
-	flex-direction: column;
-	gap: 0;
-	text-align: left;
-	letter-spacing: 0;
-	font-variant-ligatures: none;
-	font-feature-settings:
-		'liga' 0,
-		'calt' 0;
-	line-height: 1;
-}
-
-.frame-line,
-.arrow-line {
-	display: block;
-	white-space: pre;
-	font-family: 'Courier New', Consolas, monospace;
-	font-variant-numeric: tabular-nums;
-	line-height: 1;
-	letter-spacing: 0;
-}
-
 .arrow {
-	font-size: 0.875rem;
+	font-size: 1.125rem;
 	font-weight: 900;
-	color: var(--color-terminal-primary);
-	display: inline-block;
-	vertical-align: middle;
 	line-height: 1;
-	transform: scale(1.8);
-	transform-origin: center center;
-	transition: all 0.3s ease;
-	will-change: transform;
+	font-family: 'Courier New', Consolas, monospace;
 }
 
-@media (hover: hover) {
-	.go-to-top:hover .arrow {
-		color: #00ff9f;
-		transform: scale(2) translateY(-2px);
-	}
-}
-
-/* Mobile adjustments */
 @media (width <= 640px) {
 	.go-to-top {
 		bottom: 1.5rem;
 		right: 1.5rem;
-		font-size: 0.75rem;
-	}
-
-	.content {
-		font-size: 1rem;
+		width: 2.5rem;
+		height: 2.5rem;
 	}
 }
 </style>

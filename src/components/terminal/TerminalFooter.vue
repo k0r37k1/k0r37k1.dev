@@ -5,12 +5,10 @@ import { computed } from 'vue';
 
 interface Props {
 	lang?: Language;
-	isBlog?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	lang: 'de',
-	isBlog: false,
 });
 
 const t = getTranslations(props.lang);
@@ -18,8 +16,6 @@ const currentYear = new Date().getFullYear();
 
 const imprintLink = computed(() => (props.lang === 'en' ? '/en/imprint' : '/imprint'));
 const privacyLink = computed(() => (props.lang === 'en' ? '/en/privacy' : '/privacy'));
-const blogLink = computed(() => (props.lang === 'en' ? '/en/blog' : '/blog'));
-const homeLink = computed(() => (props.lang === 'en' ? '/en' : '/'));
 </script>
 
 <template>
@@ -44,15 +40,6 @@ const homeLink = computed(() => (props.lang === 'en' ? '/en' : '/'));
 				</a>
 			</div>
 			<div class="footer-links">
-				<a v-if="!isBlog" :href="blogLink" class="terminal-link footer-link">
-					<Icon icon="mdi:post-outline" class="footer-icon" aria-hidden="true" />
-					<span>{{ t.footer.links.blog }}</span>
-				</a>
-				<a v-else :href="homeLink" class="terminal-link footer-link">
-					<Icon icon="mdi:home" class="footer-icon" aria-hidden="true" />
-					<span>{{ t.footer.links.home }}</span>
-				</a>
-				<span class="separator">•</span>
 				<a :href="imprintLink" class="terminal-link footer-link">
 					<Icon icon="mdi:fingerprint" class="footer-icon" aria-hidden="true" />
 					<span>{{ t.footer.links.imprint }}</span>

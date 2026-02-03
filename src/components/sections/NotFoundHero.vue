@@ -31,7 +31,6 @@ const detectLanguage = (): Language => {
 
 const t = computed(() => getTranslations(detectedLang.value));
 const homeUrl = computed(() => (detectedLang.value === 'en' ? '/en' : '/'));
-const blogUrl = computed(() => (detectedLang.value === 'en' ? '/en/blog' : '/blog'));
 
 onMounted(() => {
 	// Detect language
@@ -75,10 +74,6 @@ onMounted(() => {
 			<a :href="homeUrl" class="error-link">
 				<Icon icon="mdi:home" class="link-icon" />
 				<span>{{ t.notFound.backHome }}</span>
-			</a>
-			<a :href="blogUrl" class="error-link">
-				<Icon icon="mdi:post-outline" class="link-icon" />
-				<span>{{ t.notFound.backBlog }}</span>
 			</a>
 		</div>
 	</section>

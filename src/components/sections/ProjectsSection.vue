@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { Carousel } from 'motion-plus-vue';
 import { motion } from 'motion-v';
-import { computed } from 'vue';
+import { computed, ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import { Icon } from '@iconify/vue';
 import { getTranslations, type Language } from '@/i18n';
 import { useReducedMotion, getMotionConfig } from '@/composables/useReducedMotion';
@@ -20,100 +21,218 @@ const projects = t.projects.items;
 
 const { prefersReducedMotion } = useReducedMotion();
 const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value));
+
+// Override Carousel's inline styles for equal card heights
+const carouselWrapper = ref<HTMLElement>();
+let observer: MutationObserver | null = null;
+
+function applyCarouselFixes() {
+	const wrapper = carouselWrapper.value;
+	if (!wrapper) return;
+
+	const ul = wrapper.querySelector<HTMLElement>('ul');
+	if (ul) {
+		if (ul.style.alignItems !== 'stretch') {
+			ul.style.alignItems = 'stretch';
+		}
+		// Carousel sets role="group" but <li> children require role="list"
+		if (ul.getAttribute('role') !== 'list') {
+			ul.setAttribute('role', 'list');
+		}
+	}
+
+	wrapper.querySelectorAll<HTMLElement>('.ticker-item').forEach((item) => {
+		if (item.style.height !== 'auto') {
+			item.style.height = 'auto';
+		}
+	});
+}
+
+onMounted(() => {
+	nextTick(applyCarouselFixes);
+
+	// Re-apply when Carousel modifies DOM (e.g., cloning items for infinite loop)
+	const ul = carouselWrapper.value?.querySelector('ul');
+	if (ul) {
+		observer = new MutationObserver(applyCarouselFixes);
+		observer.observe(ul, { childList: true, attributes: true, subtree: true });
+	}
+});
+
+onBeforeUnmount(() => {
+	observer?.disconnect();
+});
 </script>
 
 <template>
 	<motion.section v-bind="motionConfig" class="motion terminal-section projects-section">
-		<!-- Projects Grid -->
-		<div class="projects-grid">
-			<!-- NO opacity in initial - prevents invisible cards if animation fails -->
-			<motion.div
-				v-for="(project, index) in projects"
-				:key="project.title"
-				:initial="{ scale: 0.95, y: 10 }"
-				:whileInView="{ scale: 1, y: 0 }"
-				:whileHover="{ scale: 1.02, x: -2, y: -2 }"
-				:whileTap="{ scale: 0.98 }"
-				:transition="{
-					type: 'spring',
-					stiffness: 400,
-					damping: 17,
-					delay: index * 0.1,
-				}"
-				:viewport="{ once: true }"
-				class="motion project-card"
-			>
-				<div class="project-header">
-					<Icon icon="tabler:folder-code" class="project-icon" aria-hidden="true" />
-					<h3 class="project-name">{{ project.title }}</h3>
-				</div>
-				<img
-					v-if="project.image"
-					:src="project.image"
-					:alt="t.projects.imageAlt.replace('{title}', project.title)"
-					class="project-image"
-					loading="lazy"
-				/>
-				<div v-else class="project-image-placeholder" aria-hidden="true">
-					<Icon icon="mdi:image-off-outline" class="placeholder-icon" aria-hidden="true" />
-					<span>no img</span>
-				</div>
-				<div class="project-content">
-					<p class="project-description">{{ project.description }}</p>
-
-					<!-- Tech Stack -->
-					<div class="tech-stack">
-						<span class="stack-label">{{ t.projects.stack }}</span>
-						<span v-for="tech in project.stack" :key="tech" class="tech-tag">
-							{{ tech }}
-						</span>
+		<!-- Projects Carousel -->
+		<div ref="carouselWrapper" class="carousel-wrapper">
+			<Carousel :gap="24">
+				<motion.div
+					v-for="(project, index) in projects"
+					:key="project.title"
+					:initial="{ scale: 0.95, y: 10 }"
+					:whileInView="{ scale: 1, y: 0 }"
+					:whileHover="{ scale: 1.02, x: -2, y: -2 }"
+					:whileTap="{ scale: 0.98 }"
+					:transition="{
+						type: 'spring',
+						stiffness: 400,
+						damping: 17,
+						delay: index * 0.1,
+					}"
+					:viewport="{ once: true }"
+					class="motion project-card carousel-card"
+				>
+					<div class="project-header">
+						<Icon icon="tabler:folder-code" class="project-icon" aria-hidden="true" />
+						<h3 class="project-name">{{ project.title }}</h3>
 					</div>
-
-					<!-- Links -->
-					<div class="project-links">
-						<a
-							v-if="project.github"
-							:href="project.github"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="terminal-link project-link"
-						>
-							<Icon icon="simple-icons:github" class="link-icon" aria-hidden="true" />
-							{{ t.projects.github }}
-						</a>
-						<a
-							v-if="project.demo"
-							:href="project.demo"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="terminal-link project-link"
-						>
-							<Icon icon="mdi:open-in-new" class="link-icon" aria-hidden="true" />
-							{{ t.projects.liveDemo }}
-						</a>
-						<a
-							v-if="project.store"
-							:href="project.store"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="terminal-link project-link"
-						>
-							<Icon icon="mdi:google-play" class="link-icon" aria-hidden="true" />
-							{{ t.projects.store }}
-						</a>
+					<img
+						v-if="project.image"
+						:src="project.image"
+						:alt="t.projects.imageAlt.replace('{title}', project.title)"
+						class="project-image"
+						loading="lazy"
+					/>
+					<div v-else class="project-image-placeholder" aria-hidden="true">
+						<Icon icon="mdi:image-off-outline" class="placeholder-icon" aria-hidden="true" />
+						<span>no img</span>
 					</div>
-				</div>
-			</motion.div>
+					<div class="project-content">
+						<p class="project-description">{{ project.description }}</p>
+
+						<!-- Tech Stack -->
+						<div class="tech-stack">
+							<span class="stack-label">{{ t.projects.stack }}</span>
+							<span v-for="tech in project.stack" :key="tech" class="tech-tag">
+								{{ tech }}
+							</span>
+						</div>
+
+						<!-- Links -->
+						<div class="project-links">
+							<a
+								v-if="project.github"
+								:href="project.github"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="terminal-link project-link"
+							>
+								<Icon icon="simple-icons:github" class="link-icon" aria-hidden="true" />
+								{{ t.projects.github }}
+							</a>
+							<a
+								v-if="project.demo"
+								:href="project.demo"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="terminal-link project-link"
+							>
+								<Icon icon="mdi:open-in-new" class="link-icon" aria-hidden="true" />
+								{{ t.projects.liveDemo }}
+							</a>
+							<a
+								v-if="project.store"
+								:href="project.store"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="terminal-link project-link"
+							>
+								<Icon icon="mdi:google-play" class="link-icon" aria-hidden="true" />
+								{{ t.projects.store }}
+							</a>
+						</div>
+					</div>
+				</motion.div>
+
+				<template #after>
+					<CarouselControls :prev-label="t.projects.prevPage" :next-label="t.projects.nextPage" />
+				</template>
+			</Carousel>
 		</div>
 	</motion.section>
 </template>
 
+<script lang="ts">
+import { defineComponent, h } from 'vue';
+import { useCarousel as useCarouselHook } from 'motion-plus-vue';
+
+const CarouselControls = defineComponent({
+	name: 'CarouselControls',
+	props: {
+		prevLabel: { type: String, default: '◀ Back' },
+		nextLabel: { type: String, default: 'Forward ▶' },
+	},
+	setup() {
+		const { prevPage, nextPage } = useCarouselHook();
+		return { prevPage, nextPage };
+	},
+	render() {
+		const { prevPage, nextPage, prevLabel, nextLabel } = this;
+
+		return h('div', { class: 'carousel-nav' }, [
+			h(
+				'button',
+				{
+					class: 'terminal-btn carousel-btn',
+					onClick: prevPage,
+					'aria-label': prevLabel,
+				},
+				prevLabel
+			),
+			h(
+				'button',
+				{
+					class: 'terminal-btn carousel-btn',
+					onClick: nextPage,
+					'aria-label': nextLabel,
+				},
+				nextLabel
+			),
+		]);
+	},
+});
+</script>
+
 <style scoped>
-.projects-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 1.5rem;
-	margin-top: 1rem;
+/* Carousel wrapper */
+.carousel-wrapper {
+	position: relative;
+}
+
+/* Carousel wraps each card in li.ticker-item — stretch handled via JS */
+.carousel-wrapper :deep(.ticker-item) {
+	display: flex;
+	align-self: stretch;
+}
+
+/* Equal-sized cards */
+.carousel-card {
+	width: 340px;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Stretch content to fill card height */
+.project-content {
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	flex: 1;
+}
+
+/* Push links to bottom */
+.project-links {
+	display: flex;
+	gap: 1rem;
+	font-size: 0.875rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--color-terminal-border);
+	margin-top: auto;
 }
 
 .project-image {
@@ -165,13 +284,6 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 	letter-spacing: 0.05em;
 }
 
-.project-content {
-	padding: 1.5rem;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-}
-
 .project-description {
 	color: var(--color-terminal-text-dim);
 	font-size: 0.875rem;
@@ -187,7 +299,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 }
 
 .stack-label {
-	color: var(--color-terminal-secondary); /* Magenta */
+	color: var(--color-terminal-secondary);
 	font-size: 0.75rem;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
@@ -195,7 +307,7 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 
 .tech-tag {
 	background: transparent;
-	color: var(--color-terminal-text-dim); /* Dimmed text */
+	color: var(--color-terminal-text-dim);
 	padding: 0.25rem 0.625rem;
 	border-radius: 0.25rem;
 	font-size: 0.75rem;
@@ -203,28 +315,34 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 	border: 1px solid var(--color-terminal-border);
 }
 
-.project-links {
-	display: flex;
-	gap: 1rem;
-	font-size: 0.875rem;
-	padding-top: 1rem;
-	border-top: 1px solid var(--color-terminal-border);
-}
-
 .project-link {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
-	text-shadow: none; /* No glow effect */
+	text-shadow: none;
 }
 
 .link-icon {
 	font-size: 1.125rem;
 }
 
+/* Carousel Nav — centered below cards (child component, needs :deep) */
+.carousel-wrapper :deep(.carousel-nav) {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.carousel-wrapper :deep(.carousel-btn) {
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 0.875rem;
+}
+
 @media (width <= 640px) {
-	.projects-grid {
-		grid-template-columns: 1fr;
+	.carousel-card {
+		width: 85vw;
 	}
 
 	.project-content {
@@ -232,15 +350,19 @@ const motionConfig = computed(() => getMotionConfig(prefersReducedMotion.value))
 	}
 
 	.project-name {
-		font-size: 0.85rem; /* Slightly smaller card title */
+		font-size: 0.85rem;
 	}
 
 	.project-description {
-		font-size: 0.825rem; /* Compact content text size */
+		font-size: 0.825rem;
 	}
 
 	.project-links {
-		font-size: 0.825rem; /* Compact link text size */
+		font-size: 0.825rem;
+	}
+
+	.carousel-wrapper :deep(.carousel-btn) {
+		font-size: 0.825rem;
 	}
 }
 </style>
