@@ -202,9 +202,10 @@ const CarouselControls = defineComponent({
 </script>
 
 <style scoped>
-/* Carousel wrapper */
+/* Carousel wrapper — padding prevents card border/shadow clipping on hover */
 .carousel-wrapper {
 	position: relative;
+	padding-inline: 8px;
 }
 
 /* Carousel wraps each card in li.ticker-item — stretch handled via JS */
