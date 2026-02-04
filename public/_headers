@@ -1,0 +1,15 @@
+# Security Headers for k0r37k1.dev
+# These headers are applied to all routes
+
+/*
+  # Prevent clickjacking attacks
+  X-Frame-Options: DENY
+
+  # Prevent MIME-sniffing
+  X-Content-Type-Options: nosniff
+
+  # Control referrer information
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Force HTTPS connections (1 year)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
