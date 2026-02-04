@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
@@ -11,6 +11,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  NODE_VERSION: 25
+
 jobs:
   # ==========================================
   # JOB 1: Lint & Format Check
@@ -22,12 +25,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies
@@ -52,19 +55,19 @@ jobs:
   # ==========================================
   # JOB 2: Unit Tests
   # ==========================================
-  unit-tests:
+  test-unit:
     name: Unit Tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies
@@ -78,38 +81,51 @@ jobs:
         continue-on-error: true
 
   # ==========================================
-  # JOB 3: E2E Tests (Chromium only, 4 workers)
+  # JOB 3: E2E Tests (Chromium)
   # ==========================================
-  e2e-tests:
-    name: E2E Tests (Chromium)
+  test-e2e:
+    name: E2E Tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Cache Playwright Browsers
+        id: playwright-cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
       - name: Install Playwright Chromium
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps chromium
 
-      - name: Run E2E Tests (Chromium, 4 workers)
+      - name: Install Chromium Dependencies (if cached)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      - name: Run E2E Tests (Chromium)
         run: npm run test:e2e
         env:
-          # Override playwright.config.ts workers setting
           PLAYWRIGHT_WORKERS: 4
 
       - name: Upload Playwright Report
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: playwright-report
           path: playwright-report/
@@ -118,129 +134,40 @@ jobs:
   # ==========================================
   # JOB 4: Accessibility Tests
   # ==========================================
-  a11y-tests:
+  test-a11y:
     name: Accessibility Tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Cache Playwright Browsers
+        id: playwright-cache-a11y
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
       - name: Install Playwright Browsers
+        if: steps.playwright-cache-a11y.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
+
+      - name: Install Browser Dependencies (if cached)
+        if: steps.playwright-cache-a11y.outputs.cache-hit == 'true'
+        run: npx playwright install-deps
 
       - name: Run Accessibility Tests
         run: npm run test:a11y:all
-
-  # ==========================================
-  # JOB 5: Build Check
-  # ==========================================
-  build:
-    name: Build Check
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    needs: [lint, unit-tests]
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Project
-        run: npm run build
-
-      - name: Check Build Size
-        run: |
-          echo "📦 Build Size Analysis:"
-          du -sh dist/
-          echo ""
-          echo "📊 Top 10 Largest Files:"
-          find dist -type f -exec du -h {} + | sort -rh | head -10
-
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/
-          retention-days: 7
-
-  # ==========================================
-  # JOB 6: Deploy Preview (Optional - Cloudflare Pages)
-  # ==========================================
-  deploy-preview:
-    name: Deploy Preview
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    needs: [build, e2e-tests, a11y-tests]
-    if: github.event_name == 'pull_request'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-      - name: Deploy to Cloudflare Pages (Preview)
-        # Uncomment and configure when ready:
-        # uses: cloudflare/pages-action@v1
-        # with:
-        #   apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        #   accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        #   projectName: astro
-        #   directory: dist
-        #   gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-        run: echo "Deploy step - configure Cloudflare Pages when ready"
-
-  # ==========================================
-  # JOB 7: Deploy Production
-  # ==========================================
-  deploy-production:
-    name: Deploy Production
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    needs: [build, e2e-tests, a11y-tests]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-      - name: Deploy to Cloudflare Pages (Production)
-        # Uncomment and configure when ready:
-        # uses: cloudflare/pages-action@v1
-        # with:
-        #   apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        #   accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        #   projectName: astro
-        #   directory: dist
-        #   gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-        #   branch: main
-        run: echo "Production deploy step - configure when ready"

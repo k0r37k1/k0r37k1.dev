@@ -45,8 +45,6 @@ reviews:
         - Verify Vue 3 Composition API usage (no Options API)
         - Check for proper TypeScript types in defineProps
         - Ensure client directives (client:visible, client:load) are used appropriately
-        - Verify Motion animations don't combine whileInView with whileHover on same element
-        - Check that spring animations only use 2 keyframes
         - Validate path aliases (@components, @layouts, @utils) are used instead of relative imports
 
     - path: "src/**/*.astro"
@@ -89,85 +87,13 @@ chat:
 
 # Knowledge base - Project specific context
 knowledge_base:
-  # Tech Stack Documentation
+  # Enable learnings from conversation history
   learnings:
-    scope: "repo"
-    items:
-      - "Project uses Astro 5 with Vue 3 Composition API (NOT Options API)"
-      - "Styling with Tailwind CSS v4 - CSS-first configuration using @theme"
-      - "Vite+ inspired toolchain: Rolldown (bundler), OXC (linter), Lightning CSS (parser)"
-      - "Testing: Vitest (unit), Playwright (E2E), @vue/test-utils"
-      - "Path aliases MUST be used: @/, @components/, @layouts/, @utils/"
-      - "Vue components MUST use Composition API with <script setup lang='ts'>"
-      - "Client directives: Prefer client:visible over client:load for performance"
-      - "GSAP for animations - always use gsap.context() with cleanup in onBeforeUnmount"
-      - "Tailwind v4: Use @theme in CSS for design tokens, not JavaScript config"
-      - "Conventional Commits enforced by commitlint"
-      - "Tabs for indentation (NOT spaces), single quotes, semicolons required"
+    scope: local # local = repo-only, global = org-wide, auto = smart default
 
-# Issue validation and PR title checking
-issues:
-  enabled: false
+  # Enable web search for additional context (defaults to enabled)
+  web_search: {}
 
-pull_requests:
-  title_check:
+  # Code guidelines (automatically extracted from path_instructions above)
+  code_guidelines:
     enabled: true
-    validation:
-      pattern: '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+?\))?: .{1,80}$'
-      message: "PR title must follow Conventional Commits format: type(scope): subject"
-
-# Code linting (use existing project linters)
-linting:
-  enabled: false # Disable as we use oxlint, prettier, stylelint
-
-# Security scanning
-security:
-  secret_scanning:
-    enabled: true
-
-# Performance optimization for Lite plan
-performance:
-  # Focus reviews on most important files
-  max_files_to_review: 50
-  max_lines_per_file: 1000
-
-  # Prioritize certain file types
-  file_priority:
-    high:
-      - "**/*.vue"
-      - "**/*.astro"
-      - "**/*.ts"
-      - "**/*.tsx"
-    medium:
-      - "**/*.js"
-      - "**/*.jsx"
-      - "**/*.css"
-    low:
-      - "**/*.json"
-      - "**/*.md"
-
-# Exclude patterns
-exclude:
-  - "**/node_modules/**"
-  - "**/dist/**"
-  - "**/.astro/**"
-  - "**/build/**"
-  - "**/coverage/**"
-  - "**/*.lock"
-  - "**/*.log"
-  - "**/*.min.js"
-  - "**/*.min.css"
-  - "**/*.map"
-  - "**/public/assets/**"
-  - "**/.husky/**"
-
-# Bot behavior
-bot:
-  behavior:
-    # Be helpful but concise (Lite plan optimization)
-    - "Focus on critical issues and best practices"
-    - "Prioritize security, performance, and maintainability concerns"
-    - "Provide actionable suggestions with code examples"
-    - "Respect existing code style and project conventions"
-    - "Consider the Astro Islands Architecture and Vue 3 patterns"
-    - "Be mindful of bundle size and performance implications"

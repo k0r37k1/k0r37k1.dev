@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json.schemastore.org/oxlintrc.json",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2024": true
+  },
+  "categories": {
+    "correctness": "warn",
+    "suspicious": "warn",
+    "pedantic": "off",
+    "style": "off",
+    "nursery": "off"
+  },
+  "plugins": ["typescript", "import", "jsx-a11y"],
+  "rules": {
+    // Allow console in development
+    "no-console": "off",
+
+    // TypeScript specific
+    "typescript/no-explicit-any": "warn",
+    "typescript/no-unused-vars": "warn",
+
+    // Import ordering
+    "import/no-duplicates": "warn",
+
+    // Accessibility
+    "jsx-a11y/alt-text": "error",
+    "jsx-a11y/aria-props": "error",
+    "jsx-a11y/aria-role": "error"
+  },
+  "overrides": [
+    {
+      // Test files - allow console
+      "files": ["**/*.{test,spec}.{ts,js,tsx,jsx}"],
+      "rules": {
+        "no-console": "off",
+        "typescript/no-explicit-any": "off"
+      }
+    },
+    {
+      // Config files - allow console and any
+      "files": [
+        "**/*.config.{ts,js,mjs}",
+        "**/scripts/**/*.{ts,js}",
+        "**/playwright.config.ts",
+        "**/vitest.config.ts"
+      ],
+      "rules": {
+        "no-console": "off",
+        "typescript/no-explicit-any": "off"
+      }
+    },
+    {
+      // Astro files - relax some rules
+      "files": ["**/*.astro"],
+      "rules": {
+        "typescript/no-unused-vars": "off"
+      }
+    },
+    {
+      // Vue files - enable Vue-specific rules
+      "files": ["**/*.vue"],
+      "rules": {
+        "typescript/no-unused-vars": "warn"
+      }
+    }
+  ]
+}
