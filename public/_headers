@@ -3,7 +3,8 @@
 
 /*
   # Prevent clickjacking attacks
-  X-Frame-Options: DENY
+  # SAMEORIGIN allows embedding on own domain, DENY blocks all framing
+  X-Frame-Options: SAMEORIGIN
 
   # Prevent MIME-sniffing
   X-Content-Type-Options: nosniff
@@ -11,5 +12,21 @@
   # Control referrer information
   Referrer-Policy: strict-origin-when-cross-origin
 
-  # Force HTTPS connections (1 year)
-  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  # Force HTTPS connections (1 year + preload ready)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Content Security Policy (Optimized for Astro + Vue + Iconify)
+  # Note: unsafe-inline/unsafe-eval required for static hosting without nonces
+  # default-src: Only allow resources from own domain
+  # script-src: Allow own scripts + inline (Astro) + eval (Vue dev mode)
+  # style-src: Allow own styles + inline (Astro)
+  # img-src: Allow own images + data URIs + HTTPS images
+  # font-src: Allow own fonts + data URIs
+  # connect-src: Allow API calls to own domain + Iconify API
+  # frame-ancestors: Block all framing (redundant with X-Frame-Options)
+  # upgrade-insecure-requests: Auto-upgrade HTTP to HTTPS
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.iconify.design; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
+
+  # Permissions Policy (Disable sensitive browser features)
+  # Explicitly deny: camera, microphone, geolocation, payment, USB, etc.
+  Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()

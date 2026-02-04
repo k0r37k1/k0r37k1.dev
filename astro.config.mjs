@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import vue from '@astrojs/vue';
 import tailwindcss from '@tailwindcss/vite';
 import Components from 'unplugin-vue-components/vite';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
@@ -72,21 +73,51 @@ export default defineConfig({
             chunkSizeWarningLimit: 1000,
             // Optimized output configuration
             rollupOptions: {
+                plugins: [
+                    // Bundle analyzer - generates stats.html
+                    visualizer({
+                        open: false, // Don't auto-open browser
+                        gzipSize: true,
+                        brotliSize: true,
+                        filename: 'dist/stats.html',
+                        template: 'treemap', // 'sunburst', 'treemap', 'network'
+                    }),
+                ],
                 output: {
-                    // Separate vendor code for better caching
+                    // Separate vendor code for better caching and code splitting
                     manualChunks(id) {
                         // Don't bundle Astro's internals or server code
                         if (id.includes('astro/dist') || id.includes('/server/')) {
                             return undefined;
                         }
-                        // Bundle all node_modules into single vendor chunk
+
+                        // Split heavy vendor libraries into separate chunks
+                        // Vue 3 (~100 KB) - Core framework, always loaded
+                        if (id.includes('node_modules/vue')) {
+                            return 'vue';
+                        }
+                        // Motion libraries (~80 KB) - Animation framework
+                        if (id.includes('node_modules/motion-v') || id.includes('node_modules/motion-plus-vue')) {
+                            return 'motion';
+                        }
+                        // Iconify (~30 KB) - Icon system
+                        if (id.includes('node_modules/@iconify')) {
+                            return 'iconify';
+                        }
+                        // VueUse (if used) - Composables
+                        if (id.includes('node_modules/@vueuse')) {
+                            return 'vueuse';
+                        }
+                        // Remaining vendor code
                         if (id.includes('node_modules')) {
                             return 'vendor';
                         }
+
                         // Bundle ALL components into ONE shared chunk
                         if (id.includes('src/components/')) {
                             return 'components';
                         }
+
                         // Let Vite handle remaining app code splitting
                         return undefined;
                     },

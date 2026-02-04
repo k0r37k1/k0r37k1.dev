@@ -3,10 +3,10 @@ import '../styles/style.css';
 import type { Language } from '@/i18n';
 
 // Local fonts (GDPR-compliant, no Google Fonts API calls)
+// Only load critical weights: Regular (400) + Bold (700)
+// This reduces font CSS from ~32KB to ~16KB
 import '@fontsource/vt323';
 import '@fontsource/ibm-plex-mono/400.css';
-import '@fontsource/ibm-plex-mono/500.css';
-import '@fontsource/ibm-plex-mono/600.css';
 import '@fontsource/ibm-plex-mono/700.css';
 
 interface Props {
@@ -34,6 +34,10 @@ const canonicalUrl = lang === 'de' ? `${baseUrl}${currentPath}` : `${baseUrl}/en
 		<meta name="description" content={description} />
 		<meta name="theme-color" content="#14161c" />
 		<title>{title}</title>
+
+		<!-- DNS Prefetch for external resources (Iconify API) -->
+		<link rel="dns-prefetch" href="https://api.iconify.design" />
+		<link rel="preconnect" href="https://api.iconify.design" crossorigin />
 
 		<!-- Canonical URL -->
 		<link rel="canonical" href={canonicalUrl} />

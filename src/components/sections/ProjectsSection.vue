@@ -58,6 +58,8 @@ onMounted(() => {
 						v-if="project.image"
 						:src="project.image"
 						:alt="t.projects.imageAlt.replace('{title}', project.title)"
+						width="1280"
+						height="629"
 						class="project-image"
 						loading="lazy"
 					/>

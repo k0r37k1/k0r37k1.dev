@@ -61,7 +61,7 @@ export default {
 				description:
 					'Mein persönliches Portfolio – moderner Tech-Stack, neo-brutalistisches Design. Barrierefrei, DE/EN.',
 				stack: ['Astro', 'Vue', 'Motion', 'Tailwind', 'CSS'],
-				image: '/images/projects/k0r37k1-dev.png',
+				image: '/images/projects/k0r37k1-dev.webp',
 				github: 'https://github.com/k0r37k1/k0r37k1.dev',
 				demo: 'https://k0r37k1.dev',
 			},
